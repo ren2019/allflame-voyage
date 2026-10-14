@@ -66,11 +66,19 @@ try {
   assert.match(environment.userAgent, /Windows NT.*Edg\//)
   await page.locator('.onboard-actions button').last().click()
   const samples = readFileSync(new URL('../../samples/charted.zh-CN.txt', import.meta.url), 'utf8')
-  await page.locator('.import-panel textarea').fill(samples)
+  const extraSamples = readFileSync(new URL('../../samples/charted-extra-shapes.zh-CN.txt', import.meta.url), 'utf8')
+  await page.locator('.import-panel textarea').fill(`${samples}\n${extraSamples}`)
   await page.locator('.import-actions button').first().click()
-  await page.locator('.chart-grid .chart-sq').nth(1).waitFor()
-  assert.equal(await page.locator('.chart-grid .chart-sq').count(), 2)
-  await page.locator('.chart-grid .chart-sq').first().click()
+  await page.locator('.chart-grid .chart-sq').nth(4).waitFor()
+  assert.equal(await page.locator('.chart-grid .chart-sq').count(), 5)
+  // Select the original chart by its visible name, independent of value sorting.
+  await page.locator('.library-tools button').click()
+  const shapeLabels = await page.locator('.chart-location').allTextContents()
+  assert.deepEqual(shapeLabels.map((text) => text.trim()).sort(), [
+    '蛤蜊海架 · 端点', '深渊平原 · 直线', '海底山脊 · 角落', '深渊平原 · 节点', '海底林地 · 交叉',
+  ].sort())
+  await page.locator('.chart-card').filter({ hasText: '航海 冒险 珊瑚暗礁海图' }).click()
+  await page.locator('.library-tools button').click()
   await page.locator('.tile').first().click()
   await page.locator('.copy-into-game').click()
   await page.locator('.copyseq-go').click()
@@ -80,10 +88,10 @@ try {
   assert.match(chartSearch, /区域等级\s*[:：]?\s*83/, 'The deployed placement search must use the mainland level field')
   await page.waitForTimeout(1000)
   await page.reload({ waitUntil: 'networkidle' })
-  assert.equal(await page.locator('.chart-grid .chart-sq').count(), 2)
+  assert.equal(await page.locator('.chart-grid .chart-sq').count(), 5)
   assert.deepEqual(failures, [])
   assert.deepEqual(badResponses, [])
-  Object.assign(report, { edge: info.Edge, userAgent: environment.userAgent, cdpLoopbackOnly: info.Loopback, secureContext: true, importedRealCharts: 2, actualWindowsClipboardWrite: true, placementGuideClipboard: chartSearch, refreshedInventory: 2, failedResources: 0, gameSearch: 'not exercised' })
+  Object.assign(report, { edge: info.Edge, userAgent: environment.userAgent, cdpLoopbackOnly: info.Loopback, secureContext: true, importedRealCharts: 5, displayedDestinationsAndShapes: shapeLabels, actualWindowsClipboardWrite: true, placementGuideClipboard: chartSearch, refreshedInventory: 5, failedResources: 0, gameSearch: 'not exercised' })
 } finally {
   if (browser) await browser.close().catch(() => {})
   if (tunnel && tunnel.exitCode === null && tunnel.signalCode === null) {

@@ -7,7 +7,7 @@
     "rewards": 15,
     "destinations": 15,
     "shapes": 5,
-    "fields": 10
+    "fields": 11
   },
   "statuses": {
     "base": {
@@ -18,23 +18,22 @@
       "conflict": 1
     },
     "chart-implicit": {
-      "source-only": 60,
-      "confirmed": 2
+      "source-only": 57,
+      "confirmed": 5
     },
     "destination": {
-      "source-only": 13,
-      "confirmed": 2
+      "source-only": 11,
+      "confirmed": 4
     },
     "field": {
-      "confirmed": 10
+      "confirmed": 11
     },
     "reward": {
       "conflict": 13,
       "missing": 2
     },
     "shape": {
-      "confirmed": 2,
-      "missing": 3
+      "confirmed": 5
     }
   },
   "investigatedModIds": [
@@ -196,11 +195,17 @@
     "cm-pack-16",
     "cm-pack-18",
     "cm-gold-50",
-    "cm-gold-70",
-    "Corner",
-    "Junction",
-    "Crossing"
+    "cm-gold-70"
   ],
-  "clientCalibration": "Only two chart implicits, two destinations and two shapes. No real border-client corpus.",
+  "clientCalibration": {
+    "sampleCount": 5,
+    "confirmed": {
+      "chart-implicit": 5,
+      "destination": 4,
+      "shape": 5,
+      "field": 11
+    },
+    "borderClientCorpus": false
+  },
   "nativeModIds": "Unavailable in captured HTML; null for all. Explicit semantic alignment is retained."
 }

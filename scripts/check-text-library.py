@@ -7,6 +7,7 @@ root=args.root;lib=root/'samples/text-library'
 def load(path):return json.loads(path.read_text())
 sources=load(lib/'sources.json');data=load(lib/'library.json');coverage=load(lib/'coverage.json');inventory=load(lib/'repository-inventory.json')
 by_source={s['sourceId']:s for s in sources};assert len(by_source)==len(sources),'Duplicate source ID'
+client_sources={s['snapshotPath']:s for s in sources if s['capture']=='client-verbatim'}
 for source in sources:
     path=root/source['snapshotPath'];assert path.is_file(),f'Missing snapshot {path}'
     assert hashlib.sha256(path.read_bytes()).hexdigest()==source['snapshotSha256'],f'Snapshot digest mismatch: {path}'
@@ -28,6 +29,7 @@ destinations={r['internalId'] for r in records if r['kind']=='destination'}
 live_destinations=set(re.findall(r"\bid:\s*'([^']+)'",(root/'src/data/chartAreas.ts').read_text()))
 assert len(destinations)==15 and destinations==live_destinations,'Destination coverage denominator mismatch'
 assert {r['internalId'] for r in records if r['kind']=='shape'}=={'End','Straight','Corner','Junction','Crossing'}
+assert coverage['required']['fields']==len([r for r in records if r['kind']=='field']),'Field coverage denominator mismatch'
 assert set(coverage['investigatedModIds'])==actual_mods
 for record in records:
     assert record['status'] in ['confirmed','source-only','missing','conflict','unmatched']
@@ -40,8 +42,19 @@ for record in records:
         assert ref['locator']
     if record['status']=='confirmed':
         assert record['clientSampleRefs'] and record['cnText']
+    if record['clientSampleRefs']:
         text=record.get('clientText') or record['cnText']
-        assert text in (root/'samples/charted.zh-CN.txt').read_text(),record['internalId']
+        for sample_ref in record['clientSampleRefs']:
+            sample_path,separator,fragment=sample_ref.partition('#')
+            assert sample_path in client_sources,f'Unregistered client source: {sample_ref}'
+            source_text=(root/sample_path).read_text()
+            if separator:
+                assert re.fullmatch(r'sample-[1-9]\d*',fragment),sample_ref
+                items=re.split(r'\n\s*(?=物品类别: 海图)',source_text.strip())
+                index=int(fragment.removeprefix('sample-'))-1
+                assert index<len(items),sample_ref
+                source_text=items[index]
+            assert text in source_text,(record['internalId'],sample_ref)
     if record['status']=='missing':assert record['attemptedSources'] and record['nextEvidence']
     if record['kind'] in ['chart-implicit','border']:
         for lang,key in [('cn','cnText'),('us','enText')]:
