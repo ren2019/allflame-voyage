@@ -41,7 +41,11 @@ npm run site:stop
 和 `server.key` 保留在Mac项目的忽略目录，不复制到Windows或提交Git。
 自动化和启动命令均不会向Mac/Windows系统安装受信任根。
 
-1. 通过可信的本地文件传输把公有 `.cer` 文件放在Windows桌面。
+1. 将公有证书保存到Windows桌面：
+   **https://192.168.1.8:8443/allflame-voyage-ca.cer**。
+   也可从Mac项目 `.local-site/allflame-voyage-ca.cer`通过本地文件传输复制。
+   初次尚未信任本站时，下载渠道本身未获证书信任，必须用下一步的
+   独立指纹核对文件；下载时绕过告警不算证书验收通过。
 2. 在Mac执行 `npm run site:init`，记录输出的SHA256指纹；在Windows
    PowerShell执行以下命令，核对文件的SHA256一致：
 
@@ -73,7 +77,7 @@ npm run site:stop
 | --- | --- | --- |
 | 网络 | PowerShell `Test-NetConnection 192.168.1.8 -Port 8443`显示 `TcpTestSucceeded: True` | 待Windows现场执行 |
 | 信任 | Edge无证书告警；资源正常加载 | 待Windows证书安装后执行 |
-| 样本 | 空库存分别或合并导入 `samples/charted.zh-CN.txt`，得到两张海图 | 待Windows现场执行 |
+| 样本 | 空库存分别或合并导入 `samples/charted.zh-CN.txt`，得到两张海图 | 用户已在实际Edge绕过证书告警后导入两张成功；信任仍未通过 |
 | 安全上下文 | Edge开发者工具Console查看 `window.isSecureContext`为true，`typeof navigator.clipboard.writeText`为function | 待Windows现场执行 |
 | 一键复制 | 在原有放置指南点击复制，粘贴到记事本确认有定位文本；若Edge询问剪贴板权限，对本站允许 | 待Windows现场执行 |
 | 游戏定位 | 原样粘贴定位文本到国服游戏搜索栏，确认匹配当前格海图，并完成一次9格可执行摆盘及航程流程 | 待真实国服游戏执行 |
@@ -83,6 +87,55 @@ npm run site:stop
 两台电脑是否处于可互访的内网，以及Mac防火墙是否允许Node入站。
 资源能加载但复制失败时核对HTTPS证书信任、地址及Edge本站剪贴板权限。
 记录Edge版本、检查时间、失败提示及实际结果；Mac自动化不是Windows通过证据。
+
+## Edge证书告警的只读反馈
+
+当前已收到的现场反馈是：实际Edge显示证书告警，选择继续访问后两张
+样本导入成功。尚未收到具体Edge错误码或证书安装结果；不能据此认定
+是哪一种证书问题。导入成功证明应用可访问，不证明受信任HTTPS或复制权限。
+
+在Edge告警页展开详细信息，记录原样的 `NET::ERR_CERT_...`错误码。
+只读Windows诊断脚本可保存自
+**https://192.168.1.8:8443/diagnose-windows.ps1**，在记事本中查看后，
+由当前Windows用户在PowerShell运行：
+
+```powershell
+& "$env:USERPROFILE\Desktop\diagnose-windows.ps1"
+```
+
+若本机脚本执行策略阻止运行，可将已核对的脚本文本粘贴到PowerShell
+执行，不修改系统执行策略。脚本只读取本项目公有证书是否位于正确存储，
+检查下载指纹，向目标地址执行正常TLS验证并打印叶证书、SAN、有效期、
+Windows时钟和链错误。无效链仍被拒绝；不会安装证书、改浏览器或读取私钥。
+Windows TLS结果不是Edge结果；需要同时保留Edge错误码。
+
+| 实际观察 | 对应处理；只在观察匹配时执行 |
+| --- | --- |
+| `ERR_CERT_AUTHORITY_INVALID`，预期根在两种Root存储均不存在 | 核对公有DER的SHA256后，按上文安装到当前用户Root；重新打开Edge再验 |
+| 预期根只在Personal存储，Root不存在 | 当前安装位置不满足根信任；把相同已核对公有证书安装到当前用户Root |
+| 下载SHA256不等于预期值 | 不安装该文件，重新从Mac已核对的公有证书复制；保留差异供诊断 |
+| `ERR_CERT_COMMON_NAME_INVALID` / `RemoteCertificateNameMismatch` | 对照实际URL和打印的SAN；约定IP必须是192.168.1.8；若目标确实返回其他证书，核对服务/端口 |
+| `ERR_CERT_DATE_INVALID` / `NotTimeValid` | 比较Windows当前时间与叶证书NotBefore/NotAfter；先核对两台机器真实时间，不更换CA试错 |
+| 根已存在，但链未包含预期缩略指纹 | 对照实际叶证书和证书链，核对是否访问了正确服务；保留输出，不先删除其他根或关闭保护 |
+| Windows TLS通过而Edge仍告警 | 保留Edge精确错误、版本和当前用户信息；完全退出后重开；若仍失败再检查Edge策略/证书路径 |
+
+当前服务器叶证书SHA256为
+`35F6752DC18D26FCF5CD17894C4D7A40B35B725BA99F21E642D5C061F22C039B`，
+由项目CA签发，SAN包括192.168.1.8、127.0.0.1、localhost，有效期为
+2026-10-14 10:07:37 UTC至2027-10-14 10:07:37 UTC。后续合法重签会改变
+叶证书指纹，根身份可保持不变；仍应以当时Mac输出交叉核对。
+
+证书告警消失后，在Edge本站页面的开发者工具Console查看：
+
+```javascript
+({ origin: location.origin, secureContext: window.isSecureContext,
+   clipboardWrite: typeof navigator.clipboard?.writeText })
+navigator.permissions.query({name: 'clipboard-write'}).then(p => console.log(p.state))
+```
+
+最后通过原有放置指南实际点击复制并粘贴到记事本/游戏核对。
+上述Console读数、权限和实际复制尚待Windows反馈，不以Mac测试替代。
+诊断接口依据微软的[SslStream证书验证契约](https://learn.microsoft.com/en-us/dotnet/api/system.net.security.sslstream)。
 
 ## 本地自动化复验
 
