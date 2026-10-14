@@ -2474,3 +2474,8 @@ textarea {
   vertical-align: -2px;
 }
 
+/* Keep the short Chinese inventory heading and its actions readable. */
+.library-title,
+.library > .panel-title button {
+  white-space: nowrap;
+}
