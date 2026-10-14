@@ -16,7 +16,8 @@
     "site:status": "node scripts/local-site.mjs status",
     "site:update": "node scripts/local-site.mjs update",
     "test:deployment": "node --test tests/deployment/local-site.test.mjs",
-    "test:https": "node tests/deployment/verify-browser.mjs"
+    "test:https": "node tests/deployment/verify-browser.mjs",
+    "test:windows": "node tests/deployment/verify-windows-edge.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
