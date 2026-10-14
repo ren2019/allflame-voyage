@@ -27,7 +27,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     const { charts, rejected } = parseChartText(borderOcr.chartText)
     const notCharted = rejected.filter((r) => r.reason.startsWith('not charted'))
     if (charts.length === 0 && rejected.length === 0 && borderOcr.blockCount === 0) {
-      setMsg('未识别到物品，请粘贴游戏 Ctrl+C 复制文本。')
+      setMsg('未识别到物品，请粘贴国服 Ctrl+Alt+C 高级复制文本。')
       return
     }
 
