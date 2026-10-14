@@ -1,0 +1,889 @@
+{
+  "schemaVersion": 1,
+  "status": "automated-results-require-execution; field-pending",
+  "baselineCommit": "20a694ba8afb6ce497a67287b67c68a6b244e5fd",
+  "coreFiles": [
+    {
+      "path": "src/logic/solver.ts",
+      "sha256": "cdd4f482e4b8eca852c938e928496f87e832a3f3a3abc2920c3f7a913e29e2fa"
+    },
+    {
+      "path": "src/logic/scoring.ts",
+      "sha256": "83255a2d143251c802a525b3d90d94bfc5aa50ed879b43c02130c4ac9574f681"
+    },
+    {
+      "path": "src/logic/connectivity.ts",
+      "sha256": "6cc565d51e906fafa29ec942f1c7432c86f56ce99e34141a5ab7411e582fd1e4"
+    }
+  ],
+  "stories": [
+    {
+      "id": "US01",
+      "title": "库存导入"
+    },
+    {
+      "id": "US02",
+      "title": "导入失败反馈"
+    },
+    {
+      "id": "US03",
+      "title": "十二个边界"
+    },
+    {
+      "id": "US04",
+      "title": "策略与求解"
+    },
+    {
+      "id": "US05",
+      "title": "游戏内放置"
+    },
+    {
+      "id": "US06",
+      "title": "状态保存与备份"
+    },
+    {
+      "id": "US07",
+      "title": "航程核销循环"
+    }
+  ],
+  "groups": [
+    {
+      "id": "G01",
+      "title": "分别导入国服已测绘海图",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "imports the first real client chart",
+          "minCases": 1
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "keeps second real chart",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "samples individually",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G02",
+      "title": "连续导入两张不同的海图",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "separates a Windows batch",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "both real charts in a Windows batch",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G03",
+      "title": "Windows换行不改变解析结果",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "separates a Windows batch",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "both real charts in a Windows batch",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G04",
+      "title": "头部总值与航程效果分别处理",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "keeps second real chart",
+          "minCases": 1
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "imports the first real client chart",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "both real charts in a Windows batch",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G05",
+      "title": "国服关键航行词缀未匹配时整张拒绝",
+      "stories": [
+        "US02"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "crucial voyage effect has no calibrated mapping",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "unknown crucial effects",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G06",
+      "title": "混合批次保留有效项",
+      "stories": [
+        "US02"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "keeps valid items when another item",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "mixed batch keeps its valid chart",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G07",
+      "title": "国服关键航行词缀缺失时拒绝",
+      "stories": [
+        "US02"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "refuses missing or empty crucial",
+          "minCases": 2
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "reject missing implicit",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "reject empty implicit",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G08",
+      "title": "区域等级不误读为物品等级或需求等级",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "uses area level rather than item",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G09",
+      "title": "现有拒绝规则继续生效",
+      "stories": [
+        "US02"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "rejects invalid items",
+          "minCases": 3
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "real import controls reject",
+          "minCases": 5
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/import.spec.ts",
+          "nameIncludes": "uncharted derived text",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G10",
+      "title": "重复复制沿用原有去重规则",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.text-library.test.ts",
+          "nameIncludes": "retains the original same-batch instance",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/inventory.spec.ts",
+          "nameIncludes": "简中导入和库存保持",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G11",
+      "title": "同批相同实例计数与整批重扫沿用原版",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.text-library.test.ts",
+          "nameIncludes": "retains the original same-batch instance",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/inventory.spec.ts",
+          "nameIncludes": "简中导入和库存保持",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G12",
+      "title": "没有原版去重字段的图沿用原有行为",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/importDedupe.test.ts",
+          "nameIncludes": "never dedupes charts without verbatim text",
+          "minCases": 1
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.text-library.test.ts",
+          "nameIncludes": "retains the original same-batch instance",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G13",
+      "title": "十二个边界选择对应正确位置",
+      "stories": [
+        "US03"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "tests/border-acceptance.test.ts",
+          "nameIncludes": "affects only its specified cell",
+          "minCases": 12
+        },
+        {
+          "suite": "unit",
+          "file": "tests/border-acceptance.test.ts",
+          "nameIncludes": "stacks two direct borders",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/borders.spec.ts",
+          "nameIncludes": "all twelve real border controls",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/borders/acceptance.json",
+        "samples/text-library/library.json"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G14",
+      "title": "每个现有策略可规划已知可行库存",
+      "stories": [
+        "US04"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "tests/strategy-acceptance.test.ts",
+          "nameIncludes": "independently verified strict witness",
+          "minCases": 7
+        },
+        {
+          "suite": "unit",
+          "file": "tests/strategy-acceptance.test.ts",
+          "nameIncludes": "solves without requiring a unique optimum",
+          "minCases": 7
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/solve.spec.ts",
+          "nameIncludes": "player selects",
+          "minCases": 7
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/strategy-alc.json",
+        "tests/fixtures/acceptance/strategy-alc.expected.json",
+        "tests/fixtures/acceptance/strategy-anchor.json",
+        "tests/fixtures/acceptance/strategy-anchor.expected.json",
+        "tests/fixtures/acceptance/strategy-speedrun.json",
+        "tests/fixtures/acceptance/strategy-speedrun.expected.json",
+        "tests/fixtures/acceptance/strategy-meatfish.json",
+        "tests/fixtures/acceptance/strategy-meatfish.expected.json",
+        "tests/fixtures/acceptance/strategy-ethereal.json",
+        "tests/fixtures/acceptance/strategy-ethereal.expected.json",
+        "tests/fixtures/acceptance/strategy-divine-rares.json",
+        "tests/fixtures/acceptance/strategy-divine-rares.expected.json",
+        "tests/fixtures/acceptance/strategy-divine-boxes.json",
+        "tests/fixtures/acceptance/strategy-divine-boxes.expected.json"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G15",
+      "title": "没有可执行摆盘时不误报成功",
+      "stories": [
+        "US04"
+      ],
+      "tests": [
+        {
+          "suite": "browser",
+          "file": "tests/browser/solve.spec.ts",
+          "nameIncludes": "eight charts are a reference",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/retry-insufficient.json",
+        "tests/fixtures/acceptance/retry-insufficient.expected.json"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G16",
+      "title": "按原有顺序定位九张国服海图",
+      "stories": [
+        "US05"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/regex.zh-CN.test.ts",
+          "nameIncludes": "real implicit verbatim",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/solve.spec.ts",
+          "nameIncludes": "player selects 速刷保险箱",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/planning-cycle.spec.ts",
+          "nameIncludes": "所选候选完成九步复制后仅核销已消耗实例",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/journey-two-voyages.json",
+        "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+        "tests/fixtures/acceptance/journey-two-voyages.README.md",
+        "tests/fixtures/acceptance/game-search.expected.json"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "pending-game"
+    },
+    {
+      "id": "G17",
+      "title": "选择实际求解候选并复制放置后核销同一盘",
+      "stories": [
+        "US01",
+        "US03",
+        "US04",
+        "US05",
+        "US07"
+      ],
+      "tests": [
+        {
+          "suite": "browser",
+          "file": "tests/browser/planning-cycle.spec.ts",
+          "nameIncludes": "所选候选完成九步复制后仅核销已消耗实例",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/journey-two-voyages.json",
+        "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+        "tests/fixtures/acceptance/journey-two-voyages.README.md",
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "pending-game"
+    },
+    {
+      "id": "G18",
+      "title": "材料不足后补齐库存重新求解",
+      "stories": [
+        "US01",
+        "US04"
+      ],
+      "tests": [
+        {
+          "suite": "browser",
+          "file": "tests/browser/solve.spec.ts",
+          "nameIncludes": "eight charts are a reference",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/retry-insufficient.json",
+        "tests/fixtures/acceptance/retry-insufficient.expected.json"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G19",
+      "title": "航程核销后用新库存和边界再次规划",
+      "stories": [
+        "US01",
+        "US03",
+        "US04",
+        "US07"
+      ],
+      "tests": [
+        {
+          "suite": "browser",
+          "file": "tests/browser/planning-cycle.spec.ts",
+          "nameIncludes": "所选候选完成九步复制后仅核销已消耗实例",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/journey-two-voyages.json",
+        "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+        "tests/fixtures/acceptance/journey-two-voyages.README.md",
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "pending-game"
+    },
+    {
+      "id": "G20",
+      "title": "刷新恢复规划状态",
+      "stories": [
+        "US06"
+      ],
+      "tests": [
+        {
+          "suite": "browser",
+          "file": "tests/browser/planning-cycle.spec.ts",
+          "nameIncludes": "完整非空规划经刷新",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/journey-two-voyages.json",
+        "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+        "tests/fixtures/acceptance/journey-two-voyages.README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G21",
+      "title": "JSON备份往返恢复等价状态",
+      "stories": [
+        "US06"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "tests/journey-fixture.test.ts",
+          "nameIncludes": "round-trips every persistent field",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/planning-cycle.spec.ts",
+          "nameIncludes": "完整非空规划经刷新",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/journey-two-voyages.json",
+        "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+        "tests/fixtures/acceptance/journey-two-voyages.README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G22",
+      "title": "保留基底原句及原版显式负面属性字段",
+      "stories": [
+        "US01"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.zh-CN.test.ts",
+          "nameIncludes": "preserves only explicit downside text",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G23",
+      "title": "无保留海图的航程核销",
+      "stories": [
+        "US07"
+      ],
+      "tests": [
+        {
+          "suite": "browser",
+          "file": "tests/browser/planning-cycle.spec.ts",
+          "nameIncludes": "未标记保留时仅消耗本盘九张",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/journey-two-voyages.json",
+        "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+        "tests/fixtures/acceptance/journey-two-voyages.README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G24",
+      "title": "保留确认只影响本次使用的海图",
+      "stories": [
+        "US07"
+      ],
+      "tests": [
+        {
+          "suite": "browser",
+          "file": "tests/browser/planning-cycle.spec.ts",
+          "nameIncludes": "所选候选完成九步复制后仅核销已消耗实例",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/journey-two-voyages.json",
+        "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+        "tests/fixtures/acceptance/journey-two-voyages.README.md",
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G25",
+      "title": "既有英文与韩文输入继续可用",
+      "stories": [
+        "US01",
+        "US04"
+      ],
+      "tests": [
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.test.ts",
+          "nameIncludes": "preserves existing English chart parsing",
+          "minCases": 1
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.test.ts",
+          "nameIncludes": "imports a real Korean-client chart",
+          "minCases": 1
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.text-library.test.ts",
+          "nameIncludes": "original effects and equal English score",
+          "minCases": 62
+        },
+        {
+          "suite": "unit",
+          "file": "tests/strategy-acceptance.test.ts",
+          "nameIncludes": "keeps every original strategy ID",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "src/logic/__fixtures__/charted.en.txt",
+        "src/logic/__fixtures__/charted.ko.txt",
+        "tests/fixtures/acceptance/strategy-rules.upstream.json"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G26",
+      "title": "原有核心操作使用简中界面",
+      "stories": [
+        "US01",
+        "US02",
+        "US03",
+        "US04",
+        "US05",
+        "US06",
+        "US07"
+      ],
+      "tests": [
+        {
+          "suite": "browser",
+          "file": "tests/browser/chinese-shell.spec.ts",
+          "nameIncludes": "页面标题、教程、更新记录",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/inventory.spec.ts",
+          "nameIncludes": "简中导入和库存保持",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/solve.spec.ts",
+          "nameIncludes": "Chinese solver settings",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/planning-cycle.spec.ts",
+          "nameIncludes": "所选候选完成九步复制后仅核销已消耗实例",
+          "minCases": 1
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/regex.zh-CN.test.ts",
+          "nameIncludes": "Chinese best-mod search text",
+          "minCases": 1
+        }
+      ],
+      "fixtures": [
+        "tests/fixtures/acceptance/journey-two-voyages.json",
+        "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+        "tests/fixtures/acceptance/journey-two-voyages.README.md",
+        "samples/charted.zh-CN.txt",
+        "samples/README.md"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "not-a-field-claim"
+    },
+    {
+      "id": "G27",
+      "title": "Windows访问MacMini提供的网站",
+      "stories": [
+        "US01",
+        "US04",
+        "US05"
+      ],
+      "tests": [
+        {
+          "suite": "deployment",
+          "file": "tests/deployment/local-site.test.mjs",
+          "nameIncludes": "operator initializes, starts and stops"
+        },
+        {
+          "suite": "windows",
+          "file": "tests/deployment/verify-windows-edge.mjs",
+          "nameIncludes": "actualWindowsClipboardWrite"
+        }
+      ],
+      "fixtures": [
+        "docs/acceptance/evidence/windows-edge-green.json",
+        "docs/acceptance/evidence/windows-tls-green.json"
+      ],
+      "automatedStatus": "requires-fresh-passing-reports",
+      "fieldStatus": "pending-game"
+    }
+  ],
+  "requiredStages": [
+    "unit",
+    "border-ocr",
+    "text-library-audit",
+    "deployment",
+    "build",
+    "browser"
+  ],
+  "requiredFixtures": [
+    "tests/fixtures/acceptance/strategy-alc.json",
+    "tests/fixtures/acceptance/strategy-alc.expected.json",
+    "tests/fixtures/acceptance/strategy-anchor.json",
+    "tests/fixtures/acceptance/strategy-anchor.expected.json",
+    "tests/fixtures/acceptance/strategy-speedrun.json",
+    "tests/fixtures/acceptance/strategy-speedrun.expected.json",
+    "tests/fixtures/acceptance/strategy-meatfish.json",
+    "tests/fixtures/acceptance/strategy-meatfish.expected.json",
+    "tests/fixtures/acceptance/strategy-ethereal.json",
+    "tests/fixtures/acceptance/strategy-ethereal.expected.json",
+    "tests/fixtures/acceptance/strategy-divine-rares.json",
+    "tests/fixtures/acceptance/strategy-divine-rares.expected.json",
+    "tests/fixtures/acceptance/strategy-divine-boxes.json",
+    "tests/fixtures/acceptance/strategy-divine-boxes.expected.json",
+    "tests/fixtures/acceptance/journey-two-voyages.json",
+    "tests/fixtures/acceptance/journey-two-voyages.expected.json",
+    "tests/fixtures/acceptance/journey-two-voyages.README.md",
+    "tests/fixtures/acceptance/strategy-rules.upstream.json",
+    "tests/fixtures/acceptance/retry-insufficient.json",
+    "tests/fixtures/acceptance/retry-insufficient.expected.json",
+    "tests/fixtures/acceptance/game-search.expected.json",
+    "samples/text-library/library.json",
+    "samples/text-library/coverage.json",
+    "samples/text-library/sources.json",
+    "samples/text-library/mappings.reviewed.json"
+  ],
+  "fieldCheckpoint": {
+    "status": "pending",
+    "required": [
+      "实际国服搜索命中当前海图",
+      "实际九步放置并核对摆盘/朝向",
+      "实际航程与存活核销结果",
+      "Corner/Junction/Crossing 三类真实国服高级复制",
+      "真实十二边界原文或截图 corpus"
+    ]
+  },
+  "windowsEvidence": "docs/acceptance/evidence/windows-edge-green.json"
+}

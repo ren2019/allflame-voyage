@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './offline'
 import { readFileSync } from 'node:fs'
 import type { AppState } from '../../src/logic/storage'
 import { exportState, loadState, openEmptyApp, installClipboardRecorder, clipboardWrites } from './acceptance-helpers'

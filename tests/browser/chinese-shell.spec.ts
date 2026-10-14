@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './offline'
 
 test('页面标题、教程、更新记录和保留向导的完整交互说明使用简中', async ({ page }) => {
   await page.goto('/')

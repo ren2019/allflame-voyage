@@ -1,0 +1,43 @@
+{
+  "status": "automated-passed; field-pending",
+  "verifiedUtc": "2026-10-14T11:16:36.208Z",
+  "inputSha256": "9b6dcddb267eb0090492b23542567f9f9c2a4a7233b4a3ef53aedc1cc1f659d6",
+  "unitPassed": 478,
+  "browserPassed": 26,
+  "browserSkipped": 0,
+  "deploymentTests": 4,
+  "scenarioGroups": 27,
+  "storyClasses": 7,
+  "reports": {
+    "unit": {
+      "path": "docs/acceptance/evidence/verification-unit.json",
+      "sha256": "587cc38e795a9667e0513dc24b64a03149ab405d09799dd4f04459750f15f5b5"
+    },
+    "browser": {
+      "path": "docs/acceptance/evidence/verification-browser.json",
+      "sha256": "d52c1d11dbe99f3ca7f11c2069cfa9752bf01e4ef7508e2718b5c1efecefafee"
+    },
+    "stages": {
+      "path": "docs/acceptance/evidence/verification-stages.json",
+      "sha256": "9dbb88e22e60620a5ef0fbe64ff177b5eab46b8774ca108456c0ce52d580512e"
+    },
+    "coverage": {
+      "path": "docs/acceptance/evidence/verification-coverage.json",
+      "sha256": "0ff5bcad87784a0a331f609d34b12aacfd64e4292948e3c3c3dce5578f10a996"
+    }
+  },
+  "coreBaselineCommit": "20a694ba8afb6ce497a67287b67c68a6b244e5fd",
+  "windowsEvidence": "docs/acceptance/evidence/windows-edge-green.json",
+  "windowsDeployedIntegration": "a4afe6e514d29c97409297984f6a63ac168fd863",
+  "productionSourcesIdenticalToWindowsEvidence": true,
+  "identicalProductionPaths": [
+    "src",
+    "index.html",
+    "public",
+    "vite.config.ts",
+    "package-lock.json"
+  ],
+  "gameFieldwork": "pending",
+  "humanChecklist": "docs/acceptance/field-checklist.md",
+  "clientCalibration": "two real source charts only; no additional shape corpus available as of this verification"
+}

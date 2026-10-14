@@ -9,3 +9,5 @@ test-results/
 voyage-import*.ini
 # ...but the downloadable copy served by the site IS tracked
 !public/voyage-clip-collector.ahk
+
+verification-results/

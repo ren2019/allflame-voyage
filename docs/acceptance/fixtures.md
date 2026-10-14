@@ -53,3 +53,5 @@
 ## 制作完成的门槛
 
 所有表中数据集有实际文件、来源和状态；七策略见证逐个可行；所有引用的内部ID真实存在；派生输入被明确标注；边界中文来源可追溯。完整BDD运行时缺数据应报告未完成，不设为通过。
+
+#9 完整执行入口为 `npm run verify`；27组场景与七类故事的实际测试/fixture映射见 `coverage.json` 和 `coverage.md`，冻结执行证据见 `evidence/verification-summary.json`。真实游戏现场和新客户端资料仍是 `field-checklist.md` 中的人类检查点，自动化成功不将这些标为完成。

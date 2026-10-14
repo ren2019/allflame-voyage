@@ -1,5 +1,6 @@
 # language: zh-CN
-# 用户确认的产品场景；目前没有步骤实现或测试运行器。
+# 用户确认的 27 组场景契约；已由 Vitest/Playwright 实现并映射至 coverage.json。
+# 本文件保留为可读 BDD 文档，不要求独立 Gherkin 步骤运行器；npm run verify 检查执行报告。
 # 真实输入：samples/charted.zh-CN.txt；预期：samples/README.md。
 功能: 国服海图沿用英文原版流程完成航程规划
 
