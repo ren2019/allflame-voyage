@@ -11,6 +11,7 @@ import {
 } from '../data/strategies'
 import { VOYAGE_MODS, voyageModById } from '../data/mods'
 import type { ChartData } from '../types'
+import { voyageModShort } from '../data/localization'
 
 export interface PieceType {
   /** stable key: strategyId + matcher fingerprint */
@@ -118,7 +119,7 @@ function buildPieceTypes(): PieceType[] {
         strategyId: s.id,
         strategyName: s.name,
         reservationId: null,
-        label: 'Centre chart (Diviner’s / Operative’s / Message)',
+        label: '中心海图（神圣秘宝／侦探保险箱／瓶中信）',
         modIds: centres.modIds,
         recommended: 2,
         defaultKeep: 2,
@@ -166,8 +167,8 @@ const stripTier = (s: string) => s.replace(/^\+?\d+(\s*[-–]\s*\d+)?%?\s*/, '')
 export function customLabel(modIds: string[]): string {
   const mod = voyageModById.get(modIds[0])
   if (!mod) return modIds.join(' + ')
-  if (modIds.length === 1) return mod.short ?? mod.text
-  return `${stripTier(mod.short ?? mod.text)} (any tier)`
+  if (modIds.length === 1) return voyageModShort(mod.id)
+  return `${stripTier(voyageModShort(mod.id))}（任意档位）`
 }
 
 export interface CustomOption {

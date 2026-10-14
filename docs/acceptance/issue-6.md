@@ -1,0 +1,31 @@
+# Issue #6 — 七策略候选与国服九步定位
+
+## Scope and test seams
+
+Started from integration `5a717bf`. Uses the already confirmed #1 public solve/scoring/connectivity seams and actual browser controls. The tdd skill was applied without asking again for an already confirmed seam. Changed the owned strategy cards, SolveBar, SolverPanel, Board chart tiles/actions, ModBrowser voyage display, strategy/piece/reward display strings and game-search boundary. Internal IDs, weights, materials, counts, rules, limits, banking and connector geometry remain unchanged. Core `solver.ts`, `scoring.ts` and `connectivity.ts` are untouched.
+
+`isExecutableResult(result, state, strategy)` is a presentation guard. The original `any` mode returns `valid: true` for eight charts; the UI now also requires nine filled cells, nine unique current eligible inventory IDs, preserved placement/rotation and original connector validity. It retains original protection selection and pool caps. It does not turn strategy readiness warnings, position bonuses or soft layout preferences into hard gates. Applied reference candidates explicitly remain “不可执行”; they are never relabelled as executable just because they are on the board.
+
+## Red → green evidence
+
+1. The real two-copy locator test initially failed: output used `Level 83`. Chinese-client detection at the search boundary changed this to `区域等级 83`, preserving the real implicit line verbatim. Both existing English and Korean locator tests stayed green.
+2. The actual browser eight-chart retry initially failed: all five candidates in `any` mode were shown as valid. Adding the UI guard made all eight-chart candidates references; loading the literal ninth chart through the real JSON control and solving again produced a full executable candidate.
+3. The real 点金速刷 card scenario initially failed because the strategy remained English. Localized original display strings and controls passed the same selection/solve scenario. Expanded coverage to all seven actual cards after the first slice passed.
+4. The Chinese best-mod search test initially failed because it returned English `inc`. An explicit `zh-CN` search boundary consumes only acquired chart-implicit wording; conflicting self-reward templates never become game search evidence. Its ranking/effect data remains original. The existing default English public API behavior remains available, while the Chinese settings panel requests the Chinese output.
+5. Original readiness, banking and session-plan tests exposed expected English label assertions after translation. Updated only their display expectations, preserving the same allocation/ID/count assertions. Session-plan note translations from #7 are kept during final integration.
+
+## Fixed data and behavioral proof
+
+The actual files are in `tests/fixtures/acceptance/`, with provenance and source notes in `README.issue-6.md`. Each of seven complete AppState fixtures has exactly one explicitly protected starting placement, eight initially empty cells and a separate nine-instance witness. The witnesses independently pass strict connectivity with connection totals 8 / 12 / 12 / 10 / 11 / 12 / 12. Original protection eligibility supplies all nine required instances and every referenced effect/border ID exists. Acquired candidate wording is explicitly distinguished from artificial models and real client copies.
+
+The upstream non-display strategy snapshot verifies every original ID, weight, numeric rule, layout, material count, bank count, cap and flag. Stored original default weights also verify that reward label translation did not change defaults. Seven public random solver tests require an executable result and inspect all executable candidates for full nine-instance inventory membership, uniqueness, connector validity and the actual protected position/rotation. They do not assert a unique optimum or fixed ranking.
+
+Eight browser scenarios select each strategy via its actual card, solve and switch candidate 1 → 0 → 1. Each export restores the exact previously observed candidate instances and rotations, and each tile tooltip/connector rendering agrees with the selected candidate. The speedrun scenario uses the actual guide controls for nine clipboard writes in order **6,7,8,3,4,5,0,1,2**. Every write is checked against that selected instance's independently stored name/implicit/level; the ninth write ends the guide. Full pool contents remain unchanged after every copy, and the selected board stays loaded. The retry scenario loads the explicit ninth chart through the existing complete JSON state control and solves again.
+
+Chinese strategy/master search recipes match stored offline candidate phrases, with numeric quantity cases preserving the original 120%/250% acceptance and 110%/88% rejection. These checks prove string generation and matching against acquired sources, not the game's actual search behavior.
+
+## Verification and remaining gaps
+
+Implementation checks are recorded below after final integration. The seven strategy browser scenarios plus retry passed (8 tests, 30.9s); the fixture/strategy invariant suite passed (15 tests, 16.3s). Build passed, with Vite's bundle-size warning.
+
+Real Corner/Junction/Crossing names, broad client corpus calibration, Windows clipboard permission at the final site address and actual game inventory search/placement remain field/data acceptance gaps. The two real imported copies remain tested separately; they cannot by themselves prove all seven full boards. No artificial fixture is presented as a game observation or completed field verification.

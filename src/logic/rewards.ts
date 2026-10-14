@@ -5,15 +5,16 @@
 
 import { BORDER_MODS, VOYAGE_MODS } from '../data/mods'
 import type { BorderModDef, ModEffect, Stat, VoyageModDef } from '../types'
-import { STAT_LABELS } from '../types'
+import { voyageModShort } from '../data/localization'
+import { localizedBorder } from '../data/borderLocale'
 
 export type RewardGroup = 'voyage' | 'adjacent' | 'self' | 'border'
 
 export const GROUP_LABEL: Record<RewardGroup, string> = {
-  voyage: 'Whole voyage',
-  adjacent: 'Adjacent areas',
-  self: 'This area (chart)',
-  border: 'Border rolls',
+  voyage: '全航程',
+  adjacent: '相邻区域',
+  self: '本区域（海图）',
+  border: '边界词缀',
 }
 export const GROUP_ORDER: RewardGroup[] = ['voyage', 'adjacent', 'self', 'border']
 
@@ -55,13 +56,13 @@ function buildRewardTypes(): RewardType[] {
   for (const m of VOYAGE_MODS) {
     if (!m.effects.length) continue // flavour-only mods can't be weighted
     const stat = primaryStat(m.effects)
-    const label = m.short ? cleanLabel(m.short) : stat ? STAT_LABELS[stat] : m.text
+    const label = cleanLabel(voyageModShort(m.id))
     add(voyageRewardKey(m), groupOfScope(m.scope), label, stat)
   }
   for (const m of BORDER_MODS) {
     if (!m.effects.length) continue
     const stat = primaryStat(m.effects)
-    const label = m.short ? cleanLabel(m.short) : stat ? STAT_LABELS[stat] : m.text
+    const label = cleanLabel(localizedBorder(m.id)!.short)
     add(borderRewardKey(m), 'border', label, stat)
   }
   return [...map.values()]

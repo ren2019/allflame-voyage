@@ -49,19 +49,19 @@ function Readiness({
     ]
     return (
       <div className="strat-notready">
-        ⚠ You don't have the pieces - avoid this voyage and wait. Missing: {parts.join(', ')}.
+        ⚠ 材料不足，建议等待。缺少：{parts.join('、')}。
         {strategy.waitHint ? ` ${strategy.waitHint}` : ''}
       </div>
     )
   }
   return (
     <div className="strat-ready">
-      ✓ Pieces ready:{' '}
+      ✓ 材料齐备：{' '}
       {reqs
         .map(
           (r) =>
             `${Math.min(r.have, r.count)}/${r.count}× ${r.label}${
-              r.have > r.count ? ` (+${r.have - r.count} spare)` : ''
+              r.have > r.count ? `（另有 ${r.have - r.count} 张备用）` : ''
             }`,
         )
         .join(', ')}
@@ -78,8 +78,8 @@ function RegexRow({ regex }: { regex: string }) {
   const [copied, setCopied] = useState(false)
   return (
     <div className="strat-regex-row">
-      <span className="strat-regex-label" title="Paste into the in-game chart search to highlight this strategy's keeper charts">
-        Keeper search
+      <span className="strat-regex-label" title="粘贴到游戏海图搜索框，定位此策略值得保留的海图">
+        保留材料搜索
       </span>
       <input readOnly value={regex} onFocus={(e) => e.target.select()} />
       <button
@@ -89,7 +89,7 @@ function RegexRow({ regex }: { regex: string }) {
           window.setTimeout(() => setCopied(false), 1500)
         }}
       >
-        {copied ? '✓' : 'Copy'}
+        {copied ? '✓' : '复制'}
       </button>
     </div>
   )
@@ -110,21 +110,20 @@ export function StrategiesPanel({
   return (
     <div className="strategies">
       <div className="panel-title">
-        Strategies
-        {activeId && <span className="strat-live-badge">ACTIVE</span>}
+        策略
+        {activeId && <span className="strat-live-badge">使用中</span>}
       </div>
       <div className="muted small-note" style={{ marginTop: 0 }}>
-        Curated community strategies. Picking one overrides your reward weights and steers the
-        solver until you switch it off.
+        社区策略。选中后使用该策略的奖励权重和位置偏好，关闭后恢复手动权重。
       </div>
 
       <button
         className={`strat-card strat-none ${activeId === null ? 'active' : ''}`}
         onClick={() => onSelect(null)}
       >
-        <span className="strat-name">None (manual)</span>
+        <span className="strat-name">无策略（手动）</span>
         <span className="strat-tagline">
-          Use your own reward weights - set them in ⚙ Settings, next to Solve.
+          使用自己的奖励权重，可在求解旁的 ⚙ 设置中调整。
         </span>
       </button>
 
@@ -138,7 +137,7 @@ export function StrategiesPanel({
             <button
               className="strat-head"
               onClick={() => setExpanded(isOpen ? null : s.id)}
-              title="Show details"
+              title="查看详情"
             >
               <span className="strat-name">
                 {s.name}
@@ -181,7 +180,7 @@ export function StrategiesPanel({
                 return (
                   <div className="strat-layouts">
                     <div className="strat-layouts-row">
-                      <span className="strat-layouts-label">Layout</span>
+                      <span className="strat-layouts-label">布局</span>
                       <select
                         value={chosen.id}
                         onChange={(e) => onLayoutChoice?.(s.id, e.target.value)}
@@ -205,7 +204,7 @@ export function StrategiesPanel({
                 return (
                   <div className="strat-layouts">
                     <div className="strat-layouts-row">
-                      <span className="strat-layouts-label">Centre chart</span>
+                      <span className="strat-layouts-label">中心海图</span>
                       <select
                         value={chosen.id}
                         onChange={(e) => onCenterChoice?.(s.id, e.target.value)}
@@ -219,8 +218,7 @@ export function StrategiesPanel({
                     </div>
                     {chosen.id !== s.centerOptions[0].id && (
                       <div className="strat-layouts-hint muted">
-                        only {chosen.label.replace(' only', '')} charts take the centre - the
-                        other families stay in your library
+                        中心优先使用{chosen.label.replace('仅', '')}海图，其他中心材料留在库存中
                       </div>
                     )}
                   </div>
@@ -232,7 +230,7 @@ export function StrategiesPanel({
               className={`strat-use ${isActive ? 'on' : ''}`}
               onClick={() => onSelect(isActive ? null : s.id)}
             >
-              {isActive ? '✓ Active - click to turn off' : 'Use this strategy'}
+              {isActive ? '✓ 已启用，点击关闭' : '使用此策略'}
             </button>
           </div>
         )
