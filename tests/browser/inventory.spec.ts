@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs'
-import { expect, test } from '@playwright/test'
+import { expect, test } from './offline'
 
 const samples = readFileSync(new URL('../../samples/charted.zh-CN.txt', import.meta.url), 'utf8')
 const [first, second] = samples.trim().split(/\n\s*(?=物品类别: 海图)/)
@@ -19,6 +19,9 @@ test('简中导入和库存保持同批实例、重扫数量及已核对属性',
   await importText(`${first}\n${first}`)
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(2)
   await expect(page.locator('.import-panel .muted.pad')).toContainText('跳过 2 张已在库存中的海图')
+  await importText(first)
+  await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(2)
+  await expect(page.locator('.import-panel .muted.pad')).toContainText('跳过 1 张已在库存中的海图')
   await importText(second)
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(3)
   await page.getByTitle('列表视图（编辑海图）', { exact: true }).click()
