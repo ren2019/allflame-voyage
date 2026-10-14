@@ -37,6 +37,7 @@ interface ClipboardDialect {
   shapes: Record<string, ShapeDefinition>
   structural: RegExp
   rewardRider: RegExp
+  requireMappedImplicit?: boolean
 }
 
 /** Connector edges are [N,E,S,W]. Orientation is arbitrary because the solver
@@ -107,8 +108,28 @@ const KOREAN_DIALECT: ClipboardDialect = {
   rewardRider: /^이 지역에서 발견하는 .*\d+%\s*증가$/i,
 }
 
-const DIALECTS = [ENGLISH_DIALECT, KOREAN_DIALECT]
-const ITEM_START_RE = /(?=^[ \t]*(?:Item Class|아이템 종류)\s*[:：])/gim
+const MAINLAND_DIALECT: ClipboardDialect = {
+  itemClass: /^[ \t]*物品类别\s*[:：]/im,
+  chartClass: /^[ \t]*物品类别\s*[:：]\s*海图[ \t]*$/im,
+  rarity: /^稀\s*有\s*度\s*[:：]/,
+  areaLevel: /^区域等级\s*[:：]\s*(\d+)\s*$/im,
+  shape: /^海图形状\s*[:：]\s*(.+?)\s*$/im,
+  shapeLabel: '海图形状',
+  implicitMarker: /^\{\s*基底属性\s*\}$/,
+  uncharted: /^航行词缀将在完成测绘后揭示$/im,
+  headerStats: [
+    { re: /^物品数量\s*[:：]\s*\+?(\d+)%/im, stat: 'quantity' },
+    { re: /^亡者硫磺\s*[:：]\s*\+?(\d+)%/im, stat: 'sulphur' },
+    { re: /^怪物群大小\s*[:：]\s*\+?(\d+)%/im, stat: 'packsize' },
+  ],
+  shapes: { 端点: END, 直线: STRAIGHT },
+  structural: /^(?:物品类别\s*[:：]|稀\s*有\s*度\s*[:：]|区域等级\s*[:：]|物品等级\s*[:：]|需求\s*[:：]|等级\s*[:：]|海图形状\s*[:：]|将此物品带给|出售获得通货\s*[:：])/,
+  rewardRider: /^此区域中找到的.*提高\s*\d+%/,
+  requireMappedImplicit: true,
+}
+
+const DIALECTS = [ENGLISH_DIALECT, KOREAN_DIALECT, MAINLAND_DIALECT]
+const ITEM_START_RE = /(?=^[ \t]*(?:Item Class|아이템 종류|物品类别)\s*[:：])/gim
 const SEPARATOR_RE = /^-{3,}$/
 
 function normalizeClipboardText(text: string): string {
@@ -128,6 +149,7 @@ function normalizeLookupText(text: string): string {
 function normalizeAliasText(text: string): string {
   return normalizeLookupText(text)
     .replace(/\s*—\s*변경이 불가능한 값\s*$/u, '')
+    .replace(/\s*—\s*数值不可调整\s*$/u, '')
     .replace(
       /\d+(?:\.\d+)?\s*\(\s*(\d+(?:\.\d+)?)\s*[-‐‑‒–—―−~～]\s*(\d+(?:\.\d+)?)\s*\)/g,
       '$1-$2',
@@ -138,7 +160,7 @@ function dialectForItem(item: string): ClipboardDialect | undefined {
   return DIALECTS.find((dialect) => dialect.itemClass.test(item))
 }
 
-/** True when clipboard text contains an English or Korean Chart class header. */
+/** True when clipboard text contains a supported Chart class header. */
 export function isChartClipboardText(text: string): boolean {
   const normalized = normalizeClipboardText(text)
   return DIALECTS.some((dialect) => dialect.chartClass.test(normalized))
@@ -304,8 +326,8 @@ export function parseChartText(text: string): ParseResult {
       continue
     }
 
-    // The revealed implicit is the line under the locale's modifier marker.
-    // Unknown modifiers are still imported with their verbatim text preserved.
+    // Mainland charts must retain their crucial voyage effect. Existing
+    // English/Korean behavior continues to preserve unknown implicit text.
     const modIds: string[] = []
     let implicitText: string | undefined
     const implicitIdx = lines.findIndex((line) => dialect.implicitMarker.test(line))
@@ -313,9 +335,17 @@ export function parseChartText(text: string): ParseResult {
       const implicitLine = lines[implicitIdx + 1] ?? ''
       if (implicitLine && !SEPARATOR_RE.test(implicitLine)) {
         implicitText = implicitLine
-        const id = matchImplicit(implicitLine)
+        const id = dialect.requireMappedImplicit
+          ? matchLocalizedAlias(implicitLine)
+          : matchImplicit(implicitLine)
         if (id) modIds.push(id)
       }
+    }
+    if (dialect.requireMappedImplicit && modIds.length === 0) {
+      rejected.push({ name, reason: implicitText
+        ? `unrecognised voyage modifier: ${implicitText}`
+        : 'missing voyage modifier (基底属性)' })
+      continue
     }
 
     const areaLevelIdx = lines.findIndex((line) => dialect.areaLevel.test(line))
@@ -346,6 +376,7 @@ export function parseChartText(text: string): ParseResult {
         !dialect.structural.test(line) &&
         !/^\{.*\}$/.test(line) &&
         !line.startsWith('(') &&
+        !(dialect.requireMappedImplicit && line.startsWith('（')) &&
         !/[:：]\s*\+?\d+%/.test(line) &&
         !dialect.rewardRider.test(line) &&
         !(dialect.uncharted?.test(line) ?? false),

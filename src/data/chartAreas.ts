@@ -63,6 +63,10 @@ for (const area of CHART_AREAS) {
   chartAreaByAlias.set(normalize(area.english), area.id)
   chartAreaByAlias.set(normalize(area.korean), area.id)
 }
+// Calibrated against samples/charted.zh-CN.txt. Remaining mainland names are
+// supplied by the independently researched text library.
+chartAreaByAlias.set(normalize('蛤蜊海架'), 'clam-infested-shelf')
+chartAreaByAlias.set(normalize('深渊平原'), 'abyssal-plain')
 
 /** Exact localized-name lookup; unknown future destinations remain undefined. */
 export function chartAreaTypeForText(text: string): ChartAreaType | undefined {

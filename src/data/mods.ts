@@ -55,7 +55,7 @@ const adjacentImplicits: VoyageModDef[] = [
     effects: [{ stat: 'packsize', percent: 25 }],
   },
   { id: 'adj-octo-2', short: '+11-14 Octopi', text: 'Adjacent Areas contain 11-14 additional packs of Octopi', aliases: ['인접 지역들에 문어 무리 11(11-14)개 추가 등장'], scope: 'adjacent', effects: [{ stat: 'packsize', percent: 35 }] },
-  { id: 'adj-crab-1', short: '+8-10 Crabs', text: 'Adjacent Areas contain 8-10 additional packs of Crabs', aliases: ['인접 지역에 게 무리 8(8-10)개 추가 등장'], scope: 'adjacent', effects: [{ stat: 'packsize', percent: 25 }] },
+  { id: 'adj-crab-1', short: '+8-10 Crabs', text: 'Adjacent Areas contain 8-10 additional packs of Crabs', aliases: ['인접 지역에 게 무리 8(8-10)개 추가 등장', '相邻区域包含 8(8-10) 个额外的螃蟹群 — 数值不可调整'], scope: 'adjacent', effects: [{ stat: 'packsize', percent: 25 }] },
   { id: 'adj-crab-2', short: '+11-14 Crabs', text: 'Adjacent Areas contain 11-14 additional packs of Crabs', aliases: ['인접 지역에 게 무리 11(11-14)개 추가 등장'], scope: 'adjacent', effects: [{ stat: 'packsize', percent: 35 }] },
   { id: 'adj-magic-1', text: '30% increased Magic Monsters', aliases: ['인접 지역들 내 마법 몬스터 수 30% 증가'], scope: 'adjacent', effects: [{ stat: 'magicmonsters', percent: 30 }] },
   { id: 'adj-magic-2', text: '60% increased Magic Monsters', aliases: ['인접 지역들 내 마법 몬스터 수 60% 증가'], scope: 'adjacent', effects: [{ stat: 'magicmonsters', percent: 60 }] },
@@ -124,7 +124,7 @@ const adjacentImplicits: VoyageModDef[] = [
 // ---------------------------------------------------------------------------
 const voyageImplicits: VoyageModDef[] = [
   { id: 'voy-soul', short: 'Soul Eater', text: 'Players in Area have Soul Eater', aliases: ['모든 항해 지역 내 플레이어들이 영혼 포식자 획득'], scope: 'global', effects: [] },
-  { id: 'voy-pack-1', text: '5% increased Pack size', aliases: ['모든 항해 지역 내 무리 규모 5% 증가'], scope: 'global', effects: [{ stat: 'packsize', percent: 5 }] },
+  { id: 'voy-pack-1', text: '5% increased Pack size', aliases: ['모든 항해 지역 내 무리 규모 5% 증가', '所有航行区域的怪物群规模提高 5%'], scope: 'global', effects: [{ stat: 'packsize', percent: 5 }] },
   { id: 'voy-pack-2', text: '7% increased Pack size', aliases: ['모든 항해 지역 내 무리 규모 7% 증가'], scope: 'global', effects: [{ stat: 'packsize', percent: 7 }] },
   { id: 'voy-quant-1', text: '8% increased Quantity of Items found in this Area', aliases: ['모든 항해 지역에서 발견하는 아이템 수량 8% 증가'], scope: 'global', effects: [{ stat: 'quantity', percent: 8 }] },
   { id: 'voy-quant-2', text: '10% increased Quantity of Items found in this Area', aliases: ['모든 항해 지역에서 발견하는 아이템 수량 10% 증가'], scope: 'global', effects: [{ stat: 'quantity', percent: 10 }] },
