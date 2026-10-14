@@ -1,0 +1,104 @@
+{
+  "source": {
+    "kind": "artificial-internal-model",
+    "baseCommit": "5a717bf",
+    "wording": "samples/text-library/library.json; source-only templates, not client copies",
+    "layout": "Original upstream strategy layout, baseline captured in strategy-rules.upstream.json"
+  },
+  "initialUids": [
+    "strategy-ethereal-0",
+    "strategy-ethereal-1",
+    "strategy-ethereal-2",
+    "strategy-ethereal-3",
+    "strategy-ethereal-4",
+    "strategy-ethereal-5",
+    "strategy-ethereal-6",
+    "strategy-ethereal-7",
+    "strategy-ethereal-8"
+  ],
+  "witness": [
+    {
+      "chartUid": "strategy-ethereal-0",
+      "rotation": 3
+    },
+    {
+      "chartUid": "strategy-ethereal-1",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-ethereal-2",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-ethereal-3",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-ethereal-4",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-ethereal-5",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-ethereal-6",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-ethereal-7",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-ethereal-8",
+      "rotation": 0
+    }
+  ],
+  "connections": 11,
+  "locked": [
+    {
+      "cell": 0,
+      "placement": {
+        "chartUid": "strategy-ethereal-0",
+        "rotation": 3
+      }
+    }
+  ],
+  "requiresBorder": null,
+  "hardConstraints": [
+    "nine distinct current eligible inventory instances",
+    "strict connectivity",
+    "preserved board position0/rotation3 pinned"
+  ],
+  "softPreferences": "Original position bonuses and layout penalty; never converted into product constraints",
+  "requirements": [
+    {
+      "modIds": [
+        "adj-wisps-1",
+        "adj-wisps-2"
+      ],
+      "count": 4,
+      "label": "Wildwood Wisp chart"
+    },
+    {
+      "modIds": [
+        "adj-lantern"
+      ],
+      "count": 3,
+      "label": "Golden Lantern chart"
+    }
+  ],
+  "expectedConsumed": [
+    "strategy-ethereal-1",
+    "strategy-ethereal-2",
+    "strategy-ethereal-3",
+    "strategy-ethereal-4",
+    "strategy-ethereal-5",
+    "strategy-ethereal-6",
+    "strategy-ethereal-7",
+    "strategy-ethereal-8"
+  ],
+  "expectedSurvived": [
+    "strategy-ethereal-0"
+  ]
+}

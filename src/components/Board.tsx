@@ -6,6 +6,7 @@ import { buildSingleChartSearch } from '../logic/regex'
 import type { Board, Borders, ChartData, Placement } from '../types'
 import { START_CELL, STAT_LABELS, STAT_SHORT } from '../types'
 import { tooltipProps } from './Tooltip'
+import { chartShapeLabel, voyageModText, voyageModShort, SCOPE_LABELS } from '../data/localization'
 
 interface Props {
   board: Board
@@ -148,31 +149,30 @@ function Tile({
 }) {
   const [copied, setCopied] = useState(false)
   const startBadge = isStart ? (
-    <span className="tile-start" title="The Voyage begins here">
-      ⚓ Start
+    <span className="tile-start" title="航程从此处开始">
+      ⚓ 起点
     </span>
   ) : null
   if (!placement || !chart) {
     return (
       <div className={`tile empty ${placing ? 'placing' : ''}`} onClick={onClick}>
         {startBadge}
-        {placing ? 'place here' : ''}
+        {placing ? '放在此处' : ''}
       </div>
     )
   }
   const edges = rotateEdges(chart.edges, placement.rotation)
   const mods = chart.modIds.map((id) => voyageModById.get(id)).filter(Boolean)
-  const scopeLabel = { self: 'this Area', adjacent: 'adjacent Areas', global: 'the whole Voyage' }
   const tt = tooltipProps({
     title: chart.name,
     lines: [
-      { text: `Area Level: ${chart.level}${chart.shape ? ` · ${chart.shape}` : ''}`, cls: 'muted' },
+      { text: `区域等级：${chart.level}${chart.shape ? ` · ${chartShapeLabel(chart.shape)}` : ''}`, cls: 'muted' },
       ...(chart.rewards ?? []).map((e) => ({
         text: `+${e.percent}% ${STAT_LABELS[e.stat]}`,
         cls: 'scope-self',
       })),
       ...mods.map((m) => ({
-        text: `${m!.text}  (${scopeLabel[m!.scope]})`,
+        text: `${voyageModText(m!.id)}（${SCOPE_LABELS[m!.scope]}）`,
         cls: `scope-${m!.scope}`,
       })),
     ],
@@ -192,13 +192,13 @@ function Tile({
         (primary.short ? (
           <div className="tile-duo">
             <span className="tile-duo-col">
-              <span className={`tile-duo-pct scope-${primary.scope}`}>{primary.short}</span>
+              <span className={`tile-duo-pct scope-${primary.scope}`}>{voyageModShort(primary.id)}</span>
               <span className="tile-duo-label">
                 {primary.scope === 'self'
-                  ? 'this area'
+                  ? '本区域'
                   : primary.scope === 'adjacent'
-                    ? 'adjacent areas'
-                    : 'whole voyage'}
+                    ? '相邻区域'
+                    : '全航程'}
               </span>
             </span>
           </div>
@@ -210,28 +210,28 @@ function Tile({
               </span>
               <span className="tile-duo-label">
                 {primary.scope === 'self'
-                  ? 'this area'
+                  ? '本区域'
                   : primary.scope === 'adjacent'
-                    ? 'adjacent areas'
-                    : 'whole voyage'}
+                    ? '相邻区域'
+                    : '全航程'}
               </span>
             </span>
           </div>
         ) : (
-          <div className={`tile-duo-text scope-${primary.scope}`}>{primary.text}</div>
+          <div className={`tile-duo-text scope-${primary.scope}`}>{voyageModText(primary.id)}</div>
         ))}
       {!primary && chart.implicitText && (
         <div className="tile-duo-text scope-global">{chart.implicitText}</div>
       )}
       {chart.preserved && (
-        <span className="tile-preserved-badge" title="Preserved: kept when you Finish Voyage">
-          🔒 Kept
+        <span className="tile-preserved-badge" title="已锁定：完成航程后确认是否保留">
+          🔒 保留
         </span>
       )}
       <div className="tile-actions">
         <button
           className={chart.preserved ? 'active' : ''}
-          title={chart.preserved ? 'Preserved: unmark to allow consuming' : 'Preserve: keep this chart when you Finish Voyage'}
+          title={chart.preserved ? '已锁定：取消后允许消耗' : '锁定海图：完成航程时确认是否保留'}
           onClick={(e) => {
             e.stopPropagation()
             onTogglePreserve()
@@ -240,7 +240,7 @@ function Tile({
           {chart.preserved ? '🔒' : '🔓'}
         </button>
         <button
-          title="Copy an in-game search string (name + modifier) to find this exact chart"
+          title="复制游戏定位文本（名称与词缀），查找此海图"
           onClick={(e) => {
             e.stopPropagation()
             navigator.clipboard.writeText(buildSingleChartSearch(chart)).catch(() => {})
@@ -251,7 +251,7 @@ function Tile({
           {copied ? '✓' : '⧉'}
         </button>
         <button
-          title="Rotate"
+          title="旋转"
           onClick={(e) => {
             e.stopPropagation()
             onRotate()
@@ -260,7 +260,7 @@ function Tile({
           ⟳
         </button>
         <button
-          title="Remove"
+          title="移除"
           onClick={(e) => {
             e.stopPropagation()
             onRemove()
@@ -270,7 +270,7 @@ function Tile({
         </button>
       </div>
       {startBadge}
-      <span className="tile-lvl">lvl {chart.level}</span>
+      <span className="tile-lvl">区域 {chart.level}</span>
       <div className="tile-score">{score.toFixed(1)}</div>
     </div>
   )
@@ -353,7 +353,7 @@ export function BoardView(props: Props) {
   return (
     <div className="board-wrap">
       <div className="board-toolbar">
-        <span className="board-title">Voyage Board</span>
+        <span className="board-title">航程摆盘</span>
         <span className="spacer" />
         <button onClick={randomize} title="模拟重置边界词缀">
           🎲 随机边界
@@ -392,13 +392,12 @@ export function BoardView(props: Props) {
         <div className="corner" />
       </div>
       <div className="board-hint">
-        Corners get 2 border mods, edges 1, center 0. Click a library chart then a cell to
-        place; click two placed cells to swap.
+        角落有两条直接边界，中边一条，中心没有。先点击库存海图再点击格子放置；点击两个已放置格子可交换。
       </div>
       <div className="legend">
-        <span className="legend-item scope-self">■ this area</span>
-        <span className="legend-item scope-adjacent">■ adjacent</span>
-        <span className="legend-item scope-global">■ whole voyage</span>
+        <span className="legend-item scope-self">■ 本区域</span>
+        <span className="legend-item scope-adjacent">■ 相邻区域</span>
+        <span className="legend-item scope-global">■ 全航程</span>
       </div>
       {!props.sequenceActive && props.solveSlot}
       {!props.sequenceActive && (
@@ -407,17 +406,17 @@ export function BoardView(props: Props) {
             className="copy-into-game"
             disabled={board.every((p) => !p)}
             onClick={props.onCopySequence}
-            title="Step through each square in the in-game placement order (bottom-left first), copying its chart so you can Ctrl+Left-click them in the right order."
+            title="按游戏放置顺序从左下开始逐格复制定位文本，再按对应顺序 Ctrl+左键点击海图。"
           >
-            📋 Copy into game
+            📋 复制到游戏
           </button>
           <button
             className="finish-voyage"
             disabled={board.every((p) => !p)}
             onClick={props.onFinishVoyage}
-            title="Consume the charts on the board (they're used up), keeping any you've marked Preserved (🔒). Clears the board for the next voyage."
+            title="核销本盘实际消耗的海图，并逐张确认锁定海图（🔒）是否存活；随后清空摆盘，开始下一航程。"
           >
-            🌊 Finish Voyage
+            🌊 完成航程
           </button>
           {props.voyageMsg && <span className="voyage-msg">{props.voyageMsg}</span>}
         </div>

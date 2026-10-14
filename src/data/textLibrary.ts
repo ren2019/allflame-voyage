@@ -1,4 +1,4 @@
-import library from '../../samples/text-library/library.json'
+import library from '../../samples/text-library/library.json' with { type: 'json' }
 
 // Candidate wording and audit status are independent of the game's existing
 // scoring definitions. No reward conflicts or unsupported mechanisms enter

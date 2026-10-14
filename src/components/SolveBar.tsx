@@ -3,6 +3,7 @@ import { solve, type SolverResult } from '../logic/solver'
 import type { AppState } from '../logic/storage'
 import { applyCenterChoice, type StrategyDef } from '../data/strategies'
 import { selectStrategySolvePool } from '../logic/solverPoolSelection'
+import { isExecutableResult } from '../logic/executable'
 
 interface Props {
   state: AppState
@@ -75,15 +76,15 @@ export function SolveBar({ state, activeStrategy, results, appliedIdx, onResults
         const notes: string[] = []
         const lockedCount = locked.filter(Boolean).length
         if (lockedCount > 0)
-          notes.push(`${lockedCount} locked chart${lockedCount === 1 ? '' : 's'} kept in place.`)
+          notes.push(`已固定 ${lockedCount} 张锁定海图的位置和朝向。`)
         if (heldBack > 0)
           notes.push(
-            `${heldBack} chart${heldBack === 1 ? '' : 's'} banked for ${heldBackFor.join(', ')}. Adjust keep counts in the library's 🔖 wizard.`,
+            `为 ${heldBackFor.join('、')} 保留了 ${heldBack} 张海图。可在库存的 🔖 保留向导中调整数量。`,
           )
         if (solvePool.length < 9)
-          notes.push(`Only ${solvePool.length} spare charts - not enough for a full board.`)
-        else if (res.length && !res[0].valid)
-          notes.push('No fully runnable layout from these charts - best partial shown.')
+          notes.push(`仅有 ${solvePool.length} 张可用海图，无法填满九格。`)
+        else if (res.length && !isExecutableResult(res[0], state, activeStrategy))
+          notes.push('这些海图无法组成可执行摆盘，当前显示最佳参考方案。')
         setSolveNote(notes.join(' '))
       } finally {
         setBusy(false)
@@ -96,12 +97,12 @@ export function SolveBar({ state, activeStrategy, results, appliedIdx, onResults
       <div className="solve-row">
         <button className="solve-big" onClick={run} disabled={busy || state.pool.length === 0}>
           {busy ? (
-            'Solving…'
+            '正在求解…'
           ) : (
             <>
-              Solve
+              求解
               <span className="solve-big-sub">
-                best board from {state.pool.length} chart{state.pool.length === 1 ? '' : 's'}
+                从 {state.pool.length} 张海图中规划最佳摆盘
                 {activeStrategy ? ` · ${activeStrategy.name}` : ''}
               </span>
             </>
@@ -110,48 +111,51 @@ export function SolveBar({ state, activeStrategy, results, appliedIdx, onResults
         <button
           className="solve-settings-btn"
           onClick={onOpenPlanner}
-          title="Sequence your whole library into a session of voyages"
+          title="将全部库存安排为连续多次航程"
         >
-          📋<span className="solve-settings-label">Plan</span>
+          📋<span className="solve-settings-label">连续规划</span>
         </button>
         <button
           className="solve-settings-btn"
           onClick={onOpenSettings}
-          title="Connector rules, reward weights, chart protections, filler voyage and the best-charts regex"
+          title="连接规则、奖励权重、海图保护、备用海图航程与优选海图搜索"
         >
-          ⚙<span className="solve-settings-label">Settings</span>
+          ⚙<span className="solve-settings-label">设置</span>
         </button>
       </div>
       {solveNote && <div className="muted small-note solve-bar-note">{solveNote}</div>}
       {results.length > 0 && (
         <>
           <div className="solve-results">
-            {results.map((r, i) => (
+            {results.map((r, i) => {
+              const executable = isExecutableResult(r, state, activeStrategy)
+              return (
               <button
                 key={i}
-                className={`solve-result ${appliedIdx === i ? 'applied' : ''} ${r.valid ? '' : 'invalid'}`}
+                className={`solve-result ${appliedIdx === i ? 'applied' : ''} ${executable ? '' : 'invalid'}`}
                 onClick={() => onApply(r, i)}
                 title={
-                  r.valid
-                    ? 'Load this layout onto the board'
-                    : 'Not fully runnable (connector or reachability problem) - shown for reference'
+                  executable
+                    ? '将此可执行方案载入摆盘'
+                    : '不可执行：格子、库存或连接条件不满足，仅供参考'
                 }
               >
                 <span className="sr-rank">#{i + 1}</span>
                 <span className="sr-pts">{r.reward.toFixed(1)}</span>
-                <span className="sr-pts-label">pts</span>
+                <span className="sr-pts-label">分</span>
                 {appliedIdx === i ? (
-                  <span className="sr-badge on-board">on board</span>
-                ) : r.valid ? (
-                  <span className="sr-badge ok">✓ runnable</span>
+                  <span className={`sr-badge on-board ${executable ? 'ok' : 'bad'}`}>已载入 · {executable ? '可执行' : '不可执行'}</span>
+                ) : executable ? (
+                  <span className="sr-badge ok">✓ 可执行</span>
                 ) : (
-                  <span className="sr-badge bad">✗ not runnable</span>
+                  <span className="sr-badge bad">✗ 不可执行</span>
                 )}
               </button>
-            ))}
+              )
+            })}
           </div>
           <div className="muted small-note solve-bar-note">
-            Ranked by your weights - click one to load it, then Copy into game below.
+            按所选权重排序。点击候选载入摆盘，再使用下方“复制到游戏”。
           </div>
         </>
       )}

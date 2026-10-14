@@ -1,0 +1,589 @@
+{
+  "provenance": "Offline acquired candidate phrases; source-only does not mean actual game matching has been verified. Only numeric-header cases are deliberately derived.",
+  "cases": [
+    {
+      "recipe": "master",
+      "id": "voy-minmagic",
+      "text": "所有航行区域的怪物至少为魔法",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域的怪物至少为魔法",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Monsters in all Voyage Areas are at least Magic",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "voy-noequip",
+      "text": "所有航行区域中的怪物无法掉落装备、药剂或酊剂",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域中的怪物无法掉落装备、药剂或酊剂\nchart monsters drop no flask [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Monsters in all Voyage Areas cannot drop Equipment, Flasks or Tinctures\nchart monsters drop no flask [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "voy-possess",
+      "text": "所有航行区域的稀有怪物有 100% 的几率被附身",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域的稀有怪物有 100% 的几率被附身",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 100% chance for Rare Monsters in all Voyage Areas to be Possessed",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "voy-fracture",
+      "text": "所有航行区域的稀有怪物死亡时有 50% 的几率分裂",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域的稀有怪物死亡时有 50% 的几率分裂",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Rare Monsters in all Voyage Areas have 50% chance to Fracture on death",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-msg-1",
+      "text": "相邻区域包含 1 个额外瓶中信",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 1 个额外瓶中信\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 1 additional Messages in Bottles\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-divbox-1",
+      "text": "相邻区域包含 2 个额外神圣的秘宝",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 2 个额外神圣的秘宝\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 2 additional Diviner's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-arcbox-1",
+      "text": "相邻区域包含 2 个额外奥术师的保险箱",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 2 个额外奥术师的保险箱\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 2 additional Arcanist's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-opbox-1",
+      "text": "相邻区域包含 2 个额外侦探的保险箱",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 2 个额外侦探的保险箱\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 2 additional Operative's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-star-1",
+      "text": "相邻区域包含 (4—5) 个额外巨型海星",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 (4—5) 个额外巨型海星\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contains (4—5) additional Giant Starfish\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-pantheon",
+      "text": "相邻区域的稀有怪物将带有众神词缀",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域的稀有怪物将带有众神词缀\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Rare Monsters in adjacent Areas will have a Pantheon Modifier\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-lantern",
+      "text": "相邻区域包含 4 个额外黄金灯笼",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 4 个额外黄金灯笼\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 4 additional Golden Lanterns\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-wisps-2",
+      "text": "怪物有几率被 4000 个荒林鬼灵强化",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 怪物有几率被 4000 个荒林鬼灵强化\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Monsters have a chance to be Empowered by 4000 Wildwood Wisps\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "adj-box-3",
+      "text": "相邻区域包含 5 个额外保险箱",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 5 个额外保险箱\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 5 additional Strongboxes\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "voy-rare",
+      "text": "所有航行区域的稀有怪物数量提高 25%",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域的稀有怪物数量提高 25%",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 25% increased number of Rare Monsters in all Voyage Areas",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "master",
+      "id": "voy-sulph-1",
+      "text": "所有航行区域中找到的亡者硫磺提高 15%",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域中找到的亡者硫磺提高 15%",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 15% increased Dead Man's Sulphur found in all Voyage Areas",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "milky-speedrun",
+      "id": "adj-msg-1",
+      "text": "相邻区域包含 1 个额外瓶中信",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 1 个额外瓶中信\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 1 additional Messages in Bottles\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "milky-speedrun",
+      "id": "adj-divbox-1",
+      "text": "相邻区域包含 2 个额外神圣的秘宝",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 2 个额外神圣的秘宝\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 2 additional Diviner's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "milky-speedrun",
+      "id": "adj-opbox-1",
+      "text": "相邻区域包含 2 个额外侦探的保险箱",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 2 个额外侦探的保险箱\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 2 additional Operative's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "milky-meatfish",
+      "id": "voy-noequip",
+      "text": "所有航行区域中的怪物无法掉落装备、药剂或酊剂",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域中的怪物无法掉落装备、药剂或酊剂\nchart monsters drop no flask [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Monsters in all Voyage Areas cannot drop Equipment, Flasks or Tinctures\nchart monsters drop no flask [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "milky-meatfish",
+      "id": "voy-possess",
+      "text": "所有航行区域的稀有怪物有 100% 的几率被附身",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域的稀有怪物有 100% 的几率被附身",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 100% chance for Rare Monsters in all Voyage Areas to be Possessed",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "milky-meatfish",
+      "id": "adj-lantern",
+      "text": "相邻区域包含 4 个额外黄金灯笼",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 4 个额外黄金灯笼\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 4 additional Golden Lanterns\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "milky-meatfish",
+      "id": "adj-pantheon",
+      "text": "相邻区域的稀有怪物将带有众神词缀",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域的稀有怪物将带有众神词缀\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Rare Monsters in adjacent Areas will have a Pantheon Modifier\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "divine-border-rares",
+      "id": "voy-rare",
+      "text": "所有航行区域的稀有怪物数量提高 25%",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 所有航行区域的稀有怪物数量提高 25%",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 25% increased number of Rare Monsters in all Voyage Areas",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "divine-border-rares",
+      "id": "adj-box-3",
+      "text": "相邻区域包含 5 个额外保险箱",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域包含 5 个额外保险箱\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 5 additional Strongboxes\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    },
+    {
+      "recipe": "anchorfield-fishing",
+      "id": "anchorfield",
+      "text": "锚地",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "comprehensive-charting.cn",
+          "url": "https://poedb.tw/cn/Comprehensive_Charting",
+          "locator": "destination table / room metadata SandyAnchorField1",
+          "snapshotSha256": "5225989636a71dffb6c24b2a04e86864172dd978bed3dc9a6caa3b08ae288a2a"
+        },
+        {
+          "sourceId": "comprehensive-charting.us",
+          "url": "https://poedb.tw/us/Comprehensive_Charting",
+          "locator": "destination table / room metadata SandyAnchorField1",
+          "snapshotSha256": "07789b599bb19ce69f3c985d30235942a5e7040a1970501a0c8a4d3818ceb415"
+        }
+      ]
+    },
+    {
+      "recipe": "anchorfield-fishing",
+      "id": null,
+      "text": "物品数量: +120%",
+      "matches": true,
+      "status": "derived-header",
+      "source": "Artificial rolls using the acquired header label 物品数量; positive120/250 and negative110/88 preserve the original numeric pattern. No actual game observation."
+    },
+    {
+      "recipe": "anchorfield-fishing",
+      "id": null,
+      "text": "物品数量: +250%",
+      "matches": true,
+      "status": "derived-header",
+      "source": "Artificial rolls using the acquired header label 物品数量; positive120/250 and negative110/88 preserve the original numeric pattern. No actual game observation."
+    },
+    {
+      "recipe": "anchorfield-fishing",
+      "id": null,
+      "text": "物品数量: +110%",
+      "matches": false,
+      "status": "derived-header",
+      "source": "Artificial rolls using the acquired header label 物品数量; positive120/250 and negative110/88 preserve the original numeric pattern. No actual game observation."
+    },
+    {
+      "recipe": "anchorfield-fishing",
+      "id": null,
+      "text": "物品数量: +88%",
+      "matches": false,
+      "status": "derived-header",
+      "source": "Artificial rolls using the acquired header label 物品数量; positive120/250 and negative110/88 preserve the original numeric pattern. No actual game observation."
+    },
+    {
+      "recipe": "cutedog-divine-boxes",
+      "id": null,
+      "text": "物品数量: +120%",
+      "matches": true,
+      "status": "derived-header",
+      "source": "Artificial rolls using the acquired header label 物品数量; positive120/250 and negative110/88 preserve the original numeric pattern. No actual game observation."
+    },
+    {
+      "recipe": "cutedog-divine-boxes",
+      "id": null,
+      "text": "物品数量: +250%",
+      "matches": true,
+      "status": "derived-header",
+      "source": "Artificial rolls using the acquired header label 物品数量; positive120/250 and negative110/88 preserve the original numeric pattern. No actual game observation."
+    },
+    {
+      "recipe": "cutedog-divine-boxes",
+      "id": null,
+      "text": "物品数量: +110%",
+      "matches": false,
+      "status": "derived-header",
+      "source": "Artificial rolls using the acquired header label 物品数量; positive120/250 and negative110/88 preserve the original numeric pattern. No actual game observation."
+    },
+    {
+      "recipe": "cutedog-divine-boxes",
+      "id": null,
+      "text": "物品数量: +88%",
+      "matches": false,
+      "status": "derived-header",
+      "source": "Artificial rolls using the acquired header label 物品数量; positive120/250 and negative110/88 preserve the original numeric pattern. No actual game observation."
+    },
+    {
+      "recipe": "master",
+      "id": "adj-ubelt-1",
+      "text": "相邻区域掉落的腰带有 10% 的几率改为掉落为传奇腰带",
+      "status": "source-only",
+      "source": [
+        {
+          "sourceId": "maiden-voyage.cn",
+          "url": "https://poedb.tw/cn/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: 相邻区域掉落的腰带有 10% 的几率改为掉落为传奇腰带\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d"
+        },
+        {
+          "sourceId": "maiden-voyage.us",
+          "url": "https://poedb.tw/us/Maiden_Voyage",
+          "locator": "MapDeepWaterChartMods / exact description: Belts dropped in adjacent Areas have 10% chance to instead drop as a Unique Belt\nlocal deepwater mod applies to adjacent charts [1]",
+          "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "source": {
+    "kind": "artificial-internal-model",
+    "reason": "Mode any deliberately exercises original valid-short-pool caveat"
+  },
+  "initialExecutable": false,
+  "ninthChart": {
+    "uid": "retry-8",
+    "name": "人工重试验收 8 海图",
+    "level": 83,
+    "edges": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "modIds": [
+      "voy-sulph-1"
+    ],
+    "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+  },
+  "afterUids": [
+    "retry-0",
+    "retry-1",
+    "retry-2",
+    "retry-3",
+    "retry-4",
+    "retry-5",
+    "retry-6",
+    "retry-7",
+    "retry-8"
+  ],
+  "witness": [
+    {
+      "chartUid": "retry-0",
+      "rotation": 0
+    },
+    {
+      "chartUid": "retry-1",
+      "rotation": 0
+    },
+    {
+      "chartUid": "retry-2",
+      "rotation": 0
+    },
+    {
+      "chartUid": "retry-3",
+      "rotation": 0
+    },
+    {
+      "chartUid": "retry-4",
+      "rotation": 0
+    },
+    {
+      "chartUid": "retry-5",
+      "rotation": 0
+    },
+    {
+      "chartUid": "retry-6",
+      "rotation": 0
+    },
+    {
+      "chartUid": "retry-7",
+      "rotation": 0
+    },
+    {
+      "chartUid": "retry-8",
+      "rotation": 0
+    }
+  ],
+  "connections": 12
+}

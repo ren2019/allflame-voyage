@@ -1,0 +1,239 @@
+{
+  "pool": [
+    {
+      "uid": "retry-0",
+      "name": "人工重试验收 0 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+    },
+    {
+      "uid": "retry-1",
+      "name": "人工重试验收 1 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+    },
+    {
+      "uid": "retry-2",
+      "name": "人工重试验收 2 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+    },
+    {
+      "uid": "retry-3",
+      "name": "人工重试验收 3 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+    },
+    {
+      "uid": "retry-4",
+      "name": "人工重试验收 4 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+    },
+    {
+      "uid": "retry-5",
+      "name": "人工重试验收 5 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+    },
+    {
+      "uid": "retry-6",
+      "name": "人工重试验收 6 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+    },
+    {
+      "uid": "retry-7",
+      "name": "人工重试验收 7 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%"
+    }
+  ],
+  "board": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "borders": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "weights": {
+    "self:quant": 5,
+    "self:sulph": 4,
+    "self:rarity": 1,
+    "self:pack": 3,
+    "self:gold": 3,
+    "adjacent:ess": 4,
+    "adjacent:box": 4,
+    "adjacent:octo": 3,
+    "adjacent:crab": 3,
+    "adjacent:magic": 2,
+    "adjacent:rare": 4,
+    "adjacent:msg": 4,
+    "adjacent:fish": 4,
+    "adjacent:wisps": 5,
+    "adjacent:atziri": 4,
+    "adjacent:gold": 3,
+    "adjacent:spirit": 3,
+    "adjacent:divbox": 6,
+    "adjacent:arcbox": 10,
+    "adjacent:opbox": 6,
+    "adjacent:barrel": 4,
+    "adjacent:star": 3,
+    "adjacent:lantern": 4,
+    "adjacent:pantheon": 4,
+    "adjacent:uring": 3,
+    "adjacent:uamu": 3,
+    "adjacent:ubelt": 3,
+    "voyage:pack": 3,
+    "voyage:quant": 5,
+    "voyage:rarity": 1,
+    "voyage:sulph": 4,
+    "voyage:rare": 4,
+    "voyage:magic": 2,
+    "voyage:minmagic": 2,
+    "voyage:possess": 3,
+    "voyage:essence": 4,
+    "voyage:fracture": 4,
+    "border:pack": 3,
+    "border:minmagic": 2,
+    "border:rare": 4,
+    "border:beasts": 3,
+    "border:crabs": 3,
+    "border:drowned": 3,
+    "border:keep": 3,
+    "border:octoboss": 4,
+    "border:lanterns": 4,
+    "border:ancient": 10,
+    "border:divine": 10,
+    "border:exalt": 10,
+    "border:annul": 10,
+    "border:chaos": 10,
+    "border:vaal": 10,
+    "border:gcp": 10,
+    "border:chrome": 10,
+    "border:regret": 10,
+    "border:blessed": 10,
+    "border:regal": 10,
+    "border:support": 10,
+    "border:locker": 4,
+    "border:pirates": 3,
+    "border:quantconn": 5,
+    "border:gold": 3,
+    "border:decks": 6,
+    "border:scarabdrop": 6,
+    "border:curr": 10,
+    "border:scarab": 6,
+    "border:rarity": 1,
+    "border:crabboss": 4,
+    "border:exp": 2,
+    "border:magicmods": 2,
+    "border:anchor": 4,
+    "border:sulphdrop": 4,
+    "border:goldlantern": 4,
+    "border:izaro": 4
+  },
+  "mode": "any",
+  "allowRotation": true,
+  "adjacencyMode": "physical",
+  "adjacentAffectsSelf": false,
+  "disabledMods": [],
+  "strategyId": null,
+  "strategyReservations": {
+    "divine": false,
+    "meatfish": false,
+    "ethereal": false
+  },
+  "pieceKeeps": {},
+  "layoutChoice": {},
+  "centerChoice": {}
+}

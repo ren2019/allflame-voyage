@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { BORDER_MODS, VOYAGE_MODS } from '../data/mods'
 import { localizedBorder, matchesBorderQuery } from '../data/borderLocale'
+import { voyageModText, voyageModShort } from '../data/localization'
 import type { Scope } from '../types'
 import { STAT_SHORT } from '../types'
 
@@ -30,8 +31,8 @@ export function ModBrowser({ disabled, onToggle, onBulk, onClose }: Props) {
     const byScope = (scope: Scope) =>
       VOYAGE_MODS.filter((m) => m.scope === scope).map((m) => ({
         id: m.id,
-        text: m.text,
-        short: m.short,
+        text: voyageModText(m.id),
+        short: voyageModShort(m.id),
         value: valueLabel(m.effects),
       }))
     return [

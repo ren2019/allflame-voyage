@@ -1,0 +1,1032 @@
+{
+  "source": "5a717bf original strategy definitions; display fields removed before localization",
+  "strategies": [
+    {
+      "id": "alc-and-go",
+      "weights": {
+        "self:quant": 2,
+        "self:sulph": 2,
+        "voyage:sulph": 2,
+        "voyage:quant": 2
+      },
+      "rules": [],
+      "layout": [
+        [
+          false,
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          true,
+          false
+        ],
+        [
+          true,
+          false,
+          true,
+          false
+        ],
+        [
+          true,
+          false,
+          true,
+          false
+        ],
+        [
+          true,
+          false,
+          true,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          true
+        ],
+        [
+          true,
+          false,
+          false,
+          true
+        ]
+      ],
+      "layouts": [
+        {
+          "id": "highway",
+          "layout": [
+            [
+              false,
+              false,
+              true,
+              false
+            ],
+            [
+              false,
+              false,
+              true,
+              false
+            ],
+            [
+              false,
+              false,
+              true,
+              false
+            ],
+            [
+              true,
+              false,
+              true,
+              false
+            ],
+            [
+              true,
+              false,
+              true,
+              false
+            ],
+            [
+              true,
+              false,
+              true,
+              false
+            ],
+            [
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              false,
+              true
+            ],
+            [
+              true,
+              false,
+              false,
+              true
+            ]
+          ]
+        },
+        {
+          "id": "snake",
+          "layout": [
+            [
+              false,
+              true,
+              true,
+              false
+            ],
+            [
+              false,
+              true,
+              false,
+              true
+            ],
+            [
+              false,
+              false,
+              false,
+              true
+            ],
+            [
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              false,
+              true,
+              false,
+              true
+            ],
+            [
+              false,
+              false,
+              true,
+              true
+            ],
+            [
+              false,
+              true,
+              false,
+              false
+            ],
+            [
+              false,
+              true,
+              false,
+              true
+            ],
+            [
+              true,
+              false,
+              false,
+              true
+            ]
+          ]
+        }
+      ],
+      "layoutPenalty": 15,
+      "reservationGroups": [
+        {
+          "id": "divine",
+          "modIds": [
+            "adj-rare-1",
+            "adj-rare-2",
+            "voy-rare",
+            "adj-star-1",
+            "adj-star-2",
+            "adj-box-1",
+            "adj-box-2",
+            "adj-box-3",
+            "adj-divbox-1",
+            "adj-divbox-2",
+            "adj-opbox-1",
+            "adj-opbox-2",
+            "adj-msg-1",
+            "adj-msg-2"
+          ],
+          "areaTypes": [
+            "sea-pillars",
+            "pelagic-abyss"
+          ]
+        },
+        {
+          "id": "meatfish",
+          "modIds": [
+            "adj-star-1",
+            "adj-star-2",
+            "adj-pantheon",
+            "adj-lantern",
+            "voy-possess",
+            "voy-fracture",
+            "voy-noequip",
+            "adj-wisps-1",
+            "adj-wisps-2"
+          ],
+          "areaTypes": [
+            "sea-pillars"
+          ]
+        },
+        {
+          "id": "ethereal",
+          "modIds": [
+            "adj-lantern",
+            "voy-noequip",
+            "adj-wisps-1",
+            "adj-wisps-2",
+            "adj-magic-1",
+            "adj-magic-2",
+            "voy-minmagic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anchorfield-fishing",
+      "weights": {
+        "self:quant": 10,
+        "voyage:quant": 8,
+        "border:chaos": 6,
+        "border:quantconn": 5,
+        "self:pack": 2,
+        "voyage:sulph": 1
+      },
+      "rules": [
+        {
+          "cells": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "areaTypes": [
+            "anchorfield"
+          ],
+          "bonus": 40
+        }
+      ],
+      "requirements": [
+        {
+          "areaTypes": [
+            "anchorfield"
+          ],
+          "count": 1
+        }
+      ],
+      "limits": [
+        {
+          "areaTypes": [
+            "anchorfield"
+          ],
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "milky-speedrun",
+      "weights": {
+        "adjacent:opbox": 10,
+        "adjacent:divbox": 7,
+        "adjacent:msg": 7,
+        "self:quant": 8,
+        "voyage:quant": 5,
+        "voyage:sulph": 3,
+        "self:sulph": 3,
+        "border:quantconn": 6,
+        "border:divine": 4,
+        "border:exalt": 3,
+        "border:ancient": 3
+      },
+      "reservationGroups": [
+        {
+          "id": "divine",
+          "modIds": [
+            "adj-rare-1",
+            "adj-rare-2",
+            "voy-rare",
+            "adj-star-1",
+            "adj-star-2",
+            "adj-box-1",
+            "adj-box-2",
+            "adj-box-3"
+          ],
+          "areaTypes": [
+            "sea-pillars",
+            "pelagic-abyss"
+          ]
+        },
+        {
+          "id": "meatfish",
+          "modIds": [
+            "adj-star-1",
+            "adj-star-2",
+            "adj-pantheon",
+            "adj-lantern",
+            "voy-possess",
+            "voy-fracture",
+            "voy-noequip",
+            "adj-wisps-1",
+            "adj-wisps-2"
+          ],
+          "areaTypes": [
+            "sea-pillars"
+          ]
+        },
+        {
+          "id": "ethereal",
+          "modIds": [
+            "adj-lantern",
+            "voy-noequip",
+            "adj-wisps-1",
+            "adj-wisps-2",
+            "adj-magic-1",
+            "adj-magic-2",
+            "voy-minmagic"
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "cells": [
+            4
+          ],
+          "modIds": [
+            "adj-opbox-1",
+            "adj-opbox-2"
+          ],
+          "bonus": 55
+        },
+        {
+          "cells": [
+            4
+          ],
+          "modIds": [
+            "adj-divbox-1",
+            "adj-divbox-2",
+            "adj-msg-1",
+            "adj-msg-2"
+          ],
+          "bonus": 40
+        },
+        {
+          "cells": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8
+          ],
+          "modIds": [
+            "adj-divbox-1",
+            "adj-divbox-2",
+            "adj-opbox-1",
+            "adj-opbox-2",
+            "adj-msg-1",
+            "adj-msg-2"
+          ],
+          "bonus": -40
+        },
+        {
+          "cells": [
+            1,
+            3,
+            5,
+            7
+          ],
+          "rewardStat": {
+            "stat": "quantity",
+            "per": 6
+          },
+          "bonus": 0
+        },
+        {
+          "nearBorderId": "b-octoboss",
+          "rewardStat": {
+            "stat": "sulphur",
+            "per": 8
+          },
+          "bonus": 0
+        }
+      ],
+      "requirements": [
+        {
+          "modIds": [
+            "adj-divbox-1",
+            "adj-divbox-2",
+            "adj-opbox-1",
+            "adj-opbox-2",
+            "adj-msg-1",
+            "adj-msg-2"
+          ],
+          "count": 1
+        }
+      ],
+      "centerOptions": [
+        {
+          "id": "any",
+          "modIds": [
+            "adj-divbox-1",
+            "adj-divbox-2",
+            "adj-opbox-1",
+            "adj-opbox-2",
+            "adj-msg-1",
+            "adj-msg-2"
+          ]
+        },
+        {
+          "id": "opbox",
+          "modIds": [
+            "adj-opbox-1",
+            "adj-opbox-2"
+          ]
+        },
+        {
+          "id": "msg",
+          "modIds": [
+            "adj-msg-1",
+            "adj-msg-2"
+          ]
+        },
+        {
+          "id": "divbox",
+          "modIds": [
+            "adj-divbox-1",
+            "adj-divbox-2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "milky-meatfish",
+      "weights": {
+        "adjacent:star": 10,
+        "adjacent:pantheon": 10,
+        "adjacent:lantern": 10,
+        "voyage:possess": 10,
+        "voyage:fracture": 8,
+        "border:rare": 9,
+        "self:quant": 4,
+        "self:rarity": 3
+      },
+      "rules": [
+        {
+          "cells": [
+            1,
+            7
+          ],
+          "modIds": [
+            "adj-star-1",
+            "adj-star-2"
+          ],
+          "bonus": 80
+        },
+        {
+          "cells": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8
+          ],
+          "modIds": [
+            "adj-star-1",
+            "adj-star-2"
+          ],
+          "bonus": -80
+        },
+        {
+          "cells": [
+            5
+          ],
+          "modIds": [
+            "adj-pantheon"
+          ],
+          "bonus": 80
+        },
+        {
+          "cells": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+          ],
+          "modIds": [
+            "adj-pantheon"
+          ],
+          "bonus": -80
+        },
+        {
+          "cells": [
+            4
+          ],
+          "modIds": [
+            "adj-lantern"
+          ],
+          "bonus": 40
+        },
+        {
+          "cells": [
+            0,
+            2,
+            6,
+            8
+          ],
+          "areaTypes": [
+            "sea-pillars"
+          ],
+          "bonus": 40
+        },
+        {
+          "cells": [
+            1,
+            3,
+            4,
+            5,
+            7
+          ],
+          "areaTypes": [
+            "sea-pillars"
+          ],
+          "bonus": -40
+        }
+      ],
+      "layout": [
+        [
+          false,
+          true,
+          true,
+          false
+        ],
+        [
+          false,
+          true,
+          true,
+          true
+        ],
+        [
+          false,
+          false,
+          true,
+          true
+        ],
+        [
+          true,
+          false,
+          true,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          false
+        ],
+        [
+          true,
+          false,
+          true,
+          true
+        ],
+        [
+          true,
+          false,
+          true,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          false,
+          false,
+          true
+        ]
+      ],
+      "layoutPenalty": 6,
+      "requirements": [
+        {
+          "modIds": [
+            "adj-star-1",
+            "adj-star-2"
+          ],
+          "count": 2
+        },
+        {
+          "modIds": [
+            "adj-pantheon",
+            "adj-wisps-1",
+            "adj-wisps-2"
+          ],
+          "count": 1
+        },
+        {
+          "areaTypes": [
+            "sea-pillars"
+          ],
+          "count": 2
+        },
+        {
+          "modIds": [
+            "adj-lantern"
+          ],
+          "count": 2
+        },
+        {
+          "modIds": [
+            "voy-possess"
+          ],
+          "count": 1
+        },
+        {
+          "modIds": [
+            "voy-noequip",
+            "voy-fracture"
+          ],
+          "count": 1
+        }
+      ],
+      "allowFractureCharts": true
+    },
+    {
+      "id": "milky-ethereal",
+      "weights": {
+        "adjacent:wisps": 10,
+        "voyage:minmagic": 10,
+        "adjacent:magic": 9,
+        "voyage:magic": 9,
+        "adjacent:lantern": 8,
+        "border:minmagic": 8,
+        "self:quant": 4,
+        "self:pack": 3
+      },
+      "rules": [
+        {
+          "cells": [
+            1,
+            3,
+            5,
+            7
+          ],
+          "modIds": [
+            "adj-wisps-1",
+            "adj-wisps-2"
+          ],
+          "bonus": 6
+        },
+        {
+          "cells": [
+            0,
+            2,
+            8
+          ],
+          "modIds": [
+            "adj-lantern"
+          ],
+          "bonus": 5
+        },
+        {
+          "cells": [
+            4
+          ],
+          "modIds": [
+            "adj-magic-1",
+            "adj-magic-2",
+            "adj-wisps-1",
+            "adj-wisps-2"
+          ],
+          "bonus": 5
+        }
+      ],
+      "layout": [
+        [
+          false,
+          true,
+          true,
+          false
+        ],
+        [
+          false,
+          true,
+          true,
+          true
+        ],
+        [
+          false,
+          false,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          false,
+          true,
+          true
+        ],
+        [
+          true,
+          false,
+          true,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          false
+        ],
+        [
+          true,
+          false,
+          false,
+          true
+        ]
+      ],
+      "requirements": [
+        {
+          "modIds": [
+            "adj-wisps-1",
+            "adj-wisps-2"
+          ],
+          "count": 4
+        },
+        {
+          "modIds": [
+            "adj-lantern"
+          ],
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "divine-border-rares",
+      "weights": {
+        "adjacent:rare": 10,
+        "voyage:rare": 10,
+        "border:rare": 10,
+        "adjacent:star": 8,
+        "adjacent:box": 8,
+        "voyage:possess": 6,
+        "border:divine": 10,
+        "self:pack": 3
+      },
+      "rules": [
+        {
+          "nearBorderId": "b-divine",
+          "areaTypes": [
+            "sea-pillars"
+          ],
+          "bonus": 100
+        },
+        {
+          "nearBorderId": "b-divine",
+          "adjacentToBorder": true,
+          "modIds": [
+            "adj-box-3"
+          ],
+          "bonus": 35
+        },
+        {
+          "nearBorderId": "b-divine",
+          "adjacentToBorder": true,
+          "modIds": [
+            "adj-box-1",
+            "adj-box-2"
+          ],
+          "bonus": 22
+        },
+        {
+          "nearBorderId": "b-divine",
+          "adjacentToBorder": true,
+          "modIds": [
+            "adj-star-1",
+            "adj-star-2"
+          ],
+          "bonus": 15
+        }
+      ],
+      "requirements": [
+        {
+          "areaTypes": [
+            "sea-pillars"
+          ],
+          "count": 1
+        },
+        {
+          "modIds": [
+            "adj-star-1",
+            "adj-star-2",
+            "adj-box-1",
+            "adj-box-2",
+            "adj-box-3"
+          ],
+          "count": 3
+        },
+        {
+          "modIds": [
+            "adj-rare-1",
+            "adj-rare-2",
+            "voy-rare"
+          ],
+          "count": 5
+        }
+      ],
+      "bankTypes": [
+        {
+          "areaTypes": [
+            "sea-pillars"
+          ],
+          "keep": 1
+        },
+        {
+          "modIds": [
+            "adj-star-1",
+            "adj-star-2"
+          ],
+          "keep": 3
+        },
+        {
+          "modIds": [
+            "adj-box-2",
+            "adj-box-3"
+          ],
+          "keep": 3
+        },
+        {
+          "modIds": [
+            "adj-box-1"
+          ],
+          "keep": 0
+        },
+        {
+          "modIds": [
+            "voy-rare"
+          ],
+          "keep": 6
+        },
+        {
+          "modIds": [
+            "adj-rare-1",
+            "adj-rare-2"
+          ],
+          "keep": 0
+        }
+      ],
+      "requiresBorderId": {
+        "id": "b-divine"
+      },
+      "allowRareImplicits": true
+    },
+    {
+      "id": "cutedog-divine-boxes",
+      "weights": {
+        "voyage:rare": 10,
+        "adjacent:rare": 8,
+        "border:rare": 10,
+        "adjacent:box": 9,
+        "adjacent:divbox": 8,
+        "adjacent:arcbox": 8,
+        "adjacent:opbox": 8,
+        "border:divine": 10,
+        "self:pack": 6
+      },
+      "rules": [
+        {
+          "nearBorderId": "b-divine",
+          "areaTypes": [
+            "pelagic-abyss"
+          ],
+          "bonus": 80
+        },
+        {
+          "nearBorderId": "b-divine",
+          "rewardStat": {
+            "stat": "packsize",
+            "per": 8
+          },
+          "bonus": 0
+        },
+        {
+          "nearBorderId": "b-divine",
+          "adjacentToBorder": true,
+          "modIds": [
+            "adj-box-1",
+            "adj-box-2",
+            "adj-box-3",
+            "adj-divbox-1",
+            "adj-divbox-2",
+            "adj-arcbox-1",
+            "adj-arcbox-2",
+            "adj-opbox-1",
+            "adj-opbox-2"
+          ],
+          "bonus": 25
+        }
+      ],
+      "requirements": [
+        {
+          "areaTypes": [
+            "pelagic-abyss"
+          ],
+          "count": 1
+        },
+        {
+          "modIds": [
+            "adj-box-1",
+            "adj-box-2",
+            "adj-box-3",
+            "adj-divbox-1",
+            "adj-divbox-2",
+            "adj-arcbox-1",
+            "adj-arcbox-2",
+            "adj-opbox-1",
+            "adj-opbox-2"
+          ],
+          "count": 3
+        },
+        {
+          "modIds": [
+            "voy-rare"
+          ],
+          "count": 5
+        }
+      ],
+      "bankTypes": [
+        {
+          "areaTypes": [
+            "pelagic-abyss"
+          ],
+          "keep": 1
+        },
+        {
+          "modIds": [
+            "adj-box-2",
+            "adj-box-3"
+          ],
+          "keep": 3
+        },
+        {
+          "modIds": [
+            "adj-divbox-1",
+            "adj-divbox-2"
+          ],
+          "keep": 0
+        },
+        {
+          "modIds": [
+            "adj-arcbox-1",
+            "adj-arcbox-2"
+          ],
+          "keep": 0
+        },
+        {
+          "modIds": [
+            "adj-opbox-1",
+            "adj-opbox-2"
+          ],
+          "keep": 0
+        },
+        {
+          "modIds": [
+            "voy-rare"
+          ],
+          "keep": 6
+        }
+      ],
+      "requiresBorderId": {
+        "id": "b-divine"
+      },
+      "allowRareImplicits": true
+    }
+  ]
+}

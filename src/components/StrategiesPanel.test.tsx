@@ -50,7 +50,7 @@ describe('Korean clipboard aliases feed strategy readiness', () => {
     const html = renderStrategy('milky-speedrun', [diviner])
 
     expect(html).toContain('class="strat-ready"')
-    expect(html).toContain('1/1× Diviner’s / Operative’s / Message chart (centre)')
+    expect(html).toContain('1/1× 神圣秘宝／侦探保险箱／瓶中信海图（中心）')
   })
 
   it('counts the observed Korean Message chart for Speedrun', () => {
@@ -63,7 +63,7 @@ describe('Korean clipboard aliases feed strategy readiness', () => {
     const html = renderStrategy('milky-speedrun', [message])
 
     expect(html).toContain('class="strat-ready"')
-    expect(html).toContain('1/1× Diviner’s / Operative’s / Message chart (centre)')
+    expect(html).toContain('1/1× 神圣秘宝／侦探保险箱／瓶中信海图（中心）')
   })
 
   it('centre pick narrows Speedrun readiness to the chosen family (issue #49)', () => {
@@ -76,9 +76,9 @@ describe('Korean clipboard aliases feed strategy readiness', () => {
 
     // ...but not a Message-only centre pick
     const msgHtml = renderStrategy('milky-speedrun', [diviner], { 'milky-speedrun': 'msg' })
-    expect(msgHtml).toContain('Centre chart')
+    expect(msgHtml).toContain('中心海图')
     expect(msgHtml).toContain('class="strat-notready"')
-    expect(msgHtml).toContain('1× Message chart (centre)')
+    expect(msgHtml).toContain('1× 瓶中信海图（中心）')
   })
 
   it('subtracts Korean Wisp and Golden Lantern charts from Magic Ethereal shortages', () => {
@@ -93,8 +93,8 @@ describe('Korean clipboard aliases feed strategy readiness', () => {
     const html = renderStrategy('milky-ethereal', [wisp, lantern])
 
     expect(html).toContain('class="strat-notready"')
-    expect(html).toContain('3× Wildwood Wisp chart')
-    expect(html).toContain('2× Golden Lantern chart')
+    expect(html).toContain('3× 荒林鬼灵海图')
+    expect(html).toContain('2× 黄金灯笼海图')
   })
 
   it('counts Korean Sea Pillars by destination instead of the rare Chart name', () => {
@@ -104,10 +104,10 @@ describe('Korean clipboard aliases feed strategy readiness', () => {
     expect(first.name).not.toMatch(/pillar/i)
     expect(first.areaType).toBe('sea-pillars')
     expect(renderStrategy('milky-meatfish', [first])).toContain(
-      '1× Sea-Pillar chart (corners)',
+      '1× 海之柱海图（角落）',
     )
     expect(renderStrategy('milky-meatfish', [first, second])).not.toContain(
-      '1× Sea-Pillar chart (corners)',
+      '1× 海之柱海图（角落）',
     )
   })
 
@@ -118,10 +118,10 @@ describe('Korean clipboard aliases feed strategy readiness', () => {
     expect(pelagic.name).not.toMatch(/pelagic/i)
     expect(pelagic.areaType).toBe('pelagic-abyss')
     expect(renderStrategy('cutedog-divine-boxes', [ordinary])).toContain(
-      '1× Pelagic Abyss chart (high pack size)',
+      '1× 远洋深渊海图（高怪物群大小）',
     )
     expect(renderStrategy('cutedog-divine-boxes', [pelagic])).not.toContain(
-      '1× Pelagic Abyss chart (high pack size)',
+      '1× 远洋深渊海图（高怪物群大小）',
     )
   })
 })

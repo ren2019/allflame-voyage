@@ -1,0 +1,101 @@
+{
+  "source": {
+    "kind": "artificial-internal-model",
+    "baseCommit": "5a717bf",
+    "wording": "samples/text-library/library.json; source-only templates, not client copies",
+    "layout": "Nine fully connected four-arm charts (12 connections)"
+  },
+  "initialUids": [
+    "strategy-speedrun-0",
+    "strategy-speedrun-1",
+    "strategy-speedrun-2",
+    "strategy-speedrun-3",
+    "strategy-speedrun-4",
+    "strategy-speedrun-5",
+    "strategy-speedrun-6",
+    "strategy-speedrun-7",
+    "strategy-speedrun-8"
+  ],
+  "witness": [
+    {
+      "chartUid": "strategy-speedrun-0",
+      "rotation": 3
+    },
+    {
+      "chartUid": "strategy-speedrun-1",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-speedrun-2",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-speedrun-3",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-speedrun-4",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-speedrun-5",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-speedrun-6",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-speedrun-7",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-speedrun-8",
+      "rotation": 0
+    }
+  ],
+  "connections": 12,
+  "locked": [
+    {
+      "cell": 0,
+      "placement": {
+        "chartUid": "strategy-speedrun-0",
+        "rotation": 3
+      }
+    }
+  ],
+  "requiresBorder": null,
+  "hardConstraints": [
+    "nine distinct current eligible inventory instances",
+    "strict connectivity",
+    "preserved board position0/rotation3 pinned"
+  ],
+  "softPreferences": "Original position bonuses and layout penalty; never converted into product constraints",
+  "requirements": [
+    {
+      "modIds": [
+        "adj-divbox-1",
+        "adj-divbox-2",
+        "adj-opbox-1",
+        "adj-opbox-2",
+        "adj-msg-1",
+        "adj-msg-2"
+      ],
+      "count": 1,
+      "label": "Diviner’s / Operative’s / Message chart (centre)"
+    }
+  ],
+  "expectedConsumed": [
+    "strategy-speedrun-1",
+    "strategy-speedrun-2",
+    "strategy-speedrun-3",
+    "strategy-speedrun-4",
+    "strategy-speedrun-5",
+    "strategy-speedrun-6",
+    "strategy-speedrun-7",
+    "strategy-speedrun-8"
+  ],
+  "expectedSurvived": [
+    "strategy-speedrun-0"
+  ]
+}

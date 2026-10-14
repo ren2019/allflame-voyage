@@ -198,13 +198,14 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
       )}
 
       <details className="ahk-help">
-        <summary>🎲 洗练与保留海图（原版英文正则参考）</summary>
+        <summary>🎲 洗练与保留海图（搜索参考）</summary>
         <p className="muted">
           海图完成测绘后无法洗练，应先洗练再运行；物品数量会影响保险箱奖励。
-          以下为 Milky 原版英文客户端搜索正则参考。
+          优质词缀搜索使用已复核的 PoEDB 简中候选模板，游戏内匹配效果仍需现场验证。
+          其余表达式保留原版英文参考。
         </p>
         <div className="roll-regex-row">
-          <span className="roll-regex-label">优质词缀（英文参考）</span>
+          <span className="roll-regex-label">优质词缀（简中候选）</span>
           <input readOnly value={ALL_GOOD_MODS_REGEX} onFocus={(e) => e.target.select()} />
         </div>
         <div className="roll-regex-row">
