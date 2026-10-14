@@ -1,0 +1,101 @@
+{
+  "provenance": "artificial-internal-model-not-client-copy",
+  "sourceRefs": [
+    "samples/text-library/library.json#voy-quant-1",
+    "samples/text-library/library.json#abyssal-plain",
+    "docs/spec.md#Testing Decisions",
+    "src/types.ts#Board"
+  ],
+  "initialUids": [
+    "journey-01",
+    "journey-02",
+    "journey-03",
+    "journey-04",
+    "journey-05",
+    "journey-06",
+    "journey-07",
+    "journey-08",
+    "journey-09",
+    "journey-10",
+    "journey-11",
+    "journey-12"
+  ],
+  "witness": [
+    {
+      "chartUid": "journey-01",
+      "rotation": 0
+    },
+    {
+      "chartUid": "journey-02",
+      "rotation": 1
+    },
+    {
+      "chartUid": "journey-03",
+      "rotation": 2
+    },
+    {
+      "chartUid": "journey-04",
+      "rotation": 3
+    },
+    {
+      "chartUid": "journey-05",
+      "rotation": 0
+    },
+    {
+      "chartUid": "journey-06",
+      "rotation": 1
+    },
+    {
+      "chartUid": "journey-07",
+      "rotation": 2
+    },
+    {
+      "chartUid": "journey-08",
+      "rotation": 3
+    },
+    {
+      "chartUid": "journey-09",
+      "rotation": 0
+    }
+  ],
+  "hardConstraints": [
+    "9 distinct existing instances",
+    "strict matching connectors",
+    "reachable from bottom-left cell6",
+    "preserved journey01/02 pinned",
+    "alc-and-go no mandatory piece rules"
+  ],
+  "softPreferences": [
+    "alc snake layout preference is a penalty, not a hard rule"
+  ],
+  "scoreWitness": {
+    "total": 12.959999999999999,
+    "perStatQuantity": 0.72,
+    "perStatPacksize": 0.017777777777777778
+  },
+  "survivedUid": "journey-01",
+  "notSurvivedUid": "journey-02",
+  "afterFirst": {
+    "count": 4,
+    "consumedCount": 8,
+    "unusedCount": 3
+  },
+  "second": {
+    "addBlankCount": 5,
+    "newBorderIndex": 0,
+    "newBorderId": "b-pack-2",
+    "count": 9,
+    "consumedFirstCannotReturn": true
+  },
+  "copyOrder": [
+    6,
+    7,
+    8,
+    3,
+    4,
+    5,
+    0,
+    1,
+    2
+  ]
+}

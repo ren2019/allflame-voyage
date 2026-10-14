@@ -10,19 +10,19 @@ export function UpdatesLog({ onClose }: Props) {
     <div className="onboard-backdrop" onClick={onClose}>
       <div className="onboard updates-log" onClick={(e) => e.stopPropagation()}>
         <div className="panel-title">
-          Updates
+          原版更新记录
           <span className="spacer" />
-          <button onClick={onClose}>Done</button>
+          <button onClick={onClose}>完成</button>
         </div>
         <p className="onboard-intro" style={{ marginBottom: 10 }}>
-          What's new and what changed - fresh additions and reworks only.
+          原版功能新增与调整的历史记录；早期脚本相关记录不代表国服适配。
         </p>
         <div className="updates-list">
           {UPDATES.map((u) => (
             <div key={`${u.date}-${u.title}`} className="update-row">
               <div className="update-head">
                 <span className={`update-tag tag-${u.tag}`}>
-                  {u.tag === 'new' ? 'NEW' : 'REWORKED'}
+                  {u.tag === 'new' ? '新增' : '调整'}
                 </span>
                 <span className="update-title">{u.title}</span>
                 <span className="spacer" />
