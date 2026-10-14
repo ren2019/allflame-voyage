@@ -3,16 +3,17 @@ import { solve, type SolverResult } from '../logic/solver'
 import type { AppState } from '../logic/storage'
 import { applyCenterChoice, type StrategyDef } from '../data/strategies'
 import { selectStrategySolvePool } from '../logic/solverPoolSelection'
-import { isExecutableResult } from '../logic/executable'
+import { createSolveResultContext, isExecutableResult, type SolveResultContext } from '../logic/executable'
 
 interface Props {
   state: AppState
   /** curated strategy currently overriding weights, or null for manual */
   activeStrategy: StrategyDef | null
   results: SolverResult[]
+  resultContext: SolveResultContext | null
   /** which result is currently loaded on the board, or null */
   appliedIdx: number | null
-  onResults: (r: SolverResult[]) => void
+  onResults: (r: SolverResult[], context: SolveResultContext | null) => void
   onApply: (r: SolverResult, idx: number) => void
   /** open the multi-voyage session planner */
   onOpenPlanner: () => void
@@ -22,7 +23,7 @@ interface Props {
 
 /** The front-and-centre solve control: sits under the board, above
  *  "Copy into game", so solve → pick a result → copy is one straight line. */
-export function SolveBar({ state, activeStrategy, results, appliedIdx, onResults, onApply, onOpenPlanner, onOpenSettings }: Props) {
+export function SolveBar({ state, activeStrategy, results, resultContext, appliedIdx, onResults, onApply, onOpenPlanner, onOpenSettings }: Props) {
   const [busy, setBusy] = useState(false)
   const [solveNote, setSolveNote] = useState('')
   const weights = activeStrategy ? activeStrategy.weights : state.weights
@@ -69,7 +70,8 @@ export function SolveBar({ state, activeStrategy, results, appliedIdx, onResults
           strategyLayoutPenalty: effectiveStrategy?.layoutPenalty,
           locked,
         })
-        onResults(res)
+        const context = createSolveResultContext(state, solvePool, locked, 'strategy')
+        onResults(res, context)
         // loading the best result right away saves the extra click - the
         // alternatives stay one click away in the strip below
         if (res.length > 0) onApply(res[0], 0)
@@ -83,7 +85,7 @@ export function SolveBar({ state, activeStrategy, results, appliedIdx, onResults
           )
         if (solvePool.length < 9)
           notes.push(`仅有 ${solvePool.length} 张可用海图，无法填满九格。`)
-        else if (res.length && !isExecutableResult(res[0], state, activeStrategy))
+        else if (res.length && !isExecutableResult(res[0], state, context))
           notes.push('这些海图无法组成可执行摆盘，当前显示最佳参考方案。')
         setSolveNote(notes.join(' '))
       } finally {
@@ -128,7 +130,7 @@ export function SolveBar({ state, activeStrategy, results, appliedIdx, onResults
         <>
           <div className="solve-results">
             {results.map((r, i) => {
-              const executable = isExecutableResult(r, state, activeStrategy)
+              const executable = isExecutableResult(r, state, resultContext)
               return (
               <button
                 key={i}

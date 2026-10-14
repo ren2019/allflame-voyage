@@ -9,6 +9,7 @@ import { selectPieceBank } from '../logic/pieceKeeps'
 import type { StrategyDef } from '../data/strategies'
 import { GROUP_LABEL, GROUP_ORDER, REWARD_TYPES } from '../logic/rewards'
 import { displayValue } from './Library'
+import { createSolveResultContext, isExecutableResult, type SolveResultContext } from '../logic/executable'
 
 /** how many of your best charts to hold back from a filler voyage (one full board) */
 const KEEP_BEST = 9
@@ -18,7 +19,7 @@ interface Props {
   /** curated strategy currently overriding weights, or null for manual */
   activeStrategy: StrategyDef | null
   onPatch: (p: Partial<AppState>) => void
-  onResults: (r: SolverResult[]) => void
+  onResults: (r: SolverResult[], context: SolveResultContext | null) => void
   /** rendered inside the settings popup - shows a Done button that calls this */
   onClose?: () => void
 }
@@ -75,7 +76,7 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
         const lockedUids = new Set(locked.filter(Boolean).map((p) => p!.chartUid))
         const fillerPool = state.pool.filter((c) => lockedUids.has(c.uid) || !keep.has(c.uid))
         if (fillerPool.length < 9) {
-          onResults([])
+          onResults([], null)
           setSolveNote(
             `仅有 ${fillerPool.length} 张备用海图；需要在最佳 ${KEEP_BEST} 张和锁定海图之外另有九张，才能组成备用航程。`,
           )
@@ -91,9 +92,10 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
           minimizeReward: true,
           locked,
         })
-        onResults(res)
+        const context = createSolveResultContext(state, fillerPool, locked, 'filler')
+        onResults(res, context)
         setSolveNote(
-          res[0]?.valid
+          res[0] && isExecutableResult(res[0], state, context)
             ? '已用低价值备用海图组成可执行航程，保留优质和锁定海图。结果显示在摆盘下方。'
             : '现有备用海图无法组成可执行航程。',
         )

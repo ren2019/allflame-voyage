@@ -22,6 +22,7 @@ import { StrategiesPanel, pieceStatus } from './components/StrategiesPanel'
 import { scoreBoard } from './logic/scoring'
 import { checkConnectivity } from './logic/connectivity'
 import type { SolverResult } from './logic/solver'
+import type { SolveResultContext } from './logic/executable'
 import { decodeShare, defaultState, encodeShare, loadLocal, saveLocal, type AppState } from './logic/storage'
 import type { ChartData } from './types'
 import { ALL_STATS, STAT_LABELS, borderTouches, emptyBoard } from './types'
@@ -131,6 +132,7 @@ export default function App() {
   const [selectedChart, setSelectedChart] = useState<string | null>(null)
   const [selectedCell, setSelectedCell] = useState<number | null>(null)
   const [results, setResults] = useState<SolverResult[]>([])
+  const [resultContext, setResultContext] = useState<SolveResultContext | null>(null)
   // which solver result is currently loaded on the board (highlights its card)
   const [appliedIdx, setAppliedIdx] = useState<number | null>(null)
   const [shareMsg, setShareMsg] = useState('')
@@ -513,8 +515,9 @@ export default function App() {
               state={state}
               activeStrategy={activeStrategy}
               onPatch={patch}
-              onResults={(r) => {
+              onResults={(r, context) => {
                 setResults(r)
+                setResultContext(context)
                 setAppliedIdx(null)
               }}
               onClose={() => setShowSolverSettings(false)}
@@ -642,9 +645,11 @@ export default function App() {
                 state={state}
                 activeStrategy={activeStrategy}
                 results={results}
+                resultContext={resultContext}
                 appliedIdx={appliedIdx}
-                onResults={(r) => {
+                onResults={(r, context) => {
                   setResults(r)
+                  setResultContext(context)
                   setAppliedIdx(null)
                 }}
                 onApply={(r, idx) => {
