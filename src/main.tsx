@@ -13,8 +13,12 @@ try {
   /* ignore */
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+const root = ReactDOM.createRoot(document.getElementById('root')!)
+// Throwaway variants on the existing app route; never included in production.
+if (import.meta.env.DEV && new URL(location.href).searchParams.get('prototype') === 'calibration') {
+  import('./components/Calibration.prototype').then(({ default: CalibrationPrototype }) =>
+    root.render(<React.StrictMode><CalibrationPrototype /></React.StrictMode>),
+  )
+} else {
+  root.render(<React.StrictMode><App /></React.StrictMode>)
+}

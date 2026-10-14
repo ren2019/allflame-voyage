@@ -18,7 +18,8 @@
     "test:deployment": "node --test tests/deployment/local-site.test.mjs",
     "test:https": "node tests/deployment/verify-browser.mjs",
     "test:windows": "node tests/deployment/verify-windows-edge.mjs",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "prototype:calibration": "vite --host 0.0.0.0 --port 5174 --strictPort"
   },
   "dependencies": {
     "react": "^18.3.1",
