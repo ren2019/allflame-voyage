@@ -162,3 +162,11 @@ WINDOWS_SSH_ALIAS=opensonic-windows-runner npm run test:windows
 SPKI参数。只清理自己的临时任务、目录和进程，不操作用户现有Edge或
 游戏。需要目标用户保持桌面已登录、SSH可用及Mac站点已启动；该入口
 会实际写入并读回Windows剪贴板，不替代国服游戏验证。
+
+入口现在强制导入全部五张真实全文，核对五项形状/目的地，真实原生写入
+完成后读回定位文本，并用Windows已有Framework64编译器生成临时无窗口
+只读探针，独立核对同桌面的Win32系统剪贴板。没有编译器、探针未执行、
+文本不匹配或所有者不是本次临时Edge时均失败，不降级为两张/模拟通过。
+`DEPLOYED_INTEGRATION=<实际已部署提交SHA>`可写入复验证据；它由操作人
+指定，不自动假定当前Git分支就是正在运行的版本。五张最新现场证据与
+此前空读的诚实诊断限制见 [client-shapes.md](acceptance/client-shapes.md)。
