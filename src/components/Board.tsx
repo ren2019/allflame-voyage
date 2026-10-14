@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { BORDER_MODS, borderModById, voyageModById } from '../data/mods'
+import { BORDER_CHOICES, localizedBorder, matchesBorderQuery } from '../data/borderLocale'
 import { rotateEdges } from '../logic/connectivity'
 import { buildSingleChartSearch } from '../logic/regex'
 import type { Board, Borders, ChartData, Placement } from '../types'
@@ -34,6 +35,7 @@ function BorderSelect({
   value,
   onChange,
   seg,
+  vertical,
 }: {
   value: string | null
   onChange: (id: string | null) => void
@@ -43,8 +45,8 @@ function BorderSelect({
   const [open, setOpen] = useState(false)
   const [q, setQ] = useState('')
   const mod = value ? borderModById.get(value) : null
-  const eff = mod?.effects[0]
-  const filtered = BORDER_MODS.filter((m) => m.text.toLowerCase().includes(q.toLowerCase()))
+  const label = value ? localizedBorder(value) : undefined
+  const filtered = BORDER_CHOICES.filter((m) => matchesBorderQuery(m.id, q))
   // keep the popover on-screen: right-column segments align right, left-column align left
   const align = seg >= 3 && seg <= 5 ? 'right' : seg >= 9 ? 'left' : 'center'
 
@@ -56,20 +58,22 @@ function BorderSelect({
   return (
     <span
       className={`bslot ${mod ? 'filled' : ''}`}
-      title={mod?.text ?? 'Border segment: click to search'}
+      data-border-segment={seg}
+      aria-label={`边界位置 ${seg + 1}`}
+      title={label ? `${label.text}（${label.statusLabel}）` : '边界位置：点击搜索'}
       onClick={() => {
         setQ('')
         setOpen(true)
       }}
     >
       {mod ? (
-        <span>
-          {mod.short ??
-            (eff ? `+${eff.percent}% ${STAT_SHORT[eff.stat]}` : mod.magnitude ? `${mod.magnitude}% Magnitude` : '✦')}
+        <span style={{ maxWidth: vertical ? 56 : 125, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+          {label?.short}
         </span>
       ) : (
         <span className="bslot-empty">·</span>
       )}
+      {label?.status === 'conflict' && <span aria-label="译名冲突">⚠</span>}
       {open && (
         <>
           <span
@@ -82,7 +86,7 @@ function BorderSelect({
           <span className={`bpop bpop-${align}`} onClick={(e) => e.stopPropagation()}>
             <input
               autoFocus
-              placeholder="Search border mods…"
+              placeholder="搜索边界词缀…"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               onKeyDown={(e) => {
@@ -92,7 +96,7 @@ function BorderSelect({
             />
             <span className="bpop-list">
               <button className="bpop-item muted" onClick={() => pick(null)}>
-                No border
+                无边界词缀
               </button>
               {filtered.map((m) => (
                 <button
@@ -100,11 +104,11 @@ function BorderSelect({
                   className={`bpop-item ${m.id === value ? 'active' : ''}`}
                   onClick={() => pick(m.id)}
                 >
-                  {m.short && <span className="bpop-short">{m.short}</span>}
+                  <span className="bpop-short">{m.statusLabel}</span>
                   <span className="bpop-full">{m.text}</span>
                 </button>
               ))}
-              {filtered.length === 0 && <span className="bpop-none">No matches</span>}
+              {filtered.length === 0 && <span className="bpop-none">无匹配词缀</span>}
             </span>
           </span>
         </>
@@ -351,10 +355,10 @@ export function BoardView(props: Props) {
       <div className="board-toolbar">
         <span className="board-title">Voyage Board</span>
         <span className="spacer" />
-        <button onClick={randomize} title="Simulate a border reroll">
-          🎲 Random borders
+        <button onClick={randomize} title="模拟重置边界词缀">
+          🎲 随机边界
         </button>
-        <button onClick={clearBorders}>Clear borders</button>
+        <button onClick={clearBorders}>清空边界</button>
       </div>
       <div className="board-grid">
         <div className="corner" />
