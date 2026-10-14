@@ -76,12 +76,12 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
     <div className="onboard-backdrop" onClick={onClose}>
       <div className="onboard save-wizard" onClick={(e) => e.stopPropagation()}>
         <div className="panel-title">
-          🔖 Keep charts for strategies
+          🔖 为策略保留海图
           <span className="muted sw-progress">
-            {summary ? 'summary' : `step ${step + 1} of ${STEPS.length}`}
+            {summary ? '汇总' : `第 ${step + 1}/${STEPS.length} 步`}
           </span>
           <span className="spacer" />
-          <button onClick={onClose}>Cancel</button>
+          <button onClick={onClose}>取消</button>
         </div>
 
         {current && (
@@ -90,9 +90,8 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
               <span className="sw-strat-name">{current.strategyName}</span>
             </div>
             <div className="muted small-note" style={{ marginTop: 2 }}>
-              How many of each recommended chart type should stay banked for this strategy? The
-              solver keeps your best X of each - anything beyond that gets spent like a normal
-              chart. Set 0 to bank none.
+              为该策略保留每种推荐海图多少张？求解器会保留其中价值最高的指定数量，
+              超出的海图可正常使用。设为 0 表示不保留。
             </div>
             <div className="sw-list">
               {current.pieces.map((p) => {
@@ -102,7 +101,7 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
                   <div key={p.key} className={`sw-row ${keep > 0 ? 'pinned' : ''}`}>
                     <span className="sw-name">{p.label}</span>
                     <span className="sw-mod muted">
-                      suggested {p.recommended} · you have {owned}
+                      建议 {p.recommended} 张 · 已有 {owned} 张
                     </span>
                     <span className="spacer" />
                     <span className="sw-stepper">
@@ -123,7 +122,7 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
                 return (
                   <div key={c.key} className={`sw-row ${keep > 0 ? 'pinned' : ''}`}>
                     <span className="sw-name">{customLabel(c.modIds)}</span>
-                    <span className="sw-mod muted">your addition · you have {owned}</span>
+                    <span className="sw-mod muted">自定义类型 · 已有 {owned} 张</span>
                     <span className="spacer" />
                     <span className="sw-stepper">
                       <button onClick={() => bumpKey(c.key, 0, -1)} disabled={keep === 0}>
@@ -134,7 +133,7 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
                     </span>
                     <button
                       className="sw-remove"
-                      title="Remove this chart type"
+                      title="移除此海图类型"
                       onClick={() =>
                         setDraft((d) => {
                           const next = { ...d }
@@ -151,7 +150,7 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
             </div>
             <div className="sw-add">
               <input
-                placeholder="+ Add a chart type… search (e.g. Diviner, Lantern, Barrel)"
+                placeholder="添加海图类型…搜索保险箱、灯笼、木桶等"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
               />
@@ -172,11 +171,11 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
                   >
                     <span>{o.label}</span>
                     <span className={`sw-add-scope scope-${o.scope === 'voyage' ? 'global' : 'adjacent'}`}>
-                      {o.scope}
+                      {o.scope === 'voyage' ? '全航程' : '相邻区域'}
                     </span>
                   </button>
                 ))}
-                {addable.length === 0 && <span className="muted pad">No matches</span>}
+                {addable.length === 0 && <span className="muted pad">没有匹配结果</span>}
               </div>
             )}
           </>
@@ -185,8 +184,7 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
         {summary && (
           <>
             <div className="muted small-note">
-              Press Save to apply. Banked charts show a 🔒 in the library naming their strategy;
-              rerun this wizard any time to adjust the counts.
+              点击保存后生效。保留海图会在库存显示 🔒 和对应策略；可随时重新打开此向导调整数量。
             </div>
             <div className="sw-list">
               {STEPS.map((s) => {
@@ -195,7 +193,7 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
                   <div key={s.strategyId} className="sw-row summary">
                     <span className="sw-pin">{total > 0 ? '🔖' : '·'}</span>
                     <span className="sw-name">{s.strategyName}</span>
-                    <span className="sw-mod muted">keeping up to {total}</span>
+                    <span className="sw-mod muted">最多保留 {total} 张</span>
                   </div>
                 )
               })}
@@ -205,10 +203,10 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
 
         <div className="sw-actions">
           <button disabled={step === 0} onClick={() => setStep((s) => s - 1)}>
-            ← Back
+            ← 上一步
           </button>
           <span className="spacer" />
-          {!summary && <button onClick={() => setStep((s) => s + 1)}>Next →</button>}
+          {!summary && <button onClick={() => setStep((s) => s + 1)}>下一步 →</button>}
           {summary && (
             <button
               className="primary sw-save"
@@ -217,7 +215,7 @@ export function SaveWizard({ pool, keeps, onApply, onClose }: Props) {
                 onClose()
               }}
             >
-              💾 Save keep counts
+              💾 保存保留数量
             </button>
           )}
         </div>

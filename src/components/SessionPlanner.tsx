@@ -27,16 +27,15 @@ export function SessionPlanner({ pool, borders, reservations, pieceKeeps, center
     <div className="onboard-backdrop" onClick={onClose}>
       <div className="onboard session-plan" onClick={(e) => e.stopPropagation()}>
         <div className="panel-title">
-          Session Plan
+          航程计划
           <span className="spacer" />
-          <button onClick={onClose}>Done</button>
+          <button onClick={onClose}>完成</button>
         </div>
         <p className="onboard-intro" style={{ marginBottom: 10 }}>
-          Your whole library, sequenced: run these top to bottom, pressing Finish Voyage between
-          runs. Each entry only uses charts the ones above it left behind.
+          按下列顺序使用库存；每次实际航程后点击完成航程核销。后续计划只使用前面航程剩余的海图。
         </p>
         {pool.length < 9 && (
-          <div className="muted pad">Fewer than 9 charts - import some first.</div>
+          <div className="muted pad">库存不足九张，请先导入海图。</div>
         )}
         <div className="plan-list">
           {ready.map((e) => {
@@ -57,22 +56,22 @@ export function SessionPlanner({ pool, borders, reservations, pieceKeeps, center
                     onUseStrategy(e.strategyId)
                     onClose()
                   }}
-                  title="Activate this strategy and close the plan"
+                  title="启用此策略并关闭计划"
                 >
-                  Use
+                  使用
                 </button>
               </div>
             )
           })}
           {ready.length === 0 && pool.length >= 9 && (
             <div className="muted pad">
-              Nothing is ready to run - see what each strategy is waiting on below.
+              当前没有可运行计划，请查看下方各策略缺少的材料。
             </div>
           )}
         </div>
         {waiting.length > 0 && (
           <>
-            <div className="panel-title small">Waiting on pieces</div>
+            <div className="panel-title small">等待材料</div>
             <div className="plan-list">
               {waiting.map((e) => (
                 <div key={e.strategyId} className="plan-row waiting">
@@ -85,9 +84,8 @@ export function SessionPlanner({ pool, borders, reservations, pieceKeeps, center
           </>
         )}
         <div className="muted small-note">
-          {plan.allocated} chart{plan.allocated === 1 ? '' : 's'} allocated ·{' '}
-          {plan.leftover} left over (held-back fuel and oddments). Protections in Solver
-          Settings shape what each strategy may spend.
+          已分配 {plan.allocated} 张海图 · 剩余 {plan.leftover} 张（保留材料及零散海图）。
+          求解设置中的保护规则决定各策略可使用哪些海图。
         </div>
       </div>
     </div>

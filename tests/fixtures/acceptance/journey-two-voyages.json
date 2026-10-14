@@ -1,0 +1,481 @@
+{
+  "pool": [
+    {
+      "uid": "journey-01",
+      "name": "双航程人工海图·甲",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ],
+      "preserved": true
+    },
+    {
+      "uid": "journey-02",
+      "name": "双航程人工海图·乙",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ],
+      "preserved": true
+    },
+    {
+      "uid": "journey-03",
+      "name": "双航程人工海图·丙",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-04",
+      "name": "双航程人工海图·丁",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-05",
+      "name": "双航程人工海图·戊",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-06",
+      "name": "双航程人工海图·己",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-07",
+      "name": "双航程人工海图·庚",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-08",
+      "name": "双航程人工海图·辛",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-09",
+      "name": "双航程人工海图·壬",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-10",
+      "name": "双航程人工海图·癸",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-11",
+      "name": "双航程人工海图·子",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    },
+    {
+      "uid": "journey-12",
+      "name": "双航程人工海图·丑",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "areaType": "abyssal-plain",
+      "shape": "Crossing",
+      "modIds": [
+        "voy-quant-1"
+      ],
+      "implicitText": "所有航行区域中找到的物品数量提高 8%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 110
+        },
+        {
+          "stat": "sulphur",
+          "percent": 75
+        }
+      ]
+    }
+  ],
+  "board": [
+    {
+      "chartUid": "journey-01",
+      "rotation": 0
+    },
+    {
+      "chartUid": "journey-02",
+      "rotation": 1
+    },
+    {
+      "chartUid": "journey-03",
+      "rotation": 2
+    },
+    {
+      "chartUid": "journey-04",
+      "rotation": 3
+    },
+    {
+      "chartUid": "journey-05",
+      "rotation": 0
+    },
+    {
+      "chartUid": "journey-06",
+      "rotation": 1
+    },
+    {
+      "chartUid": "journey-07",
+      "rotation": 2
+    },
+    {
+      "chartUid": "journey-08",
+      "rotation": 3
+    },
+    {
+      "chartUid": "journey-09",
+      "rotation": 0
+    }
+  ],
+  "borders": [
+    "b-pack-1",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "weights": {
+    "self:quant": 5,
+    "self:sulph": 4,
+    "self:rarity": 1,
+    "self:pack": 3,
+    "self:gold": 3,
+    "adjacent:ess": 4,
+    "adjacent:box": 4,
+    "adjacent:octo": 3,
+    "adjacent:crab": 3,
+    "adjacent:magic": 2,
+    "adjacent:rare": 4,
+    "adjacent:msg": 4,
+    "adjacent:fish": 4,
+    "adjacent:wisps": 5,
+    "adjacent:atziri": 4,
+    "adjacent:gold": 3,
+    "adjacent:spirit": 3,
+    "adjacent:divbox": 6,
+    "adjacent:arcbox": 10,
+    "adjacent:opbox": 6,
+    "adjacent:barrel": 4,
+    "adjacent:star": 3,
+    "adjacent:lantern": 4,
+    "adjacent:pantheon": 4,
+    "adjacent:uring": 3,
+    "adjacent:uamu": 3,
+    "adjacent:ubelt": 3,
+    "voyage:pack": 3,
+    "voyage:quant": 13,
+    "voyage:rarity": 1,
+    "voyage:sulph": 4,
+    "voyage:rare": 4,
+    "voyage:magic": 2,
+    "voyage:minmagic": 2,
+    "voyage:possess": 3,
+    "voyage:essence": 4,
+    "voyage:fracture": 4,
+    "border:pack": 7,
+    "border:minmagic": 2,
+    "border:rare": 4,
+    "border:beasts": 3,
+    "border:crabs": 3,
+    "border:drowned": 3,
+    "border:keep": 3,
+    "border:octoboss": 4,
+    "border:lanterns": 4,
+    "border:ancient": 10,
+    "border:divine": 10,
+    "border:exalt": 10,
+    "border:annul": 10,
+    "border:chaos": 10,
+    "border:vaal": 10,
+    "border:gcp": 10,
+    "border:chrome": 10,
+    "border:regret": 10,
+    "border:blessed": 10,
+    "border:regal": 10,
+    "border:support": 10,
+    "border:locker": 4,
+    "border:pirates": 3,
+    "border:quantconn": 5,
+    "border:gold": 3,
+    "border:decks": 6,
+    "border:scarabdrop": 6,
+    "border:curr": 10,
+    "border:scarab": 6,
+    "border:rarity": 1,
+    "border:crabboss": 4,
+    "border:exp": 2,
+    "border:magicmods": 2,
+    "border:anchor": 4,
+    "border:sulphdrop": 4,
+    "border:goldlantern": 4,
+    "border:izaro": 4
+  },
+  "mode": "strict",
+  "allowRotation": true,
+  "adjacencyMode": "connected",
+  "adjacentAffectsSelf": true,
+  "disabledMods": [
+    "adj-crab-2"
+  ],
+  "strategyId": "alc-and-go",
+  "strategyReservations": {
+    "divine": false,
+    "meatfish": true,
+    "ethereal": false
+  },
+  "pieceKeeps": {
+    "milky-speedrun:centres": 2,
+    "custom:milky-ethereal:adj-lantern": 3
+  },
+  "layoutChoice": {
+    "alc-and-go": "snake"
+  },
+  "centerChoice": {
+    "milky-speedrun": "msg"
+  }
+}
