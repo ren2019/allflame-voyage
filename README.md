@@ -3,6 +3,9 @@
 Planner + auto-solver for the **Voyage Board** in Path of Exile 3.29 *Curse of the
 Allflame*. 
 
+国服个人内网版的Mac启动/停止、固定HTTPS地址和Windows Edge证书及现场
+验收步骤见 [手动内网部署](docs/local-deployment.md)。
+
 ## Features
 
 - 3×3 Voyage Board with the 12 border-modifier segments (corners get 2, edges 1, center 0)
