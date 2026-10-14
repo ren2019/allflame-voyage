@@ -45,3 +45,5 @@ US01 库存导入、US02 失败反馈、US03 十二边界、US04 策略求解、
 Windows Edge 原生证书与真实系统剪贴板证据来自 `evidence/windows-five-green-1.json` 和 `windows-five-green-2.json`，不是本地受控剪贴板的替代称呼。真实国服搜索/放置/航程及资料请求见 `field-checklist.md`。
 
 正式双轴审查的备用航程候选问题见 `code-review.md`。新增两条真实浏览器回归使用明确标注的人工18实例：验证九张高价值图留在库存、九张备用图在当前策略下保持可执行；固定保留海图的旋转不变，载入改变保护状态的JSON后旧候选立即失效。它们不冒充真实客户端复制或新的连接/评分规则。
+
+方案 A 校准页加入后，最新执行证据见 [校准页验收](calibration.md) 与 `evidence/calibration-verification-summary.json`：488单测、38浏览器场景、4部署测试，以及部署 `e761dd5` 的实际Windows复验。历史冻结报告保留；现场状态仍为 pending。

@@ -940,6 +940,6 @@
       "真实十二边界原文或截图 corpus"
     ]
   },
-  "windowsEvidence": "docs/acceptance/evidence/windows-five-green-2.json",
+  "windowsEvidence": "docs/acceptance/evidence/windows-calibration-green.json",
   "requiredWindowsImportedCharts": 5
 }
