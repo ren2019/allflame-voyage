@@ -2,6 +2,8 @@
 // All variants share the existing root route: ?prototype=calibration&variant=A|B|C.
 import { useEffect, useState } from 'react'
 import library from '../../samples/text-library/library.json'
+import clientOriginal from '../../samples/charted.zh-CN.txt?raw'
+import clientExtra from '../../samples/charted-extra-shapes.zh-CN.txt?raw'
 import { voyageModById, borderModById } from '../data/mods'
 import { voyageModText, voyageModShort } from '../data/localization'
 import { localizedBorder } from '../data/borderLocale'
@@ -65,6 +67,12 @@ function Context({ row }: { row: Row }) {
   </div>
 }
 function Evidence({ row }: { row: Row }) {
+  const sampleText = (ref: string) => {
+    const [path, marker] = ref.split('#')
+    const corpus = path.includes('extra-shapes') ? clientExtra : clientOriginal
+    const index = Number(marker?.replace('sample-', '')) - 1
+    return corpus.split(/(?=^物品类别\s*[:：])/m).filter(t => t.trim())[index] || '未取得对应原文'
+  }
   const observations = [...new Set(row.sourceObservations?.cn || [])]
   return <details className="cp-evidence"><summary>查看来源、候选原文与样本（{row.sources.length} 个来源）</summary>
     {row.status === 'conflict' && <p className="cp-warning">存在版本／语义差异，请比较数值和作用范围。当前中文是程序正在显示的文字，不代表冲突已解决。</p>}
@@ -72,7 +80,8 @@ function Evidence({ row }: { row: Row }) {
     <dt>来源英文</dt><dd>{row.enText || '未取得'}</dd><dt>原工具 / 来源作用范围</dt><dd>{scopes[row.scope || ''] || '—'} / {scopes[row.sourceScope || row.scope || ''] || '—'}</dd></dl>
     {observations.length > 0 && <details><summary>来源中的 {observations.length} 条中文候选</summary><ul>{observations.map(t=><li key={t}>{t}</li>)}</ul></details>}
     <ul>{row.sources.map((s,i)=><li key={i}>{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{s.sourceId}</a> : <strong>{s.sourceId}</strong>}<small>{s.locator}</small></li>)}</ul>
-    <p>真实样本：{row.clientSampleRefs.length ? row.clientSampleRefs.join(' · ') : '尚无对应真实客户端样本'}</p>
+    <p>真实样本：{row.clientSampleRefs.length ? row.clientSampleRefs.length + ' 份，可展开核对' : '尚无对应真实客户端样本'}</p>
+    {row.clientSampleRefs.map(ref=><details key={ref}><summary>{ref}</summary><pre className="cp-sample">{sampleText(ref)}</pre></details>)}
     <p>来源证据保持独立。点击“审阅通过”只记录你的判断。</p>
   </details>
 }
