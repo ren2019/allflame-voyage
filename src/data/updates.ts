@@ -1,6 +1,6 @@
 // Site updates log: NEW features and REWORKED behaviour only - bug fixes and
 // data corrections stay out. Newest first; the top entry's date drives the
-// "unseen updates" dot on the header button.
+// 'unseen updates' dot on the header button.
 
 export interface UpdateEntry {
   /** ISO date the feature shipped */
@@ -15,219 +15,188 @@ export const UPDATES: UpdateEntry[] = [
   {
     date: '2026-08-20',
     tag: 'new',
-    title: 'Speedrun centre picker + one-Anchorfield cap',
-    detail:
-      'Two community asks from GitHub: the Speedrun card now has a "Centre chart" picker - restrict the centre to Operative\'s, Message or Diviner\'s only, and the excluded families stay safe in your library (readiness and the session planner follow your pick). And Anchorfield Fishing now boards exactly ONE Anchorfield - your best-rolled one - however many you own, matching the strategy\'s own "one is all you need".',
+    title: '速刷中心选择与锚地数量限制',
+    detail: '保险箱速刷增加中心海图选择，可限定侦探保险箱、瓶中信或神圣的秘宝；排除的类型仍保留在库存，材料检查与航程计划随选择更新。锚地垂钓只放一张锚地，选择其中奖励最高的一张。',
   },
   {
     date: '2026-08-19',
     tag: 'new',
-    title: 'Chart + border collector - one paste for everything',
-    detail:
-      'New optional Windows helper that sends zero inputs to the game: F7 toggles chart copy mode (Ctrl+C each chart yourself, an on-screen counter ticks up), F8 reads all 12 borders from a screenshot taken while YOU hold Alt (a beep says when to let go; Windows OCR runs locally, nothing is uploaded). Then one Ctrl+V here imports charts and borders together. Every keypress is your own - it only listens. Community idea from GitHub. Find it in the Import panel.',
+    title: '原版海图与边界采集器',
+    detail: '原版可选 Windows 辅助工具：F7 开启手动 Ctrl+C 复制计数，F8 在玩家按住 Alt 时读取截图中的十二个边界，再一次粘贴导入。该历史工具不向游戏发送输入，本版未做国服采集器适配。',
   },
   {
     date: '2026-08-16',
     tag: 'reworked',
-    title: 'Windows bulk importer retired',
-    detail:
-      "GGG's macro rules ask that one keypress performs one game action, and there's no clear ruling for tools like the importer - it sits in a grey area, and no convenience tool is worth anyone's account, so the script has been removed. If you still have a copy, please stop using it. Importing still works the compliant way: Ctrl+C a chart in game, Ctrl+V anywhere on the page (re-pastes are skipped automatically). Borders are a minute of clicking on the board. Strategies, solver and planner are unchanged.",
+    title: '原版 Windows 批量导入脚本停用',
+    detail: '原作者因游戏宏规则及适用范围不明确而移除批量脚本。手动 Ctrl+C 复制、网页 Ctrl+V 导入及逐槽选择边界仍可用，策略和求解保持不变。',
   },
   {
     date: '2026-08-14',
     tag: 'new',
-    title: 'HDR-aware border capture (experimental)',
-    detail:
-      'Border import failing with Windows HDR on? The importer now detects HDR and switches to a capture path that tone-maps the real HDR frame instead of reading washed-out pixels. It engages automatically; if anything goes wrong it falls back to the old capture. Re-download the script and report HDR results on GitHub - this one is hard to test without HDR hardware.',
+    title: '原版 HDR 边界截图实验支持',
+    detail: '原版脚本检测 Windows HDR 后采用色调映射的截图路径，失败时回退旧路径；此功能仍需要 HDR 硬件验证。',
   },
   {
     date: '2026-08-14',
     tag: 'new',
-    title: 'Importer diagnostic bundle',
-    detail:
-      'Importer acting up? Right-click the tray icon and choose "Save diagnostic bundle..." - it zips your calibration, an activity log and the last scan results onto your desktop, ready to drag into a GitHub issue. Screenshots of your game window are only included if you explicitly say yes. Re-download the script to get it.',
+    title: '原版导入诊断包',
+    detail: '原版脚本托盘菜单可保存诊断包，将校准、日志和最近扫描结果打包到桌面以便反馈；游戏截图仅在用户明确同意时加入。',
   },
   {
     date: '2026-08-14',
     tag: 'new',
-    title: 'Feedback link',
-    detail:
-      '🐛 Feedback in the header goes straight to the GitHub issue tracker - it is actively monitored, bug reports and ideas both welcome (several of this week\'s features came from there and Reddit).',
+    title: '问题反馈入口',
+    detail: '顶部反馈链接直达 GitHub 问题跟踪，可提交故障报告和改进建议；部分原版功能来自社区反馈。',
   },
   {
     date: '2026-08-11',
     tag: 'reworked',
-    title: 'One-scan border OCR (hold-Alt)',
-    detail:
-      'The game now shows every border tooltip while Alt is held, so the importer reads all 12 from a single screenshot - a couple of seconds instead of 15-30. It falls back to the old per-border scan automatically if the overview fails. The blank-row skip is also configurable in the wizard now (set 0 if you park charts at the bottom of a page). Re-download the script to get both.',
+    title: '原版按住 Alt 一次读取边界',
+    detail: '原版利用按住 Alt 显示全部边界提示，从单张截图读取十二个边界；总览失败时回退逐边界扫描。向导也增加跳过空白行配置。',
   },
   {
     date: '2026-08-11',
     tag: 'new',
-    title: 'Alc & Go layout picker',
-    detail:
-      'Pick your highway shape on the strategy card: the classic three-lane highway (burns end and corner pieces evenly) or the community-requested S-snake - one continuous path, fastest to actually run. Your choice sticks.',
+    title: '普通速刷布局选择',
+    detail: '策略卡可选择经典三列通道或连续的 S 形路线。布局选择会保存，便于下次继续使用。',
   },
   {
     date: '2026-08-07',
     tag: 'reworked',
-    title: 'Bulk importer scans both chart pages',
-    detail:
-      'The game\'s chart panel gained a second page - the importer now clicks between the two page tabs and sweeps both (rerun the tray Setup wizard once to teach it where your tabs sit). Sweeps are also faster: a run of empty cells skips the rest of the page instead of waiting on each blank slot.',
+    title: '旧版批量脚本扫描两页海图',
+    detail: '原版历史调整：批量脚本可切换两个海图页签并扫描两页，连续空槽时跳过该页剩余部分。此脚本后来已停用。',
   },
   {
     date: '2026-08-06',
     tag: 'new',
-    title: 'ANCHORFIELD FISHING strategy',
-    detail:
-      'Community jackpot-fishing strat: one Anchorfield chart plus a board of high-quant charts. Hunt the chaos→divine blessing in the other areas first, and only crack the Anchorfield\'s Sunken Loot once it pops - the solver banks your best Anchorfield chart and stacks the quant.',
+    title: '锚地垂钓策略',
+    detail: '社区策略使用一张锚地和高数量奖励海图，先寻找其他区域的混沌转神圣祝福，再打开锚地的沉没宝藏；求解器保留最优锚地并叠加数量奖励。',
   },
   {
     date: '2026-08-03',
     tag: 'reworked',
-    title: 'Granular Divine keeps + custom chart types',
-    detail:
-      'The 🔖 wizard now splits Starfish from Strongboxes, big generic boxes (+2-4/+5, Divine-mandatory) from Diviner/Arcanist/Operative boxes (free by default - their counts can\'t reach 4), and voyage-wide rares from adjacent rares (adjacent spend freely). Every step also has a searchable "+ Add a chart type" picker, grouped by type (all Diviner tiers as one entry). Thanks sincere-bat for the design (issue #21).',
+    title: '细分神圣石保留类型与自定义类型',
+    detail: '保留向导分开海星与保险箱、大型普通保险箱与特殊保险箱、全航程稀有怪与相邻稀有怪。每步可搜索并添加自定义海图类型，同一家族的档位合并为一个选择。设计来自 sincere-bat 的问题 #21。',
   },
   {
     date: '2026-08-02',
     tag: 'new',
-    title: 'Site tutorial',
-    detail:
-      'The 🧭 TUTORIAL button next to the site name walks the whole workflow in 8 steps - import, borders, strategies, keep counts, solve, copy into game, finish - spotlighting each section of the page as it goes. The 📋 Plan button also moved next to Solve.',
+    title: '站点使用教程',
+    detail: '标题旁的使用教程按八步介绍导入、边界、策略、保留、求解、游戏放置和核销，并高亮对应页面区域；航程计划按钮移到求解旁。',
   },
   {
     date: '2026-08-02',
     tag: 'new',
-    title: 'Keep-count wizard',
-    detail:
-      '🔖 Save charts for strategies… (Chart Library) walks you through each strategy\'s recommended chart types with a "keep X" stepper - the solver banks your best X of each type and spends everything beyond that. Banked charts wear a 🔒 naming their strategy; a chart type shared by strategies gets one knob sized for the hungriest.',
+    title: '海图保留数量向导',
+    detail: '库存中的保留向导逐个策略设置各类型数量，保留价值最高的指定张数。保留海图显示锁图标与策略；策略共用类型时采用足够满足最高需求的统一数量。',
   },
   {
     date: '2026-08-02',
     tag: 'reworked',
-    title: 'Reservations became keep counts',
-    detail:
-      'Blanket holds ("save every Lantern") are gone: every protection now banks the best X of each recommended piece type, defaulting to what each strategy actually needs (rares get one spare). The Solver Settings toggles switch whole categories of banks off.',
+    title: '按数量保留取代整类保留',
+    detail: '从保留整类海图改为保留各推荐类型中价值最高的指定数量，默认依照策略需要设置，稀有怪类型多保留一张备用。求解设置可停用整类保护。',
   },
   {
     date: '2026-08-02',
     tag: 'new',
-    title: 'Session planner',
-    detail:
-      '📋 Plan (next to Solve) sequences your whole library into a run order: juiced strategies first when their pieces are ready, Speedruns while centre charts last, Alc & Go with the rest - and shows what each waiting strategy still needs.',
+    title: '多航程计划',
+    detail: '航程计划按库存安排建议顺序：材料齐备时先运行高投入策略，中心海图足够时运行保险箱速刷，剩余备用海图用于普通速刷，并列出等待材料的策略。',
   },
   {
     date: '2026-08-02',
     tag: 'new',
-    title: 'Rare chart import alerts',
-    detail:
-      'Importing a Rare Monsters chart (Divine-strategy fuel) now pops a golden alert in the Import panel, so a jackpot piece never slips into the library unnoticed.',
+    title: '稀有怪物海图导入提醒',
+    detail: '导入神圣石策略使用的稀有怪物海图时，导入面板出现醒目提示，避免忽略关键材料。',
   },
   {
     date: '2026-08-02',
     tag: 'new',
-    title: 'Strategy fuel locks in the library',
-    detail:
-      'Charts saved as another strategy’s fuel (rare-implicits for the Divine strats, Rare Fracture for Meatfish) now show a 🔒 badge in the Chart Library with a tooltip naming the strategy. Badges follow the protection toggles.',
+    title: '库存显示策略材料锁',
+    detail: '为其他策略保留的海图在库存显示锁标记，提示对应策略；保护设置改变时标记随之更新。',
   },
   {
     date: '2026-08-02',
     tag: 'new',
-    title: 'Configurable keeper protections',
-    detail:
-      'Solver Settings now has "Protect charts for other strategies" checkboxes (Divine / Meatfish / Magic Ethereal). Switch a category off to let Alc & Go and Speedrun spend its charts - the solve note tells you what was held back and why. Community contribution by Alkwer.',
+    title: '可配置的策略材料保护',
+    detail: '求解设置可独立保护神圣石、肉鱼和魔法虚灵的海图；关闭某类后普通速刷及保险箱速刷可以使用它们。求解说明显示被保留的数量与原因，贡献者 Alkwer。',
   },
   {
     date: '2026-08-01',
     tag: 'reworked',
-    title: 'Solve is front and centre',
-    detail:
-      'The Solve button now sits directly under the board, above Copy into game. Results appear as clickable cards (points + runnable badge); the best one auto-loads and is marked "on board".',
+    title: '求解按钮移到摆盘正下方',
+    detail: '求解入口位于摆盘下方、放置指南上方。候选卡显示评分及可执行状态，最佳候选自动载入，并标记当前摆盘。',
   },
   {
     date: '2026-08-01',
     tag: 'new',
-    title: 'Chart destinations power the strategies',
-    detail:
-      'Imports now read the destination line (Sea Pillars, Pelagic Abyss, …) in any client language, so the Sea-Pillar and Pelagic Abyss strategy pieces are detected reliably. Community contribution by jinyounghub.',
+    title: '目的地用于识别策略材料',
+    detail: '导入会读取海之柱、远洋深渊等目的地，供策略材料识别使用。原版贡献者 jinyounghub。',
   },
   {
     date: '2026-08-01',
     tag: 'new',
-    title: 'Korean client support',
-    detail:
-      'The bulk importer and border OCR understand the Korean client: chart names, implicit modifiers and all border tooltips map to the same solver data as English. Community contribution by jinyounghub.',
+    title: '韩文客户端支持',
+    detail: '原版导入及边界 OCR 增加韩文名称、航行词缀和边界提示映射，与英文使用相同内部数据。贡献者 jinyounghub；国服 OCR 适配不包含在本版范围。',
   },
   {
     date: '2026-08-01',
     tag: 'reworked',
-    title: 'Locked charts stay put',
-    detail:
-      'A 🔒-preserved chart placed on the board is pinned to its exact square and rotation - every solve arranges the other eight charts around it instead of moving it.',
+    title: '已锁定海图固定位置',
+    detail: '摆盘中标记保留的海图固定在当前格和朝向，求解器只安排其他海图。',
   },
   {
     date: '2026-08-01',
     tag: 'new',
-    title: 'Importer setup wizard',
-    detail:
-      'First run of the Windows bulk importer opens a guided overlay: calibrate the chart grid, click all 12 border points, preview, done. One contextual key (F7) handles every calibration step; all hotkeys are rebindable from the tray.',
+    title: '旧版导入脚本校准向导',
+    detail: '原版历史功能：首次运行批量脚本时引导校准海图网格和十二个边界位置，用 F7 推进步骤，快捷键可在托盘调整。批量脚本后来已停用。',
   },
   {
     date: '2026-08-01',
     tag: 'new',
-    title: 'Border OCR import',
-    detail:
-      'The Windows bulk importer reads all 12 board-border tooltips with local Windows OCR and fills them in automatically alongside your charts. Shift+F9 imports just the borders. Built with Alkwer.',
+    title: '原版边界 OCR 导入',
+    detail: '原版批量脚本曾使用 Windows 本地 OCR 自动读取十二个边界并与海图一起导入，Shift+F9 单独读取边界。与 Alkwer 合作完成；国服未做该适配。',
   },
   {
     date: '2026-07-30',
     tag: 'new',
-    title: 'Divine Strongboxes & Alc + Go strategies',
-    detail:
-      'Two more curated strategies: cutedog_’s Divine Strongboxes (Pelagic Abyss on the Divine border tile) and Alc & Go, a one-lane-highway trash burner that only uses charts no other strategy wants. Jackpot alerts flag "cannot drop Equipment" charts and Divine border rolls with a one-click strategy switch.',
+    title: '神圣石保险箱与普通速刷策略',
+    detail: '新增 cutedog_ 的神圣石保险箱策略，在神圣石边界格放远洋深渊；普通速刷使用其他策略不需要的备用海图。关键奖励提示支持一键切换相关策略。',
   },
   {
     date: '2026-07-30',
     tag: 'new',
-    title: 'Open source',
-    detail:
-      'The solver is MIT-licensed with a contributing guide - issues and pull requests welcome on GitHub.',
+    title: '开源发布',
+    detail: '原版求解器采用 MIT 许可并提供贡献指南，欢迎在 GitHub 提交问题和改进。',
   },
   {
     date: '2026-07-29',
     tag: 'new',
-    title: 'Curated Strategies tab',
-    detail:
-      'Pick a community strategy (Milkybk_’s Speedrun Strongboxes, Meatfish and Magic Ethereal, plus Divine Border Rares) and the solver builds its exact board: piece placements, connector layout, reserved charts, readiness warnings when you lack the pieces, and rolling regexes.',
+    title: '社区策略面板',
+    detail: '可选择 Milkybk_ 的保险箱速刷、肉鱼、魔法虚灵及稀有怪神圣石边界策略，求解器按其位置、连接、保留规则安排摆盘，并显示材料缺项和洗练搜索参考。',
   },
   {
     date: '2026-07-27',
     tag: 'new',
-    title: 'Windows bulk importer',
-    detail:
-      'A downloadable AutoHotkey script sweeps your whole in-game chart panel and imports everything in one paste - no more copying charts one at a time. Find it in the Import panel.',
+    title: '旧版 Windows 批量导入脚本',
+    detail: '原版历史功能：AutoHotkey 脚本扫描整个海图面板并一次导入；该脚本后来已停用。',
   },
   {
     date: '2026-07-27',
     tag: 'new',
-    title: 'Voyage Mod Count & filler voyages',
-    detail:
-      'The board shows a live count of area / adjacent / voyage-wide mods and connections. A Filler Voyage button builds a throwaway board from your lowest-value spares, keeping your best nine and locked charts safe.',
+    title: '航行词缀统计与填充航程',
+    detail: '摆盘显示本区域、相邻、全航程词缀数量及连接数。填充航程使用低价值备用海图，同时保留价值最高的九张及锁定海图。',
   },
   {
     date: '2026-07-27',
     tag: 'reworked',
-    title: 'Real connector rules & per-reward weights',
-    detail:
-      'The solver only suggests runnable boards: adjacent connectors must match, all nine squares filled, everything reachable from the ⚓ start. Reward weights became one slider per reward type, grouped by scope and collapsed by default.',
+    title: '连接规则与逐奖励权重',
+    detail: '可执行摆盘需要九格填满、相邻连接匹配且从左下起点可达。奖励权重改为每种奖励一个滑块，按作用范围分组并默认折叠。',
   },
   {
     date: '2026-07-25',
     tag: 'new',
-    title: 'Copy into game & Finish Voyage',
-    detail:
-      'Copy into game steps through your board in the in-game fill order (bottom-left first), copying a search string for each chart - Ctrl+C advances. Finish Voyage consumes the board and asks, chart by chart, which preserved ones actually survived.',
+    title: '游戏内放置指南与航程核销',
+    detail: '指南按游戏填充顺序逐张复制海图搜索文本，从左下角开始，Ctrl+C 可推进。完成航程按实例核销，并逐张询问保留海图是否实际存活。',
   },
 ]
 

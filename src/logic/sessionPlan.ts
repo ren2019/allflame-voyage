@@ -96,7 +96,7 @@ export function planSession(
         name: s.name,
         status: 'waiting',
         runs: 1,
-        note: `missing ${missing.join(', ')}`,
+        note: `缺少 ${missing.join('、')}`,
       })
       continue
     }
@@ -108,7 +108,7 @@ export function planSession(
         name: s.name,
         status: 'waiting',
         runs: 1,
-        note: `pieces ready but only ${tentative.size + fillers.length} usable charts - need 9 for a board`,
+        note: `材料已齐，但仅有 ${tentative.size + fillers.length} 张可用海图，需要九张才能摆盘`,
       })
       continue
     }
@@ -119,7 +119,7 @@ export function planSession(
       name: s.name,
       status: 'ready',
       runs: 1,
-      note: 'pieces ready - run this board',
+      note: '材料已齐，可运行此摆盘',
     })
   }
 
@@ -155,7 +155,7 @@ export function planSession(
       name: speedrun.name,
       status: 'ready',
       runs: speedrunRuns,
-      note: `${speedrunRuns} centre chart${speedrunRuns === 1 ? '' : 's'} + quantity sides`,
+      note: `${speedrunRuns} 张中心海图，加上数量奖励填充图`,
     })
 
   // ---- Alc & Go burns whatever nothing else wants ----
@@ -169,7 +169,7 @@ export function planSession(
       name: alcgo.name,
       status: 'ready',
       runs: alcRuns,
-      note: 'spare charts nothing else wants',
+      note: '其他策略不需要的备用海图',
     })
   }
 

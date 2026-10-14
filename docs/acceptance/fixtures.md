@@ -25,7 +25,7 @@
 | strategy-divine-rares | divine-border-rares | 神圣边界、1海之柱、3海星/保险箱、5稀有怪类型，计数须满足原有要求 | 待制作验证 |
 | strategy-divine-boxes | cutedog-divine-boxes | 神圣边界、1远洋深渊、3任意保险箱类型、5全航程稀有怪类型 | 待制作验证 |
 | retry-insufficient | 无策略/手动权重 | 初始8张不可能填满九格；第9张到达后有明确可行见证 | 待制作验证 |
-| journey-two-voyages | 选定一个现有策略 | 初始库存和补充库存分别有可行见证；第一航程核销期望集与第二边界明确记录 | 待制作验证 |
+| journey-two-voyages | alc-and-go | tests/fixtures/acceptance/journey-two-voyages.json 与 expected/README：12 个人工四向实例、九格连接见证、选择候选后的 UID 核销 oracle、补五张并替换边界后第二次求解 | 已制作验证（人工内部模型） |
 
 主流程中剪贴板使用可记录的受控接口，断言实际写入调用及步骤推进；它不能证明Windows真实剪贴板权限或游戏搜索成功。现场结果独立记录。
 
