@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 1,
+  "status": "research-seed-not-complete-library",
+  "retrievedAt": "2026-10-14",
+  "sourceVersion": "unknown",
+  "snapshotSha256": null,
+  "provenance": "poedb-table-and-user-client-verbatim",
+  "counts": {
+    "requiredModIds": 141,
+    "adjacent": 43,
+    "voyage": 19,
+    "border": 64,
+    "chartRewards": 15,
+    "verifiedModMappings": 2,
+    "requiredDestinationIds": 15,
+    "sourceDestinationPairs": 15,
+    "clientDestinationPairs": 2,
+    "requiredShapes": 5,
+    "clientShapes": 2
+  },
+  "sources": {
+    "baseIndex": "https://poedb.tw/cn/Chart",
+    "chartModsCN": "https://poedb.tw/cn/Sandy_Seabed_Chart",
+    "chartModsEN": "https://poedb.tw/us/Sandy_Seabed_Chart",
+    "borderCN": "https://poedb.tw/cn/Maiden_Voyage",
+    "borderEN": "https://poedb.tw/us/Maiden_Voyage",
+    "borderLocator": "Deep Water Border Mods /65",
+    "clientFixture": "samples/charted.zh-CN.txt"
+  },
+  "destinations": [
+    {
+      "internalId": "anchorfield",
+      "enText": "Anchorfield",
+      "cnText": "锚地",
+      "sourceMetadataId": "SandyAnchorField1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "brine-kings-domain",
+      "enText": "Brine King's Domain",
+      "cnText": "海王领域",
+      "sourceMetadataId": "CoralReefBrineKingShrines1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "clam-infested-shelf",
+      "enText": "Clam-infested Shelf",
+      "cnText": "蛤蜊海架",
+      "sourceMetadataId": "CoralReefTreasureClams1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "client-and-poedb"
+    },
+    {
+      "internalId": "diving-shoals",
+      "enText": "Diving Shoals",
+      "cnText": "深海浅滩",
+      "sourceMetadataId": "CoralReefDeepSeaDiver1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "eldritch-depths",
+      "enText": "Eldritch Depths",
+      "cnText": "古灵深渊",
+      "sourceMetadataId": "CoralForestEldritchHorrors1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "hazardous-depths",
+      "enText": "Hazardous Depths",
+      "cnText": "险恶深渊",
+      "sourceMetadataId": "SandyHazardBoat1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "infested-bathyspheres",
+      "enText": "Infested Bathyspheres",
+      "cnText": "感染潜航球",
+      "sourceMetadataId": "SandyBathyspheres1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "lost-ruins",
+      "enText": "Lost Ruins",
+      "cnText": "失落遗迹",
+      "sourceMetadataId": "CoralForestVaalRuins1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "abyssal-plain",
+      "enText": "Abyssal Plain",
+      "cnText": "深渊平原",
+      "sourceMetadataId": "SandyEnd1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "client-and-poedb"
+    },
+    {
+      "internalId": "pelagic-abyss",
+      "enText": "Pelagic Abyss",
+      "cnText": "远洋深渊",
+      "sourceMetadataId": "CoralForestAbyssalPit1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "seafloor-ridges",
+      "enText": "Seafloor Ridges",
+      "cnText": "海底山脊",
+      "sourceMetadataId": "CoralReefEnd1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "sea-pillars",
+      "enText": "Sea Pillars",
+      "cnText": "海之柱",
+      "sourceMetadataId": "CoralForestStarfishPillars1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "sunken-totems",
+      "enText": "Sunken Totems",
+      "cnText": "沉没图腾",
+      "sourceMetadataId": "CoralReefKaruiTotem1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "undersea-groves",
+      "enText": "Undersea Groves",
+      "cnText": "海底林地",
+      "sourceMetadataId": "CoralForestEnd1",
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Comprehensive_Charting",
+      "enUrl": "https://poedb.tw/us/Comprehensive_Charting",
+      "sourceLocator": "destination table, identified by shared room metadata",
+      "mappingBasis": "metadata",
+      "status": "source-only"
+    },
+    {
+      "internalId": "kisharas-rest",
+      "enText": "Kishara's Rest",
+      "cnText": "琪莎拉安息处",
+      "sourceMetadataId": null,
+      "metadataListComplete": false,
+      "cnUrl": "https://poedb.tw/cn/Maiden_Voyage",
+      "enUrl": "https://poedb.tw/us/Maiden_Voyage",
+      "sourceLocator": "Roomss section, shared base and paired names; no stable room ID captured",
+      "mappingBasis": "reviewed-semantics",
+      "status": "source-only"
+    }
+  ],
+  "verifiedMods": [
+    {
+      "internalId": "adj-crab-1",
+      "cnText": "相邻区域包含 (8—10) 个额外的螃蟹群",
+      "enText": "Adjacent Areas contain (8—10) additional packs of Crabs",
+      "clientText": "相邻区域包含 8(8-10) 个额外的螃蟹群 — 数值不可调整",
+      "scope": "adjacent",
+      "numericRange": [
+        8,
+        10
+      ],
+      "sourceModId": null,
+      "sourceStatIds": [],
+      "cnUrl": "https://poedb.tw/cn/Sandy_Seabed_Chart",
+      "enUrl": "https://poedb.tw/us/Sandy_Seabed_Chart",
+      "sourceLocator": "Map Deep Water Chart Mods, Crabs tier requires level 1; local deepwater mod applies to adjacent charts [1]",
+      "mappingBasis": "reviewed-semantics",
+      "clientSampleRefs": [
+        "samples/charted.zh-CN.txt#sample-1"
+      ],
+      "status": "client-and-poedb"
+    },
+    {
+      "internalId": "voy-pack-1",
+      "cnText": "所有航行区域的怪物群规模提高 5%",
+      "enText": "5% increased Pack size in all Voyage Areas",
+      "clientText": "所有航行区域的怪物群规模提高 5%",
+      "scope": "global",
+      "numericRange": [
+        5,
+        5
+      ],
+      "sourceModId": null,
+      "sourceStatIds": [],
+      "cnUrl": "https://poedb.tw/cn/Sandy_Seabed_Chart",
+      "enUrl": "https://poedb.tw/us/Sandy_Seabed_Chart",
+      "sourceLocator": "Map Deep Water Chart Mods, global Pack size 5% row requires level 1",
+      "mappingBasis": "reviewed-semantics",
+      "clientSampleRefs": [
+        "samples/charted.zh-CN.txt#sample-2"
+      ],
+      "status": "client-and-poedb"
+    }
+  ],
+  "pendingModIds": [
+    "cm-quant-20",
+    "cm-quant-28",
+    "cm-quant-32",
+    "cm-quant-45",
+    "cm-sulph-30",
+    "cm-sulph-45",
+    "cm-rarity-12",
+    "cm-rarity-18",
+    "cm-rarity-20",
+    "cm-rarity-30",
+    "cm-pack-14",
+    "cm-pack-16",
+    "cm-pack-18",
+    "cm-gold-50",
+    "cm-gold-70",
+    "adj-ess-1",
+    "adj-ess-2",
+    "adj-ess-3",
+    "adj-box-1",
+    "adj-box-2",
+    "adj-box-3",
+    "adj-octo-1",
+    "adj-octo-2",
+    "adj-crab-2",
+    "adj-magic-1",
+    "adj-magic-2",
+    "adj-rare-1",
+    "adj-rare-2",
+    "adj-msg-1",
+    "adj-msg-2",
+    "adj-fish",
+    "adj-wisps-1",
+    "adj-wisps-2",
+    "adj-atziri",
+    "adj-gold-1",
+    "adj-gold-2",
+    "adj-spirit-1",
+    "adj-spirit-2",
+    "adj-divbox-1",
+    "adj-divbox-2",
+    "adj-arcbox-1",
+    "adj-arcbox-2",
+    "adj-opbox-1",
+    "adj-opbox-2",
+    "adj-barrel-1",
+    "adj-barrel-2",
+    "adj-star-1",
+    "adj-star-2",
+    "adj-fracture",
+    "adj-lantern",
+    "adj-pantheon",
+    "adj-uring-1",
+    "adj-uring-2",
+    "adj-uamu-1",
+    "adj-uamu-2",
+    "adj-ubelt-1",
+    "adj-ubelt-2",
+    "voy-soul",
+    "voy-pack-2",
+    "voy-quant-1",
+    "voy-quant-2",
+    "voy-rarity-1",
+    "voy-rarity-2",
+    "voy-jelly",
+    "voy-sulph-1",
+    "voy-sulph-2",
+    "voy-sulph-3",
+    "voy-rare",
+    "voy-magic",
+    "voy-noequip",
+    "voy-minmagic",
+    "voy-possess",
+    "voy-essence",
+    "voy-fracture",
+    "voy-flask",
+    "b-pack-1",
+    "b-pack-2",
+    "b-pack-3",
+    "b-minmagic",
+    "b-rare-1",
+    "b-rare-2",
+    "b-rare-3",
+    "b-beasts-1",
+    "b-beasts-2",
+    "b-beasts-3",
+    "b-crabs-1",
+    "b-crabs-2",
+    "b-crabs-3",
+    "b-drowned-1",
+    "b-drowned-2",
+    "b-drowned-3",
+    "b-mag-1",
+    "b-mag-2",
+    "b-mag-3",
+    "b-keep-1",
+    "b-keep-2",
+    "b-octoboss",
+    "b-lanterns",
+    "b-ancient",
+    "b-divine",
+    "b-exalt",
+    "b-annul",
+    "b-chaos",
+    "b-vaal",
+    "b-gcp",
+    "b-chrome",
+    "b-regret",
+    "b-blessed",
+    "b-regal",
+    "b-support",
+    "b-locker",
+    "b-pirates",
+    "b-rareconn-1",
+    "b-rareconn-2",
+    "b-quantconn-1",
+    "b-quantconn-2",
+    "b-gold-1",
+    "b-gold-2",
+    "b-decks",
+    "b-scarabdrop",
+    "b-curr-1",
+    "b-curr-2",
+    "b-curr-3",
+    "b-scarab-1",
+    "b-scarab-2",
+    "b-scarab-3",
+    "b-rarity-1",
+    "b-rarity-2",
+    "b-rarity-3",
+    "b-crabboss",
+    "b-exp-1",
+    "b-exp-2",
+    "b-exp-3",
+    "b-magicmods",
+    "b-anchor-1",
+    "b-anchor-2",
+    "b-sulphdrop",
+    "b-goldlantern",
+    "b-izaro"
+  ],
+  "shapes": [
+    {
+      "internalId": "End",
+      "cnText": "端点",
+      "provenance": "client-verbatim",
+      "status": "confirmed"
+    },
+    {
+      "internalId": "Straight",
+      "cnText": "直线",
+      "provenance": "client-verbatim",
+      "status": "confirmed"
+    },
+    {
+      "internalId": "Corner",
+      "cnText": null,
+      "status": "missing"
+    },
+    {
+      "internalId": "Junction",
+      "cnText": null,
+      "status": "missing"
+    },
+    {
+      "internalId": "Crossing",
+      "cnText": null,
+      "status": "missing"
+    }
+  ],
+  "clientFields": [
+    {
+      "key": "itemClass",
+      "text": "物品类别: 海图"
+    },
+    {
+      "key": "rarity",
+      "text": "稀 有 度: 稀有"
+    },
+    {
+      "key": "areaLevel",
+      "text": "区域等级:"
+    },
+    {
+      "key": "itemLevel",
+      "text": "物品等级:"
+    },
+    {
+      "key": "quantity",
+      "text": "物品数量:"
+    },
+    {
+      "key": "sulphur",
+      "text": "亡者硫磺:"
+    },
+    {
+      "key": "packsize",
+      "text": "怪物群大小:"
+    },
+    {
+      "key": "implicitSection",
+      "text": "{ 基底属性 }"
+    },
+    {
+      "key": "shape",
+      "text": "海图形状："
+    },
+    {
+      "key": "nonAdjustableSuffix",
+      "text": "— 数值不可调整"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "chart-explicit-quantity-tiers",
+      "poedb": [
+        25,
+        32,
+        40,
+        55
+      ],
+      "repo": [
+        20,
+        28,
+        32,
+        45
+      ],
+      "resolution": "unresolved; do not change scorer"
+    },
+    {
+      "id": "chart-explicit-scope",
+      "poedb": "adjacent",
+      "repo": "self",
+      "resolution": "unresolved; check target client/phase/version"
+    },
+    {
+      "id": "border-sulphur-wording",
+      "poedb": "死者硫磺",
+      "clientHeader": "亡者硫磺",
+      "resolution": "needs client border evidence"
+    },
+    {
+      "id": "border-row-count",
+      "poedb": 65,
+      "repo": 64,
+      "blankSourceRows": 1,
+      "resolution": "verify stable IDs; no positional join"
+    }
+  ]
+}
