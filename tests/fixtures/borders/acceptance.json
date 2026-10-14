@@ -1,0 +1,25 @@
+{
+  "provenance": "Artificial nine-chart model; literal expected values reviewed against issue #1 index contract and unchanged upstream heuristic definitions. Not client-copied border data.",
+  "direct": { "id": "b-pack-1", "cnText": "相邻区域的怪物群规模提高 16%", "weights": { "border:pack": 1 }, "total": 0.16 },
+  "isolatedPositions": [
+    { "segment": 0, "perTile": [0.16,0,0,0,0,0,0,0,0] },
+    { "segment": 1, "perTile": [0,0.16,0,0,0,0,0,0,0] },
+    { "segment": 2, "perTile": [0,0,0.16,0,0,0,0,0,0] },
+    { "segment": 3, "perTile": [0,0,0.16,0,0,0,0,0,0] },
+    { "segment": 4, "perTile": [0,0,0,0,0,0.16,0,0,0] },
+    { "segment": 5, "perTile": [0,0,0,0,0,0,0,0,0.16] },
+    { "segment": 6, "perTile": [0,0,0,0,0,0,0.16,0,0] },
+    { "segment": 7, "perTile": [0,0,0,0,0,0,0,0.16,0] },
+    { "segment": 8, "perTile": [0,0,0,0,0,0,0,0,0.16] },
+    { "segment": 9, "perTile": [0.16,0,0,0,0,0,0,0,0] },
+    { "segment": 10, "perTile": [0,0,0,0.16,0,0,0,0,0] },
+    { "segment": 11, "perTile": [0,0,0,0,0,0,0.16,0,0] }
+  ],
+  "allBorders": { "perTile": [0.32,0.16,0.32,0.16,0,0.16,0.32,0.16,0.32], "total": 1.92 },
+  "semantics": [
+    { "id": "b-pack-1", "cnText": "相邻区域的怪物群规模提高 16%", "weights": { "border:pack": 1 }, "total": 0.16, "perTile": [0.16,0,0,0,0,0,0,0,0] },
+    { "id": "b-rareconn-1", "cnText": "相邻区域中稀有怪物数量按每条连接提高 50%", "weights": { "border:rareconn": 1 }, "total": 1, "perTile": [1,0,0,0,0,0,0,0,0] },
+    { "id": "b-quantconn-1", "cnText": "相邻区域中找到的物品数量按每条连接降低 50%\n相邻区域中找到的物品数量提高 120%", "weights": { "border:quantconn": 1 }, "total": 0.2, "perTile": [0.2,0,0,0,0,0,0,0,0] },
+    { "id": "b-mag-1", "cnText": "相邻区域的词缀数值提高 40%", "weights": { "voyage:pack": 1 }, "chartMod": "voy-pack-1", "total": 0.63, "perTile": [0.07,0.07,0.07,0.07,0.07,0.07,0.07,0.07,0.07] }
+  ]
+}

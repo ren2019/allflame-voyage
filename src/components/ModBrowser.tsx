@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { BORDER_MODS, VOYAGE_MODS } from '../data/mods'
+import { localizedBorder, matchesBorderQuery } from '../data/borderLocale'
 import type { Scope } from '../types'
 import { STAT_SHORT } from '../types'
 
@@ -13,7 +14,7 @@ interface Props {
 interface Group {
   title: string
   hint: string
-  mods: { id: string; text: string; short?: string; value?: string }[]
+  mods: { id: string; text: string; short?: string; value?: string; statusLabel?: string }[]
 }
 
 const valueLabel = (effects: { stat: string; percent: number }[]): string | undefined => {
@@ -34,25 +35,26 @@ export function ModBrowser({ disabled, onToggle, onBulk, onClose }: Props) {
         value: valueLabel(m.effects),
       }))
     return [
-      { title: 'Area Modifiers', hint: "a chart's own area", mods: byScope('self') },
-      { title: 'Adjacent Modifiers', hint: 'neighbouring areas', mods: byScope('adjacent') },
-      { title: 'Voyage Modifiers', hint: 'the whole voyage', mods: byScope('global') },
+      { title: '本区域词缀', hint: '海图自身区域', mods: byScope('self') },
+      { title: '相邻区域词缀', hint: '相邻区域', mods: byScope('adjacent') },
+      { title: '全航程词缀', hint: '整个航程', mods: byScope('global') },
       {
-        title: 'Border Modifiers',
-        hint: 'Corruption Currents',
+        title: '边界词缀',
+        hint: '外圈十二个位置',
         mods: BORDER_MODS.map((m) => ({
           id: m.id,
-          text: m.text,
-          short: m.short,
-          value: valueLabel(m.effects) ?? (m.magnitude ? `${m.magnitude}% Magnitude` : undefined),
+          text: localizedBorder(m.id)!.text,
+          statusLabel: localizedBorder(m.id)!.statusLabel,
+          value: valueLabel(m.effects) ?? (m.magnitude ? `${m.magnitude}% 幅度` : undefined),
         })),
       },
     ]
   }, [])
 
   const query = q.trim().toLowerCase()
-  const match = (m: { text: string; short?: string }) =>
-    !query || m.text.toLowerCase().includes(query) || (m.short ?? '').toLowerCase().includes(query)
+  const match = (m: { id: string; text: string; short?: string }) =>
+    !query || m.text.toLowerCase().includes(query) || (m.short ?? '').toLowerCase().includes(query) ||
+    (m.id.startsWith('b-') && matchesBorderQuery(m.id, query))
 
   const disabledCount = disabled.size
 
@@ -60,17 +62,16 @@ export function ModBrowser({ disabled, onToggle, onBulk, onClose }: Props) {
     <div className="onboard-backdrop" onClick={onClose}>
       <div className="onboard modbrowser" onClick={(e) => e.stopPropagation()}>
         <div className="panel-title">
-          Chart Modifiers
+          海图词缀
           <span className="spacer" />
-          <button onClick={onClose}>Done</button>
+          <button onClick={onClose}>完成</button>
         </div>
         <p className="onboard-intro" style={{ marginBottom: 8 }}>
-          Every modifier the solver knows about. Untick any you do not care about and it will be
-          worth nothing in scoring. Your choices are saved and carry across updates.
-          {disabledCount > 0 ? ` (${disabledCount} off)` : ''}
+          这里列出了工具支持的全部词缀。取消勾选后，该词缀不再参与评分。选择会保存并保留到后续更新。
+          {disabledCount > 0 ? `（已禁用 ${disabledCount} 项）` : ''}
         </p>
         <input
-          placeholder="Filter modifiers…"
+          placeholder="搜索词缀…"
           value={q}
           onChange={(e) => setQ(e.target.value)}
           style={{ marginBottom: 10 }}
@@ -87,7 +88,7 @@ export function ModBrowser({ disabled, onToggle, onBulk, onClose }: Props) {
                 <span className="muted mb-group-hint">{g.hint}</span>
                 <span className="spacer" />
                 <button className="mb-bulk" onClick={() => onBulk(ids, anyOn)}>
-                  {anyOn ? 'Disable all' : 'Enable all'}
+                  {anyOn ? '全部禁用' : '全部启用'}
                 </button>
               </div>
               <div className="mb-list">
@@ -101,6 +102,7 @@ export function ModBrowser({ disabled, onToggle, onBulk, onClose }: Props) {
                         onChange={(e) => onToggle(m.id, !e.target.checked)}
                       />
                       <span className="mb-text">{m.text}</span>
+                      {m.statusLabel && <span className="muted">{m.statusLabel}</span>}
                       {m.value && <span className="mb-value">{m.value}</span>}
                     </label>
                   )
