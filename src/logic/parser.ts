@@ -122,6 +122,7 @@ const MAINLAND_DIALECT: ClipboardDialect = {
     { re: /^物品数量\s*[:：]\s*\+?(\d+)%/im, stat: 'quantity' },
     { re: /^亡者硫磺\s*[:：]\s*\+?(\d+)%/im, stat: 'sulphur' },
     { re: /^怪物群大小\s*[:：]\s*\+?(\d+)%/im, stat: 'packsize' },
+    { re: /^物品稀有度\s*[:：]\s*\+?(\d+)%/im, stat: 'rarity' },
   ],
   shapes: Object.fromEntries(
     TEXT_LIBRARY.records.filter((record) => record.kind === 'shape' && record.cnText && record.status === 'confirmed')

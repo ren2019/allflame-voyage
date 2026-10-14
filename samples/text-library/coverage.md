@@ -2,7 +2,7 @@
 
 采集日期：2026-10-14。正式 PoEDB 页面的赛季工具条可见 3.29；具体补丁及其与国服的同步状态未知。不是 PTR。
 
-已调查 141/141 个既有词缀 ID、15/15 个目的地、5/5 种形状的证据状态，以及 10 个真实复制字段。仅有两份真实客户端输入；任何 source-only 均不表示已在国服客户端逐字验证。
+已调查 141/141 个既有词缀 ID、15/15 个目的地、5/5 种形状的证据状态，以及 11 个真实复制字段。已有五张真实客户端输入（原两张和追加三张）；任何 source-only 均不表示已在国服客户端逐字验证。
 
 ## 状态汇总
 
@@ -10,11 +10,11 @@
 | --- | ---: | ---: | ---: | ---: |
 | base | 0 | 3 | 0 | 0 |
 | border | 0 | 63 | 1 | 0 |
-| chart-implicit | 2 | 60 | 0 | 0 |
-| destination | 2 | 13 | 0 | 0 |
-| field | 10 | 0 | 0 | 0 |
+| chart-implicit | 5 | 57 | 0 | 0 |
+| destination | 4 | 11 | 0 | 0 |
+| field | 11 | 0 | 0 | 0 |
 | reward | 0 | 0 | 13 | 2 |
-| shape | 2 | 0 | 0 | 3 |
+| shape | 5 | 0 | 0 | 0 |
 
 ## 原版 ID 逐项审计
 
@@ -50,7 +50,7 @@
 | adj-divbox-2 | source-only | adjacent | 相邻区域包含 3 个额外神圣的秘宝 |
 | adj-arcbox-1 | source-only | adjacent | 相邻区域包含 2 个额外奥术师的保险箱 |
 | adj-arcbox-2 | source-only | adjacent | 相邻区域包含 3 个额外奥术师的保险箱 |
-| adj-opbox-1 | source-only | adjacent | 相邻区域包含 2 个额外侦探的保险箱 |
+| adj-opbox-1 | confirmed | adjacent | 相邻区域包含 2 个额外侦探的保险箱 |
 | adj-opbox-2 | source-only | adjacent | 相邻区域包含 3 个额外侦探的保险箱 |
 | adj-barrel-1 | source-only | adjacent | 相邻区域包含 (12—15) 个额外木桶丛 |
 | adj-barrel-2 | source-only | adjacent | 相邻区域包含 (16—20) 个额外木桶丛 |
@@ -67,7 +67,7 @@
 | adj-ubelt-2 | source-only | adjacent | 相邻区域掉落的腰带有 20% 的几率改为掉落为传奇腰带 |
 | voy-soul | source-only | global | 所有航行区域的玩家拥有噬魂者 |
 | voy-pack-1 | confirmed | global | 所有航行区域的怪物群规模提高 5% |
-| voy-pack-2 | source-only | global | 所有航行区域的怪物群规模提高 7% |
+| voy-pack-2 | confirmed | global | 所有航行区域的怪物群规模提高 7% |
 | voy-quant-1 | source-only | global | 所有航行区域中找到的物品数量提高 8% |
 | voy-quant-2 | source-only | global | 所有航行区域中找到的物品数量提高 10% |
 | voy-rarity-1 | source-only | global | 所有航行区域中找到的物品稀有度提高 7% |
@@ -83,7 +83,7 @@
 | voy-possess | source-only | global | 所有航行区域的稀有怪物有 100% 的几率被附身 |
 | voy-essence | source-only | global | 所有航行区域中作为原生住民的稀有怪物被精华囚禁 |
 | voy-fracture | source-only | global | 所有航行区域的稀有怪物死亡时有 50% 的几率分裂 |
-| voy-flask | source-only | global | 所有航行区域中找到的药剂有 100% 的几率带有 20% 品质 |
+| voy-flask | confirmed | global | 所有航行区域中找到的药剂有 100% 的几率带有 20% 品质 |
 | b-pack-1 | source-only | border | 相邻区域的怪物群规模提高 16% |
 | b-pack-2 | source-only | border | 相邻区域的怪物群规模提高 24% |
 | b-pack-3 | source-only | border | 相邻区域的怪物群规模提高 32% |
@@ -168,7 +168,7 @@
 
 - 螃蟹网页模板为“相邻区域包含 (8—10) 个额外的螃蟹群”；真实复制有实际值 8(8-10)、半角连字符和“ — 数值不可调整”后缀。匹配器仅归一这些已见表示，保留档位与身份。
 - 全航程 5% 怪物群规模与头部本区域 5% 怪物群大小是不同效果；库不改评分。
-- cm-* 是原工具归并奖励 ID，不是网页逐条原生 ID。当前网页显式奖励写相邻区域，客户端两份硫磺正文写“此区域”，原版作用于 self；13 条保留 conflict，金币两条 missing。头部总值不能再叠加正文。
+- cm-* 是原工具归并奖励 ID，不是网页逐条原生 ID。当前网页显式奖励写相邻区域，客户端已见硫磺正文写“此区域”，原版作用于 self；13 条保留 conflict，金币两条 missing。头部总值不能再叠加正文。
 - 当前数量表主要为 25/32/40/55%，另有一个 28% 特殊条目；原版为 20/28/32/45%。未将新档位强行落入旧 ID。
 - 当前稀有度为 16/22/30/38%，原版为 12/18/20/30%；未造 12/18/20% 中文。群规模 14/16/18% 可见但作用域冲突。未找到 50/70% 金币显式奖励。
 - 边界 b-sulphdrop 网页为“死者硫磺”，真实海图奖励头为“亡者硫磺”。保留逐来源原文，需边界客户端证据；其余 63 个边界也只为 source-only。
@@ -177,7 +177,7 @@
 
 ## 剩余实际采集请求
 
-1. 提供 Corner、Junction、Crossing 三种形状的真实国服高级复制全文及面板连接方向。已检索 Chart、Maiden Voyage、三个基底和目的地正式页及两张真实样本，没有获得这些标签；保持 null，不凭翻译补全。
+1. 五种形状标签均已由五张真实国服高级复制校准：端点、直线、角落、节点、交叉；原三项missing已解除，标准拓扑沿用原版。追加来源及逐字段预期见 `samples/charted-extra-shapes.zh-CN.txt` 和相邻expected JSON；实际游戏放置仍须现场验收。
 2. 提供 12 槽边界悬停原文或游戏截图，优先“死者/亡者硫磺”及边界空白条。确认 64 个网页模板的客户端实际文字。
 3. 提供各显式奖励档位的国服高级复制，核对 self/adjacent、数量/稀有度/金币档位及测绘阶段；未解决前原评分参数保持不变。
 4. 如需要原生 mod/stat ID 级验证，取得对应版本可验证客户端文本/数据文件或 PoEDB 详情导出。目前 HTML 只提供文本与少数 stat 展示名称，不能把展示名称或行序伪装为原生 ID。

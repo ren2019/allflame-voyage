@@ -50,7 +50,10 @@ describe('acquired candidate corpus', () => {
     expect(matchChineseChartImplicit('相邻区域包含 99 个额外螃蟹群')).toBeNull()
     expect(matchChineseChartImplicit('相邻区域中找到的物品数量提高 55%')).toBeNull()
     expect(matchChineseChartImplicit('海图形状：十字')).toBeNull()
-    expect(TEXT_LIBRARY.records.filter((record) => record.kind === 'shape' && record.status === 'missing').map((record) => record.internalId)).toEqual(['Corner', 'Junction', 'Crossing'])
+    expect(TEXT_LIBRARY.records.filter((record) => record.kind === 'shape' && record.status === 'missing')).toEqual([])
+    expect(TEXT_LIBRARY.records.filter((record) => record.kind === 'shape' && record.status === 'confirmed').map((record) => [record.internalId, record.cnText])).toEqual([
+      ['End', '端点'], ['Straight', '直线'], ['Corner', '角落'], ['Junction', '节点'], ['Crossing', '交叉'],
+    ])
   })
 
 })

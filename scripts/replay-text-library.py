@@ -23,6 +23,18 @@ def page_ref(page,lang,locator):
     p=LIB/f'snapshots/{page.lower().replace("_","-")}.{lang}.html'
     return {'sourceId':p.stem,'url':f'https://poedb.tw/{lang}/{page}','locator':locator,'snapshotSha256':sha(p)}
 
+seed=json.loads((ROOT/'docs/research/poedb-text-inventory.json').read_text())
+client_sources=seed['clientSources']
+client_samples=[]
+for source in client_sources:
+    path=ROOT/source['samplePath']
+    for index,item in enumerate(re.split(r'\n\s*(?=物品类别: 海图)',path.read_text().strip()),1):
+        client_samples.append((source,index,item))
+def client_refs(text):
+    return [f'{s["samplePath"]}#sample-{i}' for s,i,item in client_samples if text in item]
+def client_evidence(text,locator):
+    return [{'sourceId':s['sourceId'],'url':None,'locator':f'sample-{i} / {locator}','snapshotSha256':sha(ROOT/s['samplePath'])} for s,i,item in client_samples if text in item]
+
 def common(kind,id,cn,en,refs,status='source-only',scope=None):
     return dict(kind=kind,internalId=id,cnText=cn,enText=en,scope=scope,tier=None,numericRange=[],sourceMetadataId=None,sourceMetadataIds=[],sourceModId=None,sourceStatIds=[],sources=refs,retrievedAt='2026-10-14',sourceVersion='3.29 (visible league toolbar; exact patch unknown)',provenance='poedb-table',status=status,mappingBasis='reviewed-semantics',clientSampleRefs=[],notes=[])
 
@@ -31,8 +43,8 @@ for p in sorted((LIB/'snapshots').glob('*.html')):
     page,lang=p.stem.rsplit('.',1)
     slug={'maiden-voyage':'Maiden_Voyage','comprehensive-charting':'Comprehensive_Charting','chart':'Chart','sandy-seabed-chart':'Sandy_Seabed_Chart','coral-forest-chart':'Coral_Forest_Chart','coral-reef-chart':'Coral_Reef_Chart'}[page]
     manifest.append(dict(sourceId=p.stem,url=f'https://poedb.tw/{lang}/{slug}',snapshotPath=str(p.relative_to(ROOT)),snapshotSha256=sha(p),retrievedAt='2026-10-14',sourceVersion='3.29 (visible league toolbar; exact patch unknown)',capture='complete-html-fallback-after-remio-loss',summary='Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML.'))
-client=ROOT/'samples/charted.zh-CN.txt'
-manifest.append(dict(sourceId='client.zh-CN',url=None,snapshotPath=str(client.relative_to(ROOT)),snapshotSha256=sha(client),retrievedAt='2026-10-14',sourceVersion='unknown',capture='client-verbatim',summary='Two user-provided mainland client advanced-copy charts.'))
+for source in client_sources:
+    manifest.append(dict(sourceId=source['sourceId'],url=None,snapshotPath=source['samplePath'],snapshotSha256=sha(ROOT/source['samplePath']),retrievedAt=source['retrievedAt'],sourceVersion='unknown',capture='client-verbatim',summary=source['summary'],originalFile=source['originalFile']))
 dump('sources.json',manifest)
 records=[]
 review=load('mappings.reviewed.json')
@@ -45,10 +57,12 @@ for m in review:
         assert len(candidates)==1,(m['internalId'],lang)
     r=common('border' if m['internalId'].startswith('b-') else 'chart-implicit',m['internalId'],m['cnText'],m['enText'],[page_ref('Maiden_Voyage',lang,section+' / exact description: '+m['cnLocatorText' if lang=='cn' else 'enLocatorText']) for lang in ['cn','us']],scope=m['repoScope'])
     r['numericRange']=ranges(m['cnText']);r['tier']={'requiredLevel':m['requiredLevel']};r['notes']=[m['reviewNote']];r['repositoryEnText']=m['repoEnText']
-    if r['internalId'] in ['adj-crab-1','voy-pack-1']:
-        r.update(status='confirmed',clientSampleRefs=['samples/charted.zh-CN.txt#sample-'+('1' if r['internalId']=='adj-crab-1' else '2')])
-        r['clientText']='相邻区域包含 8(8-10) 个额外的螃蟹群 — 数值不可调整' if r['internalId']=='adj-crab-1' else '所有航行区域的怪物群规模提高 5%'
-        assert r['clientText'] in client.read_text()
+    calibration=next((entry for entry in seed['verifiedMods'] if entry['internalId']==r['internalId']),None)
+    if calibration:
+        assert calibration['cnText']==r['cnText'],f'Calibrated source template drift: {r["internalId"]}'
+        text=calibration['clientText'];assert client_refs(text),r['internalId']
+        r.update(status='confirmed',clientSampleRefs=client_refs(text),clientText=text)
+        r['sources']+=client_evidence(text,'revealed implicit / '+text)
     if r['internalId']=='b-sulphdrop':
         r.update(status='conflict',conflictIds=['border-sulphur-wording']);r['notes'].append('Source-only border sentence uses 死者硫磺; real chart header uses 亡者硫磺. Border-client evidence needed.')
     records.append(r)
@@ -67,10 +81,9 @@ for m in load('repository-inventory.json'):
     r=common('reward',m['internalId'],cn,en,[page_ref('Maiden_Voyage',lang,'MapDeepWaterChartMods / explicit rewards / '+key) for lang,key in [('cn',cnkey),('us',enkey)]],status='conflict' if observations['us'] else 'missing',scope='self')
     r.update(repositoryEnText=m['repoEnText'],numericRange=[[value,value]],sourceScope='adjacent',sourceObservations=observations,tier={'repositoryValue':value},conflictIds=['chart-explicit-scope']+([] if cn and en else ['chart-explicit-'+family+'-tiers']),attemptedSources=['Maiden_Voyage/cn','Maiden_Voyage/us','Sandy_Seabed_Chart/cn','Sandy_Seabed_Chart/us','Coral_Forest_Chart/cn','Coral_Reef_Chart/cn'],nextEvidence='Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template.')
     if m['internalId'] in ['cm-sulph-30','cm-sulph-45']:
-        r['clientText']=f'此区域中找到的亡者硫磺提高 {value}%';assert r['clientText'] in client.read_text();r['clientSampleRefs']=['samples/charted.zh-CN.txt'];r['notes'].append('Client verifies self-area reward wording/value; table still conflicts on scope. Parser must use header total once.')
+        r['clientText']=f'此区域中找到的亡者硫磺提高 {value}%';assert client_refs(r['clientText']);r['clientSampleRefs']=client_refs(r['clientText']);r['sources']+=client_evidence(r['clientText'],'explicit self reward');r['notes'].append('Client verifies self-area reward wording/value; table still conflicts on scope. Parser must use header total once.')
     records.append(r)
 
-seed=json.loads((ROOT/'docs/research/poedb-text-inventory.json').read_text())
 for d in seed['destinations']:
     if d['sourceMetadataId']:
         selected={}
@@ -85,7 +98,10 @@ for d in seed['destinations']:
         for lang,name in [('cn',cn),('us',en)]:assert name in clean((LIB/f'snapshots/maiden-voyage.{lang}.html').read_text())
     r=common('destination',d['internalId'],cn,en,refs)
     r.update(sourceMetadataId=d['sourceMetadataId'],sourceMetadataIds=selected['cn'][1].split('\n') if d['sourceMetadataId'] else [],mappingBasis='metadata' if d['sourceMetadataId'] else 'reviewed-semantics')
-    if d['internalId'] in ['clam-infested-shelf','abyssal-plain']:r.update(status='confirmed',clientSampleRefs=['samples/charted.zh-CN.txt']);assert cn in client.read_text()
+    refs=client_refs('\n'+cn+'\n')
+    if refs:
+        r.update(status='confirmed',clientSampleRefs=refs)
+        r['sources']+=client_evidence('\n'+cn+'\n','destination / '+cn)
     if not d['sourceMetadataId']:r['notes'].append('No stable room metadata captured; names/base reviewed semantically, not by row number.')
     records.append(r)
 for id,cn,page,metadata in [('sandy','金沙海床海图','Sandy_Seabed_Chart','ChartSandy'),('coral-forest','珊瑚密林海图','Coral_Forest_Chart','ChartCoralForest'),('coral-reef','珊瑚暗礁海图','Coral_Reef_Chart','ChartCoralReef')]:
@@ -93,14 +109,14 @@ for id,cn,page,metadata in [('sandy','金沙海床海图','Sandy_Seabed_Chart','
     for lang in ['cn','us']:assert metadata in (LIB/f'snapshots/{page.lower().replace("_","-")}.{lang}.html').read_text()
     r=common('base',id,cn,page.replace('_',' '),[page_ref(page,lang,'item / Type / '+metadata) for lang in ['cn','us']]);r.update(sourceMetadataId=metadata,sourceMetadataIds=[metadata],mappingBasis='metadata');records.append(r)
 for shape in seed['shapes']:
-    refs=[{'sourceId':'client.zh-CN','url':None,'locator':'海图形状：'+shape['cnText'],'snapshotSha256':sha(client)}] if shape['cnText'] else [page_ref('Sandy_Seabed_Chart',lang,'searched item and full mod table; no shape labels') for lang in ['cn','us']]
+    refs=client_evidence('海图形状：'+shape['cnText'],'海图形状：'+shape['cnText']) if shape['cnText'] else [page_ref('Sandy_Seabed_Chart',lang,'searched item and full mod table; no shape labels') for lang in ['cn','us']]
     r=common('shape',shape['internalId'],shape['cnText'],None,refs,status=shape['status']);r['provenance']='client-verbatim' if shape['cnText'] else 'poedb-table';r['sourceVersion']='unknown'
-    if shape['cnText']:assert '海图形状：'+shape['cnText'] in client.read_text();r['clientSampleRefs']=['samples/charted.zh-CN.txt']
+    if shape['cnText']:r['clientSampleRefs']=client_refs('海图形状：'+shape['cnText']);assert r['clientSampleRefs']
     else:r.update(attemptedSources=['Chart/cn','Maiden_Voyage/cn (full HTML)','Sandy_Seabed_Chart/cn (full HTML)','Comprehensive_Charting/cn','samples/charted.zh-CN.txt'],nextEvidence=f'Obtain real mainland client advanced-copy chart with {shape["internalId"]} shape; compare game connection directions. No translated alias until then.')
     records.append(r)
 for field in seed['clientFields']:
-    assert field['text'] in client.read_text()
-    r=common('field',field['key'],field['text'],None,[{'sourceId':'client.zh-CN','url':None,'locator':'exact copied field: '+field['text'],'snapshotSha256':sha(client)}],status='confirmed');r.update(provenance='client-verbatim',sourceVersion='unknown',clientSampleRefs=['samples/charted.zh-CN.txt']);records.append(r)
+    assert client_refs(field['text'])
+    r=common('field',field['key'],field['text'],None,client_evidence(field['text'],'exact copied field: '+field['text']),status='confirmed');r.update(provenance='client-verbatim',sourceVersion='unknown',clientSampleRefs=client_refs(field['text']));records.append(r)
 # Unknown observed mechanism is kept outside the internal pool.
 unmatched=[]
 for lang in ['cn','us']:
@@ -129,5 +145,6 @@ for lang,text in [('cn','航行词缀将在完成测绘后揭示'),('us','Voyage
 dump('conflicts.json',[{'internalId':r['internalId'],'status':r['status'],'conflictIds':r.get('conflictIds',[]),'repositoryScope':r['scope'],'sourceScope':r.get('sourceScope',r['scope']),'repositoryEnText':r.get('repositoryEnText'),'cnText':r['cnText'],'enText':r['enText'],'sourceObservations':r.get('sourceObservations',{}),'notes':r['notes'],'nextEvidence':r.get('nextEvidence','Obtain real mainland border-client text to distinguish translation context/version.')} for r in records if r['status'] in ['conflict','missing'] and r['kind'] in ['reward','border']])
 dump('library.json',{'schemaVersion':1,'records':records,'unmatched':unmatched})
 counts={kind:dict(collections.Counter(r['status'] for r in records if r['kind']==kind)) for kind in sorted(set(r['kind'] for r in records))}
-dump('coverage.json',{'required':{'mods':141,'adjacent':43,'voyage':19,'border':64,'rewards':15,'destinations':15,'shapes':5,'fields':10},'statuses':counts,'investigatedModIds':[r['internalId'] for r in records if r['kind'] in ['chart-implicit','border','reward']],'unresolvedIds':[r['internalId'] for r in records if r['status'] in ['missing','conflict']],'clientCalibration':'Only two chart implicits, two destinations and two shapes. No real border-client corpus.','nativeModIds':'Unavailable in captured HTML; null for all. Explicit semantic alignment is retained.'})
+calibrated={kind:sum(r['kind']==kind and r['status']=='confirmed' for r in records) for kind in ['chart-implicit','destination','shape','field']}
+dump('coverage.json',{'required':{'mods':141,'adjacent':43,'voyage':19,'border':64,'rewards':15,'destinations':15,'shapes':5,'fields':len(seed['clientFields'])},'statuses':counts,'investigatedModIds':[r['internalId'] for r in records if r['kind'] in ['chart-implicit','border','reward']],'unresolvedIds':[r['internalId'] for r in records if r['status'] in ['missing','conflict']],'clientCalibration':{'sampleCount':len(client_samples),'confirmed':calibrated,'borderClientCorpus':False},'nativeModIds':'Unavailable in captured HTML; null for all. Explicit semantic alignment is retained.'})
 print(json.dumps(counts,ensure_ascii=False))

@@ -127,6 +127,18 @@
     "retrievedAt": "2026-10-14",
     "sourceVersion": "unknown",
     "capture": "client-verbatim",
-    "summary": "Two user-provided mainland client advanced-copy charts."
+    "summary": "Two user-provided mainland client advanced-copy charts.",
+    "originalFile": "临时.md"
+  },
+  {
+    "sourceId": "client.extra-shapes.zh-CN",
+    "url": null,
+    "snapshotPath": "samples/charted-extra-shapes.zh-CN.txt",
+    "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "unknown",
+    "capture": "client-verbatim",
+    "summary": "First three exact user-provided advanced-copy charts from 临时 1.md; not constructed data.",
+    "originalFile": "临时 1.md"
   }
 ]

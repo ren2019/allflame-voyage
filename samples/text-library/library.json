@@ -384,6 +384,12 @@
           "url": "https://poedb.tw/us/Maiden_Voyage",
           "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain (8—10) additional packs of Crabs\nlocal deepwater mod applies to adjacent charts [1]",
           "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-1 / revealed implicit / 相邻区域包含 8(8-10) 个额外的螃蟹群 — 数值不可调整",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -1257,18 +1263,27 @@
           "url": "https://poedb.tw/us/Maiden_Voyage",
           "locator": "MapDeepWaterChartMods / exact description: Adjacent Areas contain 2 additional Operative's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]",
           "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / revealed implicit / 相邻区域包含 2 个额外侦探的保险箱 — 数值不可调整",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
       "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
       "provenance": "poedb-table",
-      "status": "source-only",
+      "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
-      "clientSampleRefs": [],
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
+      ],
       "notes": [
         "Independently selected by bilingual mechanic, numerical tier, scope and required level; no positional bilingual join. Native mod/stat ID unavailable in captured table."
       ],
-      "repositoryEnText": "Adjacent Areas contain 2 additional Operative's Strongboxes"
+      "repositoryEnText": "Adjacent Areas contain 2 additional Operative's Strongboxes",
+      "clientText": "相邻区域包含 2 个额外侦探的保险箱 — 数值不可调整"
     },
     {
       "kind": "chart-implicit",
@@ -1951,6 +1966,12 @@
           "url": "https://poedb.tw/us/Maiden_Voyage",
           "locator": "MapDeepWaterChartMods / exact description: 5% increased Pack Size in all Voyage Areas",
           "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / revealed implicit / 所有航行区域的怪物群规模提高 5%",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -1998,18 +2019,27 @@
           "url": "https://poedb.tw/us/Maiden_Voyage",
           "locator": "MapDeepWaterChartMods / exact description: 7% increased Pack Size in all Voyage Areas",
           "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / revealed implicit / 所有航行区域的怪物群规模提高 7%",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
       "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
       "provenance": "poedb-table",
-      "status": "source-only",
+      "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
-      "clientSampleRefs": [],
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2"
+      ],
       "notes": [
         "Independently selected by bilingual mechanic, numerical tier, scope and required level; no positional bilingual join. Native mod/stat ID unavailable in captured table."
       ],
-      "repositoryEnText": "7% increased Pack size"
+      "repositoryEnText": "7% increased Pack size",
+      "clientText": "所有航行区域的怪物群规模提高 7%"
     },
     {
       "kind": "chart-implicit",
@@ -2686,18 +2716,27 @@
           "url": "https://poedb.tw/us/Maiden_Voyage",
           "locator": "MapDeepWaterChartMods / exact description: Flasks found in all Voyage Areas have 100% chance to have 20% Quality",
           "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / revealed implicit / 所有航行区域中找到的药剂有 100% 的几率带有 20% 品质",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
       "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
       "provenance": "poedb-table",
-      "status": "source-only",
+      "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
-      "clientSampleRefs": [],
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1"
+      ],
       "notes": [
         "Independently selected by bilingual mechanic, numerical tier, scope and required level; no positional bilingual join. Native mod/stat ID unavailable in captured table."
       ],
-      "repositoryEnText": "Flasks found in all Voyage Areas have 100% chance to have 20% Quality"
+      "repositoryEnText": "Flasks found in all Voyage Areas have 100% chance to have 20% Quality",
+      "clientText": "所有航行区域中找到的药剂有 100% 的几率带有 20% 品质"
     },
     {
       "kind": "border",
@@ -5959,6 +5998,30 @@
           "url": "https://poedb.tw/us/Maiden_Voyage",
           "locator": "MapDeepWaterChartMods / explicit rewards / Dead Man's Sulphur found in adjacent Areas",
           "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-1 / explicit self reward",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / explicit self reward",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / explicit self reward",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / explicit self reward",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -5967,7 +6030,10 @@
       "status": "conflict",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": [
         "Client verifies self-area reward wording/value; table still conflicts on scope. Parser must use header total once."
@@ -6039,6 +6105,12 @@
           "url": "https://poedb.tw/us/Maiden_Voyage",
           "locator": "MapDeepWaterChartMods / explicit rewards / Dead Man's Sulphur found in adjacent Areas",
           "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-1 / explicit self reward",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -6047,7 +6119,7 @@
       "status": "conflict",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1"
       ],
       "notes": [
         "Client verifies self-area reward wording/value; table still conflicts on scope. Parser must use header total once."
@@ -6917,6 +6989,12 @@
           "url": "https://poedb.tw/us/Comprehensive_Charting",
           "locator": "destination table / room metadata CoralReefTreasureClams1",
           "snapshotSha256": "07789b599bb19ce69f3c985d30235942a5e7040a1970501a0c8a4d3818ceb415"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-1 / destination / 蛤蜊海架",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -6925,7 +7003,7 @@
       "status": "confirmed",
       "mappingBasis": "metadata",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1"
       ],
       "notes": []
     },
@@ -7157,6 +7235,18 @@
           "url": "https://poedb.tw/us/Comprehensive_Charting",
           "locator": "destination table / room metadata SandyEnd1",
           "snapshotSha256": "07789b599bb19ce69f3c985d30235942a5e7040a1970501a0c8a4d3818ceb415"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / destination / 深渊平原",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / destination / 深渊平原",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7165,7 +7255,8 @@
       "status": "confirmed",
       "mappingBasis": "metadata",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2"
       ],
       "notes": []
     },
@@ -7242,14 +7333,22 @@
           "url": "https://poedb.tw/us/Comprehensive_Charting",
           "locator": "destination table / room metadata CoralReefEnd1",
           "snapshotSha256": "07789b599bb19ce69f3c985d30235942a5e7040a1970501a0c8a4d3818ceb415"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / destination / 海底山脊",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
       "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
       "provenance": "poedb-table",
-      "status": "source-only",
+      "status": "confirmed",
       "mappingBasis": "metadata",
-      "clientSampleRefs": [],
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1"
+      ],
       "notes": []
     },
     {
@@ -7362,14 +7461,22 @@
           "url": "https://poedb.tw/us/Comprehensive_Charting",
           "locator": "destination table / room metadata CoralForestEnd1",
           "snapshotSha256": "07789b599bb19ce69f3c985d30235942a5e7040a1970501a0c8a4d3818ceb415"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / destination / 海底林地",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
       "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
       "provenance": "poedb-table",
-      "status": "source-only",
+      "status": "confirmed",
       "mappingBasis": "metadata",
-      "clientSampleRefs": [],
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
+      ],
       "notes": []
     },
     {
@@ -7532,7 +7639,7 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "海图形状：端点",
+          "locator": "sample-1 / 海图形状：端点",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
         }
       ],
@@ -7542,7 +7649,7 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1"
       ],
       "notes": []
     },
@@ -7562,7 +7669,7 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "海图形状：直线",
+          "locator": "sample-2 / 海图形状：直线",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
         }
       ],
@@ -7572,14 +7679,14 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-2"
       ],
       "notes": []
     },
     {
       "kind": "shape",
       "internalId": "Corner",
-      "cnText": null,
+      "cnText": "角落",
       "enText": null,
       "scope": null,
       "tier": null,
@@ -7590,38 +7697,26 @@
       "sourceStatIds": [],
       "sources": [
         {
-          "sourceId": "sandy-seabed-chart.cn",
-          "url": "https://poedb.tw/cn/Sandy_Seabed_Chart",
-          "locator": "searched item and full mod table; no shape labels",
-          "snapshotSha256": "ebbafa2c6a7ffc312ab4ad4d3b3333145f42081094db23218a1204306e772f9e"
-        },
-        {
-          "sourceId": "sandy-seabed-chart.us",
-          "url": "https://poedb.tw/us/Sandy_Seabed_Chart",
-          "locator": "searched item and full mod table; no shape labels",
-          "snapshotSha256": "a9bd05ded0e8c6e8d4e294004e179598e99e9e8eefda16e6c330db3da89d355f"
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / 海图形状：角落",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
       "sourceVersion": "unknown",
-      "provenance": "poedb-table",
-      "status": "missing",
+      "provenance": "client-verbatim",
+      "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
-      "clientSampleRefs": [],
-      "notes": [],
-      "attemptedSources": [
-        "Chart/cn",
-        "Maiden_Voyage/cn (full HTML)",
-        "Sandy_Seabed_Chart/cn (full HTML)",
-        "Comprehensive_Charting/cn",
-        "samples/charted.zh-CN.txt"
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1"
       ],
-      "nextEvidence": "Obtain real mainland client advanced-copy chart with Corner shape; compare game connection directions. No translated alias until then."
+      "notes": []
     },
     {
       "kind": "shape",
       "internalId": "Junction",
-      "cnText": null,
+      "cnText": "节点",
       "enText": null,
       "scope": null,
       "tier": null,
@@ -7632,38 +7727,26 @@
       "sourceStatIds": [],
       "sources": [
         {
-          "sourceId": "sandy-seabed-chart.cn",
-          "url": "https://poedb.tw/cn/Sandy_Seabed_Chart",
-          "locator": "searched item and full mod table; no shape labels",
-          "snapshotSha256": "ebbafa2c6a7ffc312ab4ad4d3b3333145f42081094db23218a1204306e772f9e"
-        },
-        {
-          "sourceId": "sandy-seabed-chart.us",
-          "url": "https://poedb.tw/us/Sandy_Seabed_Chart",
-          "locator": "searched item and full mod table; no shape labels",
-          "snapshotSha256": "a9bd05ded0e8c6e8d4e294004e179598e99e9e8eefda16e6c330db3da89d355f"
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / 海图形状：节点",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
       "sourceVersion": "unknown",
-      "provenance": "poedb-table",
-      "status": "missing",
+      "provenance": "client-verbatim",
+      "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
-      "clientSampleRefs": [],
-      "notes": [],
-      "attemptedSources": [
-        "Chart/cn",
-        "Maiden_Voyage/cn (full HTML)",
-        "Sandy_Seabed_Chart/cn (full HTML)",
-        "Comprehensive_Charting/cn",
-        "samples/charted.zh-CN.txt"
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2"
       ],
-      "nextEvidence": "Obtain real mainland client advanced-copy chart with Junction shape; compare game connection directions. No translated alias until then."
+      "notes": []
     },
     {
       "kind": "shape",
       "internalId": "Crossing",
-      "cnText": null,
+      "cnText": "交叉",
       "enText": null,
       "scope": null,
       "tier": null,
@@ -7674,33 +7757,21 @@
       "sourceStatIds": [],
       "sources": [
         {
-          "sourceId": "sandy-seabed-chart.cn",
-          "url": "https://poedb.tw/cn/Sandy_Seabed_Chart",
-          "locator": "searched item and full mod table; no shape labels",
-          "snapshotSha256": "ebbafa2c6a7ffc312ab4ad4d3b3333145f42081094db23218a1204306e772f9e"
-        },
-        {
-          "sourceId": "sandy-seabed-chart.us",
-          "url": "https://poedb.tw/us/Sandy_Seabed_Chart",
-          "locator": "searched item and full mod table; no shape labels",
-          "snapshotSha256": "a9bd05ded0e8c6e8d4e294004e179598e99e9e8eefda16e6c330db3da89d355f"
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / 海图形状：交叉",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
       "sourceVersion": "unknown",
-      "provenance": "poedb-table",
-      "status": "missing",
+      "provenance": "client-verbatim",
+      "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
-      "clientSampleRefs": [],
-      "notes": [],
-      "attemptedSources": [
-        "Chart/cn",
-        "Maiden_Voyage/cn (full HTML)",
-        "Sandy_Seabed_Chart/cn (full HTML)",
-        "Comprehensive_Charting/cn",
-        "samples/charted.zh-CN.txt"
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
-      "nextEvidence": "Obtain real mainland client advanced-copy chart with Crossing shape; compare game connection directions. No translated alias until then."
+      "notes": []
     },
     {
       "kind": "field",
@@ -7718,8 +7789,32 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: 物品类别: 海图",
+          "locator": "sample-1 / exact copied field: 物品类别: 海图",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 物品类别: 海图",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: 物品类别: 海图",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 物品类别: 海图",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: 物品类别: 海图",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7728,7 +7823,11 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7748,8 +7847,32 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: 稀 有 度: 稀有",
+          "locator": "sample-1 / exact copied field: 稀 有 度: 稀有",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 稀 有 度: 稀有",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: 稀 有 度: 稀有",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 稀 有 度: 稀有",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: 稀 有 度: 稀有",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7758,7 +7881,11 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7778,8 +7905,32 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: 区域等级:",
+          "locator": "sample-1 / exact copied field: 区域等级:",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 区域等级:",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: 区域等级:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 区域等级:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: 区域等级:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7788,7 +7939,11 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7808,8 +7963,32 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: 物品等级:",
+          "locator": "sample-1 / exact copied field: 物品等级:",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 物品等级:",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: 物品等级:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 物品等级:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: 物品等级:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7818,7 +7997,11 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7838,8 +8021,32 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: 物品数量:",
+          "locator": "sample-1 / exact copied field: 物品数量:",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 物品数量:",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: 物品数量:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 物品数量:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: 物品数量:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7848,7 +8055,11 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7868,8 +8079,26 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: 亡者硫磺:",
+          "locator": "sample-1 / exact copied field: 亡者硫磺:",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 亡者硫磺:",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: 亡者硫磺:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: 亡者硫磺:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7878,7 +8107,10 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7898,8 +8130,20 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: 怪物群大小:",
+          "locator": "sample-2 / exact copied field: 怪物群大小:",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 怪物群大小:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: 怪物群大小:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7908,7 +8152,9 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7928,8 +8174,32 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: { 基底属性 }",
+          "locator": "sample-1 / exact copied field: { 基底属性 }",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: { 基底属性 }",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: { 基底属性 }",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: { 基底属性 }",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: { 基底属性 }",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7938,7 +8208,11 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7958,8 +8232,32 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: 海图形状：",
+          "locator": "sample-1 / exact copied field: 海图形状：",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 海图形状：",
+          "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: 海图形状：",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 海图形状：",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: 海图形状：",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7968,7 +8266,11 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
       ],
       "notes": []
     },
@@ -7988,8 +8290,26 @@
         {
           "sourceId": "client.zh-CN",
           "url": null,
-          "locator": "exact copied field: — 数值不可调整",
+          "locator": "sample-1 / exact copied field: — 数值不可调整",
           "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-1 / exact copied field: — 数值不可调整",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: — 数值不可调整",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        },
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-3 / exact copied field: — 数值不可调整",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
         }
       ],
       "retrievedAt": "2026-10-14",
@@ -7998,7 +8318,40 @@
       "status": "confirmed",
       "mappingBasis": "reviewed-semantics",
       "clientSampleRefs": [
-        "samples/charted.zh-CN.txt"
+        "samples/charted.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-1",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2",
+        "samples/charted-extra-shapes.zh-CN.txt#sample-3"
+      ],
+      "notes": []
+    },
+    {
+      "kind": "field",
+      "internalId": "itemRarity",
+      "cnText": "物品稀有度:",
+      "enText": null,
+      "scope": null,
+      "tier": null,
+      "numericRange": [],
+      "sourceMetadataId": null,
+      "sourceMetadataIds": [],
+      "sourceModId": null,
+      "sourceStatIds": [],
+      "sources": [
+        {
+          "sourceId": "client.extra-shapes.zh-CN",
+          "url": null,
+          "locator": "sample-2 / exact copied field: 物品稀有度:",
+          "snapshotSha256": "937d3cbcd16b6cb0ba74fd714d7c940784972d1af9d1c87d784d0ed3433deb22"
+        }
+      ],
+      "retrievedAt": "2026-10-14",
+      "sourceVersion": "unknown",
+      "provenance": "client-verbatim",
+      "status": "confirmed",
+      "mappingBasis": "reviewed-semantics",
+      "clientSampleRefs": [
+        "samples/charted-extra-shapes.zh-CN.txt#sample-2"
       ],
       "notes": []
     }
