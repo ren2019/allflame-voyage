@@ -1,3 +1,4 @@
+import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { BoardView } from './components/Board'
 import { ModBrowser } from './components/ModBrowser'
@@ -533,6 +534,7 @@ export default function App() {
           🧭 使用教程
         </button>
         <div className="header-right">
+          <a className="feedback-link" href={calibrationUrl()} target="_blank" rel="noopener noreferrer">中文校准 ↗</a>
           <span className="tag">流放之路 3.29：永火之咒</span>
           <button title="首次使用说明" onClick={() => setShowOnboarding(true)}>
             ?

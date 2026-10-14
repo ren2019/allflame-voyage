@@ -1,3 +1,4 @@
+import { CalibrationLink } from './CalibrationLink'
 import { useMemo, useState } from 'react'
 import { BORDER_MODS, VOYAGE_MODS } from '../data/mods'
 import { localizedBorder, matchesBorderQuery } from '../data/borderLocale'
@@ -105,6 +106,7 @@ export function ModBrowser({ disabled, onToggle, onBulk, onClose }: Props) {
                       <span className="mb-text">{m.text}</span>
                       {m.statusLabel && <span className="muted">{m.statusLabel}</span>}
                       {m.value && <span className="mb-value">{m.value}</span>}
+                      <CalibrationLink id={m.id} />
                     </label>
                   )
                 })}
