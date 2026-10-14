@@ -45,11 +45,25 @@ export function validateAcceptanceCoverage(root, reportDir) {
   if (!unit?.success || unit.numPendingTests || unit.numFailedTests) issues.push('Unit execution incomplete')
   if (!browser?.stats || browser.stats.unexpected || browser.stats.skipped || browser.stats.flaky || browser.errors?.length) issues.push('Browser execution incomplete')
   const windows = read(resolve(root, contract.windowsEvidence), 'Windows evidence')
-  if (!windows?.targetWindows || windows.certificateBypass !== false || !windows.secureContext || windows.importedRealCharts !== 2 || !windows.actualWindowsClipboardWrite || windows.cleanup?.TaskRemoved !== true || windows.cleanup?.ProfileRemoved !== true || windows.cleanup?.RemainingOwnProcesses !== 0 || windows.cleanup?.SshTunnelClosed !== true) issues.push('Windows target evidence incomplete')
+  const desktop = windows?.windowsDesktopClipboard
+  const windowsComplete = !!(
+    windows?.targetWindows === true && windows.certificateBypass === false && windows.secureContext === true
+    && windows.importedRealCharts === contract.requiredWindowsImportedCharts
+    && windows.refreshedInventory === contract.requiredWindowsImportedCharts
+    && windows.failedResources === 0 && windows.actualWindowsClipboardWrite === true
+    && windows.nativeClipboardImplementation === true && windows.clipboardWriteAcknowledgement === 'fulfilled'
+    && desktop?.MatchesExpected === true && desktop.Empty === false && desktop.Session > 0
+    && desktop.ClipboardOwner === 'msedge' && desktop.OwnerPid > 0
+    && typeof desktop.OwnText === 'string' && desktop.OwnText.length > 0 && desktop.OwnText === windows.placementGuideClipboard
+    && windows.cleanup?.TaskRemoved === true && windows.cleanup.ProfileRemoved === true
+    && windows.cleanup.RemainingOwnProcesses === 0 && windows.cleanup.SshTunnelClosed === true
+    && windows.cleanup.NativeClipboardProbeRemoved === true
+  )
+  if (!windowsComplete) issues.push('Windows target evidence incomplete')
   const groups = contract.groups.map((group) => {
     const verified = group.tests.every((ref) => {
       if (ref.suite === 'deployment') return stages?.stages?.some((stage) => stage.name === 'deployment' && stage.status === 'passed' && stage.testCount >= 4)
-      if (ref.suite === 'windows') return !!windows?.[ref.nameIncludes]
+      if (ref.suite === 'windows') return windowsComplete && !!windows?.[ref.nameIncludes]
       const matches = observations.filter((test) => test.suite === ref.suite && test.file?.endsWith(ref.file) && test.title?.includes(ref.nameIncludes))
       if (matches.length < (ref.minCases ?? 1) || matches.some((test) => !test.passed)) { issues.push(`Missing passing evidence ${group.id}: ${ref.file} / ${ref.nameIncludes}`); return false }
       return true
