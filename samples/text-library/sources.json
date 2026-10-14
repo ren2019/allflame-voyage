@@ -1,0 +1,132 @@
+[
+  {
+    "sourceId": "chart.cn",
+    "url": "https://poedb.tw/cn/Chart",
+    "snapshotPath": "samples/text-library/snapshots/chart.cn.html",
+    "snapshotSha256": "1abcc6d9fabb9f893dd87a340bd8b5f659d17f1a23d2a7beba088e036eaf7395",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "chart.us",
+    "url": "https://poedb.tw/us/Chart",
+    "snapshotPath": "samples/text-library/snapshots/chart.us.html",
+    "snapshotSha256": "39b3ddc903199842231330d658693df62f946275c8342bf5684902bb23d138fc",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "comprehensive-charting.cn",
+    "url": "https://poedb.tw/cn/Comprehensive_Charting",
+    "snapshotPath": "samples/text-library/snapshots/comprehensive-charting.cn.html",
+    "snapshotSha256": "5225989636a71dffb6c24b2a04e86864172dd978bed3dc9a6caa3b08ae288a2a",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "comprehensive-charting.us",
+    "url": "https://poedb.tw/us/Comprehensive_Charting",
+    "snapshotPath": "samples/text-library/snapshots/comprehensive-charting.us.html",
+    "snapshotSha256": "07789b599bb19ce69f3c985d30235942a5e7040a1970501a0c8a4d3818ceb415",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "coral-forest-chart.cn",
+    "url": "https://poedb.tw/cn/Coral_Forest_Chart",
+    "snapshotPath": "samples/text-library/snapshots/coral-forest-chart.cn.html",
+    "snapshotSha256": "4134d8b8523d4ac0de4765c2e3ea67029e00490d6519e47a6b95b159702a173e",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "coral-forest-chart.us",
+    "url": "https://poedb.tw/us/Coral_Forest_Chart",
+    "snapshotPath": "samples/text-library/snapshots/coral-forest-chart.us.html",
+    "snapshotSha256": "bd7eef42c4deddbb5702a0a773846789b5f76b4a70690c836e9b74360f944c9f",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "coral-reef-chart.cn",
+    "url": "https://poedb.tw/cn/Coral_Reef_Chart",
+    "snapshotPath": "samples/text-library/snapshots/coral-reef-chart.cn.html",
+    "snapshotSha256": "8d65fb564e03077e8357704a633c1e3a5746e3271f2387bc5a5a1c784827fa43",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "coral-reef-chart.us",
+    "url": "https://poedb.tw/us/Coral_Reef_Chart",
+    "snapshotPath": "samples/text-library/snapshots/coral-reef-chart.us.html",
+    "snapshotSha256": "9959342a9b6493578909cc315df3127e71f87150acd4811cf60d955b1ca07fd2",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "maiden-voyage.cn",
+    "url": "https://poedb.tw/cn/Maiden_Voyage",
+    "snapshotPath": "samples/text-library/snapshots/maiden-voyage.cn.html",
+    "snapshotSha256": "ba341d3183f032bccbcb48e2bda994bc5951bef36df6b3e48e96e075e9db095d",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "maiden-voyage.us",
+    "url": "https://poedb.tw/us/Maiden_Voyage",
+    "snapshotPath": "samples/text-library/snapshots/maiden-voyage.us.html",
+    "snapshotSha256": "d49e577fd06ed07543065f899931cfc4b909375b20c75cd4e4534f5aa6c4ddce",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "sandy-seabed-chart.cn",
+    "url": "https://poedb.tw/cn/Sandy_Seabed_Chart",
+    "snapshotPath": "samples/text-library/snapshots/sandy-seabed-chart.cn.html",
+    "snapshotSha256": "ebbafa2c6a7ffc312ab4ad4d3b3333145f42081094db23218a1204306e772f9e",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "sandy-seabed-chart.us",
+    "url": "https://poedb.tw/us/Sandy_Seabed_Chart",
+    "snapshotPath": "samples/text-library/snapshots/sandy-seabed-chart.us.html",
+    "snapshotSha256": "a9bd05ded0e8c6e8d4e294004e179598e99e9e8eefda16e6c330db3da89d355f",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "3.29 (visible league toolbar; exact patch unknown)",
+    "capture": "complete-html-fallback-after-remio-loss",
+    "summary": "Formal-site source; mod tables include hidden sections. No native per-mod IDs in HTML."
+  },
+  {
+    "sourceId": "client.zh-CN",
+    "url": null,
+    "snapshotPath": "samples/charted.zh-CN.txt",
+    "snapshotSha256": "bd19ade0efde215033fbb0516a30cca68fa86781ea4058ded0843fb6ff725572",
+    "retrievedAt": "2026-10-14",
+    "sourceVersion": "unknown",
+    "capture": "client-verbatim",
+    "summary": "Two user-provided mainland client advanced-copy charts."
+  }
+]

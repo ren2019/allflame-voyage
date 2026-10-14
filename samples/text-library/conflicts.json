@@ -1,0 +1,733 @@
+[
+  {
+    "internalId": "b-sulphdrop",
+    "status": "conflict",
+    "conflictIds": [
+      "border-sulphur-wording"
+    ],
+    "repositoryScope": "border",
+    "sourceScope": "border",
+    "repositoryEnText": "Rare Monsters in adjacent Areas drop Dead Man's Sulphur",
+    "cnText": "相邻区域的稀有怪物掉落死者硫磺",
+    "enText": "Rare Monsters in adjacent Areas drop Dead Man's Sulphur",
+    "sourceObservations": {},
+    "notes": [
+      "Independently selected by bilingual mechanic, numerical tier, scope and required level; no positional bilingual join. Native mod/stat ID unavailable in captured table.",
+      "Source-only border sentence uses 死者硫磺; real chart header uses 亡者硫磺. Border-client evidence needed."
+    ],
+    "nextEvidence": "Obtain real mainland border-client text to distinguish translation context/version."
+  },
+  {
+    "internalId": "cm-quant-20",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope",
+      "chart-explicit-quant-tiers"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "20% increased Quantity of Items found in this Area",
+    "cnText": null,
+    "enText": null,
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的物品数量提高 25%",
+        "相邻区域中找到的物品数量提高 25% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 25% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 25% 物理",
+        "相邻区域中找到的物品数量提高 25% 生命",
+        "相邻区域中找到的物品数量提高 28% 物理 混沌 攻击 异常状态",
+        "相邻区域中找到的物品数量提高 32%",
+        "相邻区域中找到的物品数量提高 32% 伤害 暴击",
+        "相邻区域中找到的物品数量提高 32% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 32% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 32% 物理",
+        "相邻区域中找到的物品数量提高 32% 生命",
+        "相邻区域中找到的物品数量提高 32% 速度",
+        "相邻区域中找到的物品数量提高 40%",
+        "相邻区域中找到的物品数量提高 40% 伤害 暴击",
+        "相邻区域中找到的物品数量提高 40% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 40% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 40% 施法 诅咒",
+        "相邻区域中找到的物品数量提高 40% 物理",
+        "相邻区域中找到的物品数量提高 40% 生命",
+        "相邻区域中找到的物品数量提高 55%",
+        "相邻区域中找到的物品数量提高 55% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 55% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 55% 物理",
+        "相邻区域中找到的物品数量提高 55% 生命"
+      ],
+      "us": [
+        "25% increased Quantity of Items found in adjacent Areas",
+        "25% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "25% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "25% increased Quantity of Items found in adjacent Areas Life",
+        "25% increased Quantity of Items found in adjacent Areas Physical",
+        "28% increased Quantity of Items found in adjacent Areas Physical Chaos Attack Ailment",
+        "32% increased Quantity of Items found in adjacent Areas",
+        "32% increased Quantity of Items found in adjacent Areas Damage Critical",
+        "32% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "32% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "32% increased Quantity of Items found in adjacent Areas Life",
+        "32% increased Quantity of Items found in adjacent Areas Physical",
+        "32% increased Quantity of Items found in adjacent Areas Speed",
+        "40% increased Quantity of Items found in adjacent Areas",
+        "40% increased Quantity of Items found in adjacent Areas Caster Curse",
+        "40% increased Quantity of Items found in adjacent Areas Damage Critical",
+        "40% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "40% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "40% increased Quantity of Items found in adjacent Areas Life",
+        "40% increased Quantity of Items found in adjacent Areas Physical",
+        "55% increased Quantity of Items found in adjacent Areas",
+        "55% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "55% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "55% increased Quantity of Items found in adjacent Areas Life",
+        "55% increased Quantity of Items found in adjacent Areas Physical"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-quant-28",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "28% increased Quantity of Items found in this Area",
+    "cnText": "相邻区域中找到的物品数量提高 28% 物理 混沌 攻击 异常状态",
+    "enText": "28% increased Quantity of Items found in adjacent Areas Physical Chaos Attack Ailment",
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的物品数量提高 25%",
+        "相邻区域中找到的物品数量提高 25% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 25% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 25% 物理",
+        "相邻区域中找到的物品数量提高 25% 生命",
+        "相邻区域中找到的物品数量提高 28% 物理 混沌 攻击 异常状态",
+        "相邻区域中找到的物品数量提高 32%",
+        "相邻区域中找到的物品数量提高 32% 伤害 暴击",
+        "相邻区域中找到的物品数量提高 32% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 32% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 32% 物理",
+        "相邻区域中找到的物品数量提高 32% 生命",
+        "相邻区域中找到的物品数量提高 32% 速度",
+        "相邻区域中找到的物品数量提高 40%",
+        "相邻区域中找到的物品数量提高 40% 伤害 暴击",
+        "相邻区域中找到的物品数量提高 40% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 40% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 40% 施法 诅咒",
+        "相邻区域中找到的物品数量提高 40% 物理",
+        "相邻区域中找到的物品数量提高 40% 生命",
+        "相邻区域中找到的物品数量提高 55%",
+        "相邻区域中找到的物品数量提高 55% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 55% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 55% 物理",
+        "相邻区域中找到的物品数量提高 55% 生命"
+      ],
+      "us": [
+        "25% increased Quantity of Items found in adjacent Areas",
+        "25% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "25% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "25% increased Quantity of Items found in adjacent Areas Life",
+        "25% increased Quantity of Items found in adjacent Areas Physical",
+        "28% increased Quantity of Items found in adjacent Areas Physical Chaos Attack Ailment",
+        "32% increased Quantity of Items found in adjacent Areas",
+        "32% increased Quantity of Items found in adjacent Areas Damage Critical",
+        "32% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "32% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "32% increased Quantity of Items found in adjacent Areas Life",
+        "32% increased Quantity of Items found in adjacent Areas Physical",
+        "32% increased Quantity of Items found in adjacent Areas Speed",
+        "40% increased Quantity of Items found in adjacent Areas",
+        "40% increased Quantity of Items found in adjacent Areas Caster Curse",
+        "40% increased Quantity of Items found in adjacent Areas Damage Critical",
+        "40% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "40% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "40% increased Quantity of Items found in adjacent Areas Life",
+        "40% increased Quantity of Items found in adjacent Areas Physical",
+        "55% increased Quantity of Items found in adjacent Areas",
+        "55% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "55% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "55% increased Quantity of Items found in adjacent Areas Life",
+        "55% increased Quantity of Items found in adjacent Areas Physical"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-quant-32",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "32% increased Quantity of Items found in this Area",
+    "cnText": "相邻区域中找到的物品数量提高 32%",
+    "enText": "32% increased Quantity of Items found in adjacent Areas",
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的物品数量提高 25%",
+        "相邻区域中找到的物品数量提高 25% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 25% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 25% 物理",
+        "相邻区域中找到的物品数量提高 25% 生命",
+        "相邻区域中找到的物品数量提高 28% 物理 混沌 攻击 异常状态",
+        "相邻区域中找到的物品数量提高 32%",
+        "相邻区域中找到的物品数量提高 32% 伤害 暴击",
+        "相邻区域中找到的物品数量提高 32% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 32% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 32% 物理",
+        "相邻区域中找到的物品数量提高 32% 生命",
+        "相邻区域中找到的物品数量提高 32% 速度",
+        "相邻区域中找到的物品数量提高 40%",
+        "相邻区域中找到的物品数量提高 40% 伤害 暴击",
+        "相邻区域中找到的物品数量提高 40% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 40% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 40% 施法 诅咒",
+        "相邻区域中找到的物品数量提高 40% 物理",
+        "相邻区域中找到的物品数量提高 40% 生命",
+        "相邻区域中找到的物品数量提高 55%",
+        "相邻区域中找到的物品数量提高 55% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 55% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 55% 物理",
+        "相邻区域中找到的物品数量提高 55% 生命"
+      ],
+      "us": [
+        "25% increased Quantity of Items found in adjacent Areas",
+        "25% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "25% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "25% increased Quantity of Items found in adjacent Areas Life",
+        "25% increased Quantity of Items found in adjacent Areas Physical",
+        "28% increased Quantity of Items found in adjacent Areas Physical Chaos Attack Ailment",
+        "32% increased Quantity of Items found in adjacent Areas",
+        "32% increased Quantity of Items found in adjacent Areas Damage Critical",
+        "32% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "32% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "32% increased Quantity of Items found in adjacent Areas Life",
+        "32% increased Quantity of Items found in adjacent Areas Physical",
+        "32% increased Quantity of Items found in adjacent Areas Speed",
+        "40% increased Quantity of Items found in adjacent Areas",
+        "40% increased Quantity of Items found in adjacent Areas Caster Curse",
+        "40% increased Quantity of Items found in adjacent Areas Damage Critical",
+        "40% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "40% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "40% increased Quantity of Items found in adjacent Areas Life",
+        "40% increased Quantity of Items found in adjacent Areas Physical",
+        "55% increased Quantity of Items found in adjacent Areas",
+        "55% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "55% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "55% increased Quantity of Items found in adjacent Areas Life",
+        "55% increased Quantity of Items found in adjacent Areas Physical"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-quant-45",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope",
+      "chart-explicit-quant-tiers"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "45% increased Quantity of Items found in this Area",
+    "cnText": null,
+    "enText": null,
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的物品数量提高 25%",
+        "相邻区域中找到的物品数量提高 25% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 25% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 25% 物理",
+        "相邻区域中找到的物品数量提高 25% 生命",
+        "相邻区域中找到的物品数量提高 28% 物理 混沌 攻击 异常状态",
+        "相邻区域中找到的物品数量提高 32%",
+        "相邻区域中找到的物品数量提高 32% 伤害 暴击",
+        "相邻区域中找到的物品数量提高 32% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 32% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 32% 物理",
+        "相邻区域中找到的物品数量提高 32% 生命",
+        "相邻区域中找到的物品数量提高 32% 速度",
+        "相邻区域中找到的物品数量提高 40%",
+        "相邻区域中找到的物品数量提高 40% 伤害 暴击",
+        "相邻区域中找到的物品数量提高 40% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 40% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 40% 施法 诅咒",
+        "相邻区域中找到的物品数量提高 40% 物理",
+        "相邻区域中找到的物品数量提高 40% 生命",
+        "相邻区域中找到的物品数量提高 55%",
+        "相邻区域中找到的物品数量提高 55% 元素 混沌 抗性",
+        "相邻区域中找到的物品数量提高 55% 元素 火焰 冰霜 闪电 异常状态",
+        "相邻区域中找到的物品数量提高 55% 物理",
+        "相邻区域中找到的物品数量提高 55% 生命"
+      ],
+      "us": [
+        "25% increased Quantity of Items found in adjacent Areas",
+        "25% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "25% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "25% increased Quantity of Items found in adjacent Areas Life",
+        "25% increased Quantity of Items found in adjacent Areas Physical",
+        "28% increased Quantity of Items found in adjacent Areas Physical Chaos Attack Ailment",
+        "32% increased Quantity of Items found in adjacent Areas",
+        "32% increased Quantity of Items found in adjacent Areas Damage Critical",
+        "32% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "32% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "32% increased Quantity of Items found in adjacent Areas Life",
+        "32% increased Quantity of Items found in adjacent Areas Physical",
+        "32% increased Quantity of Items found in adjacent Areas Speed",
+        "40% increased Quantity of Items found in adjacent Areas",
+        "40% increased Quantity of Items found in adjacent Areas Caster Curse",
+        "40% increased Quantity of Items found in adjacent Areas Damage Critical",
+        "40% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "40% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "40% increased Quantity of Items found in adjacent Areas Life",
+        "40% increased Quantity of Items found in adjacent Areas Physical",
+        "55% increased Quantity of Items found in adjacent Areas",
+        "55% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance",
+        "55% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment",
+        "55% increased Quantity of Items found in adjacent Areas Life",
+        "55% increased Quantity of Items found in adjacent Areas Physical"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-sulph-30",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "30% increased Dead Man's Sulphur found in this Area",
+    "cnText": "相邻区域中找到的亡者硫磺提高 30%",
+    "enText": "30% increased Dead Man's Sulphur found in adjacent Areas",
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的亡者硫磺提高 30%",
+        "相邻区域中找到的亡者硫磺提高 30% 伤害",
+        "相邻区域中找到的亡者硫磺提高 30% 伤害 物理 混沌",
+        "相邻区域中找到的亡者硫磺提高 30% 施法 诅咒",
+        "相邻区域中找到的亡者硫磺提高 30% 混沌 异常状态",
+        "相邻区域中找到的亡者硫磺提高 45% 伤害",
+        "相邻区域中找到的亡者硫磺提高 45% 伤害 物理 混沌"
+      ],
+      "us": [
+        "30% increased Dead Man's Sulphur found in adjacent Areas",
+        "30% increased Dead Man's Sulphur found in adjacent Areas Caster Curse",
+        "30% increased Dead Man's Sulphur found in adjacent Areas Chaos Ailment",
+        "30% increased Dead Man's Sulphur found in adjacent Areas Damage",
+        "30% increased Dead Man's Sulphur found in adjacent Areas Damage Physical Chaos",
+        "45% increased Dead Man's Sulphur found in adjacent Areas Damage",
+        "45% increased Dead Man's Sulphur found in adjacent Areas Damage Physical Chaos"
+      ]
+    },
+    "notes": [
+      "Client verifies self-area reward wording/value; table still conflicts on scope. Parser must use header total once."
+    ],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-sulph-45",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "45% increased Dead Man's Sulphur found in this Area",
+    "cnText": "相邻区域中找到的亡者硫磺提高 45% 伤害",
+    "enText": "45% increased Dead Man's Sulphur found in adjacent Areas Damage",
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的亡者硫磺提高 30%",
+        "相邻区域中找到的亡者硫磺提高 30% 伤害",
+        "相邻区域中找到的亡者硫磺提高 30% 伤害 物理 混沌",
+        "相邻区域中找到的亡者硫磺提高 30% 施法 诅咒",
+        "相邻区域中找到的亡者硫磺提高 30% 混沌 异常状态",
+        "相邻区域中找到的亡者硫磺提高 45% 伤害",
+        "相邻区域中找到的亡者硫磺提高 45% 伤害 物理 混沌"
+      ],
+      "us": [
+        "30% increased Dead Man's Sulphur found in adjacent Areas",
+        "30% increased Dead Man's Sulphur found in adjacent Areas Caster Curse",
+        "30% increased Dead Man's Sulphur found in adjacent Areas Chaos Ailment",
+        "30% increased Dead Man's Sulphur found in adjacent Areas Damage",
+        "30% increased Dead Man's Sulphur found in adjacent Areas Damage Physical Chaos",
+        "45% increased Dead Man's Sulphur found in adjacent Areas Damage",
+        "45% increased Dead Man's Sulphur found in adjacent Areas Damage Physical Chaos"
+      ]
+    },
+    "notes": [
+      "Client verifies self-area reward wording/value; table still conflicts on scope. Parser must use header total once."
+    ],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-rarity-12",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope",
+      "chart-explicit-rarity-tiers"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "12% increased Rarity of Items found in this Area",
+    "cnText": null,
+    "enText": null,
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 22%",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 30%",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 闪电"
+      ],
+      "us": [
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "22% increased Rarity of Items found in adjacent Areas",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "30% increased Rarity of Items found in adjacent Areas",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-rarity-18",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope",
+      "chart-explicit-rarity-tiers"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "18% increased Rarity of Items found in this Area",
+    "cnText": null,
+    "enText": null,
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 22%",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 30%",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 闪电"
+      ],
+      "us": [
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "22% increased Rarity of Items found in adjacent Areas",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "30% increased Rarity of Items found in adjacent Areas",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-rarity-20",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope",
+      "chart-explicit-rarity-tiers"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "20% increased Rarity of Items found in this Area",
+    "cnText": null,
+    "enText": null,
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 22%",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 30%",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 闪电"
+      ],
+      "us": [
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "22% increased Rarity of Items found in adjacent Areas",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "30% increased Rarity of Items found in adjacent Areas",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-rarity-30",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "30% increased Rarity of Items found in this Area",
+    "cnText": "相邻区域中找到的物品稀有度提高 30%",
+    "enText": "30% increased Rarity of Items found in adjacent Areas",
+    "sourceObservations": {
+      "cn": [
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 16% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 22%",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 22% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 30%",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 30% 伤害 物理 元素 闪电",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 冰霜",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 火焰",
+        "相邻区域中找到的物品稀有度提高 38% 伤害 物理 元素 闪电"
+      ],
+      "us": [
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "22% increased Rarity of Items found in adjacent Areas",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "30% increased Rarity of Items found in adjacent Areas",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire",
+        "38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-pack-14",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "14% increased Pack size",
+    "cnText": "相邻区域的怪物群规模提高 14%",
+    "enText": "14% increased Pack Size in adjacent Areas",
+    "sourceObservations": {
+      "cn": [
+        "相邻区域的怪物群规模提高 14%",
+        "相邻区域的怪物群规模提高 14% 伤害 暴击",
+        "相邻区域的怪物群规模提高 14% 攻击 施法 速度",
+        "相邻区域的怪物群规模提高 16%",
+        "相邻区域的怪物群规模提高 16% 伤害 元素",
+        "相邻区域的怪物群规模提高 16% 伤害 暴击",
+        "相邻区域的怪物群规模提高 16% 攻击 施法 速度",
+        "相邻区域的怪物群规模提高 18%",
+        "相邻区域的怪物群规模提高 18% 伤害 元素",
+        "相邻区域的怪物群规模提高 18% 伤害 暴击",
+        "相邻区域的怪物群规模提高 18% 攻击 施法 速度"
+      ],
+      "us": [
+        "14% increased Pack Size in adjacent Areas",
+        "14% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "14% increased Pack Size in adjacent Areas Damage Critical",
+        "16% increased Pack Size in adjacent Areas",
+        "16% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "16% increased Pack Size in adjacent Areas Damage Critical",
+        "16% increased Pack Size in adjacent Areas Damage Elemental",
+        "18% increased Pack Size in adjacent Areas",
+        "18% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "18% increased Pack Size in adjacent Areas Damage Critical",
+        "18% increased Pack Size in adjacent Areas Damage Elemental"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-pack-16",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "16% increased Pack size",
+    "cnText": "相邻区域的怪物群规模提高 16%",
+    "enText": "16% increased Pack Size in adjacent Areas",
+    "sourceObservations": {
+      "cn": [
+        "相邻区域的怪物群规模提高 14%",
+        "相邻区域的怪物群规模提高 14% 伤害 暴击",
+        "相邻区域的怪物群规模提高 14% 攻击 施法 速度",
+        "相邻区域的怪物群规模提高 16%",
+        "相邻区域的怪物群规模提高 16% 伤害 元素",
+        "相邻区域的怪物群规模提高 16% 伤害 暴击",
+        "相邻区域的怪物群规模提高 16% 攻击 施法 速度",
+        "相邻区域的怪物群规模提高 18%",
+        "相邻区域的怪物群规模提高 18% 伤害 元素",
+        "相邻区域的怪物群规模提高 18% 伤害 暴击",
+        "相邻区域的怪物群规模提高 18% 攻击 施法 速度"
+      ],
+      "us": [
+        "14% increased Pack Size in adjacent Areas",
+        "14% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "14% increased Pack Size in adjacent Areas Damage Critical",
+        "16% increased Pack Size in adjacent Areas",
+        "16% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "16% increased Pack Size in adjacent Areas Damage Critical",
+        "16% increased Pack Size in adjacent Areas Damage Elemental",
+        "18% increased Pack Size in adjacent Areas",
+        "18% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "18% increased Pack Size in adjacent Areas Damage Critical",
+        "18% increased Pack Size in adjacent Areas Damage Elemental"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-pack-18",
+    "status": "conflict",
+    "conflictIds": [
+      "chart-explicit-scope"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "18% increased Pack size",
+    "cnText": "相邻区域的怪物群规模提高 18%",
+    "enText": "18% increased Pack Size in adjacent Areas",
+    "sourceObservations": {
+      "cn": [
+        "相邻区域的怪物群规模提高 14%",
+        "相邻区域的怪物群规模提高 14% 伤害 暴击",
+        "相邻区域的怪物群规模提高 14% 攻击 施法 速度",
+        "相邻区域的怪物群规模提高 16%",
+        "相邻区域的怪物群规模提高 16% 伤害 元素",
+        "相邻区域的怪物群规模提高 16% 伤害 暴击",
+        "相邻区域的怪物群规模提高 16% 攻击 施法 速度",
+        "相邻区域的怪物群规模提高 18%",
+        "相邻区域的怪物群规模提高 18% 伤害 元素",
+        "相邻区域的怪物群规模提高 18% 伤害 暴击",
+        "相邻区域的怪物群规模提高 18% 攻击 施法 速度"
+      ],
+      "us": [
+        "14% increased Pack Size in adjacent Areas",
+        "14% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "14% increased Pack Size in adjacent Areas Damage Critical",
+        "16% increased Pack Size in adjacent Areas",
+        "16% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "16% increased Pack Size in adjacent Areas Damage Critical",
+        "16% increased Pack Size in adjacent Areas Damage Elemental",
+        "18% increased Pack Size in adjacent Areas",
+        "18% increased Pack Size in adjacent Areas Attack Caster Speed",
+        "18% increased Pack Size in adjacent Areas Damage Critical",
+        "18% increased Pack Size in adjacent Areas Damage Elemental"
+      ]
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-gold-50",
+    "status": "missing",
+    "conflictIds": [
+      "chart-explicit-scope",
+      "chart-explicit-gold-tiers"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "50% increased Gold found in this Area",
+    "cnText": null,
+    "enText": null,
+    "sourceObservations": {
+      "cn": [],
+      "us": []
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  },
+  {
+    "internalId": "cm-gold-70",
+    "status": "missing",
+    "conflictIds": [
+      "chart-explicit-scope",
+      "chart-explicit-gold-tiers"
+    ],
+    "repositoryScope": "self",
+    "sourceScope": "adjacent",
+    "repositoryEnText": "70% increased Gold found in this Area",
+    "cnText": null,
+    "enText": null,
+    "sourceObservations": {
+      "cn": [],
+      "us": []
+    },
+    "notes": [],
+    "nextEvidence": "Obtain target client explicit reward copy at this tier; reconcile version and charting phase before accepting template."
+  }
+]
