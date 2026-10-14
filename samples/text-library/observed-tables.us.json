@@ -1,0 +1,1292 @@
+[
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Suffix",
+    "text": "Monsters have 80% chance to Avoid Elemental Ailments\n55% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Suffix",
+    "text": "Monsters have 60% chance to Avoid Elemental Ailments\n40% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters have 40% chance to Avoid Elemental Ailments\n32% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Monsters have 20% chance to Avoid Elemental Ailments\n25% increased Quantity of Items found in adjacent Areas Elemental Fire Cold Lightning Ailment"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "+(21—35)% Monster Physical Damage Reduction\n55% increased Quantity of Items found in adjacent Areas Physical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "+(14—20)% Monster Physical Damage Reduction\n40% increased Quantity of Items found in adjacent Areas Physical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "+(9—13)% Monster Physical Damage Reduction\n32% increased Quantity of Items found in adjacent Areas Physical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "+(5—8)% Monster Physical Damage Reduction\n25% increased Quantity of Items found in adjacent Areas Physical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "(10—20)% more Monster Life\nMonsters cannot be Stunned\n25% increased Quantity of Items found in adjacent Areas Life"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "(46—60)% more Monster Life\n55% increased Quantity of Items found in adjacent Areas Life"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "(35—45)% more Monster Life\n40% increased Quantity of Items found in adjacent Areas Life"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "(20—34)% more Monster Life\n32% increased Quantity of Items found in adjacent Areas Life"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "(10—19)% more Monster Life\n25% increased Quantity of Items found in adjacent Areas Life"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "(26—35)% increased Monster Damage\n45% increased Dead Man's Sulphur found in adjacent Areas Damage"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "(21—25)% increased Monster Damage\n30% increased Dead Man's Sulphur found in adjacent Areas Damage"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "(15—20)% increased Monster Damage\n30% increased Dead Man's Sulphur found in adjacent Areas Damage"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "(10—14)% increased Monster Damage\n30% increased Dead Man's Sulphur found in adjacent Areas Damage"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "Monsters deal (21—35)% extra Physical Damage as Fire\n38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "Monsters deal (15—20)% extra Physical Damage as Fire\n30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "Monsters deal (9—14)% extra Physical Damage as Fire\n22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "Monsters deal (5—8)% extra Physical Damage as Fire\n16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Fire"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "Monsters deal (21—35)% extra Physical Damage as Cold\n38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "Monsters deal (15—20)% extra Physical Damage as Cold\n30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "Monsters deal (9—14)% extra Physical Damage as Cold\n22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "Monsters deal (5—8)% extra Physical Damage as Cold\n16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Cold"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "Monsters deal (21—35)% extra Physical Damage as Lightning\n38% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "Monsters deal (15—20)% extra Physical Damage as Lightning\n30% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "Monsters deal (9—14)% extra Physical Damage as Lightning\n22% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "Monsters deal (5—8)% extra Physical Damage as Lightning\n16% increased Rarity of Items found in adjacent Areas Damage Physical Elemental Lightning"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "30% increased Monster Movement Speed\n30% increased Monster Attack Speed\n30% increased Monster Cast Speed\n18% increased Pack Size in adjacent Areas Attack Caster Speed"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "20% increased Monster Movement Speed\n20% increased Monster Attack Speed\n20% increased Monster Cast Speed\n16% increased Pack Size in adjacent Areas Attack Caster Speed"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "10% increased Monster Movement Speed\n10% increased Monster Attack Speed\n10% increased Monster Cast Speed\n14% increased Pack Size in adjacent Areas Attack Caster Speed"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "Monsters fire 2 additional Projectiles\n18% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "Monsters fire 2 additional Projectiles\n16% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Suffix",
+    "text": "Monsters have (46—60)% increased Area of Effect\n18% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Suffix",
+    "text": "Monsters have (41—45)% increased Area of Effect\n16% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters have (30—40)% increased Area of Effect\n14% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Suffix",
+    "text": "Monsters have (242—350)% increased Critical Strike Chance\n+(41—45)% to Monster Critical Strike Multiplier\n18% increased Pack Size in adjacent Areas Damage Critical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Suffix",
+    "text": "Monsters have (201—240)% increased Critical Strike Chance\n+(41—45)% to Monster Critical Strike Multiplier\n16% increased Pack Size in adjacent Areas Damage Critical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters have (180—200)% increased Critical Strike Chance\n+(31—40)% to Monster Critical Strike Multiplier\n14% increased Pack Size in adjacent Areas Damage Critical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Area has patches of Chilled Ground\n22% increased Rarity of Items found in adjacent Areas\nmap ground effect patches per 100 tiles [20]\nmap ground effect radius [14] Elemental Cold"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Area has patches of Shocked Ground which increase Damage taken by 10%\n22% increased Rarity of Items found in adjacent Areas\nmap ground effect patches per 100 tiles [20]\nmap ground effect radius [14] Elemental Lightning"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Suffix",
+    "text": "Monsters take (30—45)% reduced Extra Damage from Critical Strikes\n40% increased Quantity of Items found in adjacent Areas Damage Critical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters take (20—29)% reduced Extra Damage from Critical Strikes\n32% increased Quantity of Items found in adjacent Areas Damage Critical"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "50% less effect of Curses on Monsters\n40% increased Quantity of Items found in adjacent Areas Caster Curse"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "Monsters cannot be Taunted\nMonsters' Action Speed cannot be modified to below Base Value\nMonsters' Movement Speed cannot be modified to below Base Value\n32% increased Quantity of Items found in adjacent Areas Speed"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "+(26—40)% Monster Chaos Resistance\n+(26—40)% Monster Elemental Resistances\n55% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "+(20—25)% Monster Chaos Resistance\n+(20—25)% Monster Elemental Resistances\n40% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "+(10—19)% Monster Chaos Resistance\n+(11—19)% Monster Elemental Resistances\n32% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "+% Monster Chaos Resistance\n+(5—10)% Monster Elemental Resistances\n25% increased Quantity of Items found in adjacent Areas Elemental Chaos Resistance"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "Monsters have a 40% chance to avoid Poison, Impale, and Bleeding\n28% increased Quantity of Items found in adjacent Areas Physical Chaos Attack Ailment"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters Poison on Hit\n30% increased Dead Man's Sulphur found in adjacent Areas Chaos Ailment"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "Monsters' skills Chain 2 additional times\n30% increased Dead Man's Sulphur found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "Monsters are Hexproof\n30% increased Dead Man's Sulphur found in adjacent Areas Caster Curse"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Monsters gain a Frenzy Charge on Hit\n30% increased Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters have 50% chance to gain a Frenzy Charge on Hit\n22% increased Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Monsters gain an Endurance Charge on Hit\n30% increased Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters have 50% chance to gain an Endurance Charge on Hit\n22% increased Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Monsters gain a Power Charge on Hit\n30% increased Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters have 50% chance to gain a Power Charge on Hit\n22% increased Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "Monsters have +80% chance to Suppress Spell Damage\n55% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "Monsters have +60% chance to Suppress Spell Damage\n40% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "Monsters have +40% chance to Suppress Spell Damage\n32% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "Monsters gain (51—80)% of Maximum Life as Extra Maximum Energy Shield\n55% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "Monsters gain (35—50)% of Maximum Life as Extra Maximum Energy Shield\n40% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "Monsters gain (20—34)% of Maximum Life as Extra Maximum Energy Shield\n32% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Prefix",
+    "text": "Monsters gain (10—19)% of Maximum Life as Extra Maximum Energy Shield\n25% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Monsters Blind on Hit\n30% increased Dead Man's Sulphur found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Monsters Maim on Hit with Attacks\n30% increased Dead Man's Sulphur found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Suffix",
+    "text": "Monsters Hinder on Hit with Spells\n30% increased Dead Man's Sulphur found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Suffix",
+    "text": "Monster Damage Penetrates (13—15)% Elemental Resistances\n18% increased Pack Size in adjacent Areas Damage Elemental"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monster Damage Penetrates (8—12)% Elemental Resistances\n16% increased Pack Size in adjacent Areas Damage Elemental"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters steal Power, Frenzy and Endurance charges on Hit\n30% increased Dead Man's Sulphur found in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Suffix",
+    "text": "Players have (-14—-12)% to all maximum Resistances\n18% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Suffix",
+    "text": "Players have (-12—-10)% to all maximum Resistances\n16% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Players have (-9—-6)% to all maximum Resistances\n14% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Suffix",
+    "text": "Monsters inflict 3 Grasping Vines on Hit\n18% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Suffix",
+    "text": "Monsters inflict 1 Grasping Vines on Hit\n16% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 83,
+    "affixType": "Prefix",
+    "text": "Monsters gain (21—29)% of their Physical Damage as Extra Chaos Damage\nMonsters Inflict Withered for 2 seconds on Hit\n45% increased Dead Man's Sulphur found in adjacent Areas Damage Physical Chaos"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 80,
+    "affixType": "Prefix",
+    "text": "Monsters gain (15—20)% of their Physical Damage as Extra Chaos Damage\nMonsters Inflict Withered for 2 seconds on Hit\n30% increased Dead Man's Sulphur found in adjacent Areas Damage Physical Chaos"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "Prefix",
+    "text": "Monsters gain (10—14)% of their Physical Damage as Extra Chaos Damage\nMonsters Inflict Withered for 2 seconds on Hit\n30% increased Dead Man's Sulphur found in adjacent Areas Damage Physical Chaos"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Voyage Modifier will be revealed once Charted"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Adjacent Areas contain (1—2) additional Imprisoned Monsters\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "Adjacent Areas contain (2—4) additional Imprisoned Monsters\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain 5 additional Imprisoned Monsters\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Adjacent Areas contain 1 additional Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "Adjacent Areas contain (2—4) additional Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain 5 additional Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Adjacent Areas contains (8—10) additional packs of Octopi\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contains (11—14) additional packs of Octopi\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Adjacent Areas contain (8—10) additional packs of Crabs\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain (11—14) additional packs of Crabs\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "30% increased number of Magic Monsters in adjacent Areas\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "60% increased number of Magic Monsters in adjacent Areas\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "30% increased number of Rare Monsters in adjacent Areas\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "60% increased number of Rare Monsters in adjacent Areas\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain 1 additional Messages in Bottles\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain 2 additional Messages in Bottles\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain highly prized and exotic Fish\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Monsters have a chance to be Empowered by 2000 Wildwood Wisps\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Monsters have a chance to be Empowered by 4000 Wildwood Wisps\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Atziri's Influence\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "40% of Equipment dropped by monsters in adjacent Areas is converted to Gold\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "80% of Equipment dropped by monsters in adjacent Areas is converted to Gold\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "Adjacent Areas contain 1 additional cages of Tormented Spirits\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain 2 additional cages of Tormented Spirits\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "Adjacent Areas contain 2 additional Diviner's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain 3 additional Diviner's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Adjacent Areas contain 2 additional Arcanist's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain 3 additional Arcanist's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain 2 additional Operative's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 78,
+    "affixType": "",
+    "text": "Adjacent Areas contain 3 additional Operative's Strongboxes\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Adjacent Areas contain (12—15) additional Clusters of Barrels\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contain (16—20) additional Clusters of Barrels\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "Adjacent Areas contains (4—5) additional Giant Starfish\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Adjacent Areas contains (6—7) additional Giant Starfish\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Items dropped in adjacent Areas have 2% chance to be Fractured\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Adjacent Areas contain 4 additional Golden Lanterns\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Rare Monsters in adjacent Areas will have a Pantheon Modifier\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Rings dropped in adjacent Areas have 10% chance to instead drop as a Unique Ring\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 47,
+    "affixType": "",
+    "text": "Rings dropped in adjacent Areas have 20% chance to instead drop as a Unique Ring\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Amulets dropped in adjacent Areas have 10% chance to instead drop as a Unique Amulet\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 47,
+    "affixType": "",
+    "text": "Amulets dropped in adjacent Areas have 20% chance to instead drop as a Unique Amulet\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Belts dropped in adjacent Areas have 10% chance to instead drop as a Unique Belt\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 47,
+    "affixType": "",
+    "text": "Belts dropped in adjacent Areas have 20% chance to instead drop as a Unique Belt\nlocal deepwater mod applies to adjacent charts [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Players in all Voyage Areas have Soul Eater"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "5% increased Pack Size in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "7% increased Pack Size in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "8% increased Quantity of Items found in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "10% increased Quantity of Items found in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "7% increased Rarity of Items found in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "9% increased Rarity of Items found in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "All Voyage Areas contain Friendly Jellyfish"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "15% increased Dead Man's Sulphur found in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "20% increased Dead Man's Sulphur found in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "25% increased Dead Man's Sulphur found in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "25% increased number of Rare Monsters in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "25% increased number of Magic Monsters in all Voyage Areas"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Monsters in all Voyage Areas cannot drop Equipment, Flasks or Tinctures\nchart monsters drop no flask [1]"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Monsters in all Voyage Areas are at least Magic"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 46,
+    "affixType": "",
+    "text": "100% chance for Rare Monsters in all Voyage Areas to be Possessed"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Rare monsters that are natural inhabitants of all Voyage Areas are imprisoned by Essences"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Rare Monsters in all Voyage Areas have 50% chance to Fracture on death"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 68,
+    "affixType": "",
+    "text": "Flasks found in all Voyage Areas have 100% chance to have 20% Quality"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Monsters have 40% increased Area of Effect\nMonsters fire 2 additional Projectiles\nMonsters in Area have increased Toughness and Reward"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Monsters have 50% increased Attack, Cast and Movement Speed\nMonsters in Area have increased Toughness and Reward"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "50% increased Monster Damage\nMonsters in Area have increased Toughness and Reward"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Monster Damage Penetrates 10% Elemental Resistances\nMonsters in Area have increased Toughness and Reward"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Monsters have 500% increased Critical Strike Chance\n+50% to Monster Critical Strike Multiplier\nMonsters in Area have increased Toughness and Reward"
+  },
+  {
+    "section": "MapDeepWaterChartMods",
+    "requiredLevel": 1,
+    "affixType": "",
+    "text": "Monsters gain 100% of their Physical Damage as Extra Damage of a random Element\nMonsters in Area have increased Toughness and Reward"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "16% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "24% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "32% increased Pack Size in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Monsters in adjacent Areas are at least Magic"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "50% increased number of Rare Monsters in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "75% increased number of Rare Monsters in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "100% increased number of Rare Monsters in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 8 additional packs of Sea Beasts"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 12 additional packs of Sea Beasts"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 16 additional packs of Sea Beasts"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 8 additional packs of Crabs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 12 additional packs of Crabs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 16 additional packs of Crabs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 8 additional packs of the Drowned"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 12 additional packs of the Drowned"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 16 additional packs of the Drowned"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas have 40% increased explicit modifier magnitudes"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas have 60% increased explicit modifier magnitudes"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas have 80% increased explicit modifier magnitudes"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Charts have 30% chance to not be consumed when beginning a Voyage"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Charts have 50% chance to not be consumed when beginning a Voyage"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain Filthscrabble"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Placing Lanterns does not reduce your Lantern count in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Ancient Orbs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters adjacent in Areas drop 1 additional Divine Orbs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Exalted Orbs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Orbs of Annulment"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Chaos Orbs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Vaal Orbs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Gemcutter's Prisms"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Chromatic Orbs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Orbs of Regret"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Blessed Orbs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Regal Orbs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas have 20% chance to drop a Support Gem"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain a lost Pirate's Locker"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain a Brinerot raiding party"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "50% increased number of Rare monsters in adjacent Areas per connection"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "75% increased number of Rare monsters in adjacent Areas per connection"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "50% reduced quantity of items found in adjacent Areas per connection\n120% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "50% reduced quantity of items found in adjacent Areas per connection\n180% increased Quantity of Items found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "25% of Equipment dropped by monsters in adjacent Areas is converted to Gold"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "50% of Equipment dropped by monsters in adjacent Areas is converted to Gold"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Basic Currency items dropped by Monsters in adjacent Areas will instead drop as Stacked Decks"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop 1 additional Scarabs"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "50% more Currency found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "75% more Currency found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "100% more Currency found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "50% more Scarabs found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "75% more Scarabs found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "100% more Scarabs found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "50% more Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "75% more Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "100% more Rarity of Items found in adjacent Areas"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain Captainsbane"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Players in adjacent Areas gain 100% increased Experience"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Players in adjacent Areas gain 150% increased Experience"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Players in adjacent Areas gain 200% increased Experience"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Magic Monsters in adjacent Areas have an additional modifier"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": ""
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 2 additional Treasure Anchors"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 4 additional Treasure Anchors"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Rare Monsters in adjacent Areas drop Dead Man's Sulphur"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 4 additional Golden Lanterns"
+  },
+  {
+    "section": "DeepWaterBorderMods",
+    "requiredLevel": 1,
+    "affixType": "Unique",
+    "text": "Adjacent Areas contain 2 Altars to the Goddess"
+  }
+]

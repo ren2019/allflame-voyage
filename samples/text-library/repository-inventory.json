@@ -1,0 +1,707 @@
+[
+  {
+    "internalId": "cm-quant-20",
+    "repoEnText": "20% increased Quantity of Items found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-quant-28",
+    "repoEnText": "28% increased Quantity of Items found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-quant-32",
+    "repoEnText": "32% increased Quantity of Items found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-quant-45",
+    "repoEnText": "45% increased Quantity of Items found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-sulph-30",
+    "repoEnText": "30% increased Dead Man's Sulphur found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-sulph-45",
+    "repoEnText": "45% increased Dead Man's Sulphur found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-rarity-12",
+    "repoEnText": "12% increased Rarity of Items found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-rarity-18",
+    "repoEnText": "18% increased Rarity of Items found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-rarity-20",
+    "repoEnText": "20% increased Rarity of Items found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-rarity-30",
+    "repoEnText": "30% increased Rarity of Items found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-pack-14",
+    "repoEnText": "14% increased Pack size",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-pack-16",
+    "repoEnText": "16% increased Pack size",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-pack-18",
+    "repoEnText": "18% increased Pack size",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-gold-50",
+    "repoEnText": "50% increased Gold found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "cm-gold-70",
+    "repoEnText": "70% increased Gold found in this Area",
+    "repoScope": "self"
+  },
+  {
+    "internalId": "adj-ess-1",
+    "repoEnText": "Adjacent Areas contain 1-2 additional Imprisoned Monsters",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-ess-2",
+    "repoEnText": "Adjacent Areas contain 2-4 additional Imprisoned Monsters",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-ess-3",
+    "repoEnText": "Adjacent Areas contain 5 additional Imprisoned Monsters",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-box-1",
+    "repoEnText": "Adjacent Areas contain an additional Strongbox",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-box-2",
+    "repoEnText": "Adjacent Areas contain 2-4 additional Strongboxes",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-box-3",
+    "repoEnText": "Adjacent Areas contain 5 additional Strongboxes",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-octo-1",
+    "repoEnText": "Adjacent Areas contain 8-10 additional packs of Octopi",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-octo-2",
+    "repoEnText": "Adjacent Areas contain 11-14 additional packs of Octopi",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-crab-1",
+    "repoEnText": "Adjacent Areas contain 8-10 additional packs of Crabs",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-crab-2",
+    "repoEnText": "Adjacent Areas contain 11-14 additional packs of Crabs",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-magic-1",
+    "repoEnText": "30% increased Magic Monsters",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-magic-2",
+    "repoEnText": "60% increased Magic Monsters",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-rare-1",
+    "repoEnText": "30% increased number of Rare Monsters",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-rare-2",
+    "repoEnText": "60% increased number of Rare Monsters",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-msg-1",
+    "repoEnText": "Adjacent Areas contain an additional Message in a Bottle",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-msg-2",
+    "repoEnText": "Adjacent Areas contain 2 additional Messages in Bottles",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-fish",
+    "repoEnText": "Adjacent Areas contain highly prized and exotic Fish",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-wisps-1",
+    "repoEnText": "Monsters have a chance to be Empowered by 2000 Wildwood Wisps",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-wisps-2",
+    "repoEnText": "Monsters have a chance to be Empowered by 4000 Wildwood Wisps",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-atziri",
+    "repoEnText": "Atziri's Influence",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-gold-1",
+    "repoEnText": "40% of Equipment dropped by Monsters in Area is converted to Gold",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-gold-2",
+    "repoEnText": "80% of Equipment dropped by Monsters in Area is converted to Gold",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-spirit-1",
+    "repoEnText": "Adjacent Areas contain an additional cage of Tormented Spirits",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-spirit-2",
+    "repoEnText": "Adjacent Areas contain 2 additional cages of Tormented Spirits",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-divbox-1",
+    "repoEnText": "Adjacent Areas contain 2 additional Diviner's Strongboxes",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-divbox-2",
+    "repoEnText": "Adjacent Areas contain 3 additional Diviner's Strongboxes",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-arcbox-1",
+    "repoEnText": "Adjacent Areas contain 2 additional Arcanist's Strongboxes",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-arcbox-2",
+    "repoEnText": "Adjacent Areas contain 3 additional Arcanist's Strongboxes",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-opbox-1",
+    "repoEnText": "Adjacent Areas contain 2 additional Operative's Strongboxes",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-opbox-2",
+    "repoEnText": "Adjacent Areas contain 3 additional Operative's Strongboxes",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-barrel-1",
+    "repoEnText": "Adjacent Areas contain 12-15 additional Clusters of Barrels",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-barrel-2",
+    "repoEnText": "Adjacent Areas contain 16-20 additional Clusters of Mysterious Barrels",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-star-1",
+    "repoEnText": "Adjacent Areas contains 4-5 additional Giant Starfish",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-star-2",
+    "repoEnText": "Adjacent Areas contains 6-7 additional Giant Starfish",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-fracture",
+    "repoEnText": "Items dropped in adjacent Areas have 2% chance to be Fractured",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-lantern",
+    "repoEnText": "Adjacent Areas contain 4 additional Golden Lanterns",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-pantheon",
+    "repoEnText": "Rare Monsters in adjacent Areas will have a Pantheon Modifier",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-uring-1",
+    "repoEnText": "Rings dropped in adjacent Areas have 10% chance to instead drop as a Unique Ring",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-uring-2",
+    "repoEnText": "Rings dropped in adjacent Areas have 20% chance to instead drop as a Unique Ring",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-uamu-1",
+    "repoEnText": "Amulets dropped in adjacent Areas have 10% chance to instead drop as a Unique Amulet",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-uamu-2",
+    "repoEnText": "Amulets dropped in adjacent Areas have 20% chance to instead drop as a Unique Amulet",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-ubelt-1",
+    "repoEnText": "Belts dropped in adjacent Areas have 10% chance to instead drop as a Unique Belt",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "adj-ubelt-2",
+    "repoEnText": "Belts dropped in adjacent Areas have 20% chance to instead drop as a Unique Belt",
+    "repoScope": "adjacent"
+  },
+  {
+    "internalId": "voy-soul",
+    "repoEnText": "Players in Area have Soul Eater",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-pack-1",
+    "repoEnText": "5% increased Pack size",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-pack-2",
+    "repoEnText": "7% increased Pack size",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-quant-1",
+    "repoEnText": "8% increased Quantity of Items found in this Area",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-quant-2",
+    "repoEnText": "10% increased Quantity of Items found in this Area",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-rarity-1",
+    "repoEnText": "7% increased Rarity of Items found in this Area",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-rarity-2",
+    "repoEnText": "9% increased Rarity of Items found in this Area",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-jelly",
+    "repoEnText": "All Voyage Areas contain Friendly Jellyfish",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-sulph-1",
+    "repoEnText": "15% increased Dead Man's Sulphur found in this Area",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-sulph-2",
+    "repoEnText": "20% increased Dead Man's Sulphur found in this Area",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-sulph-3",
+    "repoEnText": "25% increased Dead Man's Sulphur found in this Area",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-rare",
+    "repoEnText": "25% increased number of Rare Monsters",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-magic",
+    "repoEnText": "25% increased Magic Monsters",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-noequip",
+    "repoEnText": "Monsters in all Voyage Areas cannot drop Equipment, Flasks or Tinctures",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-minmagic",
+    "repoEnText": "Monsters in Area are at least Magic",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-possess",
+    "repoEnText": "100% chance for Rare Monsters in Area to be Possessed",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-essence",
+    "repoEnText": "Rare monsters that are natural inhabitants are imprisoned by Essences",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-fracture",
+    "repoEnText": "50% chance for Rare Monsters to Fracture on death",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "voy-flask",
+    "repoEnText": "Flasks found in all Voyage Areas have 100% chance to have 20% Quality",
+    "repoScope": "global"
+  },
+  {
+    "internalId": "b-pack-1",
+    "repoEnText": "16% increased Pack Size in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-pack-2",
+    "repoEnText": "24% increased Pack Size in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-pack-3",
+    "repoEnText": "32% increased Pack Size in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-minmagic",
+    "repoEnText": "Monsters in adjacent Areas are at least Magic",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-rare-1",
+    "repoEnText": "50% increased number of Rare Monsters in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-rare-2",
+    "repoEnText": "75% increased number of Rare Monsters in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-rare-3",
+    "repoEnText": "100% increased number of Rare Monsters in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-beasts-1",
+    "repoEnText": "Adjacent Areas contain 8 additional packs of Sea Beasts",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-beasts-2",
+    "repoEnText": "Adjacent Areas contain 12 additional packs of Sea Beasts",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-beasts-3",
+    "repoEnText": "Adjacent Areas contain 16 additional packs of Sea Beasts",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-crabs-1",
+    "repoEnText": "Adjacent Areas contain 8 additional packs of Crabs",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-crabs-2",
+    "repoEnText": "Adjacent Areas contain 12 additional packs of Crabs",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-crabs-3",
+    "repoEnText": "Adjacent Areas contain 16 additional packs of Crabs",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-drowned-1",
+    "repoEnText": "Adjacent Areas contain 8 additional packs of the Drowned",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-drowned-2",
+    "repoEnText": "Adjacent Areas contain 12 additional packs of the Drowned",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-drowned-3",
+    "repoEnText": "Adjacent Areas contain 16 additional packs of the Drowned",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-mag-1",
+    "repoEnText": "Adjacent Areas have 40% increased explicit modifier magnitudes",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-mag-2",
+    "repoEnText": "Adjacent Areas have 60% increased explicit modifier magnitudes",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-mag-3",
+    "repoEnText": "Adjacent Areas have 80% increased explicit modifier magnitudes",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-keep-1",
+    "repoEnText": "Adjacent Charts have 30% chance to not be consumed when beginning a Voyage",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-keep-2",
+    "repoEnText": "Adjacent Charts have 50% chance to not be consumed when beginning a Voyage",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-octoboss",
+    "repoEnText": "Adjacent Areas contain Filthscrabble",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-lanterns",
+    "repoEnText": "Placing Lanterns does not reduce your Lantern count in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-ancient",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Ancient Orb",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-divine",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Divine Orb",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-exalt",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Exalted Orb",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-annul",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Orb of Annulment",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-chaos",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Chaos Orb",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-vaal",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Vaal Orb",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-gcp",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Gemcutter's Prism",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-chrome",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Chromatic Orb",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-regret",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Orb of Regret",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-blessed",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Blessed Orb",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-regal",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Regal Orb",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-support",
+    "repoEnText": "Rare Monsters in adjacent Areas have 20% chance to drop a Support Gem",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-locker",
+    "repoEnText": "Adjacent Areas contain a lost Pirate's Locker",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-pirates",
+    "repoEnText": "Adjacent Areas contain a Brinerot raiding party",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-rareconn-1",
+    "repoEnText": "50% increased number of Rare monsters in adjacent Areas per connection",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-rareconn-2",
+    "repoEnText": "75% increased number of Rare monsters in adjacent Areas per connection",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-quantconn-1",
+    "repoEnText": "50% reduced Quantity of Items found in adjacent Areas per connection 120% increased Quantity of Items found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-quantconn-2",
+    "repoEnText": "50% reduced Quantity of Items found in adjacent Areas per connection 180% increased Quantity of Items found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-gold-1",
+    "repoEnText": "25% of Equipment dropped by monsters in adjacent Areas is converted to Gold",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-gold-2",
+    "repoEnText": "50% of Equipment dropped by monsters in adjacent Areas is converted to Gold",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-decks",
+    "repoEnText": "Basic Currency items dropped by Monsters in adjacent Areas will instead drop as Stacked Decks",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-scarabdrop",
+    "repoEnText": "Rare Monsters in adjacent Areas drop an additional Scarab",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-curr-1",
+    "repoEnText": "50% more Currency found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-curr-2",
+    "repoEnText": "75% more Currency found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-curr-3",
+    "repoEnText": "100% more Currency found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-scarab-1",
+    "repoEnText": "50% more Scarabs found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-scarab-2",
+    "repoEnText": "75% more Scarabs found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-scarab-3",
+    "repoEnText": "100% more Scarabs found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-rarity-1",
+    "repoEnText": "50% more Rarity of Items found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-rarity-2",
+    "repoEnText": "75% more Rarity of Items found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-rarity-3",
+    "repoEnText": "100% more Rarity of Items found in adjacent Areas",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-crabboss",
+    "repoEnText": "Adjacent Areas contain Captainsbane",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-exp-1",
+    "repoEnText": "Players in adjacent Areas gain 100% increased Experience",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-exp-2",
+    "repoEnText": "Players in adjacent Areas gain 150% increased Experience",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-exp-3",
+    "repoEnText": "Players in adjacent Areas gain 200% increased Experience",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-magicmods",
+    "repoEnText": "Magic Monsters in adjacent Areas have an additional modifier",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-anchor-1",
+    "repoEnText": "Adjacent Areas contain 2 additional Treasure Anchors",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-anchor-2",
+    "repoEnText": "Adjacent Areas contain 4 additional Treasure Anchors",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-sulphdrop",
+    "repoEnText": "Rare Monsters in adjacent Areas drop Dead Man's Sulphur",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-goldlantern",
+    "repoEnText": "Adjacent Areas contain 4 additional Golden Lanterns",
+    "repoScope": "border"
+  },
+  {
+    "internalId": "b-izaro",
+    "repoEnText": "Adjacent Areas contain 2 Altars to the Goddess",
+    "repoScope": "border"
+  }
+]
