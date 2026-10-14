@@ -27,7 +27,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     const { charts, rejected } = parseChartText(borderOcr.chartText)
     const notCharted = rejected.filter((r) => r.reason.startsWith('not charted'))
     if (charts.length === 0 && rejected.length === 0 && borderOcr.blockCount === 0) {
-      setMsg('No items recognised. Is this Ctrl+C item text?')
+      setMsg('未识别到物品，请粘贴游戏 Ctrl+C 复制文本。')
       return
     }
 
@@ -62,8 +62,8 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     if (fresh.length) parts.push(`导入 ${fresh.length} 张海图`)
     if (skipped)
       parts.push(
-        `skipped ${skipped} re-scanned chart${skipped === 1 ? '' : 's'} already in your library`
-          + ' (use "Clear all charts" first for a fresh import)',
+        `跳过 ${skipped} 张已在库存中的海图`
+          + '（重新导入前可先清空库存）',
       )
     // distinct physical charts always differ in their rolled values, so a big
     // batch of byte-identical imports means the same item text was repeated
@@ -74,14 +74,12 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
       const first = key(charts[0])
       if (charts.every((c) => key(c) === first))
         parts.push(
-          `⚠ all ${charts.length} are IDENTICAL - the same chart text seems to have been pasted repeatedly`,
+          `⚠ ${charts.length} 张海图的属性完全相同，可能重复粘贴了同一份文本`,
         )
     }
     if (borderOcr.blockCount > 0) {
       parts.push(
-        `matched ${borderOcr.matches.length}/${borderOcr.blockCount} border modifier${
-          borderOcr.blockCount === 1 ? '' : 's'
-        }`,
+        `已匹配 ${borderOcr.matches.length}/${borderOcr.blockCount} 个边界词缀`,
       )
     }
     if (notCharted.length)
@@ -90,14 +88,14 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     if (otherRejects > 0) parts.push(`拒绝 ${otherRejects} 项无法识别`)
     if (borderOcr.blockCount > 0 && borderOcr.matches.length === 0) {
       parts.push(
-        'no border tooltips recognised - kept your existing borders (recheck the border calibration in the script wizard)',
+        '未识别边界悬停文本，已保留原有边界',
       )
     } else if (borderOcr.misses.length > 0) {
-      parts.push(`OCR unmatched at border${borderOcr.misses.length === 1 ? '' : 's'} ${borderOcr.misses
+      parts.push(`OCR 未匹配的边界位置：${borderOcr.misses
         .map((miss) => miss.index + 1)
         .join(', ')}`)
     }
-    setMsg(parts.join('; ') || 'Nothing imported')
+    setMsg(parts.join('; ') || '本次未导入海图')
 
     // rare-implicit charts are the Divine strategies' fuel - flag them loudly
     // so a jackpot piece never slips into the library unnoticed (only newly
@@ -107,7 +105,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     ).length
     setRareAlert(
       rares > 0
-        ? `${rares} Rare Monsters chart${rares === 1 ? '' : 's'} imported - Divine-strategy fuel! Locked 🔒 in the library until you run a Divine border board.`
+        ? `已导入 ${rares} 张稀有怪物海图，可用于神圣石策略。已在库存中锁定 🔒，保留给神圣石边界摆盘。`
         : '',
     )
   }, [onImport, onLoadState, state.pool, text])
@@ -139,149 +137,142 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     file.text().then((t) => {
       try {
         onLoadState({ ...defaultState(), ...JSON.parse(t) })
-        setMsg('State loaded from JSON')
+        setMsg('已从 JSON 载入规划状态')
       } catch {
-        setMsg('Invalid JSON file')
+        setMsg('JSON 文件无效')
       }
     })
   }
 
   const clearAll = () => {
-    if (window.confirm('Clear all charts, board and borders?')) onLoadState(defaultState())
+    if (window.confirm('清空全部海图、摆盘和边界？')) onLoadState(defaultState())
   }
 
   return (
     <div className="import-panel">
-      <div className="panel-title">Import</div>
+      <div className="panel-title">导入海图</div>
       <textarea
         rows={5}
         placeholder={
-          'Copy a chart in game (Ctrl+C), then press Ctrl+V anywhere on this page to import it - name, level, modifiers and shape all come along.'
+          '在游戏中 Ctrl+C 复制已测绘海图，再在本页 Ctrl+V 导入；也可粘贴到此处后解析。名称、区域等级、奖励、航行词缀和形状会一并读取。'
         }
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
       <div className="import-actions">
         <button onClick={() => doParse()} disabled={!text.trim()}>
-          Parse & Add
+          解析并加入
         </button>
         <button
-          title="Generate random charts to try out the tool"
+          title="生成随机示例海图体验工具"
           onClick={() => {
             onImport(generateDemoCharts(25))
-            setMsg('Added 25 random demo charts')
+            setMsg('已加入 25 张随机示例海图')
           }}
         >
-          🎲 Demo ×25
+          🎲 示例 ×25
         </button>
-        <button onClick={exportJson} title="Save your charts to a JSON file">
-          Export
+        <button onClick={exportJson} title="将完整规划状态保存为 JSON 文件">
+          导出
         </button>
-        <label className="file-btn" title="Load charts from a JSON file">
-          Load
+        <label className="file-btn" title="从 JSON 文件载入完整规划状态">
+          载入
           <input
             type="file"
             accept=".json"
             onChange={(e) => e.target.files?.[0] && importJson(e.target.files[0])}
           />
         </label>
-        <button onClick={clearAll} title="Clear all charts, board and borders">
-          Reset
+        <button onClick={clearAll} title="清空全部海图、摆盘和边界">
+          重置
         </button>
       </div>
       {msg && <div className="muted pad">{msg}</div>}
       {rareAlert && (
         <div className="import-rare-alert">
           <span>🎰 {rareAlert}</span>
-          <button className="announce-close" title="Dismiss" onClick={() => setRareAlert('')}>
+          <button className="announce-close" title="关闭" onClick={() => setRareAlert('')}>
             ✕
           </button>
         </div>
       )}
 
       <details className="ahk-help">
-        <summary>🎲 Rolling & keeping charts (Milky's regexes)</summary>
+        <summary>🎲 洗练与保留海图（原版英文正则参考）</summary>
         <p className="muted">
-          Charts can't be rolled after running, so roll first (quantity scales strongboxes). Paste
-          these into the in-game chart search - from Milky's sheet.
+          海图完成测绘后无法洗练，应先洗练再运行；物品数量会影响保险箱奖励。
+          以下为 Milky 原版英文客户端搜索正则参考。
         </p>
         <div className="roll-regex-row">
-          <span className="roll-regex-label">All good mods (keepers)</span>
+          <span className="roll-regex-label">优质词缀（英文参考）</span>
           <input readOnly value={ALL_GOOD_MODS_REGEX} onFocus={(e) => e.target.select()} />
         </div>
         <div className="roll-regex-row">
-          <span className="roll-regex-label">120%+ quantity roll</span>
+          <span className="roll-regex-label">数量 120% 以上（英文参考）</span>
           <input readOnly value={'"m q.*(1[2-9].|[2-9]..)%"'} onFocus={(e) => e.target.select()} />
         </div>
         <div className="roll-regex-row">
-          <span className="roll-regex-label">75%+ sulphur (save for Filthscrabble)</span>
+          <span className="roll-regex-label">硫磺 75% 以上（污秽蟹群，英文参考）</span>
           <input readOnly value={'"sul.*(7[5-9]|[89].|\\d..)%"'} onFocus={(e) => e.target.select()} />
         </div>
       </details>
 
       <details className="ahk-help">
-        <summary>📋 Chart + border collector - one paste for everything (Windows)</summary>
+        <summary>📋 原版英文海图及边界采集器（Windows 参考）</summary>
         <p className="muted">
-          A tiny optional helper that <strong>never sends a single input to the game</strong> -
-          no keystrokes, no clicks, nothing. You press every key yourself; it only listens: to
-          the clipboard you copied to (like the trade overlays do), and to a screenshot taken
-          while <em>you</em> hold Alt. OCR runs locally with Windows' built-in reader - nothing
-          is uploaded.
+          原版可选辅助脚本<strong>不会向游戏发送按键或点击</strong>。所有按键由玩家自己操作；
+          脚本读取主动复制的剪贴板内容，以及玩家按住 Alt 时的截图。
+          原版 OCR 在 Windows 本地运行。此脚本和边界 OCR 未做国服适配。
         </p>
         <a
           className="ahk-dl"
           href={`${import.meta.env.BASE_URL}voyage-clip-collector.ahk`}
           download
         >
-          ⬇ Download voyage-clip-collector.ahk
+          ⬇ 下载原版 voyage-clip-collector.ahk
         </a>
         <ol className="ahk-steps">
           <li>
-            Install{' '}
+            安装{' '}
             <a href="https://www.autohotkey.com/" target="_blank" rel="noopener noreferrer">
               AutoHotkey v2
             </a>{' '}
-            and run the script (it lives in the tray).
+            后运行脚本（在系统托盘中）。
           </li>
           <li>
-            Press <kbd>F7</kbd> - copy mode on, a counter appears on screen.
+            按 <kbd>F7</kbd> 开启复制模式，屏幕显示计数器。
           </li>
           <li>
-            In PoE, hover each chart and press <kbd>Ctrl+C</kbd> yourself - the counter ticks
-            up. Non-chart items and accidental double-copies are ignored.
+            在原版支持的客户端中，逐张悬停海图并自行按 <kbd>Ctrl+C</kbd>，计数器增加。
+            非海图和误操作的重复复制会被忽略。
           </li>
           <li>
-            Borders: <strong>hold Alt</strong> so all 12 border tooltips show, press{' '}
-            <kbd>F8</kbd>, and let go when it beeps - the tooltips are read locally and join
-            the batch.
+            原版边界采集：<strong>按住 Alt</strong> 显示全部 12 个边界悬停提示，按{' '}
+            <kbd>F8</kbd>，听到提示音后松开；文本在本地读取并加入批次。
           </li>
           <li>
-            Press <kbd>F7</kbd> again, switch here once, <kbd>Ctrl+V</kbd> - charts and
-            borders import in one paste (charts already in your library are skipped).
+            再次按 <kbd>F7</kbd>，切回本页并按 <kbd>Ctrl+V</kbd>，一次导入海图与边界；
+            已在库存中的海图会跳过。
           </li>
         </ol>
         <p className="muted small">
-          Beeps too loud? <kbd>Shift+F7</kbd> mutes them - the on-screen counter still works.
-          If PoE runs as administrator, run the collector as administrator too or its hotkeys
-          won't register while the game is focused.
+          <kbd>Shift+F7</kbd> 可关闭提示音，屏幕计数器继续工作。
+          游戏与原版采集器需要相同的权限级别才能响应快捷键。
         </p>
       </details>
       <p className="muted small">
-        The old bulk importer stays retired: GGG's macro rules ask for one action per keypress
-        and there's no clear ruling for tools like it - a grey area isn't worth anyone's
-        account. The collector above is different: every keypress is your own, and it sends
-        nothing to the game.
+        旧版批量操作脚本保持停用。上方保留原版英文采集器参考，国服流程使用手动复制与粘贴。
       </p>
       <p className="muted small">
-        Problems or ideas?{' '}
+        问题或建议？{' '}
         <a
-          href="https://github.com/one-more-map/one-more-map.github.io/issues"
+          href="https://github.com/ren2019/allflame-voyage/issues"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Open a GitHub issue
+          提交 GitHub Issue
         </a>{' '}
-        - actively monitored, and pull requests are welcome.
+        欢迎反馈或提交改进。
       </p>
     </div>
   )

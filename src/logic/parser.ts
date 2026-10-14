@@ -5,6 +5,7 @@
 // need to know which client language produced the clipboard text.
 
 import { VOYAGE_MODS } from '../data/mods'
+import { TEXT_LIBRARY, matchChineseChartImplicit } from '../data/textLibrary'
 import { chartAreaTypeForText } from '../data/chartAreas'
 import type { ChartData, Edges, ModEffect, Stat } from '../types'
 
@@ -122,7 +123,10 @@ const MAINLAND_DIALECT: ClipboardDialect = {
     { re: /^亡者硫磺\s*[:：]\s*\+?(\d+)%/im, stat: 'sulphur' },
     { re: /^怪物群大小\s*[:：]\s*\+?(\d+)%/im, stat: 'packsize' },
   ],
-  shapes: { 端点: END, 直线: STRAIGHT },
+  shapes: Object.fromEntries(
+    TEXT_LIBRARY.records.filter((record) => record.kind === 'shape' && record.cnText && record.status === 'confirmed')
+      .map((record) => [record.cnText!, ({ End: END, Straight: STRAIGHT, Corner: CORNER, Junction: JUNCTION, Crossing: CROSSING } as Record<string, ShapeDefinition>)[record.internalId]]),
+  ),
   structural: /^(?:物品类别\s*[:：]|稀\s*有\s*度\s*[:：]|区域等级\s*[:：]|物品等级\s*[:：]|需求\s*[:：]|等级\s*[:：]|海图形状\s*[:：]|将此物品带给|出售获得通货\s*[:：])/,
   rewardRider: /^此区域中找到的.*提高\s*\d+%/,
   requireMappedImplicit: true,
@@ -306,7 +310,12 @@ export function parseChartText(text: string): ParseResult {
     }
 
     // Preserve the existing fallback for malformed/older English input.
-    const level = parseInt(item.match(dialect.areaLevel)?.[1] ?? '80', 10)
+    const levelMatch = item.match(dialect.areaLevel)
+    if (dialect.requireMappedImplicit && !levelMatch) {
+      rejected.push({ name, reason: 'missing 区域等级' })
+      continue
+    }
+    const level = parseInt(levelMatch?.[1] ?? '80', 10)
 
     const rewards: ModEffect[] = []
     for (const { re, stat } of dialect.headerStats) {
@@ -336,7 +345,7 @@ export function parseChartText(text: string): ParseResult {
       if (implicitLine && !SEPARATOR_RE.test(implicitLine)) {
         implicitText = implicitLine
         const id = dialect.requireMappedImplicit
-          ? matchLocalizedAlias(implicitLine)
+          ? matchChineseChartImplicit(implicitLine)
           : matchImplicit(implicitLine)
         if (id) modIds.push(id)
       }
@@ -362,6 +371,10 @@ export function parseChartText(text: string): ParseResult {
       .map((index) => lines[index])
       .join(' ')
     const areaType = chartAreaTypeForText(areaTypeText)
+    if (dialect.requireMappedImplicit && !areaType) {
+      rejected.push({ name, reason: `unknown destination: ${areaTypeText}` })
+      continue
+    }
 
     // Keep explicit downside lines as raw text. Header fields, localized area
     // names and self-reward riders are structural and should not be duplicated.
