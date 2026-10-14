@@ -175,20 +175,19 @@
     "US06",
     "US07"
   ],
-  "observedTests": 504,
+  "observedTests": 520,
   "fieldCheckpoint": {
     "status": "pending",
     "required": [
       "实际国服搜索命中当前海图",
       "实际九步放置并核对摆盘/朝向",
       "实际航程与存活核销结果",
-      "Corner/Junction/Crossing 三类真实国服高级复制",
       "真实十二边界原文或截图 corpus"
     ]
   },
   "windows": {
-    "startedUtc": "2026-10-14T10:55:34.858Z",
-    "deployedIntegration": "a4afe6e514d29c97409297984f6a63ac168fd863",
+    "startedUtc": "2026-10-14T12:08:36.117Z",
+    "deployedIntegration": "9a51066a831dffd1d1107f70c7e3ace6574cc6c2",
     "gameSearch": "not exercised"
   }
 }

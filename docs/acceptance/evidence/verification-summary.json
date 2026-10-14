@@ -1,9 +1,9 @@
 {
   "status": "automated-passed; field-pending",
-  "verifiedUtc": "2026-10-14T11:16:36.208Z",
-  "inputSha256": "9b6dcddb267eb0090492b23542567f9f9c2a4a7233b4a3ef53aedc1cc1f659d6",
-  "unitPassed": 478,
-  "browserPassed": 26,
+  "verifiedUtc": "2026-10-14T12:16:03.707778Z",
+  "inputSha256": "83669c28848cd7973a9b2b0c8b353a9217bb6b34d5cc9588955ef429ff9cddc9",
+  "unitPassed": 488,
+  "browserPassed": 32,
   "browserSkipped": 0,
   "deploymentTests": 4,
   "scenarioGroups": 27,
@@ -11,24 +11,41 @@
   "reports": {
     "unit": {
       "path": "docs/acceptance/evidence/verification-unit.json",
-      "sha256": "587cc38e795a9667e0513dc24b64a03149ab405d09799dd4f04459750f15f5b5"
+      "sha256": "5f47a89caa82ac91062ba4a1987faf142a2bb63619f146973e05e279e2a67fb6"
     },
     "browser": {
       "path": "docs/acceptance/evidence/verification-browser.json",
-      "sha256": "d52c1d11dbe99f3ca7f11c2069cfa9752bf01e4ef7508e2718b5c1efecefafee"
+      "sha256": "d552b9466ed52d3057f232b9d0b019f378d669740a05ae4a0a331c01b3fd24dc"
     },
     "stages": {
       "path": "docs/acceptance/evidence/verification-stages.json",
-      "sha256": "9dbb88e22e60620a5ef0fbe64ff177b5eab46b8774ca108456c0ce52d580512e"
+      "sha256": "effd68321e33440c530ecd82d574000c95fe75ec0eb90d0e47c8b08454e49f54"
     },
     "coverage": {
       "path": "docs/acceptance/evidence/verification-coverage.json",
-      "sha256": "0ff5bcad87784a0a331f609d34b12aacfd64e4292948e3c3c3dce5578f10a996"
+      "sha256": "5aad70910e7904369c2ed3cafa7197592c44653608f4a6d4b1ddb516cb338fe7"
     }
   },
   "coreBaselineCommit": "20a694ba8afb6ce497a67287b67c68a6b244e5fd",
-  "windowsEvidence": "docs/acceptance/evidence/windows-edge-green.json",
-  "windowsDeployedIntegration": "a4afe6e514d29c97409297984f6a63ac168fd863",
+  "integrationBeforeLedgerCommit": "ab1ebbb4f9f43c339fc59b2d924e1b82aed3ac95",
+  "windowsEvidence": "docs/acceptance/evidence/windows-five-green-2.json",
+  "windowsProofRuns": [
+    {
+      "path": "docs/acceptance/evidence/windows-five-green-1.json",
+      "sha256": "e2eed69c7ffd9a6bdf391df8a38f4efc50b73116344e467bc3326c1c661fd140",
+      "startedUtc": "2026-10-14T12:07:06.163Z",
+      "importedRealCharts": 5,
+      "nativeOsTextMatches": true
+    },
+    {
+      "path": "docs/acceptance/evidence/windows-five-green-2.json",
+      "sha256": "5889b4aed071c6a49c2fb075f56c262615f94bafe7620d4f89713bfb195ffc3b",
+      "startedUtc": "2026-10-14T12:08:36.117Z",
+      "importedRealCharts": 5,
+      "nativeOsTextMatches": true
+    }
+  ],
+  "windowsDeployedIntegration": "9a51066a831dffd1d1107f70c7e3ace6574cc6c2",
   "productionSourcesIdenticalToWindowsEvidence": true,
   "identicalProductionPaths": [
     "src",
@@ -39,5 +56,14 @@
   ],
   "gameFieldwork": "pending",
   "humanChecklist": "docs/acceptance/field-checklist.md",
-  "clientCalibration": "two real source charts only; no additional shape corpus available as of this verification"
+  "clientCalibration": {
+    "sampleCount": 5,
+    "confirmed": {
+      "chart-implicit": 5,
+      "destination": 4,
+      "shape": 5,
+      "field": 11
+    },
+    "borderClientCorpus": false
+  }
 }

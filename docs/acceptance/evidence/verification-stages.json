@@ -1,6 +1,6 @@
 {
-  "inputSha256": "9b6dcddb267eb0090492b23542567f9f9c2a4a7233b4a3ef53aedc1cc1f659d6",
-  "startedUtc": "2026-10-14T11:16:36.208Z",
+  "inputSha256": "83669c28848cd7973a9b2b0c8b353a9217bb6b34d5cc9588955ef429ff9cddc9",
+  "startedUtc": "2026-10-14T12:14:19.174Z",
   "offlineBrowser": true,
   "externalOriginsBlocked": true,
   "stages": [
@@ -14,9 +14,9 @@
         "--outputFile=/private/tmp/allflame-implementation/issue-9/verification-results/unit.json"
       ],
       "status": "passed",
-      "startedUtc": "2026-10-14T11:16:36.209Z",
+      "startedUtc": "2026-10-14T12:14:19.175Z",
       "exitCode": 0,
-      "finishedUtc": "2026-10-14T11:16:52.904Z",
+      "finishedUtc": "2026-10-14T12:14:35.553Z",
       "testCount": 0,
       "log": "unit.log"
     },
@@ -27,9 +27,9 @@
         "tests/border-ocr-regression.cjs"
       ],
       "status": "passed",
-      "startedUtc": "2026-10-14T11:16:52.904Z",
+      "startedUtc": "2026-10-14T12:14:35.553Z",
       "exitCode": 0,
-      "finishedUtc": "2026-10-14T11:16:53.164Z",
+      "finishedUtc": "2026-10-14T12:14:35.812Z",
       "testCount": 0,
       "log": "border-ocr.log"
     },
@@ -40,9 +40,9 @@
         "scripts/check-text-library.py"
       ],
       "status": "passed",
-      "startedUtc": "2026-10-14T11:16:53.165Z",
+      "startedUtc": "2026-10-14T12:14:35.813Z",
       "exitCode": 0,
-      "finishedUtc": "2026-10-14T11:16:53.341Z",
+      "finishedUtc": "2026-10-14T12:14:35.989Z",
       "testCount": 0,
       "log": "text-library-audit.log"
     },
@@ -54,9 +54,9 @@
         "tests/deployment/local-site.test.mjs"
       ],
       "status": "passed",
-      "startedUtc": "2026-10-14T11:16:53.341Z",
+      "startedUtc": "2026-10-14T12:14:35.989Z",
       "exitCode": 0,
-      "finishedUtc": "2026-10-14T11:16:56.457Z",
+      "finishedUtc": "2026-10-14T12:14:39.176Z",
       "testCount": 4,
       "log": "deployment.log"
     },
@@ -68,9 +68,9 @@
         "build"
       ],
       "status": "passed",
-      "startedUtc": "2026-10-14T11:16:56.458Z",
+      "startedUtc": "2026-10-14T12:14:39.177Z",
       "exitCode": 0,
-      "finishedUtc": "2026-10-14T11:16:58.059Z",
+      "finishedUtc": "2026-10-14T12:14:40.770Z",
       "testCount": 0,
       "log": "build.log"
     },
@@ -84,9 +84,9 @@
         "--reporter=line,json"
       ],
       "status": "passed",
-      "startedUtc": "2026-10-14T11:16:58.059Z",
+      "startedUtc": "2026-10-14T12:14:40.770Z",
       "exitCode": 0,
-      "finishedUtc": "2026-10-14T11:17:42.316Z",
+      "finishedUtc": "2026-10-14T12:15:28.811Z",
       "testCount": 0,
       "log": "browser.log"
     }

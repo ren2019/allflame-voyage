@@ -71,11 +71,42 @@
           "file": "tests/browser/import.spec.ts",
           "nameIncludes": "samples individually",
           "minCases": 1
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.client-shapes.test.ts",
+          "nameIncludes": "imports the real client 角落"
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.client-shapes.test.ts",
+          "nameIncludes": "preserves all copied fields",
+          "minCases": 3
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.client-shapes.test.ts",
+          "nameIncludes": "imports all five collected shapes",
+          "minCases": 2
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/client-shapes.spec.ts",
+          "nameIncludes": "real controls import collected",
+          "minCases": 3
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/client-shapes.spec.ts",
+          "nameIncludes": "new copies together with Windows line endings"
         }
       ],
       "fixtures": [
         "samples/charted.zh-CN.txt",
-        "samples/README.md"
+        "samples/README.md",
+        "samples/charted-extra-shapes.zh-CN.txt",
+        "samples/charted-extra-shapes.zh-CN.expected.json",
+        "docs/acceptance/client-shapes.md"
       ],
       "automatedStatus": "requires-fresh-passing-reports",
       "fieldStatus": "not-a-field-claim"
@@ -125,6 +156,12 @@
           "file": "tests/browser/import.spec.ts",
           "nameIncludes": "both real charts in a Windows batch",
           "minCases": 1
+        },
+        {
+          "suite": "unit",
+          "file": "src/logic/parser.client-shapes.test.ts",
+          "nameIncludes": "imports all five collected shapes",
+          "minCases": 2
         }
       ],
       "fixtures": [
@@ -446,6 +483,12 @@
           "file": "tests/browser/solve.spec.ts",
           "nameIncludes": "player selects",
           "minCases": 7
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/filler-candidates.spec.ts",
+          "nameIncludes": "a spare voyage stays executable under an active strategy and uses only its eligible inventory",
+          "minCases": 1
         }
       ],
       "fixtures": [
@@ -478,6 +521,12 @@
           "suite": "browser",
           "file": "tests/browser/solve.spec.ts",
           "nameIncludes": "eight charts are a reference",
+          "minCases": 1
+        },
+        {
+          "suite": "browser",
+          "file": "tests/browser/filler-candidates.spec.ts",
+          "nameIncludes": "spare candidates retain a preserved placement and expire when protections change",
           "minCases": 1
         }
       ],
@@ -833,7 +882,8 @@
         }
       ],
       "fixtures": [
-        "docs/acceptance/evidence/windows-edge-green.json",
+        "docs/acceptance/evidence/windows-five-green-1.json",
+        "docs/acceptance/evidence/windows-five-green-2.json",
         "docs/acceptance/evidence/windows-tls-green.json"
       ],
       "automatedStatus": "requires-fresh-passing-reports",
@@ -873,7 +923,13 @@
     "samples/text-library/library.json",
     "samples/text-library/coverage.json",
     "samples/text-library/sources.json",
-    "samples/text-library/mappings.reviewed.json"
+    "samples/text-library/mappings.reviewed.json",
+    "samples/charted-extra-shapes.zh-CN.txt",
+    "samples/charted-extra-shapes.zh-CN.expected.json",
+    "docs/acceptance/client-shapes.md",
+    "docs/acceptance/code-review.md",
+    "docs/acceptance/evidence/windows-five-green-1.json",
+    "docs/acceptance/evidence/windows-five-green-2.json"
   ],
   "fieldCheckpoint": {
     "status": "pending",
@@ -881,9 +937,9 @@
       "实际国服搜索命中当前海图",
       "实际九步放置并核对摆盘/朝向",
       "实际航程与存活核销结果",
-      "Corner/Junction/Crossing 三类真实国服高级复制",
       "真实十二边界原文或截图 corpus"
     ]
   },
-  "windowsEvidence": "docs/acceptance/evidence/windows-edge-green.json"
+  "windowsEvidence": "docs/acceptance/evidence/windows-five-green-2.json",
+  "requiredWindowsImportedCharts": 5
 }
