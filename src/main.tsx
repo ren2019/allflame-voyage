@@ -13,8 +13,11 @@ try {
   /* ignore */
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+const root = ReactDOM.createRoot(document.getElementById('root')!)
+if (new URLSearchParams(location.search).get('view') === 'calibration') {
+  import('./components/CalibrationPage').then(({ CalibrationPage }) =>
+    root.render(<React.StrictMode><CalibrationPage /></React.StrictMode>),
+  )
+} else {
+  root.render(<React.StrictMode><App /></React.StrictMode>)
+}

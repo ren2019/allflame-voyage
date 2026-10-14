@@ -1,3 +1,4 @@
+import { CalibrationLink } from './CalibrationLink'
 import { useState, type ReactNode } from 'react'
 import { BORDER_MODS, borderModById, voyageModById } from '../data/mods'
 import { BORDER_CHOICES, localizedBorder, matchesBorderQuery } from '../data/borderLocale'
@@ -74,6 +75,7 @@ function BorderSelect({
       ) : (
         <span className="bslot-empty">·</span>
       )}
+      {value && <CalibrationLink id={value} slot={seg} />}
       {label?.status === 'conflict' && <span aria-label="译名冲突">⚠</span>}
       {open && (
         <>

@@ -1,3 +1,4 @@
+import { CalibrationLink } from './CalibrationLink'
 import { useMemo, useState } from 'react'
 import { chartShapeLabel, destinationLabel, voyageModShort, voyageModText } from '../data/localization'
 import { VOYAGE_MODS, voyageModById } from '../data/mods'
@@ -291,6 +292,7 @@ export function Library(props: Props) {
                 onClick={() => props.onSelect(c.uid)}
                 {...tooltipProps({ title: c.name, lines })}
               >
+                {mod && <CalibrationLink id={mod.id} />}
                 {mod?.short ? (
                   <span className={`sq-reward-text scope-${mod.scope}`}>
                     <span className="sq-shortname">{voyageModShort(mod.id)}</span>
@@ -391,7 +393,7 @@ export function Library(props: Props) {
                 >
                   {allMods.map((m) => (
                     <div key={m!.id} className={`scope-${m!.scope}`}>
-                      {voyageModText(m!.id)}
+                      {voyageModText(m!.id)} <CalibrationLink id={m!.id} />
                     </div>
                   ))}
                 </div>
