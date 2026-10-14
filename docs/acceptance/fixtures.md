@@ -17,14 +17,14 @@
 
 | 数据集 | 策略ID | 必要材料/环境核对（依据现有策略） | 状态 |
 | --- | --- | --- | --- |
-| strategy-alc | alc-and-go | 9张可连通、未被原有策略保护排除的备用海图；记录layoutChoice | 待制作验证 |
-| strategy-anchor | anchorfield-fishing | 锚地1张加填充图至9张；验证原有最多1张锚地限制 | 待制作验证 |
-| strategy-speedrun | milky-speedrun | 至少1张既有中心保险箱/漂流瓶类型及填充图；记录centerChoice和保护配置 | 待制作验证 |
-| strategy-meatfish | milky-meatfish | 2海星、1万神殿/鬼火、2海之柱、2灯笼、1附身、1不掉装备/分裂；记录实际9个实例与软偏好 | 待制作验证 |
-| strategy-ethereal | milky-ethereal | 4鬼火、3灯笼加填充图；选择与原有布局可兼容的形状 | 待制作验证 |
-| strategy-divine-rares | divine-border-rares | 神圣边界、1海之柱、3海星/保险箱、5稀有怪类型，计数须满足原有要求 | 待制作验证 |
-| strategy-divine-boxes | cutedog-divine-boxes | 神圣边界、1远洋深渊、3任意保险箱类型、5全航程稀有怪类型 | 待制作验证 |
-| retry-insufficient | 无策略/手动权重 | 初始8张不可能填满九格；第9张到达后有明确可行见证 | 待制作验证 |
+| strategy-alc | alc-and-go | 9张可连通、未被原有策略保护排除的备用海图；记录layoutChoice | 已离线验证（人工模型；真实游戏未验） |
+| strategy-anchor | anchorfield-fishing | 锚地1张加填充图至9张；验证原有最多1张锚地限制 | 已离线验证（人工模型；真实游戏未验） |
+| strategy-speedrun | milky-speedrun | 至少1张既有中心保险箱/漂流瓶类型及填充图；记录centerChoice和保护配置 | 已离线验证（人工模型；真实游戏未验） |
+| strategy-meatfish | milky-meatfish | 2海星、1万神殿/鬼火、2海之柱、2灯笼、1附身、1不掉装备/分裂；记录实际9个实例与软偏好 | 已离线验证（人工模型；真实游戏未验） |
+| strategy-ethereal | milky-ethereal | 4鬼火、3灯笼加填充图；选择与原有布局可兼容的形状 | 已离线验证（人工模型；真实游戏未验） |
+| strategy-divine-rares | divine-border-rares | 神圣边界、1海之柱、3海星/保险箱、5稀有怪类型，计数须满足原有要求 | 已离线验证（人工模型；真实游戏未验） |
+| strategy-divine-boxes | cutedog-divine-boxes | 神圣边界、1远洋深渊、3任意保险箱类型、5全航程稀有怪类型 | 已离线验证（人工模型；真实游戏未验） |
+| retry-insufficient | 无策略/手动权重 | 初始8张不可能填满九格；第9张到达后有明确可行见证 | 已离线验证（人工模型；真实游戏未验） |
 | journey-two-voyages | alc-and-go | tests/fixtures/acceptance/journey-two-voyages.json 与 expected/README：12 个人工四向实例、九格连接见证、选择候选后的 UID 核销 oracle、补五张并替换边界后第二次求解 | 已制作验证（人工内部模型） |
 
 主流程中剪贴板使用可记录的受控接口，断言实际写入调用及步骤推进；它不能证明Windows真实剪贴板权限或游戏搜索成功。现场结果独立记录。
