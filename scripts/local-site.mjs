@@ -65,6 +65,8 @@ function publish() {
   const stage = path('www-next')
   rmSync(stage, { recursive: true, force: true })
   cpSync(build, stage, { recursive: true })
+  // Public bootstrap artifact only; never publish the certificate directory.
+  cpSync(path('allflame-voyage-ca.cer'), join(stage, 'allflame-voyage-ca.cer'))
   rmSync(path('www'), { recursive: true, force: true })
   renameSync(stage, path('www'))
 }

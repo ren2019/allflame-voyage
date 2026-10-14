@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import https from 'node:https'
 import net from 'node:net'
+import { X509Certificate } from 'node:crypto'
 
 const root = mkdtempSync(join(tmpdir(), 'voyage-https-test-'))
 const site = join(root, 'site')
@@ -21,9 +22,12 @@ const cli = new URL('../../scripts/local-site.mjs', import.meta.url)
 const run = (command) => execFileSync(process.execPath, [cli.pathname, command], { env, encoding: 'utf8' })
 const request = (path, ca, method = 'GET') => new Promise((resolve, reject) => {
   const req = https.request(`https://127.0.0.1:${port}${path}`, { ca, agent: false, method }, (res) => {
-    let body = ''
-    res.on('data', (data) => { body += data })
-    res.on('end', () => resolve({ status: res.statusCode, body }))
+    const chunks = []
+    res.on('data', (data) => { chunks.push(data) })
+    res.on('end', () => {
+      const raw = Buffer.concat(chunks)
+      resolve({ status: res.statusCode, body: raw.toString('utf8'), raw })
+    })
   })
   req.on('error', reject)
   req.end()
@@ -65,5 +69,16 @@ test('a release update keeps its URL and project CA', async () => {
   assert.deepEqual(readFileSync(join(site, 'ca.crt')), ca)
   assert.ok(run('status').includes(`https://192.168.1.8:${port}`))
   assert.equal((await request('/', ca)).body, '<html>静态海图站点 v2</html>')
+  run('stop')
+})
+
+test('Windows can download only the public certificate matching this project CA', async () => {
+  run('start')
+  const ca = readFileSync(join(site, 'ca.crt'))
+  const result = await request('/allflame-voyage-ca.cer', ca)
+  assert.equal(result.status, 200)
+  assert.equal(new X509Certificate(result.raw).fingerprint256, new X509Certificate(ca).fingerprint256)
+  assert.equal((await request('/ca.key', ca)).status, 404)
+  assert.equal((await request('/server.key', ca)).status, 404)
   run('stop')
 })
