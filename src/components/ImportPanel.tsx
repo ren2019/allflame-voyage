@@ -59,7 +59,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     }
 
     const parts: string[] = []
-    if (fresh.length) parts.push(`Imported ${fresh.length} chart${fresh.length === 1 ? '' : 's'}`)
+    if (fresh.length) parts.push(`导入 ${fresh.length} 张海图`)
     if (skipped)
       parts.push(
         `skipped ${skipped} re-scanned chart${skipped === 1 ? '' : 's'} already in your library`
@@ -85,11 +85,9 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
       )
     }
     if (notCharted.length)
-      parts.push(
-        `skipped ${notCharted.length} uncharted (run them first to reveal their modifier)`,
-      )
+      parts.push(`拒绝 ${notCharted.length} 张未测绘海图（先完成测绘以揭示航行词缀）`)
     const otherRejects = rejected.length - notCharted.length
-    if (otherRejects > 0) parts.push(`skipped ${otherRejects} unrecognised`)
+    if (otherRejects > 0) parts.push(`拒绝 ${otherRejects} 项无法识别`)
     if (borderOcr.blockCount > 0 && borderOcr.matches.length === 0) {
       parts.push(
         'no border tooltips recognised - kept your existing borders (recheck the border calibration in the script wizard)',

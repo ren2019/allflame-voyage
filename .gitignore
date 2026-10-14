@@ -1,5 +1,7 @@
 node_modules/
 dist/
+playwright-report/
+test-results/
 
 # personal local tooling (not part of the site)
 *.ahk
