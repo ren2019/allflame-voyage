@@ -71,17 +71,17 @@ npm run site:stop
 这些操作依据微软的[证书存储与导入说明](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/certutil)
 及[当前用户证书存储说明](https://learn.microsoft.com/en-us/powershell/module/pki/import-certificate)。
 
-## Windows 现场验收清单（待实际执行）
+## Windows 现场验收清单
 
 | 检查 | 操作与应有结果 | 当前状态 |
 | --- | --- | --- |
-| 网络 | PowerShell `Test-NetConnection 192.168.1.8 -Port 8443`显示 `TcpTestSucceeded: True` | 待Windows现场执行 |
-| 信任 | Edge无证书告警；资源正常加载 | 待Windows证书安装后执行 |
-| 样本 | 空库存分别或合并导入 `samples/charted.zh-CN.txt`，得到两张海图 | 用户已在实际Edge绕过证书告警后导入两张成功；信任仍未通过 |
-| 安全上下文 | Edge开发者工具Console查看 `window.isSecureContext`为true，`typeof navigator.clipboard.writeText`为function | 待Windows现场执行 |
-| 一键复制 | 在原有放置指南点击复制，粘贴到记事本确认有定位文本；若Edge询问剪贴板权限，对本站允许 | 待Windows现场执行 |
+| 网络 | 实际Windows访问固定地址并正常加载静态资源 | 已通过；实际Edge HTTP200、资源失败0 |
+| 信任 | Edge无证书告警；资源正常加载 | 已通过；Windows原生TLS及不绕过证书的独立Edge均通过 |
+| 样本 | 空库存分别或合并导入 `samples/charted.zh-CN.txt`，得到两张海图 | 已通过；真实Edge控件导入2张 |
+| 安全上下文 | Edge中 `window.isSecureContext`为true，`typeof navigator.clipboard.writeText`为function | 已通过；实际Windows Edge读数 |
+| 一键复制 | 原有放置指南点击复制后实际读回Windows剪贴板 | 已通过；文本包含国服原句和区域等级83 |
 | 游戏定位 | 原样粘贴定位文本到国服游戏搜索栏，确认匹配当前格海图，并完成一次9格可执行摆盘及航程流程 | 待真实国服游戏执行 |
-| 恢复与备份 | 同地址刷新恢复库存；JSON导出后用现有导入还原 | 待Windows现场执行 |
+| 恢复与备份 | 同地址刷新恢复库存；JSON导出后用现有导入还原 | Windows刷新恢复2张已通过；JSON往返由完整BDD验证 |
 
 网络测试失败时依次查看Mac `site:status`、Mac是否仍为192.168.1.8、
 两台电脑是否处于可互访的内网，以及Mac防火墙是否允许Node入站。
@@ -90,9 +90,11 @@ npm run site:stop
 
 ## Edge证书告警的只读反馈
 
-当前已收到的现场反馈是：实际Edge显示证书告警，选择继续访问后两张
-样本导入成功。尚未收到具体Edge错误码或证书安装结果；不能据此认定
-是哪一种证书问题。导入成功证明应用可访问，不证明受信任HTTPS或复制权限。
+此前现场反馈为`ERR_CERT_AUTHORITY_INVALID`，绕过告警后导入成功。
+随后获授权在实际Windows执行诊断，确认当前用户缺少项目根信任，
+安装同一已核对公有根后原生TLS和独立Edge验收通过。诊断红/绿证据及
+实际Edge结果见 [#8执行记录](acceptance/issue-8.md)。下述反馈步骤用于
+未来复查；无需重复安装目前已存在的根证书。
 
 在Edge告警页展开详细信息，记录原样的 `NET::ERR_CERT_...`错误码。
 只读Windows诊断脚本可保存自
@@ -133,8 +135,8 @@ Windows TLS结果不是Edge结果；需要同时保留Edge错误码。
 navigator.permissions.query({name: 'clipboard-write'}).then(p => console.log(p.state))
 ```
 
-最后通过原有放置指南实际点击复制并粘贴到记事本/游戏核对。
-上述Console读数、权限和实际复制尚待Windows反馈，不以Mac测试替代。
+原有放置指南已在真实Windows Edge实际点击复制并读回剪贴板。
+游戏中匹配和放置仍需真实国服物品现场核对，不以浏览器测试替代。
 诊断接口依据微软的[SslStream证书验证契约](https://learn.microsoft.com/en-us/dotnet/api/system.net.security.sslstream)。
 
 ## 本地自动化复验
@@ -143,6 +145,8 @@ navigator.permissions.query({name: 'clipboard-write'}).then(p => console.log(p.s
 npm run test:deployment
 # 先启动实际HTTPS站点，再运行：
 npm run test:https
+# 已授权Windows SSH、且用户登录交互桌面时执行真实Edge验收：
+WINDOWS_SSH_ALIAS=opensonic-windows-runner npm run test:windows
 ```
 
 第一项测试在临时目录生成自己的CA，用随机端口验证启动、停止、资产
@@ -152,3 +156,9 @@ npm run test:https
 剪贴板写入及刷新恢复。不会全局安装CA，也没有设置`ignoreHTTPSErrors`。
 临时浏览器的精确SPKI范围由[Chromium实现说明](https://chromium.googlesource.com/chromium/src/+/bff9ec6/services/network/ignore_errors_cert_verifier.h)
 界定；它不能证明Windows系统信任或国服游戏搜索成功。
+
+`test:windows`使用目标Windows已安装的Edge及其系统根信任。通过独立
+临时配置目录、仅回环CDP和SSH隧道驱动真实网站控件；没有证书忽略或
+SPKI参数。只清理自己的临时任务、目录和进程，不操作用户现有Edge或
+游戏。需要目标用户保持桌面已登录、SSH可用及Mac站点已启动；该入口
+会实际写入并读回Windows剪贴板，不替代国服游戏验证。
