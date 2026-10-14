@@ -210,7 +210,7 @@ export function Library(props: Props) {
   return (
     <div className="library">
       <div className="panel-title">
-        海图库存{' '}
+        <span className="library-title">海图库存</span>{' '}
         <span className="muted">
           ({query ? `${visible.length}/` : ''}
           {props.pool.length})

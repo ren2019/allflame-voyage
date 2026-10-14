@@ -466,7 +466,7 @@ export default function App() {
               原版批量导入脚本已移除并保持停用。原作者因游戏宏规则和适用范围未明确而停止提供该脚本。
             </p>
             <p className="tut-body">
-              国服流程使用手动复制：<strong>在游戏中 Ctrl+C 复制海图，再在本页 Ctrl+V 导入</strong>。
+              国服流程使用手动复制：<strong>在国服游戏中 Ctrl+Alt+C 高级复制海图，再在本页 Ctrl+V 导入</strong>。
               已导入的重复扫描会按原版规则跳过。边界则逐个点击摆盘外圈槽位，搜索并选择对应词缀。
             </p>
             <p className="tut-body">

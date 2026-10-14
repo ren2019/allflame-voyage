@@ -27,7 +27,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     const { charts, rejected } = parseChartText(borderOcr.chartText)
     const notCharted = rejected.filter((r) => r.reason.startsWith('not charted'))
     if (charts.length === 0 && rejected.length === 0 && borderOcr.blockCount === 0) {
-      setMsg('未识别到物品，请粘贴游戏 Ctrl+C 复制文本。')
+      setMsg('未识别到物品，请粘贴国服 Ctrl+Alt+C 高级复制文本。')
       return
     }
 
@@ -154,7 +154,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
       <textarea
         rows={5}
         placeholder={
-          '在游戏中 Ctrl+C 复制已测绘海图，再在本页 Ctrl+V 导入；也可粘贴到此处后解析。名称、区域等级、奖励、航行词缀和形状会一并读取。'
+          '在国服游戏中 Ctrl+Alt+C 高级复制已测绘海图，再在本页 Ctrl+V 导入；也可粘贴到此处后解析。名称、区域等级、奖励、航行词缀和形状会一并读取。'
         }
         value={text}
         onChange={(e) => setText(e.target.value)}
