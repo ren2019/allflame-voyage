@@ -1,5 +1,7 @@
 # 逐边优先级试用
 
+后续试用已转至[边界标签与折叠说明](border-labels-trial.md)，本文保留首轮分值徽标方案的记录。
+
 用户确认清单1、3、4、5、6、7、9、10、11、12通过；#2库存卡片重叠仍未修复，#13真实航程核销仍待验。用户随后要求第8项改成逐边0–2忽略、3–6着色、7–10高亮，本轮只更新9443独立预览，保持原8443。
 
 当前试用源码 `25e6e97e458065a4751d6bc36393a6b0c42f3826`，64文件构建摘要 `52a1c557490f51b95c880482a6a60d03059d7f8211a997c4ed9137f120cb36ac`，精确归档 `/tmp/allflame-implement-21/border-priority-trial-25e6e97/dist`。完整清单和本轮检查边界见 [manifest](border-priority-trial/manifest.json)。candidate.json顶层保留上一轮完整测试fd428e9的归属，manualTrial指向本轮，不把旧536/68、旧Windows证据转记新版本。

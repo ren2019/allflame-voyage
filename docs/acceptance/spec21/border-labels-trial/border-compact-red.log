@@ -1,0 +1,47 @@
+[WebServer] (node:59862) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:59864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/border-affinity.spec.ts:75:1 › 每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划 (5.3s)
+
+
+  1) tests/browser/border-affinity.spec.ts:75:1 › 每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划 ───────────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-border-segment="0"]').locator('.bslot-affinity')
+    Expected: 0
+    Received: 1
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-border-segment="0"]').locator('.bslot-affinity') with timeout 5000ms
+      - waiting for locator('[data-border-segment="0"]').locator('.bslot-affinity')
+        14 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      83 |     const edge = page.locator(`[data-border-segment="${segment}"]`)
+      84 |     await expect(edge).toHaveAttribute('data-affinity-band', band)
+    > 85 |     await expect(edge.locator('.bslot-affinity')).toHaveCount(0)
+         |                                                   ^
+      86 |     await expect(edge).not.toHaveAttribute('title', /相关度|\/10/)
+      87 |   }
+      88 |   expect(await exportState(page)).toEqual(state)
+        at /Users/steipete/Projects/allflame-voyage/tests/browser/border-affinity.spec.ts:85:51
+
+    Error Context: test-results/border-affinity-每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/border-affinity-每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/border-affinity-每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/browser/border-affinity.spec.ts:75:1 › 每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划 ────────────
