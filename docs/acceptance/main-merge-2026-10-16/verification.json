@@ -1,0 +1,75 @@
+{
+  "testStartSource": "1c04d28d00d5a70e6081fefdf8cf7d10996618c2",
+  "subsequentChanges": "documentation and restoration of original workflow only; product/test/build inputs unchanged",
+  "command": "OFFLINE_ACCEPTANCE=1 PLAYWRIGHT_PORT=4402 npm run verify",
+  "inputSha256": "64b8616d9fd4264cd133562222a2b1981e46c370b78ff8fa2e5b4c10e4346e2f",
+  "startedUtc": "2026-10-15T16:13:54.447Z",
+  "finishedUtc": "2026-10-15T16:16:03.079Z",
+  "stages": [
+    {
+      "name": "unit",
+      "status": "passed",
+      "exitCode": 0
+    },
+    {
+      "name": "border-ocr",
+      "status": "passed",
+      "exitCode": 0
+    },
+    {
+      "name": "text-library-audit",
+      "status": "passed",
+      "exitCode": 0
+    },
+    {
+      "name": "deployment",
+      "status": "passed",
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "status": "passed",
+      "exitCode": 0
+    },
+    {
+      "name": "browser",
+      "status": "passed",
+      "exitCode": 0
+    }
+  ],
+  "unitPassed": 536,
+  "browser": {
+    "startTime": "2026-10-15T16:14:17.413Z",
+    "duration": 105645.877,
+    "expected": 79,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "deploymentPassed": 5,
+  "ocr": {
+    "tooltips": 64,
+    "aliases": 12
+  },
+  "aggregate": {
+    "exitCode": 1,
+    "failure": "Core algorithm changed: src/logic/scoring.ts",
+    "existingFailure": true,
+    "gateUnchanged": true
+  },
+  "buildSha256": "3842339db05af569db95855421f72d653f325c1d40d8c9373b8f9d9260582f91",
+  "liveBuildEqualsFreshBuild": true,
+  "old8443": {
+    "stopped": true,
+    "verifiedOwnedPid": 72833,
+    "portClosed": true,
+    "certificatesRetainedUnchanged": true
+  },
+  "current9443": {
+    "retained": true,
+    "source": "1cf3b5f9e8fdccf17f8991fd280c3c5213432372",
+    "strictCaSanAndAll64FilesVerified": true
+  },
+  "nativeWindowsAndGame": "not run; outstanding issues remain open",
+  "localRawReports": "/tmp/allflame-main-merge-20261016/verification-results"
+}
