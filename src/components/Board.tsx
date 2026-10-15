@@ -1,3 +1,6 @@
+import { RegionTargets, RegionTargetDetails } from './RegionTargets'
+import { regionTargets, type RegionalCell } from '../logic/regionTargets'
+import type { ScoreOptions } from '../logic/scoring'
 import { CalibrationLink } from './CalibrationLink'
 import { useState, type ReactNode } from 'react'
 import { BORDER_MODS, borderModById, voyageModById } from '../data/mods'
@@ -14,6 +17,8 @@ interface Props {
   borders: Borders
   charts: Map<string, ChartData>
   perTile: number[]
+  strategyId?: string | null
+  scoreOptions?: ScoreOptions
   selectedCell: number | null
   highlightUid: string | null
   /** only flag connector mismatches as errors under the strict rule */
@@ -133,6 +138,9 @@ function Tile({
   onRemove,
   onRotate,
   onTogglePreserve,
+  region,
+  cellIndex,
+  onTargetDetails,
 }: {
   placement: Placement | null
   chart: ChartData | null
@@ -141,6 +149,9 @@ function Tile({
   highlighted: boolean
   placing: boolean
   isStart: boolean
+  region?: RegionalCell
+  cellIndex: number
+  onTargetDetails: () => void
   edgeStatus: EdgeStatus[]
   onClick: () => void
   onRemove: () => void
@@ -181,7 +192,7 @@ function Tile({
   const primary = mods.find((m) => m!.scope !== 'self') ?? mods[0]
   return (
     <div
-      className={`tile ${selected ? 'selected' : ''} ${highlighted ? 'highlighted' : ''} ${chart.preserved ? 'preserved' : ''} ${primary ? `tscope-${primary.scope}` : ''}`}
+      className={`tile ${region ? 'with-region-targets' : ''} ${selected ? 'selected' : ''} ${highlighted ? 'highlighted' : ''} ${chart.preserved ? 'preserved' : ''} ${primary ? `tscope-${primary.scope}` : ''}`}
       onClick={onClick}
       {...tt}
     >
@@ -269,6 +280,7 @@ function Tile({
           ✕
         </button>
       </div>
+      {region && <RegionTargets cell={region} index={cellIndex} onDetails={onTargetDetails} />}
       {startBadge}
       <span className="tile-lvl">区域 {chart.level}</span>
       <div className="tile-score">{score.toFixed(1)}</div>
@@ -285,6 +297,9 @@ const DIRS = [
 
 export function BoardView(props: Props) {
   const { board, borders, charts } = props
+  const [showTargets, setShowTargets] = useState(false)
+  const [detailCell, setDetailCell] = useState<number | null>(null)
+  const targets = regionTargets(board, borders, charts, props.strategyId ?? null, props.scoreOptions)
 
   const edgesAt = (i: number) => {
     const p = board[i]
@@ -315,6 +330,9 @@ export function BoardView(props: Props) {
     return (
       <Tile
         key={i}
+        cellIndex={i}
+        region={showTargets ? targets[i] : undefined}
+        onTargetDetails={() => setDetailCell(i)}
         placement={p}
         chart={p ? charts.get(p.chartUid) ?? null : null}
         score={props.perTile[i]}
@@ -355,11 +373,13 @@ export function BoardView(props: Props) {
       <div className="board-toolbar">
         <span className="board-title">航程摆盘</span>
         <span className="spacer" />
+        <button type="button" aria-pressed={showTargets} onClick={() => setShowTargets(v => !v)}>区域目标</button>
         <button onClick={randomize} title="模拟重置边界词缀">
           🎲 随机边界
         </button>
         <button onClick={clearBorders}>清空边界</button>
       </div>
+      {detailCell !== null && <RegionTargetDetails cell={targets[detailCell]} index={detailCell} onClose={() => setDetailCell(null)} />}
       <div className="board-grid">
         <div className="corner" />
         {border(0)}

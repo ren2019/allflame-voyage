@@ -11,6 +11,7 @@ import { TooltipLayer } from './components/Tooltip'
 import { generateDemoCharts } from './logic/demo'
 import { buildChartSearch, buildSingleChartSearch } from './logic/regex'
 import { ImportPanel } from './components/ImportPanel'
+import { KeeperAssistant } from './components/KeeperAssistant'
 import { Library } from './components/Library'
 import { SolverPanel } from './components/SolverPanel'
 import { SolveBar } from './components/SolveBar'
@@ -601,6 +602,7 @@ export default function App() {
             onOpenSaveWizard={() => setShowSaveWizard(true)}
           />
           <ImportPanel onImport={addCharts} state={state} onLoadState={setState} />
+          <KeeperAssistant />
         </section>
 
         <section className="col board-col">
@@ -610,6 +612,8 @@ export default function App() {
             borders={state.borders}
             charts={chartMap}
             perTile={score.perTile}
+            strategyId={state.strategyId}
+            scoreOptions={{ adjacencyMode: state.adjacencyMode, adjacentAffectsSelf: state.adjacentAffectsSelf, disabledMods: disabledSet }}
             selectedCell={selectedCell}
             highlightUid={
               copySeq

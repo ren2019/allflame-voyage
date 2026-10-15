@@ -1,0 +1,3296 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted-product-display-rules",
+  "configVersion": "3.29-display-priority-1",
+  "reviewedAt": "2026-10-15",
+  "clientPatch": "mainland S30 exact patch unknown",
+  "purpose": "区域目标图标展示优先级；不改变求解评分、收益预测或攻略最低分",
+  "profiles": [
+    {
+      "id": "alc-and-go",
+      "label": "点金速刷"
+    },
+    {
+      "id": "anchorfield-fishing",
+      "label": "锚地赐福"
+    },
+    {
+      "id": "milky-speedrun",
+      "label": "速刷保险箱"
+    },
+    {
+      "id": "milky-meatfish",
+      "label": "稀有怪传说装"
+    },
+    {
+      "id": "milky-ethereal",
+      "label": "魔法怪流"
+    },
+    {
+      "id": "divine-border-rares",
+      "label": "稀有怪神圣雨"
+    },
+    {
+      "id": "cutedog-divine-boxes",
+      "label": "神圣保险箱"
+    }
+  ],
+  "sources": {
+    "milky": {
+      "url": "https://www.youtube.com/watch?v=gVKQhYxeavk",
+      "kind": "original-player-video",
+      "segments": [
+        "05:44-06:54",
+        "07:01-09:42",
+        "10:04-10:56"
+      ]
+    },
+    "ggg": {
+      "url": "https://www.pathofexile.com/forum/view-thread/3994431",
+      "kind": "official-patch-notes-international-3.29.2"
+    },
+    "poedb": {
+      "url": "https://poedb.tw/us/Maiden_Voyage",
+      "kind": "third-party-game-data"
+    },
+    "upstream": {
+      "url": "https://raw.githubusercontent.com/one-more-map/one-more-map.github.io/main/src/data/strategies.ts",
+      "kind": "tool-author-configuration-not-independent-game-test"
+    },
+    "player-ref": {
+      "file": "S30 航海海图·目的地与纪念币速查.md",
+      "kind": "user-supplied-guide-excerpt"
+    },
+    "user-low": {
+      "kind": "user-preference",
+      "note": "精华低优先级"
+    },
+    "judgement": {
+      "kind": "researcher-estimate-not-measured-profit"
+    },
+    "unknown-use": {
+      "kind": "mechanic-not-fully-verified"
+    }
+  },
+  "display": {
+    "maxIcons": 4,
+    "overflow": "top-three-plus-more",
+    "sort": "priority-desc-then-tieBreak-asc",
+    "duplicatePriority": "max-not-sum",
+    "strategyCannotCreateTarget": true,
+    "contextOnlyPriority": 0,
+    "priorityBands": [
+      {
+        "id": "high",
+        "label": "高",
+        "min": 70,
+        "max": 100,
+        "color": "#F6C66A",
+        "background": "#322718",
+        "themeColors": {
+          "minimal-light": {
+            "color": "#8A5B00",
+            "background": "#FFF3D6"
+          },
+          "minimal-dark": {
+            "color": "#F6C66A",
+            "background": "#322A1D"
+          }
+        }
+      },
+      {
+        "id": "medium",
+        "label": "中",
+        "min": 40,
+        "max": 69,
+        "color": "#74B6F4",
+        "background": "#1C2A3A",
+        "themeColors": {
+          "minimal-light": {
+            "color": "#205F9B",
+            "background": "#EAF2FD"
+          },
+          "minimal-dark": {
+            "color": "#74B6F4",
+            "background": "#202E40"
+          }
+        }
+      },
+      {
+        "id": "low",
+        "label": "低",
+        "min": 1,
+        "max": 39,
+        "color": "#9AA3B2",
+        "background": "#252932",
+        "themeColors": {
+          "minimal-light": {
+            "color": "#626E7E",
+            "background": "#EEF0F3"
+          },
+          "minimal-dark": {
+            "color": "#A4ADBA",
+            "background": "#2A303A"
+          }
+        }
+      }
+    ],
+    "priorityBandBasis": "effective priority after strategy and regional overrides; zero is context-only and does not create a target icon"
+  },
+  "targets": [
+    {
+      "id": "golden-lantern",
+      "label": "黄金灯笼",
+      "basePriority": 80,
+      "strategyOverrides": {
+        "alc-and-go": 85,
+        "anchorfield-fishing": 80,
+        "milky-speedrun": 85,
+        "milky-meatfish": 100,
+        "milky-ethereal": 100,
+        "divine-border-rares": 80,
+        "cutedog-divine-boxes": 80
+      },
+      "displayGroup": "golden-lantern",
+      "tieBreak": 0,
+      "sourceRefs": [
+        "milky",
+        "ggg"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "golden-lantern",
+      "iconAsset": "target-icons/golden-lantern.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/lorc/lantern.html",
+        "author": "Lorc",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "operative-box",
+      "label": "侦探保险箱",
+      "basePriority": 85,
+      "strategyOverrides": {
+        "alc-and-go": 80,
+        "anchorfield-fishing": 50,
+        "milky-speedrun": 100,
+        "milky-meatfish": 45,
+        "milky-ethereal": 40,
+        "divine-border-rares": 70,
+        "cutedog-divine-boxes": 70
+      },
+      "displayGroup": "boxes",
+      "tieBreak": 1,
+      "sourceRefs": [
+        "milky",
+        "upstream"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "operative-box",
+      "iconAsset": "target-icons/strongbox.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/chest.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": "User-selected common chest glyph for all strongbox types and sunken treasure. No type badge.",
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "diviner-box",
+      "label": "神圣秘宝／占卜师箱",
+      "basePriority": 80,
+      "strategyOverrides": {
+        "alc-and-go": 75,
+        "anchorfield-fishing": 50,
+        "milky-speedrun": 95,
+        "milky-meatfish": 45,
+        "milky-ethereal": 40,
+        "divine-border-rares": 70,
+        "cutedog-divine-boxes": 70
+      },
+      "displayGroup": "boxes",
+      "tieBreak": 2,
+      "sourceRefs": [
+        "milky",
+        "upstream"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "diviner-box",
+      "iconAsset": "target-icons/strongbox.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/chest.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": "User-selected common chest glyph for all strongbox types and sunken treasure. No type badge.",
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "arcanist-box",
+      "label": "奥术师保险箱",
+      "basePriority": 80,
+      "strategyOverrides": {
+        "alc-and-go": 75,
+        "anchorfield-fishing": 50,
+        "milky-speedrun": 90,
+        "milky-meatfish": 45,
+        "milky-ethereal": 40,
+        "divine-border-rares": 70,
+        "cutedog-divine-boxes": 70
+      },
+      "displayGroup": "boxes",
+      "tieBreak": 3,
+      "sourceRefs": [
+        "milky",
+        "upstream"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "arcanist-box",
+      "iconAsset": "target-icons/strongbox.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/chest.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": "User-selected common chest glyph for all strongbox types and sunken treasure. No type badge.",
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "strongbox",
+      "label": "普通保险箱",
+      "basePriority": 60,
+      "strategyOverrides": {
+        "alc-and-go": 40,
+        "anchorfield-fishing": 30,
+        "milky-speedrun": 80,
+        "milky-meatfish": 35,
+        "milky-ethereal": 30,
+        "divine-border-rares": 55,
+        "cutedog-divine-boxes": 55
+      },
+      "displayGroup": "boxes",
+      "tieBreak": 4,
+      "sourceRefs": [
+        "milky",
+        "upstream"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "strongbox",
+      "iconAsset": "target-icons/strongbox.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/chest.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "message-bottle",
+      "label": "瓶中信",
+      "basePriority": 75,
+      "strategyOverrides": {
+        "alc-and-go": 75,
+        "anchorfield-fishing": 50,
+        "milky-speedrun": 95,
+        "milky-meatfish": 40,
+        "milky-ethereal": 40,
+        "divine-border-rares": 45,
+        "cutedog-divine-boxes": 45
+      },
+      "displayGroup": "message-bottle",
+      "tieBreak": 5,
+      "sourceRefs": [
+        "milky",
+        "poedb"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "message-bottle",
+      "iconAsset": "target-icons/envelope-simple.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "treasure-anchor",
+      "label": "宝藏锚",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 75,
+        "anchorfield-fishing": 55,
+        "milky-speedrun": 65,
+        "milky-meatfish": 35,
+        "milky-ethereal": 35,
+        "divine-border-rares": 45,
+        "cutedog-divine-boxes": 45
+      },
+      "displayGroup": "treasure-anchor",
+      "tieBreak": 6,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "不是锚地沉没宝藏，不能套用锚地固定箱数或转化收益。",
+      "iconId": "treasure-anchor",
+      "iconAsset": "target-icons/treasure-anchor.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/lorc/anchor.html",
+        "author": "Lorc",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "pirate-locker",
+      "label": "海盗储物柜",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 70,
+        "anchorfield-fishing": 50,
+        "milky-speedrun": 70,
+        "milky-meatfish": 40,
+        "milky-ethereal": 35,
+        "divine-border-rares": 50,
+        "cutedog-divine-boxes": 50
+      },
+      "displayGroup": "pirate-locker",
+      "tieBreak": 7,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "pirate-locker",
+      "iconAsset": "target-icons/pirate-locker.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/lorc/locked-chest.html",
+        "author": "Lorc",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "exotic-fish",
+      "label": "珍稀鱼",
+      "basePriority": 10,
+      "strategyOverrides": {
+        "alc-and-go": 10,
+        "anchorfield-fishing": 10,
+        "milky-speedrun": 10,
+        "milky-meatfish": 10,
+        "milky-ethereal": 10,
+        "divine-border-rares": 10,
+        "cutedog-divine-boxes": 10
+      },
+      "displayGroup": "exotic-fish",
+      "tieBreak": 8,
+      "sourceRefs": [
+        "poedb",
+        "unknown-use"
+      ],
+      "notes": "锚地策略名称中的 fishing 不表示应追逐此鱼。",
+      "iconId": "exotic-fish",
+      "iconAsset": "target-icons/exotic-fish.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/tropical-fish.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "spirit-cage",
+      "label": "罪魂牢笼",
+      "basePriority": 25,
+      "strategyOverrides": {
+        "alc-and-go": 15,
+        "anchorfield-fishing": 15,
+        "milky-speedrun": 15,
+        "milky-meatfish": 45,
+        "milky-ethereal": 35,
+        "divine-border-rares": 30,
+        "cutedog-divine-boxes": 30
+      },
+      "displayGroup": "spirit-cage",
+      "tieBreak": 9,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "不假定放魂是当前策略必须执行的步骤，具体互动效用仍需实测。",
+      "iconId": "spirit-cage",
+      "iconAsset": "target-icons/spirit-cage.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": "Category representative chosen after user review; does not predict a particular drop or encounter.",
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "essence",
+      "label": "精华囚禁怪",
+      "basePriority": 5,
+      "strategyOverrides": {
+        "alc-and-go": 5,
+        "anchorfield-fishing": 5,
+        "milky-speedrun": 5,
+        "milky-meatfish": 5,
+        "milky-ethereal": 5,
+        "divine-border-rares": 5,
+        "cutedog-divine-boxes": 5
+      },
+      "displayGroup": "essence",
+      "tieBreak": 10,
+      "sourceRefs": [
+        "user-low",
+        "poedb"
+      ],
+      "notes": "用户明确低优先；不因全航程出现就抢占前三位，也不假定其怪物符合所有额外掉落规则。",
+      "iconId": "essence",
+      "iconAsset": "target-icons/essence.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "barrels",
+      "label": "木桶群",
+      "basePriority": 10,
+      "strategyOverrides": {
+        "alc-and-go": 15,
+        "anchorfield-fishing": 5,
+        "milky-speedrun": 5,
+        "milky-meatfish": 5,
+        "milky-ethereal": 5,
+        "divine-border-rares": 5,
+        "cutedog-divine-boxes": 5
+      },
+      "displayGroup": "barrels",
+      "tieBreak": 11,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "barrels",
+      "iconAsset": "target-icons/barrels.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/barrel.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "giant-starfish",
+      "label": "巨型海星",
+      "basePriority": 55,
+      "strategyOverrides": {
+        "alc-and-go": 40,
+        "anchorfield-fishing": 35,
+        "milky-speedrun": 35,
+        "milky-meatfish": 98,
+        "milky-ethereal": 55,
+        "divine-border-rares": 60,
+        "cutedog-divine-boxes": 55
+      },
+      "displayGroup": "giant-starfish",
+      "tieBreak": 12,
+      "sourceRefs": [
+        "milky",
+        "upstream"
+      ],
+      "notes": "只有实际目标已由目的地或生效词缀识别才排序；不保证每只海星都是 Rare。",
+      "iconId": "giant-starfish",
+      "iconAsset": "target-icons/giant-starfish.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/sea-star.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "extra-packs",
+      "label": "额外普通怪群",
+      "basePriority": 20,
+      "strategyOverrides": {
+        "alc-and-go": 15,
+        "anchorfield-fishing": 15,
+        "milky-speedrun": 10,
+        "milky-meatfish": 25,
+        "milky-ethereal": 60,
+        "divine-border-rares": 15,
+        "cutedog-divine-boxes": 15
+      },
+      "displayGroup": "extra-packs",
+      "tieBreak": 13,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "保留蟹/章鱼/海兽/溺亡者/海盗种类及来源在详情，同类合并；不编造每种怪群的收益差。",
+      "iconId": "extra-packs",
+      "iconAsset": "target-icons/extra-packs.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/lorc/triple-skulls.html",
+        "author": "Lorc",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "rare-monster",
+      "label": "稀有怪",
+      "basePriority": 40,
+      "strategyOverrides": {
+        "alc-and-go": 25,
+        "anchorfield-fishing": 30,
+        "milky-speedrun": 20,
+        "milky-meatfish": 95,
+        "milky-ethereal": 25,
+        "divine-border-rares": 65,
+        "cutedog-divine-boxes": 65
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 14,
+      "sourceRefs": [
+        "milky",
+        "upstream"
+      ],
+      "notes": "附身、众神、鬼灵等合并在目标详情；不能把目的地“精英”直接归为 Rare。",
+      "iconId": "rare-monster",
+      "iconAsset": "target-icons/rare-letter-r.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "magic-monster",
+      "label": "魔法怪",
+      "basePriority": 25,
+      "strategyOverrides": {
+        "alc-and-go": 15,
+        "anchorfield-fishing": 15,
+        "milky-speedrun": 15,
+        "milky-meatfish": 25,
+        "milky-ethereal": 98,
+        "divine-border-rares": 15,
+        "cutedog-divine-boxes": 15
+      },
+      "displayGroup": "magic-monster",
+      "tieBreak": 15,
+      "sourceRefs": [
+        "milky"
+      ],
+      "notes": "魔法怪数量、至少魔法、鬼灵强化等是不同条件，不各输出重复怪物图标。",
+      "iconId": "magic-monster",
+      "iconAsset": "target-icons/magic-letter-m.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "filthscrabble",
+      "label": "污秽蟹群首领",
+      "basePriority": 75,
+      "strategyOverrides": {
+        "alc-and-go": 85,
+        "anchorfield-fishing": 65,
+        "milky-speedrun": 85,
+        "milky-meatfish": 45,
+        "milky-ethereal": 45,
+        "divine-border-rares": 50,
+        "cutedog-divine-boxes": 50
+      },
+      "displayGroup": "bosses",
+      "tieBreak": 16,
+      "sourceRefs": [
+        "poedb",
+        "upstream"
+      ],
+      "notes": "目标存在可确认；不保证每次固定4000硫磺。",
+      "iconId": "filthscrabble",
+      "iconAsset": "target-icons/boss.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "captainsbane",
+      "label": "船长灾星首领",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 70,
+        "anchorfield-fishing": 60,
+        "milky-speedrun": 60,
+        "milky-meatfish": 40,
+        "milky-ethereal": 40,
+        "divine-border-rares": 45,
+        "cutedog-divine-boxes": 45
+      },
+      "displayGroup": "bosses",
+      "tieBreak": 17,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "独立首领目标，不套用稀有怪额外掉落。",
+      "iconId": "captainsbane",
+      "iconAsset": "target-icons/boss.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "localizationSource": {
+        "english": "Captainsbane",
+        "sourceUrl": "https://poedb.tw/cn/Captainsbane",
+        "sourceLabel": "船长灾星",
+        "status": "PoEDB simplified-Chinese data; not independently checked against user client"
+      },
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "goddess-altar",
+      "label": "女神祭坛",
+      "basePriority": 40,
+      "strategyOverrides": {
+        "alc-and-go": 35,
+        "anchorfield-fishing": 25,
+        "milky-speedrun": 25,
+        "milky-meatfish": 25,
+        "milky-ethereal": 25,
+        "divine-border-rares": 25,
+        "cutedog-divine-boxes": 25
+      },
+      "displayGroup": "goddess-altar",
+      "tieBreak": 18,
+      "sourceRefs": [
+        "poedb",
+        "unknown-use"
+      ],
+      "notes": "不是深海赐福祭坛，不套用通货转换规则。",
+      "iconId": "goddess-altar",
+      "iconAsset": "target-icons/altar-simple.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "deep-offering",
+      "label": "深海赐福祭坛",
+      "basePriority": 75,
+      "strategyOverrides": {
+        "alc-and-go": 75,
+        "anchorfield-fishing": 100,
+        "milky-speedrun": 65,
+        "milky-meatfish": 70,
+        "milky-ethereal": 70,
+        "divine-border-rares": 70,
+        "cutedog-divine-boxes": 70
+      },
+      "displayGroup": "deep-offering",
+      "tieBreak": 19,
+      "sourceRefs": [
+        "ggg",
+        "upstream"
+      ],
+      "notes": "当前导出无法确定哪个格子随机出现赐福祭坛；只能沿途提醒，不能仅因选中锚地策略就给每格生成此目标。",
+      "iconId": "deep-offering",
+      "iconAsset": "target-icons/deep-offering.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/star-altar.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "anchorfield-loot",
+      "label": "锚地沉没宝藏",
+      "basePriority": 85,
+      "strategyOverrides": {
+        "alc-and-go": 85,
+        "anchorfield-fishing": 95,
+        "milky-speedrun": 60,
+        "milky-meatfish": 45,
+        "milky-ethereal": 40,
+        "divine-border-rares": 40,
+        "cutedog-divine-boxes": 40
+      },
+      "displayGroup": "boxes",
+      "tieBreak": 20,
+      "sourceRefs": [
+        "player-ref",
+        "upstream"
+      ],
+      "notes": "锚地策略附注“先找目标赐福，再决定开宝藏”；不知道玩家是否已经取得赐福。",
+      "iconId": "anchorfield-loot",
+      "iconAsset": "target-icons/strongbox.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/chest.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": "User-selected common chest glyph for all strongbox types and sunken treasure. No type badge.",
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "sunken-totems",
+      "label": "沉没图腾精英遭遇",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 65,
+        "anchorfield-fishing": 45,
+        "milky-speedrun": 45,
+        "milky-meatfish": 55,
+        "milky-ethereal": 45,
+        "divine-border-rares": 50,
+        "cutedog-divine-boxes": 50
+      },
+      "displayGroup": "sunken-totems",
+      "tieBreak": 21,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "采用用户参考的精英/达克特方向；固定四只及其怪物稀有度未证实。",
+      "iconId": "sunken-totems",
+      "iconAsset": "target-icons/sunken-totems.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Archnemesis_league",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": "GGG宿敌小地图图标，经PoEDB获取；此处为用户要求的视觉符号，不证明区域存在宿敌机制。",
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "bathyspheres",
+      "label": "感染潜航球遭遇",
+      "basePriority": 65,
+      "strategyOverrides": {
+        "alc-and-go": 60,
+        "anchorfield-fishing": 40,
+        "milky-speedrun": 40,
+        "milky-meatfish": 55,
+        "milky-ethereal": 95,
+        "divine-border-rares": 45,
+        "cutedog-divine-boxes": 45
+      },
+      "displayGroup": "bathyspheres",
+      "tieBreak": 22,
+      "sourceRefs": [
+        "player-ref",
+        "milky"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "bathyspheres",
+      "iconAsset": "target-icons/bathysphere.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "pelagic-abyss",
+      "label": "远洋深渊坑洞／遭遇",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 65,
+        "anchorfield-fishing": 45,
+        "milky-speedrun": 45,
+        "milky-meatfish": 60,
+        "milky-ethereal": 55,
+        "divine-border-rares": 50,
+        "cutedog-divine-boxes": 90
+      },
+      "displayGroup": "pelagic-abyss",
+      "tieBreak": 23,
+      "sourceRefs": [
+        "player-ref",
+        "upstream"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "pelagic-abyss",
+      "iconAsset": "target-icons/pelagic-abyss.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/hole.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "brine-king",
+      "label": "海王领域特殊遭遇",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 65,
+        "anchorfield-fishing": 45,
+        "milky-speedrun": 50,
+        "milky-meatfish": 60,
+        "milky-ethereal": 40,
+        "divine-border-rares": 45,
+        "cutedog-divine-boxes": 45
+      },
+      "displayGroup": "brine-king",
+      "tieBreak": 24,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "具体可交互对象未完整核实，按目的地特殊遭遇提示，不假定有固定 Boss 或固定掉落。",
+      "iconId": "brine-king",
+      "iconAsset": "target-icons/brine-king.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/lorc/trident.html",
+        "author": "Lorc",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "kishara-boss",
+      "label": "琪莎拉安息处 Boss",
+      "basePriority": 85,
+      "strategyOverrides": {
+        "alc-and-go": 85,
+        "anchorfield-fishing": 60,
+        "milky-speedrun": 65,
+        "milky-meatfish": 65,
+        "milky-ethereal": 55,
+        "divine-border-rares": 55,
+        "cutedog-divine-boxes": 55
+      },
+      "displayGroup": "bosses",
+      "tieBreak": 25,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "kishara-boss",
+      "iconAsset": "target-icons/boss.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "divination-chest",
+      "label": "目的地命运卡箱",
+      "basePriority": 75,
+      "strategyOverrides": {
+        "alc-and-go": 75,
+        "anchorfield-fishing": 45,
+        "milky-speedrun": 85,
+        "milky-meatfish": 40,
+        "milky-ethereal": 40,
+        "divine-border-rares": 45,
+        "cutedog-divine-boxes": 45
+      },
+      "displayGroup": "boxes",
+      "tieBreak": 26,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "divination-chest",
+      "iconAsset": "target-icons/strongbox.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/delapouite/chest.html",
+        "author": "Delapouite",
+        "license": "CC-BY-3.0",
+        "notes": "User-selected common chest glyph for all strongbox types and sunken treasure. No type badge.",
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "treasure-clam",
+      "label": "藏宝蛤蜊",
+      "basePriority": 65,
+      "strategyOverrides": {
+        "alc-and-go": 65,
+        "anchorfield-fishing": 45,
+        "milky-speedrun": 55,
+        "milky-meatfish": 40,
+        "milky-ethereal": 40,
+        "divine-border-rares": 40,
+        "cutedog-divine-boxes": 40
+      },
+      "displayGroup": "coins",
+      "tieBreak": 27,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "treasure-clam",
+      "iconAsset": "target-icons/coin-single.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": "Round two: one outer circle with a simple currency mark; removed inner ring.",
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "gold-pile",
+      "label": "金币堆",
+      "basePriority": 35,
+      "strategyOverrides": {
+        "alc-and-go": 40,
+        "anchorfield-fishing": 20,
+        "milky-speedrun": 20,
+        "milky-meatfish": 15,
+        "milky-ethereal": 15,
+        "divine-border-rares": 15,
+        "cutedog-divine-boxes": 15
+      },
+      "displayGroup": "coins",
+      "tieBreak": 28,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "gold-pile",
+      "iconAsset": "target-icons/coin-single.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": "Round two: one outer circle with a simple currency mark; removed inner ring.",
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "mercenary",
+      "label": "深海浅滩佣兵",
+      "basePriority": 60,
+      "strategyOverrides": {
+        "alc-and-go": 55,
+        "anchorfield-fishing": 35,
+        "milky-speedrun": 35,
+        "milky-meatfish": 35,
+        "milky-ethereal": 35,
+        "divine-border-rares": 35,
+        "cutedog-divine-boxes": 35
+      },
+      "displayGroup": "mercenary",
+      "tieBreak": 29,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "mercenary",
+      "iconAsset": "target-icons/mercenary.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/lorc/crossed-swords.html",
+        "author": "Lorc",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "lost-ruins",
+      "label": "失落遗迹瓦尔遭遇",
+      "basePriority": 65,
+      "strategyOverrides": {
+        "alc-and-go": 65,
+        "anchorfield-fishing": 40,
+        "milky-speedrun": 40,
+        "milky-meatfish": 45,
+        "milky-ethereal": 35,
+        "divine-border-rares": 40,
+        "cutedog-divine-boxes": 40
+      },
+      "displayGroup": "lost-ruins",
+      "tieBreak": 30,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "lost-ruins",
+      "iconAsset": "target-icons/lost-ruins.jpeg",
+      "iconAssetType": "jpeg",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://www.poewiki.net/wiki/File:Atziri_forum_avatar.jpeg",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": "GGG论坛头像，经PoEWiki归档获取，保留原色。",
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "eldritch-depths",
+      "label": "古灵深渊特殊遭遇",
+      "basePriority": 65,
+      "strategyOverrides": {
+        "alc-and-go": 65,
+        "anchorfield-fishing": 40,
+        "milky-speedrun": 40,
+        "milky-meatfish": 45,
+        "milky-ethereal": 35,
+        "divine-border-rares": 40,
+        "cutedog-divine-boxes": 40
+      },
+      "displayGroup": "eldritch-depths",
+      "tieBreak": 31,
+      "sourceRefs": [
+        "player-ref",
+        "ggg"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "eldritch-depths",
+      "iconAsset": "target-icons/eldritch-depths.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/lorc/tentacles-skull.html",
+        "author": "Lorc",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "hazardous-depths",
+      "label": "险恶深渊金币／纪念币遭遇",
+      "basePriority": 60,
+      "strategyOverrides": {
+        "alc-and-go": 60,
+        "anchorfield-fishing": 35,
+        "milky-speedrun": 35,
+        "milky-meatfish": 35,
+        "milky-ethereal": 35,
+        "divine-border-rares": 35,
+        "cutedog-divine-boxes": 35
+      },
+      "displayGroup": "coins",
+      "tieBreak": 32,
+      "sourceRefs": [
+        "player-ref"
+      ],
+      "notes": "ref 只支持金币/纪念币产出方向，不凭此生成独立的金币堆。",
+      "iconId": "hazardous-depths",
+      "iconAsset": "target-icons/coin-single.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "review-feedback-round-1.md",
+        "author": "Allflame Voyage review prototype",
+        "license": "Project-authored SVG; no third-party artwork",
+        "notes": "Round two: one outer circle with a simple currency mark; removed inner ring.",
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "friendly-jellyfish",
+      "label": "友好水母",
+      "basePriority": 10,
+      "strategyOverrides": {
+        "alc-and-go": 10,
+        "anchorfield-fishing": 10,
+        "milky-speedrun": 10,
+        "milky-meatfish": 10,
+        "milky-ethereal": 10,
+        "divine-border-rares": 10,
+        "cutedog-divine-boxes": 10
+      },
+      "displayGroup": "friendly-jellyfish",
+      "tieBreak": 33,
+      "sourceRefs": [
+        "poedb",
+        "unknown-use"
+      ],
+      "notes": "数据确认存在，实际效用不足以给高优先级。",
+      "iconId": "friendly-jellyfish",
+      "iconAsset": "target-icons/friendly-jellyfish.svg",
+      "iconAssetType": "svg",
+      "originalGameArt": false,
+      "artCredit": {
+        "sourceUrl": "https://game-icons.net/1x1/lorc/jellyfish.html",
+        "author": "Lorc",
+        "license": "CC-BY-3.0",
+        "notes": null,
+        "originalGameArt": false
+      }
+    },
+    {
+      "id": "rare-divine",
+      "label": "稀有怪额外掉神圣石",
+      "basePriority": 100,
+      "strategyOverrides": {
+        "alc-and-go": 100,
+        "anchorfield-fishing": 100,
+        "milky-speedrun": 100,
+        "milky-meatfish": 100,
+        "milky-ethereal": 100,
+        "divine-border-rares": 100,
+        "cutedog-divine-boxes": 100
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 34,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-divine",
+      "iconAsset": "target-icons/rare-divine.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Divine_Orb",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-exalt",
+      "label": "稀有怪额外掉崇高石",
+      "basePriority": 80,
+      "strategyOverrides": {
+        "alc-and-go": 80,
+        "anchorfield-fishing": 80,
+        "milky-speedrun": 80,
+        "milky-meatfish": 80,
+        "milky-ethereal": 80,
+        "divine-border-rares": 80,
+        "cutedog-divine-boxes": 80
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 35,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-exalt",
+      "iconAsset": "target-icons/rare-exalt.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Exalted_Orb",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-ancient",
+      "label": "稀有怪额外掉远古石",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 70,
+        "anchorfield-fishing": 70,
+        "milky-speedrun": 70,
+        "milky-meatfish": 70,
+        "milky-ethereal": 70,
+        "divine-border-rares": 70,
+        "cutedog-divine-boxes": 70
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 36,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-ancient",
+      "iconAsset": "target-icons/rare-ancient.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Ancient_Orb",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-annul",
+      "label": "稀有怪额外掉剥离石",
+      "basePriority": 60,
+      "strategyOverrides": {
+        "alc-and-go": 60,
+        "anchorfield-fishing": 60,
+        "milky-speedrun": 60,
+        "milky-meatfish": 60,
+        "milky-ethereal": 60,
+        "divine-border-rares": 60,
+        "cutedog-divine-boxes": 60
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 37,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-annul",
+      "iconAsset": "target-icons/rare-annul.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Orb_of_Annulment",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-chaos",
+      "label": "稀有怪额外掉混沌石",
+      "basePriority": 45,
+      "strategyOverrides": {
+        "alc-and-go": 45,
+        "anchorfield-fishing": 45,
+        "milky-speedrun": 45,
+        "milky-meatfish": 45,
+        "milky-ethereal": 45,
+        "divine-border-rares": 45,
+        "cutedog-divine-boxes": 45
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 38,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-chaos",
+      "iconAsset": "target-icons/rare-chaos.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Chaos_Orb",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-vaal",
+      "label": "稀有怪额外掉瓦尔宝珠",
+      "basePriority": 30,
+      "strategyOverrides": {
+        "alc-and-go": 30,
+        "anchorfield-fishing": 30,
+        "milky-speedrun": 30,
+        "milky-meatfish": 30,
+        "milky-ethereal": 30,
+        "divine-border-rares": 30,
+        "cutedog-divine-boxes": 30
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 39,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-vaal",
+      "iconAsset": "target-icons/rare-vaal.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Vaal_Orb",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-gcp",
+      "label": "稀有怪额外掉宝石匠棱石",
+      "basePriority": 30,
+      "strategyOverrides": {
+        "alc-and-go": 30,
+        "anchorfield-fishing": 30,
+        "milky-speedrun": 30,
+        "milky-meatfish": 30,
+        "milky-ethereal": 30,
+        "divine-border-rares": 30,
+        "cutedog-divine-boxes": 30
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 40,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-gcp",
+      "iconAsset": "target-icons/rare-gcp.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Gemcutters_Prism",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-chrome",
+      "label": "稀有怪额外掉幻色石",
+      "basePriority": 10,
+      "strategyOverrides": {
+        "alc-and-go": 10,
+        "anchorfield-fishing": 10,
+        "milky-speedrun": 10,
+        "milky-meatfish": 10,
+        "milky-ethereal": 10,
+        "divine-border-rares": 10,
+        "cutedog-divine-boxes": 10
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 41,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-chrome",
+      "iconAsset": "target-icons/rare-chrome.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Chromatic_Orb",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-regret",
+      "label": "稀有怪额外掉后悔石",
+      "basePriority": 20,
+      "strategyOverrides": {
+        "alc-and-go": 20,
+        "anchorfield-fishing": 20,
+        "milky-speedrun": 20,
+        "milky-meatfish": 20,
+        "milky-ethereal": 20,
+        "divine-border-rares": 20,
+        "cutedog-divine-boxes": 20
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 42,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-regret",
+      "iconAsset": "target-icons/rare-regret.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Orb_of_Regret",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-blessed",
+      "label": "稀有怪额外掉祝福石",
+      "basePriority": 10,
+      "strategyOverrides": {
+        "alc-and-go": 10,
+        "anchorfield-fishing": 10,
+        "milky-speedrun": 10,
+        "milky-meatfish": 10,
+        "milky-ethereal": 10,
+        "divine-border-rares": 10,
+        "cutedog-divine-boxes": 10
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 43,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-blessed",
+      "iconAsset": "target-icons/rare-blessed.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Blessed_Orb",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-regal",
+      "label": "稀有怪额外掉富豪石",
+      "basePriority": 20,
+      "strategyOverrides": {
+        "alc-and-go": 20,
+        "anchorfield-fishing": 20,
+        "milky-speedrun": 20,
+        "milky-meatfish": 20,
+        "milky-ethereal": 20,
+        "divine-border-rares": 20,
+        "cutedog-divine-boxes": 20
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 44,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-regal",
+      "iconAsset": "target-icons/rare-regal.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Regal_Orb",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-support",
+      "label": "稀有怪额外掉辅助宝石",
+      "basePriority": 25,
+      "strategyOverrides": {
+        "alc-and-go": 25,
+        "anchorfield-fishing": 25,
+        "milky-speedrun": 25,
+        "milky-meatfish": 25,
+        "milky-ethereal": 25,
+        "divine-border-rares": 25,
+        "cutedog-divine-boxes": 25
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 45,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-support",
+      "iconAsset": "target-icons/rare-support.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Multiple_Projectiles_Support",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": "Category representative chosen after user review; does not predict a particular drop or encounter. PoEDB currently lists this LesserMultipleProjectiles artwork under Multiple Projectiles Support; selected the user-requested artwork, without changing reward rules.",
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-scarabdrop",
+      "label": "稀有怪额外掉圣甲虫",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 70,
+        "anchorfield-fishing": 70,
+        "milky-speedrun": 70,
+        "milky-meatfish": 70,
+        "milky-ethereal": 70,
+        "divine-border-rares": 70,
+        "cutedog-divine-boxes": 70
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 46,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-scarabdrop",
+      "iconAsset": "target-icons/rare-scarabdrop.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Ambush_Scarab",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": "Category representative chosen after user review; does not predict a particular drop or encounter.",
+        "originalGameArt": true
+      }
+    },
+    {
+      "id": "rare-sulphdrop",
+      "label": "稀有怪额外掉亡者硫磺",
+      "basePriority": 70,
+      "strategyOverrides": {
+        "alc-and-go": 80,
+        "anchorfield-fishing": 70,
+        "milky-speedrun": 75,
+        "milky-meatfish": 70,
+        "milky-ethereal": 70,
+        "divine-border-rares": 70,
+        "cutedog-divine-boxes": 70
+      },
+      "displayGroup": "rare-monster",
+      "tieBreak": 47,
+      "sourceRefs": [
+        "poedb",
+        "judgement"
+      ],
+      "notes": "具体值为展示建议，非游戏数据或实测收益。",
+      "iconId": "rare-sulphdrop",
+      "iconAsset": "target-icons/rare-sulphdrop.webp",
+      "iconAssetType": "webp",
+      "originalGameArt": true,
+      "artCredit": {
+        "sourceUrl": "https://poedb.tw/us/Dead_Mans_Sulphur",
+        "author": "Grinding Gear Games",
+        "license": "Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY",
+        "notes": null,
+        "originalGameArt": true
+      }
+    }
+  ],
+  "regionalPriorityRules": [
+    {
+      "id": "divine-border-core",
+      "whenStrategyIds": [
+        "divine-border-rares",
+        "cutedog-divine-boxes"
+      ],
+      "whenActiveModIdsAny": [
+        "b-divine"
+      ],
+      "priorityOverrides": {
+        "rare-divine": 100,
+        "rare-monster": 100,
+        "strongbox": 98,
+        "operative-box": 98,
+        "diviner-box": 98,
+        "arcanist-box": 98
+      },
+      "requiresExistingTarget": true,
+      "note": "只提高本格已经存在的目标；提醒洗箱产稀有怪，不保证已经洗出七只。"
+    }
+  ],
+  "modRules": [
+    {
+      "modId": "adj-ess-1",
+      "family": "adj-ess",
+      "scope": "adjacent",
+      "targetIds": [
+        "essence"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-ess-2",
+      "family": "adj-ess",
+      "scope": "adjacent",
+      "targetIds": [
+        "essence"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-ess-3",
+      "family": "adj-ess",
+      "scope": "adjacent",
+      "targetIds": [
+        "essence"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-box-1",
+      "family": "adj-box",
+      "scope": "adjacent",
+      "targetIds": [
+        "strongbox"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-box-2",
+      "family": "adj-box",
+      "scope": "adjacent",
+      "targetIds": [
+        "strongbox"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-box-3",
+      "family": "adj-box",
+      "scope": "adjacent",
+      "targetIds": [
+        "strongbox"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-octo-1",
+      "family": "adj-octo",
+      "scope": "adjacent",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-octo-2",
+      "family": "adj-octo",
+      "scope": "adjacent",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-crab-1",
+      "family": "adj-crab",
+      "scope": "adjacent",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-crab-2",
+      "family": "adj-crab",
+      "scope": "adjacent",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-magic-1",
+      "family": "adj-magic",
+      "scope": "adjacent",
+      "targetIds": [
+        "magic-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-magic-2",
+      "family": "adj-magic",
+      "scope": "adjacent",
+      "targetIds": [
+        "magic-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-rare-1",
+      "family": "adj-rare",
+      "scope": "adjacent",
+      "targetIds": [
+        "rare-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-rare-2",
+      "family": "adj-rare",
+      "scope": "adjacent",
+      "targetIds": [
+        "rare-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-msg-1",
+      "family": "adj-msg",
+      "scope": "adjacent",
+      "targetIds": [
+        "message-bottle"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-msg-2",
+      "family": "adj-msg",
+      "scope": "adjacent",
+      "targetIds": [
+        "message-bottle"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-fish",
+      "family": "adj-fish",
+      "scope": "adjacent",
+      "targetIds": [
+        "exotic-fish"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-wisps-1",
+      "family": "adj-wisps",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "鬼灵强化",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-wisps-2",
+      "family": "adj-wisps",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "鬼灵强化",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-atziri",
+      "family": "adj-atziri",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "阿兹里影响（具体遭遇待核）",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-gold-1",
+      "family": "adj-gold",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "装备转金币",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-gold-2",
+      "family": "adj-gold",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "装备转金币",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-spirit-1",
+      "family": "adj-spirit",
+      "scope": "adjacent",
+      "targetIds": [
+        "spirit-cage"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-spirit-2",
+      "family": "adj-spirit",
+      "scope": "adjacent",
+      "targetIds": [
+        "spirit-cage"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-divbox-1",
+      "family": "adj-divbox",
+      "scope": "adjacent",
+      "targetIds": [
+        "diviner-box"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-divbox-2",
+      "family": "adj-divbox",
+      "scope": "adjacent",
+      "targetIds": [
+        "diviner-box"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-arcbox-1",
+      "family": "adj-arcbox",
+      "scope": "adjacent",
+      "targetIds": [
+        "arcanist-box"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-arcbox-2",
+      "family": "adj-arcbox",
+      "scope": "adjacent",
+      "targetIds": [
+        "arcanist-box"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-opbox-1",
+      "family": "adj-opbox",
+      "scope": "adjacent",
+      "targetIds": [
+        "operative-box"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-opbox-2",
+      "family": "adj-opbox",
+      "scope": "adjacent",
+      "targetIds": [
+        "operative-box"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-barrel-1",
+      "family": "adj-barrel",
+      "scope": "adjacent",
+      "targetIds": [
+        "barrels"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-barrel-2",
+      "family": "adj-barrel",
+      "scope": "adjacent",
+      "targetIds": [
+        "barrels"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-star-1",
+      "family": "adj-star",
+      "scope": "adjacent",
+      "targetIds": [
+        "giant-starfish"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-star-2",
+      "family": "adj-star",
+      "scope": "adjacent",
+      "targetIds": [
+        "giant-starfish"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-fracture",
+      "family": "adj-fracture",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "掉落装备破裂",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-lantern",
+      "family": "adj-lantern",
+      "scope": "adjacent",
+      "targetIds": [
+        "golden-lantern"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-pantheon",
+      "family": "adj-pantheon",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "稀有怪众神词缀",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-uring-1",
+      "family": "adj-uring",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "戒指转传奇",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-uring-2",
+      "family": "adj-uring",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "戒指转传奇",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-uamu-1",
+      "family": "adj-uamu",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "项链转传奇",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-uamu-2",
+      "family": "adj-uamu",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "项链转传奇",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-ubelt-1",
+      "family": "adj-ubelt",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "腰带转传奇",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "adj-ubelt-2",
+      "family": "adj-ubelt",
+      "scope": "adjacent",
+      "targetIds": [],
+      "contextLabel": "腰带转传奇",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-soul",
+      "family": "voy-soul",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "噬魂者",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-pack-1",
+      "family": "voy-pack",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "怪物群规模",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-pack-2",
+      "family": "voy-pack",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "怪物群规模",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-quant-1",
+      "family": "voy-quant",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "物品数量",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-quant-2",
+      "family": "voy-quant",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "物品数量",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-rarity-1",
+      "family": "voy-rarity",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "物品稀有度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-rarity-2",
+      "family": "voy-rarity",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "物品稀有度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-jelly",
+      "family": "voy-jelly",
+      "scope": "global",
+      "targetIds": [
+        "friendly-jellyfish"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-sulph-1",
+      "family": "voy-sulph",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "硫磺加成",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-sulph-2",
+      "family": "voy-sulph",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "硫磺加成",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-sulph-3",
+      "family": "voy-sulph",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "硫磺加成",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-rare",
+      "family": "voy-rare",
+      "scope": "global",
+      "targetIds": [
+        "rare-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-magic",
+      "family": "voy-magic",
+      "scope": "global",
+      "targetIds": [
+        "magic-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-noequip",
+      "family": "voy-noequip",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "禁掉装备/药剂/酊剂",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-minmagic",
+      "family": "voy-minmagic",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "怪物至少魔法",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-possess",
+      "family": "voy-possess",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "稀有怪附身",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-essence",
+      "family": "voy-essence",
+      "scope": "global",
+      "targetIds": [
+        "essence"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-fracture",
+      "family": "voy-fracture",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "稀有怪死亡分裂",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "voy-flask",
+      "family": "voy-flask",
+      "scope": "global",
+      "targetIds": [],
+      "contextLabel": "药剂品质",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-pack-1",
+      "family": "b-pack",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "怪物群规模",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-pack-2",
+      "family": "b-pack",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "怪物群规模",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-pack-3",
+      "family": "b-pack",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "怪物群规模",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-minmagic",
+      "family": "b-minmagic",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "怪物至少魔法",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-rare-1",
+      "family": "b-rare",
+      "scope": "border",
+      "targetIds": [
+        "rare-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-rare-2",
+      "family": "b-rare",
+      "scope": "border",
+      "targetIds": [
+        "rare-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-rare-3",
+      "family": "b-rare",
+      "scope": "border",
+      "targetIds": [
+        "rare-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-beasts-1",
+      "family": "b-beasts",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-beasts-2",
+      "family": "b-beasts",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-beasts-3",
+      "family": "b-beasts",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-crabs-1",
+      "family": "b-crabs",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-crabs-2",
+      "family": "b-crabs",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-crabs-3",
+      "family": "b-crabs",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-drowned-1",
+      "family": "b-drowned",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-drowned-2",
+      "family": "b-drowned",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-drowned-3",
+      "family": "b-drowned",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-mag-1",
+      "family": "b-mag",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "词缀数值幅度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-mag-2",
+      "family": "b-mag",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "词缀数值幅度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-mag-3",
+      "family": "b-mag",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "词缀数值幅度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-keep-1",
+      "family": "b-keep",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "海图不消耗几率",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-keep-2",
+      "family": "b-keep",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "海图不消耗几率",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-octoboss",
+      "family": "b-octoboss",
+      "scope": "border",
+      "targetIds": [
+        "filthscrabble"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-lanterns",
+      "family": "b-lanterns",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "免费放灯状态",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-ancient",
+      "family": "b-ancient",
+      "scope": "border",
+      "targetIds": [
+        "rare-ancient"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-divine",
+      "family": "b-divine",
+      "scope": "border",
+      "targetIds": [
+        "rare-divine"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-exalt",
+      "family": "b-exalt",
+      "scope": "border",
+      "targetIds": [
+        "rare-exalt"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-annul",
+      "family": "b-annul",
+      "scope": "border",
+      "targetIds": [
+        "rare-annul"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-chaos",
+      "family": "b-chaos",
+      "scope": "border",
+      "targetIds": [
+        "rare-chaos"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-vaal",
+      "family": "b-vaal",
+      "scope": "border",
+      "targetIds": [
+        "rare-vaal"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-gcp",
+      "family": "b-gcp",
+      "scope": "border",
+      "targetIds": [
+        "rare-gcp"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-chrome",
+      "family": "b-chrome",
+      "scope": "border",
+      "targetIds": [
+        "rare-chrome"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-regret",
+      "family": "b-regret",
+      "scope": "border",
+      "targetIds": [
+        "rare-regret"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-blessed",
+      "family": "b-blessed",
+      "scope": "border",
+      "targetIds": [
+        "rare-blessed"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-regal",
+      "family": "b-regal",
+      "scope": "border",
+      "targetIds": [
+        "rare-regal"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-support",
+      "family": "b-support",
+      "scope": "border",
+      "targetIds": [
+        "rare-support"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-locker",
+      "family": "b-locker",
+      "scope": "border",
+      "targetIds": [
+        "pirate-locker"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-pirates",
+      "family": "b-pirates",
+      "scope": "border",
+      "targetIds": [
+        "extra-packs"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-rareconn-1",
+      "family": "b-rareconn",
+      "scope": "border",
+      "targetIds": [
+        "rare-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 1
+    },
+    {
+      "modId": "b-rareconn-2",
+      "family": "b-rareconn",
+      "scope": "border",
+      "targetIds": [
+        "rare-monster"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 1
+    },
+    {
+      "modId": "b-quantconn-1",
+      "family": "b-quantconn",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "数量与连接修正",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-quantconn-2",
+      "family": "b-quantconn",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "数量与连接修正",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-gold-1",
+      "family": "b-gold",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "装备转金币",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-gold-2",
+      "family": "b-gold",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "装备转金币",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-decks",
+      "family": "b-decks",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "基础通货转卡组",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-scarabdrop",
+      "family": "b-scarabdrop",
+      "scope": "border",
+      "targetIds": [
+        "rare-scarabdrop"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-curr-1",
+      "family": "b-curr",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "通货更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-curr-2",
+      "family": "b-curr",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "通货更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-curr-3",
+      "family": "b-curr",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "通货更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-scarab-1",
+      "family": "b-scarab",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "圣甲虫更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-scarab-2",
+      "family": "b-scarab",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "圣甲虫更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-scarab-3",
+      "family": "b-scarab",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "圣甲虫更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-rarity-1",
+      "family": "b-rarity",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "物品稀有度更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-rarity-2",
+      "family": "b-rarity",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "物品稀有度更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-rarity-3",
+      "family": "b-rarity",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "物品稀有度更多",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-crabboss",
+      "family": "b-crabboss",
+      "scope": "border",
+      "targetIds": [
+        "captainsbane"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-exp-1",
+      "family": "b-exp",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "经验",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-exp-2",
+      "family": "b-exp",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "经验",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-exp-3",
+      "family": "b-exp",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "经验",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-magicmods",
+      "family": "b-magicmods",
+      "scope": "border",
+      "targetIds": [],
+      "contextLabel": "魔法怪额外词缀",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-anchor-1",
+      "family": "b-anchor",
+      "scope": "border",
+      "targetIds": [
+        "treasure-anchor"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-anchor-2",
+      "family": "b-anchor",
+      "scope": "border",
+      "targetIds": [
+        "treasure-anchor"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-sulphdrop",
+      "family": "b-sulphdrop",
+      "scope": "border",
+      "targetIds": [
+        "rare-sulphdrop"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-goldlantern",
+      "family": "b-goldlantern",
+      "scope": "border",
+      "targetIds": [
+        "golden-lantern"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "b-izaro",
+      "family": "b-izaro",
+      "scope": "border",
+      "targetIds": [
+        "goddess-altar"
+      ],
+      "contextLabel": null,
+      "contextPriority": null,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-quant-20",
+      "family": "cm-quant",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带数量",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-quant-28",
+      "family": "cm-quant",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带数量",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-quant-32",
+      "family": "cm-quant",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带数量",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-quant-45",
+      "family": "cm-quant",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带数量",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-sulph-30",
+      "family": "cm-sulph",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带硫磺",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-sulph-45",
+      "family": "cm-sulph",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带硫磺",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-rarity-12",
+      "family": "cm-rarity",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带稀有度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-rarity-18",
+      "family": "cm-rarity",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带稀有度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-rarity-20",
+      "family": "cm-rarity",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带稀有度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-rarity-30",
+      "family": "cm-rarity",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带稀有度",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-pack-14",
+      "family": "cm-pack",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带怪群大小",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-pack-16",
+      "family": "cm-pack",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带怪群大小",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-pack-18",
+      "family": "cm-pack",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带怪群大小",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-gold-50",
+      "family": "cm-gold",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带金币（版本差异待核）",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    },
+    {
+      "modId": "cm-gold-70",
+      "family": "cm-gold",
+      "scope": "self",
+      "targetIds": [],
+      "contextLabel": "自带金币（版本差异待核）",
+      "contextPriority": 0,
+      "minimumConnections": 0
+    }
+  ],
+  "destinationRules": [
+    {
+      "destinationId": "anchorfield",
+      "targetIds": [
+        "anchorfield-loot"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "brine-kings-domain",
+      "targetIds": [
+        "brine-king"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "clam-infested-shelf",
+      "targetIds": [
+        "treasure-clam",
+        "gold-pile",
+        "message-bottle"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "diving-shoals",
+      "targetIds": [
+        "mercenary"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "eldritch-depths",
+      "targetIds": [
+        "eldritch-depths"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "hazardous-depths",
+      "targetIds": [
+        "hazardous-depths"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "infested-bathyspheres",
+      "targetIds": [
+        "bathyspheres"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "lost-ruins",
+      "targetIds": [
+        "lost-ruins"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "abyssal-plain",
+      "targetIds": [],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "pelagic-abyss",
+      "targetIds": [
+        "pelagic-abyss"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "seafloor-ridges",
+      "targetIds": [],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "sea-pillars",
+      "targetIds": [
+        "giant-starfish"
+      ],
+      "sourceRefs": [
+        "player-ref",
+        "milky"
+      ]
+    },
+    {
+      "destinationId": "sunken-totems",
+      "targetIds": [
+        "sunken-totems"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "undersea-groves",
+      "targetIds": [],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    },
+    {
+      "destinationId": "kisharas-rest",
+      "targetIds": [
+        "kishara-boss",
+        "divination-chest"
+      ],
+      "sourceRefs": [
+        "player-ref"
+      ]
+    }
+  ],
+  "coverage": {
+    "modIds": 141,
+    "modFamilies": 81,
+    "destinations": 15,
+    "targetDefinitions": 48,
+    "contextFamilies": 36
+  },
+  "unresolved": [
+    "精确数量与国服同步版本待核",
+    "随机深海祭坛无当前layout定位来源",
+    "禁装备与掉落转化交互未解释，不自动猜测",
+    "展示数字待用户试用校准"
+  ],
+  "numericPriorityProvenance": "All numbers are researcher display-priority estimates; cited game sources do not publish these weights.",
+  "iconManifest": "target-icon-manifest.json",
+  "reviewApproval": {
+    "status": "design-accepted",
+    "source": "reviews/2026-10-15-final-acceptance.json",
+    "acceptedItems": 53,
+    "deploymentAuthorized": false
+  },
+  "supersedes": "3.29-display-priority-draft-1; final explicit display-category grouping from Spec #21",
+  "displayGroups": [
+    {
+      "id": "boxes",
+      "label": "箱子",
+      "targetIds": [
+        "operative-box",
+        "diviner-box",
+        "arcanist-box",
+        "strongbox",
+        "anchorfield-loot",
+        "divination-chest"
+      ]
+    },
+    {
+      "id": "coins",
+      "label": "金币与纪念币",
+      "targetIds": [
+        "treasure-clam",
+        "gold-pile",
+        "hazardous-depths"
+      ]
+    },
+    {
+      "id": "bosses",
+      "label": "首领",
+      "targetIds": [
+        "filthscrabble",
+        "captainsbane",
+        "kishara-boss"
+      ]
+    }
+  ]
+}
