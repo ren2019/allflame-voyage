@@ -143,15 +143,41 @@
     "legacyCoverageWindowsMetadata": "inherited old evidence; not a fresh run"
   },
   "preview": {
-    "status": "pending root deployment and strict verification",
+    "status": "delivered; human acceptance pending",
+    "verifiedUtc": "2026-10-15T15:18:41Z",
     "url": "https://192.168.1.8:9443",
-    "ownership": null,
-    "source": null,
-    "buildSha256": null,
-    "strictCaSanProbe": null,
-    "httpsArtifactMatch": null,
-    "sameOriginPersistence": null,
-    "original8443Unchanged": null,
+    "ownership": "verified exact previous wrapper command, child parent and dedicated temporary directory; only owned preview replaced",
+    "source": "aa2bcda93012b74bf63898170c8e6394fe9c5a4a",
+    "archive": "/tmp/allflame-implement-25/candidate-aa2bcda/dist",
+    "buildSha256": "8d45cf80c966013e1a7c130e72c3cf5df320818e08bb36bfe426d836fc3c323f",
+    "strictCaSanProbe": true,
+    "httpsArtifactMatch": {
+      "files": 64,
+      "allFileHashesMatch": true
+    },
+    "sameOriginPersistence": {
+      "status": "passed",
+      "isolatedBrowser": true,
+      "sourceOfOldPage": "9043080 local archive routed only inside isolated browser",
+      "target": "new live HTTPS preview, then reload",
+      "inventory": 9,
+      "completeLocalStorageEqual": true,
+      "userProfileAccessed": false,
+      "initialCaptureBeforeDebouncedSave": "discarded; repeated after actual save"
+    },
+    "original8443Unchanged": {
+      "beforeAndAfter": true,
+      "staticFiles": 26,
+      "metadataHashesAndMtimeNs": 5,
+      "pid": 72833
+    },
     "humanAcceptance": "pending"
+  },
+  "review": {
+    "base": "3dc22948966d74abe46c5fc20b32fca201ff5128",
+    "candidate": "aa2bcda93012b74bf63898170c8e6394fe9c5a4a",
+    "standardsFindings": 0,
+    "specFindings": 0,
+    "report": "review.md"
   }
 }
