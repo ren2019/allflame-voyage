@@ -1,0 +1,193 @@
+{
+  "version": "3.29-keeper-1",
+  "evidence": "当前策略攻略、searchRegex 与简中词库候选；国服游戏搜索语法和容量尚未现场验证。",
+  "conditions": {
+    "star": {
+      "label": "巨型海星",
+      "pattern": "巨型海星",
+      "source": "chart-implicit:adj-star-1/2"
+    },
+    "pantheon": {
+      "label": "众神词缀",
+      "pattern": "众神词缀",
+      "source": "chart-implicit:adj-pantheon"
+    },
+    "wisps4000": {
+      "label": "4000 鬼灵",
+      "pattern": "4000.*鬼灵",
+      "source": "chart-implicit:adj-wisps-2; ALL_GOOD_MODS_REGEX"
+    },
+    "pillars": {
+      "label": "海之柱",
+      "pattern": "海之柱",
+      "source": "destination:sea-pillars"
+    },
+    "lantern": {
+      "label": "黄金灯笼",
+      "pattern": "黄金灯笼",
+      "source": "chart-implicit:adj-lantern"
+    },
+    "possess": {
+      "label": "稀有怪附身",
+      "pattern": "被附身",
+      "source": "chart-implicit:voy-possess"
+    },
+    "noequip": {
+      "label": "无法掉落装备",
+      "pattern": "无法掉落",
+      "source": "chart-implicit:voy-noequip"
+    },
+    "fracture": {
+      "label": "稀有怪分裂",
+      "pattern": "稀有怪物死亡时.*分裂",
+      "source": "chart-implicit:voy-fracture; 区别于物品分裂"
+    },
+    "message": {
+      "label": "瓶中信",
+      "pattern": "瓶中信",
+      "source": "chart-implicit:adj-msg-1/2"
+    },
+    "divbox": {
+      "label": "神圣的秘宝",
+      "pattern": "神圣的秘宝",
+      "source": "chart-implicit:adj-divbox-1/2"
+    },
+    "opbox": {
+      "label": "侦探的保险箱",
+      "pattern": "侦探的保险箱",
+      "source": "chart-implicit:adj-opbox-1/2"
+    },
+    "quantity110": {
+      "label": "物品数量 110% 以上",
+      "pattern": "物品数量.*(1[1-9].|[2-9]..)%",
+      "source": "milky-speedrun.guide: 110%以上物品数量; 原120%搜索的数字分支拓展"
+    },
+    "anchor": {
+      "label": "锚地",
+      "pattern": "锚地",
+      "source": "destination:anchorfield; anchorfield-fishing.searchRegex"
+    },
+    "quantity120": {
+      "label": "物品数量 120% 以上",
+      "pattern": "物品数量.*(1[2-9].|[2-9]..)%",
+      "source": "anchorfield-fishing/cutedog-divine-boxes.searchRegex（原样保留数字分支）"
+    },
+    "wisps": {
+      "label": "荒林鬼灵",
+      "pattern": "(2000|4000).*鬼灵",
+      "source": "chart-implicit:adj-wisps-1/2"
+    },
+    "minmagic": {
+      "label": "怪物至少为魔法",
+      "pattern": "至少为魔法",
+      "source": "chart-implicit:voy-minmagic"
+    },
+    "magic": {
+      "label": "魔法怪物数量",
+      "pattern": "魔法怪物数量",
+      "source": "chart-implicit:adj-magic-1/2,voy-magic"
+    },
+    "bathysphere": {
+      "label": "感染潜航球",
+      "pattern": "感染潜航球",
+      "source": "destination:infested-bathyspheres"
+    },
+    "genericbox": {
+      "label": "相邻普通保险箱（各档）",
+      "pattern": "额外保险箱",
+      "source": "chart-implicit:adj-box-1/2/3"
+    },
+    "allbox": {
+      "label": "各类保险箱／神圣的秘宝",
+      "pattern": "保险箱|神圣的秘宝",
+      "source": "chart-implicit:adj-box,adj-divbox,adj-arcbox,adj-opbox"
+    },
+    "rare": {
+      "label": "相邻或全航程稀有怪数量",
+      "pattern": "稀有怪物数量",
+      "source": "chart-implicit:adj-rare-1/2,voy-rare"
+    },
+    "voyagerare": {
+      "label": "全航程稀有怪数量",
+      "pattern": "所有航行区域的稀有怪物数量",
+      "source": "chart-implicit:voy-rare"
+    },
+    "abyss": {
+      "label": "远洋深渊",
+      "pattern": "远洋深渊",
+      "source": "destination:pelagic-abyss"
+    },
+    "chaosRare": {
+      "label": "稀有怪数量（仅有混沌石边界时的可选替代）",
+      "pattern": "稀有怪物数量",
+      "source": "anchorfield-fishing.guide: 有稀有怪额外混沌石边界时，可用稀有怪数量替代数量海图"
+    }
+  },
+  "strategies": {
+    "alc-and-go": {
+      "conditions": [],
+      "source": "策略攻略：使用其他策略不需要的备用海图",
+      "note": "暂无有来源的专项留图规则；本策略消耗其他策略不需要的备用海图。"
+    },
+    "milky-speedrun": {
+      "conditions": [
+        "message",
+        "divbox",
+        "opbox",
+        "quantity110"
+      ],
+      "source": "策略攻略中心材料与110%数量要求"
+    },
+    "milky-meatfish": {
+      "conditions": [
+        "star",
+        "pantheon",
+        "wisps4000",
+        "pillars",
+        "lantern",
+        "possess",
+        "noequip",
+        "fracture"
+      ],
+      "source": "策略攻略完整组成与4000鬼灵、分裂替代材料"
+    },
+    "anchorfield-fishing": {
+      "conditions": [
+        "anchor",
+        "quantity120",
+        "chaosRare"
+      ],
+      "source": "锚地赐福攻略与原有searchRegex（包括混沌边界可选替代）",
+      "note": "含稀有怪数量可选替代：仅在稀有怪额外掉混沌石的边界下使用；不是无条件优先留用。"
+    },
+    "milky-ethereal": {
+      "conditions": [
+        "wisps",
+        "lantern",
+        "noequip",
+        "minmagic",
+        "magic",
+        "bathysphere"
+      ],
+      "source": "魔法怪流攻略鬼灵、黄金灯笼、至少魔法、魔法数量、无法掉落装备及感染潜航球"
+    },
+    "divine-border-rares": {
+      "conditions": [
+        "pillars",
+        "genericbox",
+        "star",
+        "rare"
+      ],
+      "source": "稀有怪神圣雨攻略：海之柱、普通保险箱或海星、稀有怪数量；不从边界制造海图条件"
+    },
+    "cutedog-divine-boxes": {
+      "conditions": [
+        "abyss",
+        "allbox",
+        "voyagerare",
+        "quantity120"
+      ],
+      "source": "神圣保险箱攻略完整材料与原有120%数量搜索；高怪物群规模未给出数字下限，未虚构门槛"
+    }
+  }
+}

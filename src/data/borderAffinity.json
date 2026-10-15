@@ -1,0 +1,4087 @@
+{
+  "version": "3.29-border-affinity-1",
+  "basis": "维护者依据现有策略说明与边界机制整理的初始相对适配权重（0–10），不是收益实测、摆盘评分或目标展示权重。逐条相加，不考虑位置和连接；0仅表示本版没有专项适配加分，不代表边界没有价值。",
+  "sources": {
+    "strategy-reference": {
+      "label": "现有策略说明（实施基线）",
+      "url": "https://github.com/ren2019/allflame-voyage/blob/aeb688d/src/data/strategies.ts"
+    },
+    "border-reference": {
+      "label": "现有边界机制（实施基线）",
+      "url": "https://github.com/ren2019/allflame-voyage/blob/aeb688d/src/data/mods.ts"
+    },
+    "maintainer-initial": {
+      "label": "#21 初始权重约定",
+      "url": "https://github.com/ren2019/allflame-voyage/issues/21"
+    }
+  },
+  "strategies": {
+    "alc-and-go": {
+      "requiredBorderId": null,
+      "weights": {
+        "b-pack-1": {
+          "weight": 1,
+          "reason": "过渡速刷沿路收集掉落，更多怪物是一般供给；按词缀档位小幅增加适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-2": {
+          "weight": 2,
+          "reason": "过渡速刷沿路收集掉落，更多怪物是一般供给；按词缀档位小幅增加适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-3": {
+          "weight": 3,
+          "reason": "过渡速刷沿路收集掉落，更多怪物是一般供给；按词缀档位小幅增加适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-minmagic": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-1": {
+          "weight": 1,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-2": {
+          "weight": 2,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-3": {
+          "weight": 3,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-1": {
+          "weight": 1,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-2": {
+          "weight": 2,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-3": {
+          "weight": 3,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-1": {
+          "weight": 1,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-2": {
+          "weight": 2,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-3": {
+          "weight": 3,
+          "reason": "额外怪物群给过渡速刷提供沿路供给；不把额外清理时间换算成收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-1": {
+          "weight": 1,
+          "reason": "词缀数值提高可支持通用奖励，本版仅给过渡策略小幅适配；不读取实际海图。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-2": {
+          "weight": 2,
+          "reason": "词缀数值提高可支持通用奖励，本版仅给过渡策略小幅适配；不读取实际海图。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-3": {
+          "weight": 3,
+          "reason": "词缀数值提高可支持通用奖励，本版仅给过渡策略小幅适配；不读取实际海图。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-1": {
+          "weight": 1,
+          "reason": "过渡航程保留备用海图可支持后续周转，按保留几率档位小幅增加适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-2": {
+          "weight": 2,
+          "reason": "过渡航程保留备用海图可支持后续周转，按保留几率档位小幅增加适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-octoboss": {
+          "weight": 4,
+          "reason": "现有速刷说明把污秽蟹群列为硫磺供给；此处只记目标适配，不保证固定产量。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-lanterns": {
+          "weight": 3,
+          "reason": "放灯笼不消耗数量与快速探索的灯笼供给相关。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-ancient": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-divine": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exalt": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-annul": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chaos": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-vaal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gcp": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chrome": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regret": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-blessed": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-support": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-locker": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pirates": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-decks": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarabdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-magicmods": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-sulphdrop": {
+          "weight": 4,
+          "reason": "沿路积攒亡者硫磺符合点金速刷的过渡目标。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-goldlantern": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-izaro": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        }
+      }
+    },
+    "anchorfield-fishing": {
+      "requiredBorderId": null,
+      "weights": {
+        "b-pack-1": {
+          "weight": 1,
+          "reason": "额外怪物为探索阶段提供一般供给，适配低于明确通货方向。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-2": {
+          "weight": 2,
+          "reason": "额外怪物为探索阶段提供一般供给，适配低于明确通货方向。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-3": {
+          "weight": 3,
+          "reason": "额外怪物为探索阶段提供一般供给，适配低于明确通货方向。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-minmagic": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-1": {
+          "weight": 3,
+          "reason": "提高词缀数值与数量方向相关；不读取海图或计算实际放大结果。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-2": {
+          "weight": 4,
+          "reason": "提高词缀数值与数量方向相关；不读取海图或计算实际放大结果。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-3": {
+          "weight": 5,
+          "reason": "提高词缀数值与数量方向相关；不读取海图或计算实际放大结果。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-1": {
+          "weight": 2,
+          "reason": "保留概率有助于周转锚地及供给海图，但此分数不假设边界实际贴到哪张海图。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-2": {
+          "weight": 3,
+          "reason": "保留概率有助于周转锚地及供给海图，但此分数不假设边界实际贴到哪张海图。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-octoboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-lanterns": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-ancient": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-divine": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exalt": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-annul": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chaos": {
+          "weight": 9,
+          "reason": "现有锚地赐福说明明确利用额外混沌石边界；它与寻找转化赐福的目标相关，但不保证出现赐福。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-vaal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gcp": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chrome": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regret": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-blessed": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-support": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-locker": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pirates": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-1": {
+          "weight": 6,
+          "reason": "数量方向与锚地通货目标相关；实际效果受连接减少数量影响，此静态权重不计算连接后的净效果。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-2": {
+          "weight": 8,
+          "reason": "数量方向与锚地通货目标相关；实际效果受连接减少数量影响，此静态权重不计算连接后的净效果。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-decks": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarabdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-1": {
+          "weight": 4,
+          "reason": "通货数量方向符合锚地赐福的通货目标；本版按词缀档位赋权，不预测实际转化收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-2": {
+          "weight": 6,
+          "reason": "通货数量方向符合锚地赐福的通货目标；本版按词缀档位赋权，不预测实际转化收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-3": {
+          "weight": 8,
+          "reason": "通货数量方向符合锚地赐福的通货目标；本版按词缀档位赋权，不预测实际转化收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-magicmods": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-1": {
+          "weight": 0,
+          "reason": "宝藏锚与锚地目的地的沉没宝藏不是同一个对象，不因名字相似给锚地专项加分。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-2": {
+          "weight": 0,
+          "reason": "宝藏锚与锚地目的地的沉没宝藏不是同一个对象，不因名字相似给锚地专项加分。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-sulphdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-goldlantern": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-izaro": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        }
+      }
+    },
+    "milky-speedrun": {
+      "requiredBorderId": null,
+      "weights": {
+        "b-pack-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-minmagic": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-1": {
+          "weight": 1,
+          "reason": "保留概率支持备用海图周转，但不根据实际库存提升权重。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-2": {
+          "weight": 2,
+          "reason": "保留概率支持备用海图周转，但不根据实际库存提升权重。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-octoboss": {
+          "weight": 6,
+          "reason": "现有速刷攻略专门利用污秽蟹群的硫磺奖励，给予较高专项适配，不保证固定产量。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-lanterns": {
+          "weight": 3,
+          "reason": "沿路放灯笼是策略流程的一部分，减轻灯笼消耗给予小幅适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-ancient": {
+          "weight": 2,
+          "reason": "额外远古石提供沿路奖励，给予次级适配，不换算通货价格。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-divine": {
+          "weight": 5,
+          "reason": "稀有怪额外神圣石是额外奖励机会，不是速刷保险箱的必要边界。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exalt": {
+          "weight": 3,
+          "reason": "额外崇高石提供沿路奖励，给予次级适配，不换算通货价格。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-annul": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chaos": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-vaal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gcp": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chrome": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regret": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-blessed": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-support": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-locker": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pirates": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-1": {
+          "weight": 4,
+          "reason": "物品数量是现有速刷保险箱的方向；连接会降低实际数量，此处仅是静态适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-2": {
+          "weight": 6,
+          "reason": "物品数量是现有速刷保险箱的方向；连接会降低实际数量，此处仅是静态适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-decks": {
+          "weight": 2,
+          "reason": "命运卡组方向与神圣秘宝替代材料有关；不假设本盘使用哪一种中心材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarabdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-1": {
+          "weight": 1,
+          "reason": "沿路通货奖励与过渡刷法相关，适配低于保险箱主目标。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-2": {
+          "weight": 2,
+          "reason": "沿路通货奖励与过渡刷法相关，适配低于保险箱主目标。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-3": {
+          "weight": 3,
+          "reason": "沿路通货奖励与过渡刷法相关，适配低于保险箱主目标。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-1": {
+          "weight": 3,
+          "reason": "侦探保险箱是此策略首选方向，圣甲虫加成与此目标相关；不假设保险箱实际位置。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-2": {
+          "weight": 4,
+          "reason": "侦探保险箱是此策略首选方向，圣甲虫加成与此目标相关；不假设保险箱实际位置。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-3": {
+          "weight": 5,
+          "reason": "侦探保险箱是此策略首选方向，圣甲虫加成与此目标相关；不假设保险箱实际位置。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-magicmods": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-sulphdrop": {
+          "weight": 4,
+          "reason": "过渡速刷会积攒硫磺，稀有怪硫磺掉落与此目标相关。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-goldlantern": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-izaro": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        }
+      }
+    },
+    "milky-meatfish": {
+      "requiredBorderId": null,
+      "weights": {
+        "b-pack-1": {
+          "weight": 2,
+          "reason": "更多怪物提供供给，属于次于稀有怪专项的辅助方向。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-2": {
+          "weight": 3,
+          "reason": "更多怪物提供供给，属于次于稀有怪专项的辅助方向。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-3": {
+          "weight": 4,
+          "reason": "更多怪物提供供给，属于次于稀有怪专项的辅助方向。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-minmagic": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-1": {
+          "weight": 5,
+          "reason": "更多稀有怪与稀有怪传奇掉落目标直接相关，按数量档位提高相对适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-2": {
+          "weight": 7,
+          "reason": "更多稀有怪与稀有怪传奇掉落目标直接相关，按数量档位提高相对适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-3": {
+          "weight": 9,
+          "reason": "更多稀有怪与稀有怪传奇掉落目标直接相关，按数量档位提高相对适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-1": {
+          "weight": 2,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-2": {
+          "weight": 3,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-3": {
+          "weight": 4,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-1": {
+          "weight": 2,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-2": {
+          "weight": 3,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-3": {
+          "weight": 4,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-1": {
+          "weight": 2,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-2": {
+          "weight": 3,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-3": {
+          "weight": 4,
+          "reason": "额外怪物群提供供给；不假设所有新增怪物都属于稀有怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-1": {
+          "weight": 2,
+          "reason": "词缀数值强化可辅助供给，但不根据实际海图推算效果。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-2": {
+          "weight": 3,
+          "reason": "词缀数值强化可辅助供给，但不根据实际海图推算效果。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-3": {
+          "weight": 4,
+          "reason": "词缀数值强化可辅助供给，但不根据实际海图推算效果。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-1": {
+          "weight": 3,
+          "reason": "高投入策略重视材料周转，按保留几率档位增加适配；不假设实际贴到关键材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-2": {
+          "weight": 5,
+          "reason": "高投入策略重视材料周转，按保留几率档位增加适配；不假设实际贴到关键材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-octoboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-lanterns": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-ancient": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-divine": {
+          "weight": 5,
+          "reason": "此策略集中稀有怪，额外神圣石具有奖励协同，但不是该策略运行前提。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exalt": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-annul": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chaos": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-vaal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gcp": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chrome": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regret": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-blessed": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-support": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-locker": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pirates": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-1": {
+          "weight": 5,
+          "reason": "稀有怪随连接增加与目标相关；本版按词缀档位赋权，不读取实际连接。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-2": {
+          "weight": 7,
+          "reason": "稀有怪随连接增加与目标相关；本版按词缀档位赋权，不读取实际连接。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-decks": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarabdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-1": {
+          "weight": 4,
+          "reason": "物品稀有度与寻找传奇装备方向相关，按档位提高适配，不预测掉落概率。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-2": {
+          "weight": 6,
+          "reason": "物品稀有度与寻找传奇装备方向相关，按档位提高适配，不预测掉落概率。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-3": {
+          "weight": 8,
+          "reason": "物品稀有度与寻找传奇装备方向相关，按档位提高适配，不预测掉落概率。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-magicmods": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-sulphdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-goldlantern": {
+          "weight": 8,
+          "reason": "黄金灯笼是稀有怪传奇策略的明确材料方向，额外灯笼给予较高适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-izaro": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        }
+      }
+    },
+    "milky-ethereal": {
+      "requiredBorderId": null,
+      "weights": {
+        "b-pack-1": {
+          "weight": 4,
+          "reason": "魔法怪流依赖更多怪物供给，按怪物群规模档位提高适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-2": {
+          "weight": 6,
+          "reason": "魔法怪流依赖更多怪物供给，按怪物群规模档位提高适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-3": {
+          "weight": 8,
+          "reason": "魔法怪流依赖更多怪物供给，按怪物群规模档位提高适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-minmagic": {
+          "weight": 10,
+          "reason": "至少为魔法与现有魔法怪流的核心转化方向直接对应。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-1": {
+          "weight": 3,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-2": {
+          "weight": 4,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-3": {
+          "weight": 5,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-1": {
+          "weight": 3,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-2": {
+          "weight": 4,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-3": {
+          "weight": 5,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-1": {
+          "weight": 3,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-2": {
+          "weight": 4,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-3": {
+          "weight": 5,
+          "reason": "额外怪物群提供转化前的供给；不假设实际全部转成魔法怪。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-1": {
+          "weight": 2,
+          "reason": "词缀数值强化可辅助供给，但不读取实际海图或保证转化收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-2": {
+          "weight": 3,
+          "reason": "词缀数值强化可辅助供给，但不读取实际海图或保证转化收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-3": {
+          "weight": 4,
+          "reason": "词缀数值强化可辅助供给，但不读取实际海图或保证转化收益。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-1": {
+          "weight": 3,
+          "reason": "高投入策略重视材料周转，按保留几率档位增加适配；不假设实际贴到关键材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-2": {
+          "weight": 5,
+          "reason": "高投入策略重视材料周转，按保留几率档位增加适配；不假设实际贴到关键材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-octoboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-lanterns": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-ancient": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-divine": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exalt": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-annul": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chaos": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-vaal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gcp": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chrome": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regret": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-blessed": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-support": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-locker": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pirates": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-decks": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarabdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-1": {
+          "weight": 2,
+          "reason": "稀有度属于强化怪物后的辅助奖励方向，非核心数量来源。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-2": {
+          "weight": 3,
+          "reason": "稀有度属于强化怪物后的辅助奖励方向，非核心数量来源。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-3": {
+          "weight": 4,
+          "reason": "稀有度属于强化怪物后的辅助奖励方向，非核心数量来源。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-magicmods": {
+          "weight": 6,
+          "reason": "魔法怪额外词缀符合魔法怪强化方向，不等同于增加魔法怪数量。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-sulphdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-goldlantern": {
+          "weight": 8,
+          "reason": "黄金灯笼是现有魔法怪流的明确材料方向，额外灯笼给予较高适配。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-izaro": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        }
+      }
+    },
+    "divine-border-rares": {
+      "requiredBorderId": "b-divine",
+      "weights": {
+        "b-pack-1": {
+          "weight": 1,
+          "reason": "怪物供给是辅助方向，适配低于明确增加稀有怪的边界。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-2": {
+          "weight": 2,
+          "reason": "怪物供给是辅助方向，适配低于明确增加稀有怪的边界。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-3": {
+          "weight": 3,
+          "reason": "怪物供给是辅助方向，适配低于明确增加稀有怪的边界。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-minmagic": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-1": {
+          "weight": 5,
+          "reason": "增加稀有怪与神圣石边界目标直接相关；不假设稀有怪实际落在目标格。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-2": {
+          "weight": 7,
+          "reason": "增加稀有怪与神圣石边界目标直接相关；不假设稀有怪实际落在目标格。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-3": {
+          "weight": 9,
+          "reason": "增加稀有怪与神圣石边界目标直接相关；不假设稀有怪实际落在目标格。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-1": {
+          "weight": 2,
+          "reason": "词缀数值强化可能辅助供给，本版不读取实际海图或模拟放大。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-2": {
+          "weight": 3,
+          "reason": "词缀数值强化可能辅助供给，本版不读取实际海图或模拟放大。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-3": {
+          "weight": 4,
+          "reason": "词缀数值强化可能辅助供给，本版不读取实际海图或模拟放大。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-1": {
+          "weight": 3,
+          "reason": "策略需要专项海图材料，保留概率有周转意义；不假设边界实际贴到关键材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-2": {
+          "weight": 5,
+          "reason": "策略需要专项海图材料，保留概率有周转意义；不假设边界实际贴到关键材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-octoboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-lanterns": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-ancient": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-divine": {
+          "weight": 10,
+          "reason": "策略明确依赖稀有怪额外神圣石边界；是否具备另外单独提示，不由总分替代。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exalt": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-annul": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chaos": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-vaal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gcp": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chrome": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regret": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-blessed": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-support": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-locker": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pirates": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-1": {
+          "weight": 5,
+          "reason": "随连接增加稀有怪与神圣石目标相关；本版不读取连接和摆盘。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-2": {
+          "weight": 7,
+          "reason": "随连接增加稀有怪与神圣石目标相关；本版不读取连接和摆盘。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-decks": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarabdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-magicmods": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-sulphdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-goldlantern": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-izaro": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        }
+      }
+    },
+    "cutedog-divine-boxes": {
+      "requiredBorderId": "b-divine",
+      "weights": {
+        "b-pack-1": {
+          "weight": 1,
+          "reason": "怪物供给是辅助方向，适配低于明确增加稀有怪的边界。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-2": {
+          "weight": 2,
+          "reason": "怪物供给是辅助方向，适配低于明确增加稀有怪的边界。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pack-3": {
+          "weight": 3,
+          "reason": "怪物供给是辅助方向，适配低于明确增加稀有怪的边界。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-minmagic": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-1": {
+          "weight": 5,
+          "reason": "增加稀有怪与神圣石边界目标直接相关；不假设稀有怪实际落在目标格。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-2": {
+          "weight": 7,
+          "reason": "增加稀有怪与神圣石边界目标直接相关；不假设稀有怪实际落在目标格。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rare-3": {
+          "weight": 9,
+          "reason": "增加稀有怪与神圣石边界目标直接相关；不假设稀有怪实际落在目标格。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-beasts-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabs-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-drowned-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-1": {
+          "weight": 2,
+          "reason": "词缀数值强化可能辅助供给，本版不读取实际海图或模拟放大。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-2": {
+          "weight": 3,
+          "reason": "词缀数值强化可能辅助供给，本版不读取实际海图或模拟放大。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-mag-3": {
+          "weight": 4,
+          "reason": "词缀数值强化可能辅助供给，本版不读取实际海图或模拟放大。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-1": {
+          "weight": 3,
+          "reason": "策略需要专项海图材料，保留概率有周转意义；不假设边界实际贴到关键材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-keep-2": {
+          "weight": 5,
+          "reason": "策略需要专项海图材料，保留概率有周转意义；不假设边界实际贴到关键材料。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-octoboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-lanterns": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-ancient": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-divine": {
+          "weight": 10,
+          "reason": "策略明确依赖稀有怪额外神圣石边界；是否具备另外单独提示，不由总分替代。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exalt": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-annul": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chaos": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-vaal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gcp": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-chrome": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regret": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-blessed": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-regal": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-support": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-locker": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-pirates": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-1": {
+          "weight": 5,
+          "reason": "随连接增加稀有怪与神圣石目标相关；本版不读取连接和摆盘。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rareconn-2": {
+          "weight": 7,
+          "reason": "随连接增加稀有怪与神圣石目标相关；本版不读取连接和摆盘。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-quantconn-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-gold-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-decks": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarabdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-curr-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-scarab-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-rarity-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-crabboss": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-exp-3": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-magicmods": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-1": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-anchor-2": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-sulphdrop": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-goldlantern": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        },
+        "b-izaro": {
+          "weight": 0,
+          "reason": "该效果不是此策略的专项方向，本版不给适配加分；不代表没有一般价值。",
+          "sourceIds": [
+            "strategy-reference",
+            "border-reference",
+            "maintainer-initial"
+          ]
+        }
+      }
+    }
+  }
+}
