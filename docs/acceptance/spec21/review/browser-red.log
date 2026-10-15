@@ -1,0 +1,49 @@
+[WebServer] (node:40337) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 1 test using 1 worker
+
+(node:40339) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] tests/browser/region-targets.spec.ts:15:1 › 词缀计分开关更新分数但保留真实区域目标和规划
+  1) tests/browser/region-targets.spec.ts:15:1 › 词缀计分开关更新分数但保留真实区域目标和规划 ────────────────────────────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('.region-targets').getByRole('button', { name: /友好水母/ })
+    Expected: 9
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('.region-targets').getByRole('button', { name: /友好水母/ }) with timeout 5000ms
+      - waiting for locator('.region-targets').getByRole('button', { name: /友好水母/ })
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      50 |   await browser.getByRole('button', { name: '完成', exact: true }).click()
+      51 |   await expect(score).toHaveText('12.0')
+    > 52 |   await expect(cells.getByRole('button', { name: /友好水母/ })).toHaveCount(9)
+         |                                                             ^
+      53 |   await expect(cells.nth(1).getByRole('button', { name: /箱子/ })).toBeVisible()
+      54 |   await page.getByRole('button', { name: '词缀（已停用 2 项）', exact: true }).click()
+      55 |   await search.fill('神圣石')
+        at /private/tmp/allflame-spec21-worktrees/review-fixes/tests/browser/region-targets.spec.ts:52:61
+
+    Error Context: test-results/region-targets-词缀计分开关更新分数但保留真实区域目标和规划/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/region-targets-词缀计分开关更新分数但保留真实区域目标和规划/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/region-targets-词缀计分开关更新分数但保留真实区域目标和规划/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  1 failed
+    tests/browser/region-targets.spec.ts:15:1 › 词缀计分开关更新分数但保留真实区域目标和规划 ─────────────────────────────

@@ -4,13 +4,14 @@
 
 ## 候选制品和独立入口
 
-候选源码 SHA、完整生产构建清单与 SHA-256 见同目录 `candidate.json` / `build-manifest.json`；自动化与 Windows 事实见 `automated.json` / `windows/failed-candidate-report.json`。当前#23原生剪贴板验收仍未完成（读回为空，后续SSHreset），不可把Windows部分UI证据视为原生验收通过。证据提交只增加文档，不改变已测产品字节。若之后修改产品、配置或资产，应重新构建并核对摘要，再重跑受影响检查。
+当前候选源码为 `fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0`，64文件构建 SHA-256 为 `f43c9f9ea4f2921000a3ec456229d6da465cfa417cecb5ad2f8ce0188fb5ac2d`，完整清单见同目录 `candidate.json` / `build-manifest.json`。此源码的536条单元测试、68条离线浏览器测试及其余执行阶段通过；`npm run verify`最终因旧本地化台账仍钉住抽取前的评分文件字节摘要而退出1，原始失败保留在 `automated.json` / `review.md`，不能称整条命令通过。
 
-自动化验收的 9443 实例已停止，不把旧测试 URL 当作持续在线入口。审查完成后可在候选 checkout 启动新的独立预览：
+**当前新源码/构建的Windows原生验收为NOT RUN，#23保持未完成。** `windows/failed-candidate-report.json`及同目录截图属于旧 `d2e835c` 源码、旧构建（见 `windows/README.md`）：当时部分UI可用，但原生剪贴板读回为空，之后SSH reset。不得把这些旧图或旧失败记录归到新候选，也不得把旧UI证据视为当前原生通过。后续只增加证据文档不改变已测产品字节；若修改产品、配置或资产，应重新构建并核对摘要，再重跑受影响检查。
+
+自动化验收服务均已停止，不把旧测试 URL 当作持续在线入口。审查完成后可在候选 checkout 使用已归档的精确构建启动新的独立预览：
 
 ```sh
-npm run build
-CANDIDATE_CERT_DIR=/Users/steipete/Projects/allflame-voyage/.local-site CANDIDATE_PORT=9443 node scripts/spec21-candidate.mjs
+CANDIDATE_CERT_DIR=/Users/steipete/Projects/allflame-voyage/.local-site CANDIDATE_PORT=9443 node scripts/spec21-candidate.mjs /tmp/allflame-implement-21/spec21-candidate-fd428e9/dist
 ```
 
 仅在出现 strictCaSanProbe=true 且摘要与 `build-manifest.json` 一致后，使用启动日志的候选地址（通常 `https://192.168.1.8:9443`）。命令检查端口占用，创建权限700的独立临时目录，只读取现有叶证书/密钥和公开CA，不安装或更改信任，不调用生产 start/update/stop/init。Ctrl+C 只停止该命令的子进程并删除自己的临时证书副本。8443 既有站点保持原样；禁止用它代替候选。新源与原站本地存储互相隔离。
@@ -85,7 +86,7 @@ CANDIDATE_CERT_DIR=/Users/steipete/Projects/allflame-voyage/.local-site CANDIDAT
 | 神圣区域 | 仅真实神圣边界接收格，按生效条件提升已有目标，不能凭策略制造 | **缺真实神圣边界/对应实际航程样本**；目前仅派生规则测试，不能标现场通过 |
 | 连接与自作用 | 断开时连接范围不生效；调整相邻自作用后来源与接收区域一致 | 自动化已覆盖；现场必须记录当时设置 |
 | 合并与溢出 | 各箱子共一槽，金币共一槽，明确Boss共一槽；详情保留全部目标；>4类时前三+更多 | 真实库存重算盘/派生模型覆盖；现场找到对应遭遇再记结果 |
-| 策略切换 | 只改变已存在目标的优先级/颜色；无效空格不出现目标；原分数/摆盘不被overlay改变 | 自动化与原生Edge的UI部分已覆盖；原生剪贴板仍待完成，现场对照确认 |
+| 策略切换与计分开关 | 策略只改变已存在目标的优先级/颜色；无效空格不出现目标；overlay不改分数/摆盘；取消词缀计分后其实际遭遇与边界优先级仍保留 | 当前自动化已覆盖；旧d2e835c的Edge UI部分证据不替代当前源码原生验收，现场对照确认 |
 | 图案和中文 | 精华和各通货为游戏原图；箱子统一；宝藏锚为锚；M/R；单圈金币；统一Boss；潜水球、祭坛、信封、辅助宝石、圣甲虫、罪魂、阿兹里头像、宿敌标记；船长灾星中文 | 48目标/39本地资源见下表；图案是接受的提示符号，不保证机制完整或具体掉落 |
 
 每个图案/目标独立标记，缺样本不可由同类图标代替。目标全量映射由当前版本配置生成于本文末，名称/来源/权重详见 `src/data/region-targets.json` 与界面详情。阿兹里、宿敌等代表图并不证明本区域包含它所象征的完整机制；未经核实的固定数量不得当作保证。

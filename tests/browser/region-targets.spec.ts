@@ -12,6 +12,64 @@ const real = JSON.parse(
 )
 import type { AppState } from '../../src/logic/storage'
 
+test('词缀计分开关更新分数但保留真实区域目标和规划', async ({ page }) => {
+  await openEmptyApp(page)
+  const pool = Array.from({ length: 9 }, (_, i) => ({
+    uid: `score-toggle-${i}`,
+    name: `区域 ${i + 1}`,
+    level: 83,
+    edges: [true, true, true, true],
+    modIds: i === 4 ? ['adj-box-1', 'voy-jelly'] : [],
+  }))
+  await loadState(page, {
+    ...real,
+    strategyId: null,
+    weights: { 'adjacent:box': 4, 'border:divine': 10 },
+    disabledMods: [],
+    adjacentAffectsSelf: false,
+    pool,
+    board: pool.map((c) => ({ chartUid: c.uid, rotation: 0 })),
+    borders: [null, 'b-divine', ...Array(10).fill(null)],
+  } as AppState)
+  const before = await exportState(page)
+  const score = page.locator('.score-total strong')
+  await expect(score).toHaveText('14.4')
+  await page.getByRole('button', { name: '区域目标', exact: true }).click()
+  const cells = page.locator('.region-targets')
+  const targetNames = await cells.locator('button').evaluateAll((buttons) =>
+    buttons.map((button) => button.getAttribute('aria-label')),
+  )
+  await expect(cells.getByRole('button', { name: /友好水母/ })).toHaveCount(9)
+  await page.getByRole('button', { name: '词缀', exact: true }).click()
+  const browser = page.locator('.modbrowser')
+  const search = page.getByPlaceholder('搜索词缀…')
+  await search.fill('水母')
+  await browser.getByRole('checkbox').uncheck()
+  await search.fill('相邻区域包含 1 个额外保险箱')
+  await browser.getByRole('checkbox').uncheck()
+  await browser.getByRole('button', { name: '完成', exact: true }).click()
+  await expect(score).toHaveText('12.0')
+  await expect(cells.getByRole('button', { name: /友好水母/ })).toHaveCount(9)
+  await expect(cells.nth(1).getByRole('button', { name: /箱子/ })).toBeVisible()
+  await page.getByRole('button', { name: '词缀（已停用 2 项）', exact: true }).click()
+  await search.fill('神圣石')
+  await browser.getByRole('checkbox').uncheck()
+  await browser.getByRole('button', { name: '完成', exact: true }).click()
+  await expect(score).toHaveText('0.0')
+  expect(await cells.locator('button').evaluateAll((buttons) =>
+    buttons.map((button) => button.getAttribute('aria-label')),
+  )).toEqual(targetNames)
+  await cells.nth(1).getByRole('button', { name: /稀有怪/ }).click()
+  const detail = page.getByRole('dialog', { name: '区域 2 目标详情' })
+  await expect(detail).toContainText('稀有怪额外掉神圣石')
+  await expect(detail).toContainText('边界 2')
+  await expect(detail).toContainText('普通保险箱')
+  await expect(detail).toContainText('格 5')
+  await page.keyboard.press('Escape')
+  const after = await exportState(page)
+  expect(after).toEqual({ ...before, disabledMods: ['voy-jelly', 'adj-box-1', 'b-divine'] })
+})
+
 test('真实库存重算盘的中央目标可开关、键盘查看且不改变规划', async ({
   page,
 }, testInfo) => {

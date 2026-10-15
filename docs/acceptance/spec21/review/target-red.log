@@ -1,0 +1,65 @@
+
+ RUN  v3.2.6 /private/tmp/allflame-spec21-worktrees/review-fixes
+
+ ❯ src/logic/regionTargets.test.ts (15 tests | 1 failed) 8ms
+   ✓ 区域目标: 用户真实库存重算盘（不是已完成旧盘） > 保持手动默认权重78.78与实际点金速刷策略0的独立评分基线 1ms
+   ✓ 区域目标: 用户真实库存重算盘（不是已完成旧盘） > 中央奥术师供给四邻而非自身，全航程精华覆盖九格，锚只来自左上边界 1ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 显式箱子、金币、明确首领各只占一槽，具体目标与重复来源仍完整 1ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 连接数为零时不把每连接边界当作已生效稀有怪目标 0ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 神圣边界只提升接收格已存在的目标，策略不创造新目标 0ms
+   × 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 计分开关不移除实际遭遇、来源或神圣边界的区域优先级 4ms
+     → expected [ false, false, false, false, …(5) ] to deeply equal [ true, true, true, true, true, …(4) ]
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 遵循连接与自作用设置，零分遭遇仍出现 0ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 0、1、4和超过4类；0权重仅保留详情，同分按配置顺序稳定 1ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 展示权重 0 的颜色边界 0ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 展示权重 1 的颜色边界 0ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 展示权重 39 的颜色边界 0ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 展示权重 40 的颜色边界 0ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 展示权重 69 的颜色边界 0ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 展示权重 70 的颜色边界 0ms
+   ✓ 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 展示权重 100 的颜色边界 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/logic/regionTargets.test.ts > 区域目标组合与条件覆盖（派生规则样例，不是游戏现场证据） > 计分开关不移除实际遭遇、来源或神圣边界的区域优先级
+AssertionError: expected [ false, false, false, false, …(5) ] to deeply equal [ true, true, true, true, true, …(4) ]
+
+- Expected
++ Received
+
+  [
+-   true,
+-   true,
+-   true,
+-   true,
+-   true,
+-   true,
+-   true,
+-   true,
+-   true,
++   false,
++   false,
++   false,
++   false,
++   false,
++   false,
++   false,
++   false,
++   false,
+  ]
+
+ ❯ src/logic/regionTargets.test.ts:173:8
+    171|     )
+    172|     expect(cells.map((cell) => cell.targets.some((t) => t.id === 'frie…
+    173|       .toEqual(Array(9).fill(true))
+       |        ^
+    174|     expect(cells[1].targets.map((t) => [t.id, t.weight, t.sources])).t…
+    175|       ['rare-divine', 100, [{ kind: 'border', id: 'b-divine', segment:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 14 passed (15)
+   Start at  14:41:56
+   Duration  253ms (transform 85ms, setup 0ms, collect 115ms, tests 8ms, environment 0ms, prepare 30ms)

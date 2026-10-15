@@ -2,6 +2,14 @@
 
 产品候选、构建摘要、执行证据和人工交接集中在 `docs/acceptance/spec21/`。`candidate.json` 区分产品 SHA 与后续仅测试/原生验收脚本提交；所有报告按真实执行源登记，不把新提交号回填成旧测试的执行版本。
 
+## 审查修复后的当前候选
+
+当前产品源码为 `fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0`，构建64文件，SHA-256 `f43c9f9ea4f2921000a3ec456229d6da465cfa417cecb5ad2f8ce0188fb5ac2d`。计分开关不再删除真实航行/边界目标及神圣区域的优先级；评分和历史仍保留禁用口径。上下文捕捉与键序列化复用同一规范化函数，原有键字节、排序和去重行为不变。完整审查原文、独立复审、RED/GREEN和当前测试覆盖见 `docs/acceptance/spec21/review.md`。
+
+在干净源码上运行 `OFFLINE_ACCEPTANCE=1 PLAYWRIGHT_PORT=4392 npm run verify`，六阶段全部通过：536条单元测试、64条OCR提示/12条别名、词库审计、5条部署测试、生产构建、68条浏览器测试。**整条命令仍退出1**：最终旧本地化台账只报 `Core algorithm changed: src/logic/scoring.ts`，因为其字节摘要仍对应已批准的#21作用范围抽取前结构。没有替换旧摘要，也没有将该aggregate失败标为通过；原始stages/coverage/log完整保留。旧27场景/7故事台账及其旧原生证据不能视为当前#21原生验收。
+
+精确制品归档为 `/tmp/allflame-implement-21/spec21-candidate-fd428e9/dist`，人工交接使用此归档。**新源码/新构建的原生验收为NOT RUN；#23仍OPEN，#24仍待玩家现场。** 下文Windows执行叙述、失败报告和截图属于旧 `d2e835c94502f6ec70d4f94bf9e42695d923a6c4` / `f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df`，并由 `windows/README.md`明确归属；本轮没有重试原生连接、变更Windows配置或操作生产服务。
+
 ## 产品修复
 
 - 静态 HTTPS 服务为本地 WebP、JPG/JPEG 和 WOFF 返回正确 MIME；保留 nosniff。新公开 HTTP 回归先因 WebP 返回 application/octet-stream 失败，再修复。GET/HEAD 验证 MIME、原始资源字节以及无 HEAD 响应体，实际 Windows 图像解码另证。
@@ -13,7 +21,7 @@
 
 同一共享流程在离线 Playwright 和真实 Windows Edge 执行。两主题、1440/390px验证最多四目标、键盘详情/焦点恢复、当前使用图案解码；native脚本另要求39份资源全部解码，当前完整native验收未完成。网格/列表中的预留/形状/铅笔按钮互不遮挡、单条校准直达正确记录、反馈和校准页主题一致。现有独立功能测试继续覆盖原始中文解析、七策略可执行性与材料保护、受控复制pending/成功/失败、目标范围/分组/阈值、十二边界累计、历史0/4/5/30/31及并列/口径隔离/重复完成/损坏状态恢复。
 
-全套初跑仅一条旧断言失败：导入测试仍期待“等级:83”，而已接受紧凑UI为“83”，有明确“区域等级 83”title。修正测试同时保留导出level=83断言，完整离线浏览器重跑67条通过。初跑记录保留，不冒充原本npm verify一遍全绿；产品字节未变化，不重复无关逻辑/OCR/构建检查。旧27场景/7故事台账属于上一轮本地化，不当作#21覆盖结论。
+旧d2e835c候选全套初跑仅一条旧断言失败：导入测试仍期待“等级:83”，而已接受紧凑UI为“83”，有明确“区域等级 83”title。修正测试同时保留导出level=83断言，完整离线浏览器重跑67条通过。该初跑记录保留，不冒充原本npm verify一遍全绿；当时产品字节未变化，没有重复无关逻辑/OCR/构建检查。本轮产品修复后的新536/68执行及旧台账摘要失败见上节，旧67条不是当前候选的执行数。
 
 ## Windows 原生与生命周期
 
@@ -31,10 +39,10 @@
 
 ## 当前未通过的原生验收与外部缺口
 
-**#23保持OPEN**。最终候选的Windows UI（两主题/两宽度、目标/校准/预留）部分通过，但native writeText虽fulfilled且页面focused，实际readText持续为空，因此严格断言失败，未标为通过。最小复现为新独立profile→仅复制一条留图条件，无需校准页或求解。交互OS探针无法OpenClipboard；进一步只读Win32元数据显示Session1、WinSta0/Default输入桌面可访问，但OpenClipboard返回false且实际错误5（ACCESS_DENIED），GetOpenClipboardWindow为0。NULL不能证明剪贴板空闲，亦不能指认外部进程；当前未确诊，不修改产品或杀其他进程。
+**#23保持OPEN**。旧d2e835c候选的Windows UI（两主题/两宽度、目标/校准/预留）部分通过，但native writeText虽fulfilled且页面focused，实际readText持续为空，因此严格断言失败，未标为通过；这些事实不归到当前fd428e9候选。最小复现为新独立profile→仅复制一条留图条件，无需校准页或求解。交互OS探针无法OpenClipboard；进一步只读Win32元数据显示Session1、WinSta0/Default输入桌面可访问，但OpenClipboard返回false且实际错误5（ACCESS_DENIED），GetOpenClipboardWindow为0。NULL不能证明剪贴板空闲，亦不能指认外部进程；当前未确诊，不修改产品或杀其他进程。
 
 随后准备“OS探针优先、不调用browser readText”的单变量试验时，SSH连续Connection reset by peer，试验和清理确认均无法完成。旧debug runner尚未在SSH前落盘UUID，故最后一次可能的远端任务/profile精确UUID未知；只允许恢复连接后按创建时间与19393/本次profile形态核实具体资源，再清理已证明自有的对象，禁止按前缀批量删除。维护中的runner现已修正为启动SSH前保存resourceOwner，且cleanup失败也保留事实报告。
 
-旧pilot曾通过native精确读回/OS断言后在外部analytics请求处失败，仅作为原始诊断记录，使用dirty源/旧index且不是当前候选全绿证据。当前候选报告、只读元数据、最小复现和SSH失败分别存档；不把pilot、受控API模拟或页面成功提示升级成最终Windows原生通过。
+旧pilot曾通过native精确读回/OS断言后在外部analytics请求处失败，仅作为原始诊断记录，使用dirty源/旧index且不是当前候选全绿证据。旧d2e835c失败候选报告、只读元数据、最小复现和SSH失败分别存档；不把pilot、受控API模拟或页面成功提示升级成最终Windows原生通过。本轮仅将 `os-first-ssh-failure.log` 的CRLF规范化为LF，正文事实未变。
 
 恢复连接后：先恢复并核实自有资源清理→跑最小单变量OS-first循环定位环境条件→当前构建摘要下重跑完整native runner（包含六串、OS owner、原生权限失败、39资源解码、UI与清理）→取得满足范围证据后才关闭#23。游戏匹配/容量/真实遭遇和真实航程仍属于#24。

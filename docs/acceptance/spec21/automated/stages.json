@@ -1,0 +1,96 @@
+{
+  "inputSha256": "606bea642179f7a86a0b7a534b72bc45fe204316d647f152fb5e30c974d8884a",
+  "startedUtc": "2026-10-15T06:43:44.649Z",
+  "offlineBrowser": true,
+  "externalOriginsBlocked": true,
+  "stages": [
+    {
+      "name": "unit",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--reporter=json",
+        "--outputFile=/private/tmp/allflame-spec21-worktrees/review-fixes/verification-results/unit.json"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:43:44.650Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:44:00.870Z",
+      "testCount": 0,
+      "log": "unit.log"
+    },
+    {
+      "name": "border-ocr",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "tests/border-ocr-regression.cjs"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:44:00.871Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:44:01.122Z",
+      "testCount": 0,
+      "log": "border-ocr.log"
+    },
+    {
+      "name": "text-library-audit",
+      "command": [
+        "python3",
+        "scripts/check-text-library.py"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:44:01.122Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:44:01.289Z",
+      "testCount": 0,
+      "log": "text-library-audit.log"
+    },
+    {
+      "name": "deployment",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "--test",
+        "tests/deployment/local-site.test.mjs"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:44:01.289Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:44:04.922Z",
+      "testCount": 5,
+      "log": "deployment.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:44:04.922Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:44:06.774Z",
+      "testCount": 0,
+      "log": "build.log"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "node_modules/playwright/cli.js",
+        "test",
+        "--workers=1",
+        "--reporter=line,json"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:44:06.774Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:45:31.326Z",
+      "testCount": 0,
+      "log": "browser.log"
+    }
+  ],
+  "status": "failed",
+  "failure": "Core algorithm changed: src/logic/scoring.ts"
+}

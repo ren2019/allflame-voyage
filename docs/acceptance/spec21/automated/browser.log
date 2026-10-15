@@ -1,78 +1,79 @@
-[WebServer] (node:24567) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (node:42066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 [WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
 
 
-Running 67 tests using 1 worker
+Running 68 tests using 1 worker
 
-(node:24569) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:42068) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
 
 
-[1/67] tests/browser/border-affinity.spec.ts:9:1 › 空库存先看十二边适配，换策略或摆盘仅按输入重算，查看明细不改规划
-[2/67] tests/browser/border-affinity.spec.ts:35:1 › 未填全、缺必要边界和未覆盖规则清楚区分，窄屏明暗主题详情可读
-[3/67] tests/browser/borders.spec.ts:18:1 › all twelve real border controls support Chinese search, selection, replacement and clearing
-[4/67] tests/browser/borders.spec.ts:43:1 › normal border choices and modifier browser hide maintenance status and conflicts
-[5/67] tests/browser/calibration-mode.spec.ts:12:1 › calibration pencil is temporary and its compact record links leave planning unchanged
-[6/67] tests/browser/calibration-mode.spec.ts:48:3 › reserved maps expose their strategy and material without overlapping calibration at 1280px
-[7/67] tests/browser/calibration-mode.spec.ts:48:3 › reserved maps expose their strategy and material without overlapping calibration at 390px
-[8/67] tests/browser/calibration.spec.ts:3:1 › single-entry calibration links and real copied clauses locate one stable record
-[9/67] tests/browser/calibration.spec.ts:18:1 › a single correction survives refresh and exports without changing source wording or evidence
-[10/67] tests/browser/calibration.spec.ts:47:1 › imports backups atomically and preserves newer records and unrelated drafts
-[11/67] tests/browser/calibration.spec.ts:70:1 › a modifier opens its own calibration record without toggling planning effects
-[12/67] tests/browser/calibration.spec.ts:86:1 › a general catalogue bookmark keeps the full list after refresh
-[13/67] tests/browser/calibration.spec.ts:94:1 › a prototype export imports as review records and never overrides a later review
-[14/67] tests/browser/chinese-shell.spec.ts:3:1 › 页面标题、教程、更新记录和保留向导的完整交互说明使用简中
-[15/67] tests/browser/client-shapes.spec.ts:14:3 › real controls import collected Corner and export its literal fields
-[16/67] tests/browser/client-shapes.spec.ts:14:3 › real controls import collected Junction and export its literal fields
-[17/67] tests/browser/client-shapes.spec.ts:14:3 › real controls import collected Crossing and export its literal fields
-[18/67] tests/browser/client-shapes.spec.ts:24:1 › real controls import the original and new copies together with Windows line endings
-[19/67] tests/browser/compact-copy.spec.ts:7:1 › 搜索参考默认紧凑，名称打开可选择全文的键盘弹窗，关闭后复制仍有可见反馈
-[20/67] tests/browser/compact-copy.spec.ts:30:1 › 剪贴板未确认时不能报成功，拒绝后展示失败并保留手动复制全文
-[21/67] tests/browser/compact-copy.spec.ts:53:1 › 剪贴板不可用时，弹窗内复制也给出可访问的失败状态且可关闭
-[22/67] tests/browser/compact-copy.spec.ts:70:3 › 1440px 两主题中三条参考均完整复制，图标紧凑且全文弹窗可用
-[23/67] tests/browser/compact-copy.spec.ts:70:3 › 390px 两主题中三条参考均完整复制，图标紧凑且全文弹窗可用
-[24/67] tests/browser/filler-candidates.spec.ts:23:1 › a spare voyage stays executable under an active strategy and uses only its eligible inventory
-[25/67] tests/browser/filler-candidates.spec.ts:43:1 › spare candidates retain a preserved placement and expire when protections change
-[26/67] tests/browser/import.spec.ts:30:1 › real import controls add both real charts in a Windows batch
-[27/67] tests/browser/import.spec.ts:44:1 › real import controls add the samples individually
-[28/67] tests/browser/import.spec.ts:52:1 › unknown crucial effects are refused with the existing summary only
-[29/67] tests/browser/import.spec.ts:58:1 › a mixed batch keeps its valid chart and reports one rejected item
-[30/67] tests/browser/import.spec.ts:71:3 › real import controls reject missing implicit
-[31/67] tests/browser/import.spec.ts:71:3 › real import controls reject empty implicit
-[32/67] tests/browser/import.spec.ts:71:3 › real import controls reject missing shape
-[33/67] tests/browser/import.spec.ts:71:3 › real import controls reject unknown shape
-[34/67] tests/browser/import.spec.ts:71:3 › real import controls reject non-chart
-[35/67] tests/browser/import.spec.ts:78:1 › uncharted derived text stays in the existing uncharted summary category
-[36/67] tests/browser/inventory.spec.ts:7:1 › 简中导入和库存保持同批实例、重扫数量及已核对属性
-[37/67] tests/browser/keeper-assistant.spec.ts:7:1 › 无库存可独立多选留图策略，每策略完整一串，操作不改变业务状态
-[38/67] tests/browser/keeper-assistant.spec.ts:31:3 › 1440px 两主题的完整长串均可查看复制；关闭或改选不影响已载入规划
-[39/67] tests/browser/keeper-assistant.spec.ts:31:3 › 390px 两主题的完整长串均可查看复制；关闭或改选不影响已载入规划
-[40/67] tests/browser/keeper-assistant.spec.ts:78:1 › 留图复制被拒绝后仍保留整条可手动复制的表达式
-[41/67] tests/browser/planning-cycle.spec.ts:21:1 › 完整非空规划经刷新和实际 JSON 下载载入恢复所有持久字段及评分
-[42/67] tests/browser/planning-cycle.spec.ts:46:1 › 所选候选完成九步复制后仅核销已消耗实例，补库存和边界再执行第二航程
-[43/67] tests/browser/planning-cycle.spec.ts:136:1 › 未标记保留时仅消耗本盘九张，三张未使用库存与全部配置继续保留
-[44/67] tests/browser/region-targets.spec.ts:15:1 › 真实库存重算盘的中央目标可开关、键盘查看且不改变规划
-[45/67] tests/browser/region-targets.spec.ts:82:1 › 派生合并与神圣条件样例支持四槽溢出、策略切换和空格
-[46/67] tests/browser/region-targets.spec.ts:188:1 › 单一目的地目标与明暗主题保持优先级颜色，原图不染色
-[47/67] tests/browser/solve.spec.ts:16:3 › player selects 点金速刷, solves and loads the actual candidate instances and rotations
-[48/67] tests/browser/solve.spec.ts:16:3 › player selects 锚地赐福, solves and loads the actual candidate instances and rotations
-[49/67] tests/browser/solve.spec.ts:16:3 › player selects 速刷保险箱, solves and loads the actual candidate instances and rotations
-[50/67] tests/browser/solve.spec.ts:16:3 › player selects 稀有怪传说装, solves and loads the actual candidate instances and rotations
-[51/67] tests/browser/solve.spec.ts:16:3 › player selects 魔法怪流, solves and loads the actual candidate instances and rotations
-[52/67] tests/browser/solve.spec.ts:16:3 › player selects 稀有怪神圣雨, solves and loads the actual candidate instances and rotations
-[53/67] tests/browser/solve.spec.ts:16:3 › player selects 神圣保险箱, solves and loads the actual candidate instances and rotations
-[54/67] tests/browser/solve.spec.ts:72:1 › eight charts are a reference even when connectors are ignored; a ninth chart makes the retry executable
-[55/67] tests/browser/solve.spec.ts:94:1 › Chinese solver settings retain the original connector, rotation and protection controls
-[56/67] tests/browser/spec21-integration.spec.ts:5:1 › 规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复
-[57/67] tests/browser/theme.spec.ts:7:1 › 旧浅色偏好恢复，明暗切换与刷新保留且不改变规划
-[58/67] tests/browser/theme.spec.ts:28:1 › 旧深色偏好与校准页跟随主题，桌面和窄屏入口保持可操作
-[59/67] tests/browser/voyage-comparison.spec.ts:14:1 › 当前盘只读参考从样本不足到完成后第五条，下一轮与刷新恢复一致
-[60/67] tests/browser/voyage-comparison.spec.ts:45:1 › 切候选与策略仅重新比较，未选策略或无有效盘不伪造分位
-[61/67] tests/browser/voyage-comparison.spec.ts:78:1 › 三档与并列次数在明暗主题和390px下可读，只有真实严格高低才计次数
-[62/67] tests/browser/voyage-history.spec.ts:8:1 › 完成有效恢复盘仅记录一次原始分数，历史随刷新与备份恢复
-[63/67] tests/browser/voyage-history.spec.ts:32:1 › 取消保留核销、半盘核销不积累历史，原库存核销不变
-[64/67] tests/browser/voyage-history.spec.ts:46:1 › 损坏历史备份保留有效库存偏好并明确提示，存储失败不冒充已保存
-[65/67] tests/browser/voyage-history.spec.ts:61:1 › 本地损坏历史不抹除库存、偏好或有效记录，刷新不追加记录
-[66/67] tests/browser/voyage-history.spec.ts:74:1 › 同一渲染内重复完成点击只核销一次，重新载入新航程仍可完成
-[67/67] tests/browser/voyage-history.spec.ts:94:1 › 恢复乱序历史时最近完成分数按完成时间展示
-  67 passed (1.4m)
+[1/68] tests/browser/border-affinity.spec.ts:9:1 › 空库存先看十二边适配，换策略或摆盘仅按输入重算，查看明细不改规划
+[2/68] tests/browser/border-affinity.spec.ts:35:1 › 未填全、缺必要边界和未覆盖规则清楚区分，窄屏明暗主题详情可读
+[3/68] tests/browser/borders.spec.ts:18:1 › all twelve real border controls support Chinese search, selection, replacement and clearing
+[4/68] tests/browser/borders.spec.ts:43:1 › normal border choices and modifier browser hide maintenance status and conflicts
+[5/68] tests/browser/calibration-mode.spec.ts:12:1 › calibration pencil is temporary and its compact record links leave planning unchanged
+[6/68] tests/browser/calibration-mode.spec.ts:48:3 › reserved maps expose their strategy and material without overlapping calibration at 1280px
+[7/68] tests/browser/calibration-mode.spec.ts:48:3 › reserved maps expose their strategy and material without overlapping calibration at 390px
+[8/68] tests/browser/calibration.spec.ts:3:1 › single-entry calibration links and real copied clauses locate one stable record
+[9/68] tests/browser/calibration.spec.ts:18:1 › a single correction survives refresh and exports without changing source wording or evidence
+[10/68] tests/browser/calibration.spec.ts:47:1 › imports backups atomically and preserves newer records and unrelated drafts
+[11/68] tests/browser/calibration.spec.ts:70:1 › a modifier opens its own calibration record without toggling planning effects
+[12/68] tests/browser/calibration.spec.ts:86:1 › a general catalogue bookmark keeps the full list after refresh
+[13/68] tests/browser/calibration.spec.ts:94:1 › a prototype export imports as review records and never overrides a later review
+[14/68] tests/browser/chinese-shell.spec.ts:3:1 › 页面标题、教程、更新记录和保留向导的完整交互说明使用简中
+[15/68] tests/browser/client-shapes.spec.ts:14:3 › real controls import collected Corner and export its literal fields
+[16/68] tests/browser/client-shapes.spec.ts:14:3 › real controls import collected Junction and export its literal fields
+[17/68] tests/browser/client-shapes.spec.ts:14:3 › real controls import collected Crossing and export its literal fields
+[18/68] tests/browser/client-shapes.spec.ts:24:1 › real controls import the original and new copies together with Windows line endings
+[19/68] tests/browser/compact-copy.spec.ts:7:1 › 搜索参考默认紧凑，名称打开可选择全文的键盘弹窗，关闭后复制仍有可见反馈
+[20/68] tests/browser/compact-copy.spec.ts:30:1 › 剪贴板未确认时不能报成功，拒绝后展示失败并保留手动复制全文
+[21/68] tests/browser/compact-copy.spec.ts:53:1 › 剪贴板不可用时，弹窗内复制也给出可访问的失败状态且可关闭
+[22/68] tests/browser/compact-copy.spec.ts:70:3 › 1440px 两主题中三条参考均完整复制，图标紧凑且全文弹窗可用
+[23/68] tests/browser/compact-copy.spec.ts:70:3 › 390px 两主题中三条参考均完整复制，图标紧凑且全文弹窗可用
+[24/68] tests/browser/filler-candidates.spec.ts:23:1 › a spare voyage stays executable under an active strategy and uses only its eligible inventory
+[25/68] tests/browser/filler-candidates.spec.ts:43:1 › spare candidates retain a preserved placement and expire when protections change
+[26/68] tests/browser/import.spec.ts:30:1 › real import controls add both real charts in a Windows batch
+[27/68] tests/browser/import.spec.ts:44:1 › real import controls add the samples individually
+[28/68] tests/browser/import.spec.ts:52:1 › unknown crucial effects are refused with the existing summary only
+[29/68] tests/browser/import.spec.ts:58:1 › a mixed batch keeps its valid chart and reports one rejected item
+[30/68] tests/browser/import.spec.ts:71:3 › real import controls reject missing implicit
+[31/68] tests/browser/import.spec.ts:71:3 › real import controls reject empty implicit
+[32/68] tests/browser/import.spec.ts:71:3 › real import controls reject missing shape
+[33/68] tests/browser/import.spec.ts:71:3 › real import controls reject unknown shape
+[34/68] tests/browser/import.spec.ts:71:3 › real import controls reject non-chart
+[35/68] tests/browser/import.spec.ts:78:1 › uncharted derived text stays in the existing uncharted summary category
+[36/68] tests/browser/inventory.spec.ts:7:1 › 简中导入和库存保持同批实例、重扫数量及已核对属性
+[37/68] tests/browser/keeper-assistant.spec.ts:7:1 › 无库存可独立多选留图策略，每策略完整一串，操作不改变业务状态
+[38/68] tests/browser/keeper-assistant.spec.ts:31:3 › 1440px 两主题的完整长串均可查看复制；关闭或改选不影响已载入规划
+[39/68] tests/browser/keeper-assistant.spec.ts:31:3 › 390px 两主题的完整长串均可查看复制；关闭或改选不影响已载入规划
+[40/68] tests/browser/keeper-assistant.spec.ts:78:1 › 留图复制被拒绝后仍保留整条可手动复制的表达式
+[41/68] tests/browser/planning-cycle.spec.ts:21:1 › 完整非空规划经刷新和实际 JSON 下载载入恢复所有持久字段及评分
+[42/68] tests/browser/planning-cycle.spec.ts:46:1 › 所选候选完成九步复制后仅核销已消耗实例，补库存和边界再执行第二航程
+[43/68] tests/browser/planning-cycle.spec.ts:136:1 › 未标记保留时仅消耗本盘九张，三张未使用库存与全部配置继续保留
+[44/68] tests/browser/region-targets.spec.ts:15:1 › 词缀计分开关更新分数但保留真实区域目标和规划
+[45/68] tests/browser/region-targets.spec.ts:73:1 › 真实库存重算盘的中央目标可开关、键盘查看且不改变规划
+[46/68] tests/browser/region-targets.spec.ts:140:1 › 派生合并与神圣条件样例支持四槽溢出、策略切换和空格
+[47/68] tests/browser/region-targets.spec.ts:246:1 › 单一目的地目标与明暗主题保持优先级颜色，原图不染色
+[48/68] tests/browser/solve.spec.ts:16:3 › player selects 点金速刷, solves and loads the actual candidate instances and rotations
+[49/68] tests/browser/solve.spec.ts:16:3 › player selects 锚地赐福, solves and loads the actual candidate instances and rotations
+[50/68] tests/browser/solve.spec.ts:16:3 › player selects 速刷保险箱, solves and loads the actual candidate instances and rotations
+[51/68] tests/browser/solve.spec.ts:16:3 › player selects 稀有怪传说装, solves and loads the actual candidate instances and rotations
+[52/68] tests/browser/solve.spec.ts:16:3 › player selects 魔法怪流, solves and loads the actual candidate instances and rotations
+[53/68] tests/browser/solve.spec.ts:16:3 › player selects 稀有怪神圣雨, solves and loads the actual candidate instances and rotations
+[54/68] tests/browser/solve.spec.ts:16:3 › player selects 神圣保险箱, solves and loads the actual candidate instances and rotations
+[55/68] tests/browser/solve.spec.ts:72:1 › eight charts are a reference even when connectors are ignored; a ninth chart makes the retry executable
+[56/68] tests/browser/solve.spec.ts:94:1 › Chinese solver settings retain the original connector, rotation and protection controls
+[57/68] tests/browser/spec21-integration.spec.ts:5:1 › 规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复
+[58/68] tests/browser/theme.spec.ts:7:1 › 旧浅色偏好恢复，明暗切换与刷新保留且不改变规划
+[59/68] tests/browser/theme.spec.ts:28:1 › 旧深色偏好与校准页跟随主题，桌面和窄屏入口保持可操作
+[60/68] tests/browser/voyage-comparison.spec.ts:14:1 › 当前盘只读参考从样本不足到完成后第五条，下一轮与刷新恢复一致
+[61/68] tests/browser/voyage-comparison.spec.ts:45:1 › 切候选与策略仅重新比较，未选策略或无有效盘不伪造分位
+[62/68] tests/browser/voyage-comparison.spec.ts:78:1 › 三档与并列次数在明暗主题和390px下可读，只有真实严格高低才计次数
+[63/68] tests/browser/voyage-history.spec.ts:8:1 › 完成有效恢复盘仅记录一次原始分数，历史随刷新与备份恢复
+[64/68] tests/browser/voyage-history.spec.ts:32:1 › 取消保留核销、半盘核销不积累历史，原库存核销不变
+[65/68] tests/browser/voyage-history.spec.ts:46:1 › 损坏历史备份保留有效库存偏好并明确提示，存储失败不冒充已保存
+[66/68] tests/browser/voyage-history.spec.ts:61:1 › 本地损坏历史不抹除库存、偏好或有效记录，刷新不追加记录
+[67/68] tests/browser/voyage-history.spec.ts:74:1 › 同一渲染内重复完成点击只核销一次，重新载入新航程仍可完成
+[68/68] tests/browser/voyage-history.spec.ts:94:1 › 恢复乱序历史时最近完成分数按完成时间展示
+  68 passed (1.4m)

@@ -24,6 +24,18 @@ describe('completion snapshot and planning backup public boundaries', () => {
     expect(scoringContextKey(currentScoringContext({ ...state, disabledMods: [] }))).not.toBe(key)
     expect(scoringContextKey(currentScoringContext({ ...state, strategyId: null }))).not.toBe(key)
   })
+  it('preserves the stored context key bytes when weights or duplicate disabled IDs arrive unordered', () => {
+    const context = currentScoringContext({ ...state, strategyId: null,
+      weights: { 'border:divine': 10, 'adjacent:box': 4 },
+      disabledMods: ['voy-jelly', 'adj-box-1', 'voy-jelly'],
+    })
+    expect(context.disabledMods).toEqual(['adj-box-1', 'voy-jelly'])
+    const key = '{"ruleVersion":"3.29-additive-rewards-v1","strategyId":null,"weights":{"adjacent:box":4,"border:divine":10},"adjacencyMode":"connected","adjacentAffectsSelf":true,"disabledMods":["adj-box-1","voy-jelly"],"connectivityMode":"strict"}'
+    expect(scoringContextKey(context)).toBe(key)
+    expect(scoringContextKey({ ...context, weights: { 'border:divine': 10, 'adjacent:box': 4 },
+      disabledMods: ['voy-jelly', 'adj-box-1', 'adj-box-1'],
+    })).toBe(key)
+  })
   it('never snapshots partial, duplicate-instance, missing-inventory or disconnected plans, including experiment mode partials', () => {
     expect(completedBoardScore({ ...state, mode: 'any', board: state.board.map((p, i) => i === 0 ? null : p) })).toBeNull()
     expect(completedBoardScore({ ...state, board: state.board.map((p, i) => i === 1 ? state.board[0] : p) })).toBeNull()
