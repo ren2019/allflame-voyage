@@ -16,9 +16,9 @@ export const BORDER_AFFINITY_RULES: BorderAffinityRules = initialRules
 /** Presentation tiers for one strategy-specific border weight, on its 0–10 scale. */
 export function borderAffinityPriority(weight: number | null) {
   if (weight === null || !Number.isFinite(weight) || weight < 0 || weight > 10) return null
-  if (weight <= 2) return { band: 'low', label: '可忽略' } as const
-  if (weight <= 6) return { band: 'medium', label: '适配' } as const
-  return { band: 'high', label: '重点' } as const
+  if (weight <= 2) return { band: 'low', label: '可略' } as const
+  if (weight <= 6) return { band: 'medium', label: '留意' } as const
+  return { band: 'high', label: '优先' } as const
 }
 
 /** Read-only strategy × twelve borders. No board, solver or inventory input. */

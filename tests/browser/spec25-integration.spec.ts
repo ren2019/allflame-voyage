@@ -44,7 +44,7 @@ test('规格25推荐切换与边界分析衔接求解、九步复制、保留核
   await expect(dialog).toContainText('当前策略：稀有怪神圣雨')
   await expect(dialog.locator('.border-affinity-entry')).toHaveCount(12)
   await expect(dialog.locator('.border-affinity-position')).toHaveText(['右1', '左1', '上3', '右3', '左3', '上2', '下3', '右2', '上1', '左2', '下1', '下2'])
-  await expect(dialog.locator('.border-affinity-entry').first()).toContainText('10/10 · 重点')
+  await expect(dialog.locator('.border-affinity-entry').first()).toContainText('10/10 · 优先')
   await expect(dialog.locator('.border-affinity-entry').last()).toContainText('尚未录入')
   await page.keyboard.press('Escape')
   await expect(opener).toBeFocused()
@@ -57,7 +57,7 @@ test('规格25推荐切换与边界分析衔接求解、九步复制、保留核
   await expect(dialog).toContainText('当前策略：魔法怪流')
   await expect(dialog).not.toContainText('当前策略：稀有怪神圣雨')
   await expect(dialog.locator('.border-affinity-position').first()).toHaveText('上1')
-  await expect(dialog.locator('.border-affinity-entry').first()).toContainText('10/10 · 重点')
+  await expect(dialog.locator('.border-affinity-entry').first()).toContainText('10/10 · 优先')
   await dialog.getByRole('button', { name: '关闭边界分析', exact: true }).click()
   expect(await exportState(page)).toEqual({ ...initial, strategyId: 'milky-ethereal' })
 

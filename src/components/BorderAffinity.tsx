@@ -37,7 +37,7 @@ function BorderAnalysis({ evaluation, strategyId, onClose }: {
         <button type="button" autoFocus aria-label="关闭边界分析" onClick={onClose}>×</button>
       </div>
       <p>当前策略：{strategyId ? strategyById.get(strategyId)?.name ?? strategyId : '未选策略'}</p>
-      <p className="muted">0–2 可忽略；3–6 适配；7–10 重点。按权重从高到低排列，同分按边界位置排列；未评估项在后。</p>
+      <p className="muted">0–2 可略；3–6 留意；7–10 优先。按权重从高到低排列，同分按边界位置排列；未评估项在后。</p>
       {evaluation.requiredBorder?.present && <p className="border-affinity-required">必要边界已具备：{localizedBorder(evaluation.requiredBorder.id)?.short ?? evaluation.requiredBorder.id}</p>}
       {evaluation.total !== null && <p className="muted">权重合计 {evaluation.total}</p>}
       <p className="muted">{BORDER_AFFINITY_RULES.basis} 规则版本：{evaluation.version}。</p>
@@ -74,10 +74,10 @@ export function BorderAffinity({ strategyId, borders }: { strategyId: string | n
     <div className="border-affinity" role="region" aria-label="边界适配分">
       <div className="border-affinity-heading">
         <div className="border-affinity-legend" aria-label="边界相关度分档">
-          <span className="muted">边界</span>
-          <span data-affinity-band="low">可忽略</span>
-          <span data-affinity-band="medium">适配</span>
-          <span data-affinity-band="high">重点</span>
+          <span className="muted">当前策略</span>
+          <span data-affinity-band="low">可略</span>
+          <span data-affinity-band="medium">留意</span>
+          <span data-affinity-band="high">优先</span>
         </div>
         <button type="button" onClick={() => setOpen(true)}>边界分析</button>
       </div>
