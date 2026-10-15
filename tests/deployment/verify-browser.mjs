@@ -35,7 +35,7 @@ try {
   assert.equal(await page.evaluate(() => typeof navigator.clipboard?.writeText), 'function')
   await page.locator('.onboard-actions button').last().click()
   const samples = readFileSync(new URL('../../samples/charted.zh-CN.txt', import.meta.url), 'utf8')
-  await page.locator('.import-panel textarea').fill(samples)
+  await page.locator('.import-panel textarea[placeholder]').fill(samples)
   await page.locator('.import-actions button').first().click()
   await page.locator('.chart-grid .chart-sq').nth(1).waitFor()
   assert.equal(await page.locator('.chart-grid .chart-sq').count(), 2)

@@ -10,7 +10,7 @@ test('简中导入和库存保持同批实例、重扫数量及已核对属性',
   await page.getByRole('button', { name: '开始规划', exact: true }).click()
   await expect(page.locator('.import-panel .panel-title')).toHaveText('导入海图')
   const importText = async (text: string) => {
-    await page.locator('.import-panel textarea').fill(text)
+    await page.locator('.import-panel textarea[placeholder]').fill(text)
     await page.getByRole('button', { name: '解析并加入', exact: true }).click()
   }
   await importText(`${first}\n${first}`)

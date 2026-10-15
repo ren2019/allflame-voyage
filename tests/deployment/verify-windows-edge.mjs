@@ -68,7 +68,7 @@ try {
   await page.locator('.onboard-actions button').last().click()
   const samples = readFileSync(new URL('../../samples/charted.zh-CN.txt', import.meta.url), 'utf8')
   const extraSamples = readFileSync(new URL('../../samples/charted-extra-shapes.zh-CN.txt', import.meta.url), 'utf8')
-  await page.locator('.import-panel textarea').fill(`${samples}\n${extraSamples}`)
+  await page.locator('.import-panel textarea[placeholder]').fill(`${samples}\n${extraSamples}`)
   await page.locator('.import-actions button').first().click()
   await page.locator('.chart-grid .chart-sq').nth(4).waitFor()
   assert.equal(await page.locator('.chart-grid .chart-sq').count(), 5)
