@@ -25,22 +25,9 @@ export interface VoyageRecord {
   contextKey: string
 }
 
-/** Only actual score/validity settings define comparability, never inventory,
- * borders, solver search budget, layout preferences or storage schema. */
-export function currentScoringContext(state: AppState): ScoringContext {
-  const weights = (state.strategyId && strategyById.get(state.strategyId)?.weights) || state.weights
+/** Keep capture and restored comparison keys on the same canonical ordering. */
+function normalizeScoringContext(context: ScoringContext): ScoringContext {
   return {
-    ruleVersion: SCORING_RULE_VERSION,
-    strategyId: state.strategyId,
-    weights: Object.fromEntries(Object.entries(weights).sort(([a], [b]) => a.localeCompare(b))),
-    adjacencyMode: state.adjacencyMode,
-    adjacentAffectsSelf: state.adjacentAffectsSelf,
-    disabledMods: [...new Set(state.disabledMods)].sort(),
-    connectivityMode: state.mode,
-  }
-}
-export function scoringContextKey(context: ScoringContext): string {
-  return JSON.stringify({
     ruleVersion: context.ruleVersion,
     strategyId: context.strategyId,
     weights: Object.fromEntries(Object.entries(context.weights).sort(([a], [b]) => a.localeCompare(b))),
@@ -48,7 +35,25 @@ export function scoringContextKey(context: ScoringContext): string {
     adjacentAffectsSelf: context.adjacentAffectsSelf,
     disabledMods: [...new Set(context.disabledMods)].sort(),
     connectivityMode: context.connectivityMode,
+  }
+}
+
+/** Only actual score/validity settings define comparability, never inventory,
+ * borders, solver search budget, layout preferences or storage schema. */
+export function currentScoringContext(state: AppState): ScoringContext {
+  const weights = (state.strategyId && strategyById.get(state.strategyId)?.weights) || state.weights
+  return normalizeScoringContext({
+    ruleVersion: SCORING_RULE_VERSION,
+    strategyId: state.strategyId,
+    weights,
+    adjacencyMode: state.adjacencyMode,
+    adjacentAffectsSelf: state.adjacentAffectsSelf,
+    disabledMods: state.disabledMods,
+    connectivityMode: state.mode,
   })
+}
+export function scoringContextKey(context: ScoringContext): string {
+  return JSON.stringify(normalizeScoringContext(context))
 }
 
 /** Restored/manual plans do not need a live solver candidate. Position/layout

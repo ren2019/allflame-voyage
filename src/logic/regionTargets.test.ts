@@ -159,7 +159,26 @@ describe('区域目标组合与条件覆盖（派生规则样例，不是游戏�
       ),
     ).toEqual(cells.map((c) => c.targets.map((t) => t.id).sort()))
   })
-  it('遵循连接与自作用设置，禁用不参与，零分遭遇仍出现', () => {
+  it('计分开关不移除实际遭遇、来源或神圣边界的区域优先级', () => {
+    const pool = Array.from({ length: 9 }, (_, i) =>
+      chart(String(i), i === 4 ? ['voy-jelly', 'adj-box-1'] : []),
+    )
+    const cells = derive(
+      pool,
+      [null, 'b-divine', ...Array(10).fill(null)],
+      'divine-border-rares',
+      { ...options, disabledMods: new Set(['voy-jelly', 'adj-box-1', 'b-divine']) },
+    )
+    expect(cells.map((cell) => cell.targets.some((t) => t.id === 'friendly-jellyfish')))
+      .toEqual(Array(9).fill(true))
+    expect(cells[1].targets.map((t) => [t.id, t.weight, t.sources])).toEqual([
+      ['rare-divine', 100, [{ kind: 'border', id: 'b-divine', segment: 1 }]],
+      ['strongbox', 98, [{ kind: 'mod', id: 'adj-box-1', cell: 4 }]],
+      ['friendly-jellyfish', 10, [{ kind: 'mod', id: 'voy-jelly', cell: 4 }]],
+    ])
+    expect(cells[4].targets.map((t) => t.id)).toEqual(['friendly-jellyfish'])
+  })
+  it('遵循连接与自作用设置，零分遭遇仍出现', () => {
     const pool = [
       {
         ...chart('a', ['adj-lantern', 'voy-jelly']),
@@ -185,10 +204,9 @@ describe('区域目标组合与条件覆盖（派生规则样例，不是游戏�
       {
         ...options,
         adjacentAffectsSelf: true,
-        disabledMods: new Set(['voy-jelly']),
       },
     )
-    expect(self[0].targets.map((t) => t.id)).toEqual(['golden-lantern'])
+    expect(self[0].targets.map((t) => t.id)).toEqual(['golden-lantern', 'friendly-jellyfish'])
   })
   it('0、1、4和超过4类；0权重仅保留详情，同分按配置顺序稳定', () => {
     expect(derive([]).every((c) => c.groups.length === 0)).toBe(true)

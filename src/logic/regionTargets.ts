@@ -48,7 +48,8 @@ export function priorityBand(weight: number) {
   )
 }
 
-/** Read-only, deterministic presentation projection. Strategy can only rank existing encounters. */
+/** Read-only, deterministic presentation projection. Strategy can only rank existing encounters.
+ * Score exclusions do not remove actual effects from the charts or borders. */
 export function regionTargets(
   board: Board,
   borders: Borders,
@@ -118,7 +119,6 @@ export function regionTargets(
     )
     if (chart.areaType && !destination) cells[i].uncovered.push(chart.areaType)
     for (const id of chart.modIds) {
-      if (opts.disabledMods?.has(id)) continue
       const mod = voyageModById.get(id)
       if (!mod) {
         cells[i].uncovered.push(id)
@@ -137,7 +137,7 @@ export function regionTargets(
   })
   borders.forEach((id, segment) => {
     const cell = borderTouches(segment)
-    if (!id || !board[cell] || opts.disabledMods?.has(id)) return
+    if (!id || !board[cell]) return
     if (!borderModById.has(id)) {
       cells[cell].uncovered.push(id)
       return
