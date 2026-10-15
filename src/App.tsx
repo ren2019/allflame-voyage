@@ -3,6 +3,7 @@ import { saveTheme } from './logic/theme'
 import { CalibrationMode } from './components/CalibrationLink'
 import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { VoyageComparison } from './components/VoyageComparison'
 import { BoardView } from './components/Board'
 import { BorderAffinity } from './components/BorderAffinity'
 import { ModBrowser } from './components/ModBrowser'
@@ -680,6 +681,8 @@ export default function App() {
               />
             }
           />
+
+          <VoyageComparison state={state} />
 
           <section className="voyage-history muted pad" aria-label="航程历史">
             <strong>航程历史</strong> · 已记录 {state.voyageHistory.length} 次
