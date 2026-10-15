@@ -46,8 +46,8 @@ test('取消保留核销、半盘核销不积累历史，原库存核销不变',
 test('损坏历史备份保留有效库存偏好并明确提示，存储失败不冒充已保存', async ({ page }) => {
   await page.goto('/')
   await page.locator('.onboard-actions button').last().click()
-  await page.locator('.import-actions input[type=file]').setInputFiles({ name: 'damaged.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ ...fixture, voyageHistory: [{ score: 'broken' }] })) })
-  await expect(page.locator('.import-panel .muted.pad')).toContainText('已忽略损坏航程历史')
+  await page.getByLabel('恢复规划备份', { exact: true }).setInputFiles({ name: 'damaged.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ ...fixture, voyageHistory: [{ score: 'broken' }] })) })
+  await expect(page.locator('.planning-backup [role=status]')).toContainText('已忽略损坏航程历史')
   await expect(page.getByLabel('航程历史')).toContainText('已记录 0 次')
   expect((await downloadPlanningState(page)).pool).toEqual(fixture.pool)
   await page.evaluate(() => { Storage.prototype.setItem = () => { throw new DOMException('quota', 'QuotaExceededError') } })

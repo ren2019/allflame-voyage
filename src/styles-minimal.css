@@ -167,50 +167,30 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); }
 .finish-voyage:hover:not(:disabled), .copy-into-game:hover:not(:disabled), .pc-kept:hover, .pc-lost:hover { filter: none; }
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-/* Keep the original 360px / fluid / 330px workspace widths. */
-.planning-controls {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 16px;
-}
-.planning-controls .strategies { padding: 0; margin: 0; border: 0; background: none; }
+.tutorial-tools, .planning-transfer, .planning-backup { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.tutorial-tools { gap: 8px; }
+.planning-backup { position: relative; }
+.planning-backup-status { position: absolute; z-index: 6; right: 0; top: calc(100% + 8px); width: min(340px, calc(100vw - 32px)); padding: 8px 12px; background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 5px; font-size: 12px; }
+.planning-backup .file-btn { font-size: 12px; padding: 5px 10px; }
+.strategies { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; margin: 0; }
+.strategy-options { display: flex; flex-wrap: wrap; gap: 6px; }
+.strategy-options button { padding: 5px 9px; font-size: 12px; }
+.strategy-options button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--panel2); }
+.strategy-summary { margin: 10px 0; font-size: 13px; color: var(--text); }
 .strategy-controls { display: flex; flex-wrap: wrap; gap: 8px 14px; }
 .strategy-controls label { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); min-width: 0; flex: 1 1 180px; }
 .strategy-controls select { flex: 1; min-width: 0; width: auto; }
-.strategy-guide { margin-top: 6px; font-size: 12px; }
-.strategy-guide summary, .board-help summary, .reward-details summary, .import-reference summary, .voyage-history summary { color: var(--muted); cursor: pointer; font-size: 12px; }
-.strategy-guide p { margin: 8px 0; }
-.strategy-manual-note { font-size: 12px; margin: 4px 0 0; }
-.planning-controls .solve-bar { margin-top: 10px; }
-.planning-controls .solve-big { padding: 8px 12px; font-size: 17px; flex-wrap: wrap; gap: 2px 10px; }
-.planning-controls .solve-settings-btn { padding: 4px 10px; }
-.board-wrap .voyage-finish { margin: 0 0 12px; padding: 0; border: 0; gap: 8px; }
-.board-wrap .finish-voyage { margin-left: auto; font-size: 12px; }
-.board-help { margin-top: 10px; }
-.board-help .board-hint { margin-top: 8px; }
-.solver-col .score-total { flex-wrap: wrap; color: var(--muted); font-size: 13px; gap: 6px; }
-.solver-col .score-total strong { color: var(--text); font-size: 28px; }
-.solver-col .score-total button { flex-basis: 100%; font-size: 12px; }
-.solver-col .voyage-comparison { margin-top: 0; }
-.solver-col .modcount { flex-wrap: wrap; gap: 4px 8px; margin: 0; padding: 8px 12px; }
-.solver-col .conn-status { margin: 0; }
-.reward-details .reward-grid { margin-top: 10px; }
+.strategy-layout-hint, .strategy-manual-note { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
+.strategy-guide { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px; font-size: 12px; }
+.strategy-guide .strat-guide { padding-left: 18px; font-size: 12px; }
+.strategy-guide .strat-guide li { margin: 0 0 8px; }
+.strategy-guide p { margin: 0 0 10px; }
+.strategy-guide .compact-copy { margin-top: 10px; }
 .import-reference { margin-top: 12px; }
-.tutorial-btn { background: var(--surface); color: var(--muted); border-color: var(--border); padding: 5px 10px; font-size: 12px; }
-.tutorial-btn:hover { background: var(--panel2); color: var(--accent); border-color: var(--accent); }
-@media (max-width: 1100px) {
-  main.has-inventory .board-col { order: -2; }
-  main.has-inventory .solver-col { order: -1; }
-}
-@media (max-width: 600px) {
-  .planning-controls { padding: 12px; }
-  .planning-controls .solve-big-sub { font-size: 11px; }
-}
-@media (min-width: 601px) {
-  .board-grid { grid-template-columns: 76px repeat(3, minmax(0, 1fr)) 76px; }
-}
-.solver-col .border-affinity, .library-col .keeper-assistant { margin: 0; }
-.board-col .copyseq-go { padding: 8px 16px; font-size: 19px; }
-/* Narrow board cells keep all four hover actions inside their own tile. */
+/* Retain the verified geometry fixes without changing original workflow order. */
+@media (min-width: 601px) { .board-grid { grid-template-columns: 76px repeat(3, minmax(0, 1fr)) 76px; } }
 .tile-actions { max-width: calc(100% - 6px); flex-wrap: wrap; justify-content: flex-end; }
+.planning-backup-status { display: flex; align-items: flex-start; gap: 8px; }
+.planning-backup-status span { flex: 1; }
+.planning-backup-status button { padding: 0 5px; flex-shrink: 0; }
+.header-right { margin-left: auto; }

@@ -12,15 +12,15 @@ export const keeperExpressions = [
 export const fixture = JSON.parse(readFileSync(new URL('../fixtures/acceptance/journey-two-voyages.json', import.meta.url)))
 export const realLayout = JSON.parse(readFileSync(new URL('../../src/logic/__fixtures__/real-inventory-layout.json', import.meta.url)))
 export async function load(page, state) {
-  await page.locator('.import-actions input[type=file]').setInputFiles({ name: 'spec21.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(state)) })
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已从 JSON 载入规划状态')
+  await page.getByLabel('恢复规划备份', { exact: true }).setInputFiles({ name: 'spec21.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(state)) })
+  await expect(page.locator('.planning-backup [role=status]')).toHaveText('已从 JSON 载入规划状态')
 }
 const backupReaders = new WeakMap()
 // Native cross-host CDP downloads need an OS file transport; the export UI stays unchanged.
 export const setBackupReader = (page, reader) => backupReaders.set(page, reader)
 export async function backup(page) {
   const pending = page.waitForEvent('download')
-  await page.locator('.import-actions button').nth(2).click()
+  await page.getByRole('button', { name: '导出规划备份', exact: true }).click()
   const download = await pending
   if (backupReaders.has(page)) return backupReaders.get(page)(download)
   const chunks = []
@@ -49,7 +49,7 @@ export async function keeper(page, onCopy) {
 export async function fullCycle(page) {
   await page.locator('.onboard-actions button').last().click()
   await load(page, { ...fixture, strategyId: null, voyageHistory: [] })
-  await page.getByRole('combobox', { name: '当前策略', exact: true }).selectOption({ label: '点金速刷' })
+  await page.getByRole('group', { name: '当前策略', exact: true }).getByRole('button', { name: '点金速刷', exact: true }).click()
   await expect(page.locator('.score-total strong')).toHaveText('13.0')
   await page.locator('.solve-big').click()
   await expect(page.locator('.solve-result:not(.invalid)').first()).toBeVisible({ timeout: 120000 })

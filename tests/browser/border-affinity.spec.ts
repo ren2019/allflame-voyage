@@ -23,7 +23,7 @@ test('空库存先看十二边适配，换策略或摆盘仅按输入重算，�
   await loadState(page, { ...fixture, strategyId: 'divine-border-rares', borders })
   await expect(panel.getByRole('status', { includeHidden: true })).toHaveText('重点 1 条 · 适配 2 条')
   await expect(page.locator('.tile:not(.empty)')).toHaveCount(9)
-  await page.getByRole('combobox', { name: '当前策略', exact: true }).selectOption({ label: '魔法怪流' })
+  await page.getByRole('group', { name: '当前策略', exact: true }).getByRole('button', { name: '魔法怪流', exact: true }).click()
   await expect(panel.getByRole('status', { includeHidden: true })).toHaveText('重点 0 条 · 适配 0 条')
   const switched = await exportState(page)
   expect(switched.board).toEqual(fixture.board)
@@ -107,7 +107,7 @@ test('每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切�
       await page.locator('.board-wrap').screenshot({ path: testInfo.outputPath(`border-bands-${theme}-${width}.png`) })
     }
   }
-  await page.getByRole('combobox', { name: '当前策略', exact: true }).selectOption({ label: '魔法怪流' })
+  await page.getByRole('group', { name: '当前策略', exact: true }).getByRole('button', { name: '魔法怪流', exact: true }).click()
   await expect(page.locator('[data-border-segment="0"]')).toHaveAttribute('data-affinity-band', 'high')
   await expect(page.locator('[data-border-segment="1"]')).toHaveAttribute('data-affinity-band', 'medium')
   await expect(page.locator('.bslot-affinity')).toHaveCount(0)

@@ -7,15 +7,15 @@ export async function openEmptyApp(page: Page) {
 }
 
 export async function loadState(page: Page, state: AppState) {
-  await page.locator('.import-actions input[type="file"]').setInputFiles({
+  await page.getByLabel('恢复规划备份', { exact: true }).setInputFiles({
     name: 'offline-acceptance-state.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(state)),
   })
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已从 JSON 载入规划状态')
+  await expect(page.locator('.planning-backup [role=status]')).toHaveText('已从 JSON 载入规划状态')
 }
 
 export async function exportState(page: Page): Promise<AppState> {
   const downloadPromise = page.waitForEvent('download')
-  await page.locator('.import-actions button').nth(2).click()
+  await page.getByRole('button', { name: '导出规划备份', exact: true }).click()
   const stream = await (await downloadPromise).createReadStream()
   const chunks = []
   for await (const chunk of stream) chunks.push(chunk)

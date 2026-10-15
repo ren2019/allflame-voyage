@@ -1,13 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import { ALL_GOOD_MODS_REGEX, RARE_IMPLICITS } from '../data/strategies'
-import { generateDemoCharts } from '../logic/demo'
 import { parseBorderOcrPayload } from '../logic/borderOcr'
 import { isChartClipboardText, parseChartText } from '../logic/parser'
 import { dedupeNewCharts } from '../logic/importDedupe'
 import type { AppState } from '../logic/storage'
-import { defaultState, restorePlanningState } from '../logic/storage'
-import { restoreVoyageHistory } from '../logic/voyageHistory'
+import { defaultState } from '../logic/storage'
 import type { ChartData } from '../types'
 import { CompactCopyText } from './CompactCopyText'
 
@@ -126,27 +124,6 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     return () => document.removeEventListener('paste', onPaste)
   }, [doParse])
 
-  const exportJson = () => {
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' })
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = 'voyage-solver-state.json'
-    a.click()
-    URL.revokeObjectURL(a.href)
-  }
-
-  const importJson = (file: File) => {
-    file.text().then((t) => {
-      try {
-        const parsed = JSON.parse(t)
-        onLoadState(restorePlanningState(parsed))
-        setMsg('已从 JSON 载入规划状态' + (restoreVoyageHistory(parsed?.voyageHistory).damaged ? '；已忽略损坏航程历史，其余规划数据已保留' : ''))
-      } catch {
-        setMsg('JSON 文件无效')
-      }
-    })
-  }
-
   const clearAll = () => {
     if (window.confirm('清空全部海图、摆盘和边界？')) onLoadState(defaultState())
   }
@@ -166,26 +143,6 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
         <button onClick={() => doParse()} disabled={!text.trim()}>
           解析并加入
         </button>
-        <button
-          title="生成随机示例海图体验工具"
-          onClick={() => {
-            onImport(generateDemoCharts(25))
-            setMsg('已加入 25 张随机示例海图')
-          }}
-        >
-          🎲 示例 ×25
-        </button>
-        <button onClick={exportJson} title="将完整规划状态保存为 JSON 文件">
-          导出
-        </button>
-        <label className="file-btn" title="从 JSON 文件载入完整规划状态">
-          载入
-          <input
-            type="file"
-            accept=".json"
-            onChange={(e) => e.target.files?.[0] && importJson(e.target.files[0])}
-          />
-        </label>
         <button onClick={clearAll} title="清空全部海图、摆盘和边界">
           重置
         </button>

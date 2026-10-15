@@ -13,7 +13,7 @@ async function importCharts(page: Page, text: string) {
 
 async function exportState(page: Page): Promise<AppState> {
   const downloadPromise = page.waitForEvent('download')
-  await page.locator('.import-actions button').nth(2).click()
+  await page.getByRole('button', { name: '导出规划备份', exact: true }).click()
   const download = await downloadPromise
   const stream = await download.createReadStream()
   const chunks = []

@@ -2,7 +2,7 @@ import { expect, test, type Page } from './offline'
 
 async function exportedBorders(page: Page): Promise<(string | null)[]> {
   const downloadPromise = page.waitForEvent('download')
-  await page.locator('.import-actions button').nth(2).click()
+  await page.getByRole('button', { name: '导出规划备份', exact: true }).click()
   const stream = await (await downloadPromise).createReadStream()
   const chunks = []
   for await (const chunk of stream) chunks.push(chunk)

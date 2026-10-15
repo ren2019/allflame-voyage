@@ -21,7 +21,7 @@ interface Props {
   onOpenSettings: () => void
 }
 
-/** Plan controls precede the board: choose strategy → solve → copy. */
+/** The solve control remains below the board, before copy and completion. */
 export function SolveBar({ state, activeStrategy, results, resultContext, appliedIdx, onResults, onApply, onOpenPlanner, onOpenSettings }: Props) {
   const [busy, setBusy] = useState(false)
   const [solveNote, setSolveNote] = useState('')

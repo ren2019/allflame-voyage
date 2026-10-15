@@ -19,7 +19,7 @@ for (const [name, label] of strategies) {
     const state: AppState = fixture(name)
     const expected = fixture(`${name}.expected`)
     await loadState(page, { ...state, strategyId: null })
-    await page.getByRole('combobox', { name: '当前策略', exact: true }).selectOption({ label: label })
+    await page.getByRole('group', { name: '当前策略', exact: true }).getByRole('button', { name: label, exact: true }).click()
     await expect(page.locator('.solve-big')).toContainText(label)
     await page.locator('.solve-big').click()
     await expect(page.locator('.solve-result').first()).toContainText('可执行', { timeout: 30000 })
