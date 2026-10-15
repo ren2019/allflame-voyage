@@ -30,7 +30,8 @@ await new Promise(done => portProbe.close(done))
 let browser
 let tunnel
 let info
-const report = { candidateSha: process.env.CANDIDATE_SHA, buildSha256: process.env.BUILD_SHA256, runnerSha256: createHash('sha256').update(readFileSync(new URL(import.meta.url))).digest('hex'), url, startedUtc: new Date().toISOString(), targetWindows: true, certificateBypass: false }
+const report = { resourceOwner: name, candidateSha: process.env.CANDIDATE_SHA, buildSha256: process.env.BUILD_SHA256, runnerSha256: createHash('sha256').update(readFileSync(new URL(import.meta.url))).digest('hex'), url, startedUtc: new Date().toISOString(), targetWindows: true, certificateBypass: false }
+writeFileSync(resolve(output, 'report.json'), JSON.stringify(report, null, 2) + '\n')
 try {
   info = JSON.parse(remote(`
     $edge = @("\${env:ProgramFiles(x86)}\\Microsoft\\Edge\\Application\\msedge.exe", "$env:ProgramFiles\\Microsoft\\Edge\\Application\\msedge.exe") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
@@ -291,6 +292,7 @@ public static class ClipboardProbe {
     tunnel.kill('SIGTERM')
     await stopped
   }
+  try {
   const cleanup = JSON.parse(remote(`
     Get-CimInstance Win32_Process -Filter "Name='msedge.exe'" | Where-Object { $_.CommandLine -and $_.CommandLine.Contains('${name}') } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
     if (Get-ScheduledTask -TaskName '${name}' -ErrorAction SilentlyContinue) { Unregister-ScheduledTask -TaskName '${name}' -Confirm:$false }
@@ -306,8 +308,13 @@ public static class ClipboardProbe {
   report.cleanup = cleanup
   report.cleanup.SshTunnelClosed = true
   report.cleanup.NativeClipboardProbeRemoved = true
+  } catch (error) {
+    report.cleanupError = error.message
+    throw error
+  } finally {
   report.finishedUtc = new Date().toISOString()
   report.clipboardPermissions = 'granted to isolated candidate origin; native implementation and OS clipboard independently checked'
   writeFileSync(resolve(output, 'report.json'), JSON.stringify(report, null, 2) + '\n')
+  }
 }
 console.log(JSON.stringify(report, null, 2))

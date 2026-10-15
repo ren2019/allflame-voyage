@@ -1,0 +1,26 @@
+{
+  "candidateSha": "debug-only",
+  "buildSha256": "f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df",
+  "runnerSha256": "76626b79f87e9f428454119490d9b38b905b612b7e3db845b1cec47a4ec3a3b4",
+  "url": "https://192.168.1.8:9443",
+  "startedUtc": "2026-10-15T06:29:00.200Z",
+  "targetWindows": true,
+  "certificateBypass": false,
+  "debugDesktopClipboard": {
+    "Stage": "busy",
+    "Session": 1,
+    "OpenWindow": 0,
+    "LockPid": 0,
+    "LockProcess": "Idle"
+  },
+  "failure": "The desktop clipboard probe must actually execute\n+ actual - expected\n\n+ 'busy'\n- 'completed'\n",
+  "cleanup": {
+    "TaskRemoved": true,
+    "ProfileRemoved": true,
+    "RemainingOwnProcesses": 0,
+    "SshTunnelClosed": true,
+    "NativeClipboardProbeRemoved": true
+  },
+  "finishedUtc": "2026-10-15T06:31:35.545Z",
+  "clipboardPermissions": "granted to isolated candidate origin; native implementation and OS clipboard independently checked"
+}
