@@ -63,7 +63,7 @@ export async function fullCycle(page) {
   const beforeScore = await page.locator('.score-total strong').innerText()
   await page.getByRole('radio', { name: '全部', exact: true }).check()
   await expect(page.locator('.region-targets')).toHaveCount(9)
-  await expect(page.getByRole('region', { name: '边界适配分' }).getByText('依据', { exact: true })).toBeVisible()
+  await expect(page.locator('.board-wrap').getByRole('button', { name: '边界分析', exact: true })).toBeVisible()
   await expect(page.getByLabel('当前摆盘历史参考')).toContainText('样本不足')
   await keeper(page)
   await page.getByRole('button', { name: '单条中文校准模式', exact: true }).click()
