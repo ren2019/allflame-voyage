@@ -1,0 +1,29 @@
+.compact-copy { min-width: 0; margin: 5px 0; }
+.compact-copy-row { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.compact-copy-name {
+  flex: 1; min-width: 0; padding: 3px 0; text-align: left; font: inherit; font-size: 12px;
+  color: var(--text); background: none; border: 0; box-shadow: none; letter-spacing: normal;
+  overflow-wrap: anywhere; text-decoration: underline; text-decoration-style: dotted;
+  text-underline-offset: 4px;
+}
+.compact-copy-name:hover { color: var(--accent2); background: none; box-shadow: none; }
+button.compact-copy-icon {
+  flex: 0 0 28px; width: 28px; height: 28px; padding: 5px; display: grid; place-items: center;
+  background: var(--panel2); color: var(--text); border-color: var(--border); box-shadow: none;
+}
+.compact-copy button:focus-visible, .compact-copy-dialog button:focus-visible,
+.compact-copy-dialog textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+.compact-copy-status { font-size: 12px; color: var(--good); overflow-wrap: anywhere; }
+.compact-copy-status:empty { display: none; }
+.compact-copy[data-copy-status="failure"] .compact-copy-status { color: var(--bad); }
+.compact-copy-dialog {
+  width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto;
+  padding: 20px; border: 1px solid var(--border-hi); border-radius: 6px;
+  background: var(--panel); color: var(--text);
+}
+.compact-copy-dialog::backdrop { background: rgb(0 0 0 / 60%); }
+.compact-copy-heading { display: flex; align-items: start; gap: 12px; }
+.compact-copy-heading h2 { flex: 1; margin: 0; font-size: 17px; overflow-wrap: anywhere; }
+.compact-copy-heading button { padding: 2px 8px; font-size: 20px; }
+.compact-copy-dialog textarea { background: var(--panel2); color: var(--text); box-shadow: none; }
+.compact-copy-dialog-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }

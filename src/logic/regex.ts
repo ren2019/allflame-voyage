@@ -8,8 +8,13 @@
 import { VOYAGE_MODS, voyageModById } from '../data/mods'
 import { voyageRewardKey } from './rewards'
 import type { ChartData, VoyageModDef, Weights } from '../types'
+import { TEXT_LIBRARY } from '../data/textLibrary'
 
 const HANGUL_RE = /[\uac00-\ud7a3]/
+const HAN_RE = /\p{Script=Han}/u
+const mainlandImplicits = new Map(TEXT_LIBRARY.records
+  .filter((record) => record.kind === 'chart-implicit' && record.cnText && ['confirmed', 'source-only'].includes(record.status))
+  .map((record) => [record.internalId, record.cnText!]))
 
 /**
  * Build the search text used to find one exact chart in the in-game inventory.
@@ -17,14 +22,16 @@ const HANGUL_RE = /[\uac00-\ud7a3]/
  * the level term can follow the client language without a separate UI locale.
  */
 export function buildSingleChartSearch(chart: ChartData): string {
+  const sourceText = [chart.implicitText, chart.rawText, chart.name].filter(Boolean).join('\n')
+  const chinese = !HANGUL_RE.test(sourceText) && HAN_RE.test(sourceText)
   const implicit =
     chart.implicitText ??
     chart.modIds
       .map((id) => voyageModById.get(id))
-      .find((mod) => mod && mod.scope !== 'self')?.text ??
+      .filter((mod) => mod && mod.scope !== 'self')
+      .map((mod) => chinese ? mainlandImplicits.get(mod!.id) ?? mod!.text : mod!.text)[0] ??
     ''
-  const sourceText = [chart.implicitText, chart.rawText, chart.name].filter(Boolean).join('\n')
-  const level = `${HANGUL_RE.test(sourceText) ? '지역 레벨' : 'Level'} ${chart.level}`
+  const level = `${HANGUL_RE.test(sourceText) ? '지역 레벨' : chinese ? '区域等级' : 'Level'} ${chart.level}`
   return [chart.name, implicit, level].filter(Boolean).join(' ')
 }
 
@@ -39,10 +46,11 @@ export function buildBestModRegex(
   weights: Weights,
   cap = 50,
   disabledMods?: Set<string>,
+  locale: 'en' | 'zh-CN' = 'en',
 ): { regex: string; included: VoyageModDef[] } {
   const reach = { self: 1, adjacent: 3, global: 9 } as const
   const lettersOnly = (s: string) =>
-    s.toLowerCase().replace(/[^a-z ]+/g, ' ').replace(/\s+/g, ' ').trim()
+    s.toLowerCase().replace(locale === 'zh-CN' ? /[^\p{Script=Han} ]+/gu : /[^a-z ]+/g, ' ').replace(/\s+/g, ' ').trim()
 
   // group tier variants into families (identical text once numbers are stripped);
   // a family's value is its best tier's value
@@ -52,7 +60,10 @@ export function buildBestModRegex(
     const w = weights[voyageRewardKey(m)] ?? 0
     const v = m.effects.reduce((s, e) => s + w * e.percent, 0) * reach[m.scope]
     if (v <= 0) continue
-    const key = lettersOnly(m.text)
+    // Source-conflicted self-reward templates are not client search evidence.
+    const text = locale === 'zh-CN' ? mainlandImplicits.get(m.id) : m.text
+    if (!text) continue
+    const key = lettersOnly(text)
     const existing = families.get(key)
     if (!existing || v > existing.v) families.set(key, { m, v })
   }

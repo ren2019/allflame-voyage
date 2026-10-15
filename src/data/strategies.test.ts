@@ -37,7 +37,7 @@ describe('applyCenterChoice (issue #49)', () => {
   it('readiness asks for the chosen family specifically', () => {
     const div = applyCenterChoice(speedrun, 'divbox')
     expect(div.requirements?.[0].modIds).toEqual(['adj-divbox-1', 'adj-divbox-2'])
-    expect(div.requirements?.[0].label).toBe('Diviner’s chart (centre)')
+    expect(div.requirements?.[0].label).toBe('神圣秘宝海图（中心）')
   })
 
   it('leaves strategies without centre options alone', () => {

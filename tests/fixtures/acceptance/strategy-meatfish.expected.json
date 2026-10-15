@@ -1,0 +1,135 @@
+{
+  "source": {
+    "kind": "artificial-internal-model",
+    "baseCommit": "5a717bf",
+    "wording": "samples/text-library/library.json; source-only templates, not client copies",
+    "layout": "Original upstream strategy layout, baseline captured in strategy-rules.upstream.json"
+  },
+  "initialUids": [
+    "strategy-meatfish-0",
+    "strategy-meatfish-1",
+    "strategy-meatfish-2",
+    "strategy-meatfish-3",
+    "strategy-meatfish-4",
+    "strategy-meatfish-5",
+    "strategy-meatfish-6",
+    "strategy-meatfish-7",
+    "strategy-meatfish-8"
+  ],
+  "witness": [
+    {
+      "chartUid": "strategy-meatfish-0",
+      "rotation": 3
+    },
+    {
+      "chartUid": "strategy-meatfish-1",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-meatfish-2",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-meatfish-3",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-meatfish-4",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-meatfish-5",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-meatfish-6",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-meatfish-7",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-meatfish-8",
+      "rotation": 0
+    }
+  ],
+  "connections": 10,
+  "locked": [
+    {
+      "cell": 0,
+      "placement": {
+        "chartUid": "strategy-meatfish-0",
+        "rotation": 3
+      }
+    }
+  ],
+  "requiresBorder": null,
+  "hardConstraints": [
+    "nine distinct current eligible inventory instances",
+    "strict connectivity",
+    "preserved board position0/rotation3 pinned"
+  ],
+  "softPreferences": "Original position bonuses and layout penalty; never converted into product constraints",
+  "requirements": [
+    {
+      "modIds": [
+        "adj-star-1",
+        "adj-star-2"
+      ],
+      "count": 2,
+      "label": "Giant Starfish chart"
+    },
+    {
+      "modIds": [
+        "adj-pantheon",
+        "adj-wisps-1",
+        "adj-wisps-2"
+      ],
+      "count": 1,
+      "label": "Pantheon (or 4k Wisp) chart"
+    },
+    {
+      "areaTypes": [
+        "sea-pillars"
+      ],
+      "count": 2,
+      "label": "Sea-Pillar chart (corners)"
+    },
+    {
+      "modIds": [
+        "adj-lantern"
+      ],
+      "count": 2,
+      "label": "Golden Lantern chart"
+    },
+    {
+      "modIds": [
+        "voy-possess"
+      ],
+      "count": 1,
+      "label": "Possessed Rares chart"
+    },
+    {
+      "modIds": [
+        "voy-noequip",
+        "voy-fracture"
+      ],
+      "count": 1,
+      "label": "No-Equipment (or Fracture) chart"
+    }
+  ],
+  "expectedConsumed": [
+    "strategy-meatfish-1",
+    "strategy-meatfish-2",
+    "strategy-meatfish-3",
+    "strategy-meatfish-4",
+    "strategy-meatfish-5",
+    "strategy-meatfish-6",
+    "strategy-meatfish-7",
+    "strategy-meatfish-8"
+  ],
+  "expectedSurvived": [
+    "strategy-meatfish-0"
+  ]
+}

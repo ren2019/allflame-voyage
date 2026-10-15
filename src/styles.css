@@ -741,8 +741,9 @@ textarea {
 }
 /* in-game style chart stash grid */
 .chart-grid {
+  /* Four columns in the original sidebar, including space for classic scrollbars. */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
   gap: 6px;
   max-height: 46vh;
   overflow-y: auto;
@@ -752,7 +753,7 @@ textarea {
 }
 .chart-sq {
   position: relative;
-  aspect-ratio: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2474,3 +2475,46 @@ textarea {
   vertical-align: -2px;
 }
 
+/* Keep the short Chinese inventory heading and its actions readable. */
+.library-title,
+.library > .panel-title button {
+  white-space: nowrap;
+}
+
+/* Single-record entries exist only while the global pencil is enabled. */
+.calibration-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--gold);
+  background: var(--panel);
+  font-size: 13px;
+  line-height: 1;
+  text-decoration: none;
+}
+.calibration-link:hover, .calibration-link:focus-visible { color: var(--gold-bright); border-color: var(--gold); }
+.calibration-mode-toggle[aria-pressed="true"] { color: var(--gold-bright); border-color: var(--gold); }
+.mb-row .calibration-link { margin-left: auto; }
+.bslot .calibration-link { width: 16px; height: 16px; font-size: 11px; }
+/* Reserve a real row for each kind of information rather than stacking corner badges. */
+.chart-sq { flex-direction: column; justify-content: space-between; min-height: 88px; padding: 3px; gap: 3px; }
+.sq-head, .sq-footer { display: flex; width: 100%; align-items: center; gap: 2px; flex-shrink: 0; }
+.sq-shape, .sq-lock, .sq-val, .sq-lvl, .sq-del { position: static; }
+.sq-shape { flex-shrink: 0; }
+.sq-head .sq-val { margin-left: auto; }
+.sq-lock { padding: 0; width: 18px; height: 18px; font-size: 11px; line-height: 1; flex-shrink: 0; filter: none; }
+.sq-reward-text { min-height: 24px; justify-content: center; }
+.sq-footer .sq-lvl { margin-right: auto; font-size: 10px; }
+.sq-footer .calibration-link { width: 18px; height: 18px; font-size: 12px; }
+.sq-footer .sq-del { display: inline-block; width: 16px; height: 18px; padding: 0; background: transparent; }
+.chart-card-head { flex-wrap: wrap; }
+.chart-card-head .chart-name { overflow-wrap: anywhere; }
+.chart-mod .calibration-link { vertical-align: middle; }
+.header-right { flex-wrap: wrap; }
+.reservation-detail { max-width: min(460px, calc(100vw - 32px)); }

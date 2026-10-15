@@ -1,4 +1,6 @@
+import { CalibrationLink } from './CalibrationLink'
 import { useMemo, useState } from 'react'
+import { chartShapeLabel, destinationLabel, voyageModShort, voyageModText } from '../data/localization'
 import { VOYAGE_MODS, voyageModById } from '../data/mods'
 import type { StrategyReservationPreferences } from '../data/strategies'
 import { selectPieceBank, type PieceType } from '../logic/pieceKeeps'
@@ -31,7 +33,7 @@ interface Props {
 /** which strategy this chart is banked for, per the keep counts */
 function fuelLock(chart: ChartData, bank: Map<string, PieceType>): string | null {
   const piece = bank.get(chart.uid)
-  return piece ? `Saved for ${piece.strategyName} - ${piece.label}` : null
+  return piece ? `为 ${piece.strategyName} 保留 · ${piece.label}` : null
 }
 
 const SCOPE_REACH = { self: 1, adjacent: 3, global: 9 } as const
@@ -58,7 +60,7 @@ export function displayValue(chart: ChartData, weights: Weights, disabled: Set<s
   return Math.round(chartValue(chart, weights, disabled) / 100)
 }
 
-const EDGE_LABELS = ['N', 'E', 'S', 'W'] as const
+const EDGE_LABELS = ['北', '东', '南', '西'] as const
 
 function ChartEditor({ chart, onUpdate }: { chart: ChartData; onUpdate: (c: ChartData) => void }) {
   const toggleEdge = (i: number) => {
@@ -72,7 +74,7 @@ function ChartEditor({ chart, onUpdate }: { chart: ChartData; onUpdate: (c: Char
         <input
           value={chart.name}
           onChange={(e) => onUpdate({ ...chart, name: e.target.value })}
-          placeholder="Chart name"
+          placeholder="海图名称"
         />
         <input
           type="number"
@@ -102,10 +104,10 @@ function ChartEditor({ chart, onUpdate }: { chart: ChartData; onUpdate: (c: Char
                   commit(next[0], next[1], implicitId)
                 }}
               >
-                <option value="">area mod {slot + 1}: none</option>
+                <option value="">本区域词缀 {slot + 1}：无</option>
                 {selfPool.map((m) => (
                   <option key={m.id} value={m.id}>
-                    {m.text}
+                    {voyageModText(m.id)}
                   </option>
                 ))}
               </select>
@@ -114,18 +116,18 @@ function ChartEditor({ chart, onUpdate }: { chart: ChartData; onUpdate: (c: Char
               value={implicitId}
               onChange={(e) => commit(selfIds[0] ?? '', selfIds[1] ?? '', e.target.value)}
             >
-              <option value="">implicit: none</option>
-              <optgroup label="Adjacent">
+              <option value="">航行词缀：无</option>
+              <optgroup label="相邻区域">
                 {VOYAGE_MODS.filter((m) => m.scope === 'adjacent').map((m) => (
                   <option key={m.id} value={m.id}>
-                    {m.text}
+                    {voyageModText(m.id)}
                   </option>
                 ))}
               </optgroup>
-              <optgroup label="Voyage-wide">
+              <optgroup label="全航程">
                 {VOYAGE_MODS.filter((m) => m.scope === 'global').map((m) => (
                   <option key={m.id} value={m.id}>
-                    {m.text}
+                    {voyageModText(m.id)}
                   </option>
                 ))}
               </optgroup>
@@ -134,7 +136,7 @@ function ChartEditor({ chart, onUpdate }: { chart: ChartData; onUpdate: (c: Char
         )
       })()}
       <div className="row edges-row">
-        <span className="muted">Connectors:</span>
+        <span className="muted">连接方向：</span>
         {EDGE_LABELS.map((l, i) => (
           <button
             key={l}
@@ -146,7 +148,7 @@ function ChartEditor({ chart, onUpdate }: { chart: ChartData; onUpdate: (c: Char
         ))}
       </div>
       {chart.rawText && (
-        <div className="raw-text" title="Unrecognised mod lines kept from import">
+        <div className="raw-text" title="导入时保留的显式属性原文">
           {chart.rawText}
         </div>
       )}
@@ -155,6 +157,7 @@ function ChartEditor({ chart, onUpdate }: { chart: ChartData; onUpdate: (c: Char
 }
 
 export function Library(props: Props) {
+  const [reservationDetail, setReservationDetail] = useState<string | null>(null)
   const [editing, setEditing] = useState<string | null>(null)
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState<SortMode>('value')
@@ -178,7 +181,7 @@ export function Library(props: Props) {
   const addBlank = () => {
     const chart: ChartData = {
       uid: newUid(),
-      name: `Chart ${props.pool.length + 1}`,
+      name: `海图 ${props.pool.length + 1}`,
       level: 80,
       edges: [true, true, true, true],
       modIds: [],
@@ -192,8 +195,8 @@ export function Library(props: Props) {
     let list = props.pool
     if (q) {
       list = list.filter((c) => {
-        if (c.name.toLowerCase().includes(q)) return true
-        return c.modIds.some((id) => voyageModById.get(id)?.text.toLowerCase().includes(q))
+        if (c.name.toLowerCase().includes(q) || destinationLabel(c.areaType).includes(q) || c.implicitText?.toLowerCase().includes(q)) return true
+        return c.modIds.some((id) => voyageModText(id).toLowerCase().includes(q) || voyageModById.get(id)?.text.toLowerCase().includes(q))
       })
     }
     return [...list].sort((a, b) => {
@@ -209,37 +212,38 @@ export function Library(props: Props) {
   return (
     <div className="library">
       <div className="panel-title">
-        Chart Library{' '}
+        <span className="library-title">海图库存</span>{' '}
         <span className="muted">
           ({query ? `${visible.length}/` : ''}
           {props.pool.length})
         </span>
         <span className="spacer" />
-        <button onClick={addBlank}>+ Add chart</button>
+        <button onClick={addBlank}>+ 添加海图</button>
         {props.pool.length > 0 && (
           <button
             className="clear-charts"
             onClick={props.onClearCharts}
-            title="Remove every chart from the library and clear the board (borders and weights are kept)"
+            title="移除全部库存海图并清空摆盘，保留边界与权重"
           >
-            Clear all
+            清空库存
           </button>
         )}
       </div>
       {props.pool.length > 0 && (
         <div className="library-tools">
           <input
-            placeholder="Filter by name or mod…"
+            placeholder="按名称或词缀筛选…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <select value={sort} onChange={(e) => setSort(e.target.value as SortMode)}>
-            <option value="value">Best value</option>
-            <option value="level">Highest level</option>
-            <option value="name">Name</option>
+            <option value="value">优先高价值</option>
+            <option value="level">优先高等级</option>
+            <option value="name">名称</option>
           </select>
           <button
-            title={view === 'grid' ? 'List view (edit charts)' : 'Grid view'}
+            title={view === 'grid' ? '列表视图（编辑海图）' : '网格视图'}
+            aria-label={view === 'grid' ? '列表视图（编辑海图）' : '网格视图'}
             onClick={() => setViewPersist(view === 'grid' ? 'list' : 'grid')}
           >
             {view === 'grid' ? '☰' : '⊞'}
@@ -250,15 +254,15 @@ export function Library(props: Props) {
         <div className="savefor-bar">
           <button
             onClick={props.onOpenSaveWizard}
-            title="A guided walkthrough: pin charts to a strategy so nothing else (manual solves and filler included) will spend them"
+            title="为策略保留海图，其他求解及填充不会使用它们"
           >
-            🔖 Save charts for strategies…
+            🔖 为策略保留海图…
           </button>
         </div>
       )}
       {props.pool.length === 0 && (
         <div className="muted pad">
-          No charts yet. Add manually or paste from the game below.
+          库存暂无海图。可手动添加，或在下方粘贴游戏复制文本。
         </div>
       )}
       {view === 'grid' && (
@@ -270,17 +274,18 @@ export function Library(props: Props) {
             const val = displayValue(c, props.weights, props.disabledMods)
             const lock = fuelLock(c, bank)
             const lines = [
-              { text: `Area Level: ${c.level}${c.shape ? ` · ${c.shape}` : ''}`, cls: 'muted' },
+              { text: `区域等级 ${c.level}${c.shape ? ` · ${chartShapeLabel(c.shape)}` : ''}`, cls: 'muted' },
+              ...(c.areaType ? [{ text: `目的地：${destinationLabel(c.areaType)}`, cls: 'muted' }] : []),
               ...(c.rewards ?? []).map((e) => ({
-                text: `+${e.percent}% ${STAT_LABELS[e.stat]}`,
+                text: `${STAT_LABELS[e.stat]} +${e.percent}%`,
                 cls: 'scope-self',
               })),
-              ...mods.map((m) => ({ text: m!.text, cls: `scope-${m!.scope}` })),
-              { text: `Weighted value: ${val}`, cls: 'val' },
+              ...mods.map((m) => ({ text: voyageModText(m!.id), cls: `scope-${m!.scope}` })),
+              { text: `加权价值：${val}`, cls: 'val' },
               ...(lock
-                ? [{ text: `🔒 ${lock} - other solves won't spend it`, cls: 'muted' }]
+                ? [{ text: `🔒 ${lock} · 其他求解不会使用它`, cls: 'muted' }]
                 : []),
-              ...(onBoard.has(c.uid) ? [{ text: 'Currently on the board', cls: 'muted' }] : []),
+              ...(onBoard.has(c.uid) ? [{ text: '已放入当前摆盘', cls: 'muted' }] : []),
             ]
             return (
               <div
@@ -289,9 +294,15 @@ export function Library(props: Props) {
                 onClick={() => props.onSelect(c.uid)}
                 {...tooltipProps({ title: c.name, lines })}
               >
+                <span className="sq-head">
+                  <span className="sq-shape"><EdgeGlyph edges={c.edges} size={15} /></span>
+                  {lock && <button className="sq-lock" title={lock} aria-label={`查看策略预留：${lock}`}
+                    onClick={event => { event.stopPropagation(); setReservationDetail(lock) }}>🔒</button>}
+                  <span className="sq-val">{val}</span>
+                </span>
                 {mod?.short ? (
                   <span className={`sq-reward-text scope-${mod.scope}`}>
-                    <span className="sq-shortname">{mod.short}</span>
+                    <span className="sq-shortname">{voyageModShort(mod.id)}</span>
                   </span>
                 ) : mod?.effects[0] ? (
                   <span className={`sq-reward-text scope-${mod.scope}`}>
@@ -305,28 +316,20 @@ export function Library(props: Props) {
                 ) : (
                   <EdgeGlyph edges={c.edges} size={26} />
                 )}
-                {mod && (
-                  <span className="sq-shape">
-                    <EdgeGlyph edges={c.edges} size={15} />
-                  </span>
-                )}
-                {lock && (
-                  <span className="sq-lock" title={lock}>
-                    🔒
-                  </span>
-                )}
-                <span className="sq-val">{val}</span>
-                <span className="sq-lvl">L:{c.level}</span>
-                <button
-                  className="sq-del"
-                  title="Delete"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    props.onRemove(c.uid)
-                  }}
-                >
-                  ✕
-                </button>
+                <span className="sq-footer">
+                  <span className="sq-lvl" title={`区域等级 ${c.level}`}>{c.level}</span>
+                  {mod && <CalibrationLink id={mod.id} />}
+                  <button
+                    className="sq-del"
+                    title="删除"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      props.onRemove(c.uid)
+                    }}
+                  >
+                    ✕
+                  </button>
+                </span>
               </div>
             )
           })}
@@ -347,16 +350,16 @@ export function Library(props: Props) {
               <div className="chart-card-head">
                 <EdgeGlyph edges={c.edges} />
                 <span className="chart-name">{c.name}</span>
-                <span className="chart-level">lvl {c.level}</span>
+                <span className="chart-level">区域等级 {c.level}</span>
                 {lock && (
-                  <span className="badge lock" title={`${lock} - other solves won't spend it`}>
-                    🔒
-                  </span>
+                  <button className="badge lock" title={`${lock} · 其他求解不会使用它`}
+                    aria-label={`查看策略预留：${lock}`}
+                    onClick={event => { event.stopPropagation(); setReservationDetail(lock) }}>🔒 预留</button>
                 )}
-                {onBoard.has(c.uid) && <span className="badge">on board</span>}
+                {onBoard.has(c.uid) && <span className="badge">已摆入</span>}
                 <span className="spacer" />
                 <button
-                  title="Edit"
+                  title="编辑"
                   onClick={(e) => {
                     e.stopPropagation()
                     setEditing(editing === c.uid ? null : c.uid)
@@ -365,7 +368,7 @@ export function Library(props: Props) {
                   ✎
                 </button>
                 <button
-                  title="Delete"
+                  title="删除"
                   onClick={(e) => {
                     e.stopPropagation()
                     props.onRemove(c.uid)
@@ -374,20 +377,22 @@ export function Library(props: Props) {
                   ✕
                 </button>
               </div>
+              <div className="muted chart-location">{[destinationLabel(c.areaType), chartShapeLabel(c.shape)].filter(Boolean).join(' · ')}</div>
+              {c.rewards && <div className="chart-rewards scope-self">{c.rewards.map((effect) => `${STAT_LABELS[effect.stat]} +${effect.percent}%`).join(' · ')}</div>}
               {mod && (
                 <div
                   className={`chart-mod scope-${mod.scope}`}
                   {...tooltipProps({
                     title: c.name,
                     lines: [
-                      { text: `Area Level: ${c.level}`, cls: 'muted' },
-                      ...allMods.map((m) => ({ text: m!.text, cls: `scope-${m!.scope}` })),
+                      { text: `区域等级 ${c.level}`, cls: 'muted' },
+                      ...allMods.map((m) => ({ text: voyageModText(m!.id), cls: `scope-${m!.scope}` })),
                     ],
                   })}
                 >
                   {allMods.map((m) => (
                     <div key={m!.id} className={`scope-${m!.scope}`}>
-                      {m!.text}
+                      {voyageModText(m!.id)} <CalibrationLink id={m!.id} />
                     </div>
                   ))}
                 </div>
@@ -398,6 +403,13 @@ export function Library(props: Props) {
         })}
       </div>
       )}
+      {reservationDetail && <div className="onboard-backdrop" onClick={() => setReservationDetail(null)}>
+        <div className="onboard reservation-detail" role="dialog" aria-modal="true" aria-label="策略预留详情"
+          onClick={event => event.stopPropagation()} onKeyDown={event => { if (event.key === 'Escape') setReservationDetail(null) }}>
+          <div className="panel-title">策略预留详情<span className="spacer" /><button autoFocus onClick={() => setReservationDetail(null)}>关闭</button></div>
+          <p>{reservationDetail}</p><p className="muted">该实例已为策略预留；无关策略不会将它用作普通海图。此标记不代表游戏内已锁定。</p>
+        </div>
+      </div>}
     </div>
   )
 }

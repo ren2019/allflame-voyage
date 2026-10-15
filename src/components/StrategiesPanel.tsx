@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { applyCenterChoice, STRATEGIES, type StrategyDef } from '../data/strategies'
 import type { Borders, ChartData } from '../types'
+import { CompactCopyText } from './CompactCopyText'
 
 interface Props {
   activeId: string | null
@@ -49,194 +49,68 @@ function Readiness({
     ]
     return (
       <div className="strat-notready">
-        ⚠ You don't have the pieces - avoid this voyage and wait. Missing: {parts.join(', ')}.
+        ⚠ 材料不足，建议等待。缺少：{parts.join('、')}。
         {strategy.waitHint ? ` ${strategy.waitHint}` : ''}
       </div>
     )
   }
   return (
     <div className="strat-ready">
-      ✓ Pieces ready:{' '}
+      ✓ 材料齐备：{' '}
       {reqs
         .map(
           (r) =>
             `${Math.min(r.have, r.count)}/${r.count}× ${r.label}${
-              r.have > r.count ? ` (+${r.have - r.count} spare)` : ''
+              r.have > r.count ? `（另有 ${r.have - r.count} 张备用）` : ''
             }`,
         )
         .join(', ')}
+      <p className="muted small-note">仍需检查九格摆盘与连接，不保证收益。</p>
     </div>
   )
 }
 
-/**
- * Curated strategies. Selecting one OVERRIDES the manual reward weights and
- * adds placement rules that shape what the solver suggests. Its own section so
- * it's obvious when a strategy - not your sliders - is steering results.
- */
-function RegexRow({ regex }: { regex: string }) {
-  const [copied, setCopied] = useState(false)
-  return (
-    <div className="strat-regex-row">
-      <span className="strat-regex-label" title="Paste into the in-game chart search to highlight this strategy's keeper charts">
-        Keeper search
-      </span>
-      <input readOnly value={regex} onFocus={(e) => e.target.select()} />
-      <button
-        onClick={() => {
-          navigator.clipboard.writeText(regex).catch(() => {})
-          setCopied(true)
-          window.setTimeout(() => setCopied(false), 1500)
-        }}
-      >
-        {copied ? '✓' : 'Copy'}
-      </button>
-    </div>
-  )
-}
-
+/** Concentrated sidebar choices; only the selected strategy exposes its guidance. */
 export function StrategiesPanel({
-  activeId,
-  pool,
-  borders,
-  onSelect,
-  layoutChoice,
-  onLayoutChoice,
-  centerChoice,
-  onCenterChoice,
+  activeId, pool, borders, onSelect, layoutChoice, onLayoutChoice, centerChoice, onCenterChoice,
 }: Props) {
-  const [expanded, setExpanded] = useState<string | null>(activeId)
-
-  return (
-    <div className="strategies">
-      <div className="panel-title">
-        Strategies
-        {activeId && <span className="strat-live-badge">ACTIVE</span>}
-      </div>
-      <div className="muted small-note" style={{ marginTop: 0 }}>
-        Curated community strategies. Picking one overrides your reward weights and steers the
-        solver until you switch it off.
-      </div>
-
-      <button
-        className={`strat-card strat-none ${activeId === null ? 'active' : ''}`}
-        onClick={() => onSelect(null)}
-      >
-        <span className="strat-name">None (manual)</span>
-        <span className="strat-tagline">
-          Use your own reward weights - set them in ⚙ Settings, next to Solve.
-        </span>
-      </button>
-
-      {STRATEGIES.map((s) => {
-        const isActive = activeId === s.id
-        const isOpen = expanded === s.id
-        // the centre pick reshapes readiness, so the card must reflect it
-        const effective = applyCenterChoice(s, centerChoice?.[s.id])
-        return (
-          <div key={s.id} className={`strat-card ${isActive ? 'active' : ''}`}>
-            <button
-              className="strat-head"
-              onClick={() => setExpanded(isOpen ? null : s.id)}
-              title="Show details"
-            >
-              <span className="strat-name">
-                {s.name}
-                {s.badge && <span className="strat-badge-new">{s.badge}</span>}
-              </span>
-              <span className="strat-tagline">{s.tagline}</span>
-            </button>
-            {isOpen && (
-              <div className="strat-body">
-                <ul className="strat-guide">
-                  {s.guide.map((g, i) => (
-                    <li key={i}>{g}</li>
-                  ))}
-                </ul>
-                {s.source.url ? (
-                  <a className="strat-source" href={s.source.url} target="_blank" rel="noopener noreferrer">
-                    ▶ {s.source.label}
-                  </a>
-                ) : (
-                  <span className="strat-source">{s.source.label}</span>
-                )}
-                {s.extraLinks?.map((l) => (
-                  <a
-                    key={l.url}
-                    className="strat-source strat-extra-link"
-                    href={l.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🔗 {l.label}
-                  </a>
-                ))}
-              </div>
-            )}
-            {(isActive || isOpen) &&
-              s.layouts &&
-              (() => {
-                const chosen =
-                  s.layouts.find((v) => v.id === layoutChoice?.[s.id]) ?? s.layouts[0]
-                return (
-                  <div className="strat-layouts">
-                    <div className="strat-layouts-row">
-                      <span className="strat-layouts-label">Layout</span>
-                      <select
-                        value={chosen.id}
-                        onChange={(e) => onLayoutChoice?.(s.id, e.target.value)}
-                      >
-                        {s.layouts.map((v) => (
-                          <option key={v.id} value={v.id}>
-                            {v.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="strat-layouts-hint muted">{chosen.hint}</div>
-                  </div>
-                )
-              })()}
-            {(isActive || isOpen) &&
-              s.centerOptions &&
-              (() => {
-                const chosen =
-                  s.centerOptions.find((o) => o.id === centerChoice?.[s.id]) ?? s.centerOptions[0]
-                return (
-                  <div className="strat-layouts">
-                    <div className="strat-layouts-row">
-                      <span className="strat-layouts-label">Centre chart</span>
-                      <select
-                        value={chosen.id}
-                        onChange={(e) => onCenterChoice?.(s.id, e.target.value)}
-                      >
-                        {s.centerOptions.map((o) => (
-                          <option key={o.id} value={o.id}>
-                            {o.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    {chosen.id !== s.centerOptions[0].id && (
-                      <div className="strat-layouts-hint muted">
-                        only {chosen.label.replace(' only', '')} charts take the centre - the
-                        other families stay in your library
-                      </div>
-                    )}
-                  </div>
-                )
-              })()}
-            {(isActive || isOpen) && s.searchRegex && <RegexRow regex={s.searchRegex} />}
-            {(isActive || isOpen) && <Readiness strategy={effective} pool={pool} borders={borders} />}
-            <button
-              className={`strat-use ${isActive ? 'on' : ''}`}
-              onClick={() => onSelect(isActive ? null : s.id)}
-            >
-              {isActive ? '✓ Active - click to turn off' : 'Use this strategy'}
-            </button>
-          </div>
-        )
-      })}
+  const strategy = STRATEGIES.find((s) => s.id === activeId)
+  const chosenLayout = strategy?.layouts?.find((v) => v.id === layoutChoice?.[strategy.id]) ?? strategy?.layouts?.[0]
+  const chosenCenter = strategy?.centerOptions?.find((o) => o.id === centerChoice?.[strategy.id]) ?? strategy?.centerOptions?.[0]
+  return <section className="strategies" aria-label="规划策略">
+    <div className="strategy-options" role="group" aria-label="当前策略">
+      {STRATEGIES.map((s) => <button key={s.id} aria-pressed={s.id === activeId} onClick={() => onSelect(s.id)}>{s.name}</button>)}
+      <button aria-pressed={!strategy} onClick={() => onSelect(null)}>无策略（手动）</button>
     </div>
-  )
+    {strategy ? <>
+      <p className="strategy-summary"><strong>{strategy.name}：</strong>{strategy.tagline}</p>
+      <div className="strategy-controls">
+        {chosenLayout && <label>布局
+          <select aria-label="策略布局" value={chosenLayout.id} onChange={(e) => onLayoutChoice?.(strategy.id, e.target.value)}>
+            {strategy.layouts!.map((v) => <option key={v.id} value={v.id}>{v.label}</option>)}
+          </select>
+        </label>}
+        {chosenCenter && <label>中心海图
+          <select aria-label="中心海图" value={chosenCenter.id} onChange={(e) => onCenterChoice?.(strategy.id, e.target.value)}>
+            {strategy.centerOptions!.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
+          </select>
+        </label>}
+      </div>
+      {chosenLayout && <p className="strategy-layout-hint">{chosenLayout.hint}</p>}
+      {chosenCenter && chosenCenter.id !== strategy.centerOptions![0].id && <p className="strategy-layout-hint">中心优先使用{chosenCenter.label.replace('仅', '')}海图，其他中心材料留在库存中</p>}
+      <Readiness strategy={applyCenterChoice(strategy, centerChoice?.[strategy.id])} pool={pool} borders={borders} />
+    </> : <p className="strategy-manual-note">自行选择奖励权重，并手动调整位置；求解设置位于摆盘下方。</p>}
+  </section>
+}
+
+export function StrategyGuide({ strategy }: { strategy: StrategyDef | null }) {
+  return <aside className="strategy-guide" aria-label="策略玩法说明">
+    <div className="panel-title">{strategy ? `${strategy.name} · 玩法` : '手动规划'}</div>
+    {strategy ? <>
+      <ul className="strat-guide">{strategy.guide.map((line, i) => <li key={i}>{line}</li>)}</ul>
+      {strategy.source.url ? <a className="strat-source" href={strategy.source.url} target="_blank" rel="noopener noreferrer">{strategy.source.label}</a> : <span className="strat-source">{strategy.source.label}</span>}
+      {strategy.extraLinks?.map((link) => <a key={link.url} className="strat-source strat-extra-link" href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>)}
+      {strategy.searchRegex && <CompactCopyText label={`${strategy.name}保留材料搜索`} text={strategy.searchRegex} />}
+    </> : <p className="muted">先填写边界、设置奖励权重，再求解。点击库存海图与格子可手动放置；点击两个已有格子可交换。</p>}
+  </aside>
 }

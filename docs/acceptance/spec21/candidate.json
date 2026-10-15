@@ -1,0 +1,33 @@
+{
+  "productSourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
+  "productWorkingTreeCleanAtBuild": true,
+  "buildSha256": "f43c9f9ea4f2921000a3ec456229d6da465cfa417cecb5ad2f8ce0188fb5ac2d",
+  "buildFiles": 64,
+  "buildManifest": "build-manifest.json",
+  "runtimeFilesChangedSinceProductBuild": [],
+  "unitOcrDeploymentBuildSourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
+  "finalBrowserSourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
+  "candidateArtifactArchive": "/tmp/allflame-implement-21/spec21-candidate-fd428e9/dist",
+  "fullVerify": "all six stages passed; aggregate failed only the unchanged legacy scoring.ts byte-hash gate; see automated.json",
+  "automatedServer": "stopped; use manual-game-handoff.md archive restart steps",
+  "existingDeployment": "unchanged",
+  "nativeAcceptance": "NOT RUN for this new product source/build; do not close #23",
+  "previousNativeAttempt": {
+    "productSourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+    "buildSha256": "f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df",
+    "runnerSourceSha": "39ae91068e9279ea0f40dd1a43cdb8837f20561d",
+    "runnerSha256": "26b43b6b713d5f720a5bd69bc4057f74001981275bd6525896e218033d793e16",
+    "status": "failed/incomplete on older source; not current candidate acceptance",
+    "report": "windows/failed-candidate-report.json",
+    "buildManifest": "windows/failed-candidate-build-manifest.json",
+    "screenshots": "windows/README.md"
+  },
+  "gameAcceptance": "pending; do not close #24",
+  "manualTrial": {
+    "currentPreview": true,
+    "sourceSha": "aadbef0519d8a954655d8088c778b5ab7cf9c4ec",
+    "buildSha256": "2668afdbdc2d1dfb976e44e543ed6c280c8eb1fd700afd788651073b80f6af8e",
+    "record": "inventory-layout-fix/manifest.json",
+    "status": "inventory overlap fixed; awaiting user retest; full-run baseline retained above"
+  }
+}

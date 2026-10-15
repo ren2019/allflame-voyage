@@ -1,16 +1,26 @@
-import { useState, type ReactNode } from 'react'
-import { BORDER_MODS, borderModById, voyageModById } from '../data/mods'
+import { BorderAffinity } from './BorderAffinity'
+import { RegionTargets, RegionTargetDetails } from './RegionTargets'
+import { regionalTargetView, regionTargets, type RegionalCell, type RegionTargetMode } from '../logic/regionTargets'
+import { borderAffinityPriority, evaluateBorderAffinity } from '../logic/borderAffinity'
+import type { ScoreOptions } from '../logic/scoring'
+import { CalibrationLink } from './CalibrationLink'
+import { useId, useState, type ReactNode } from 'react'
+import { borderModById, voyageModById } from '../data/mods'
+import { BORDER_CHOICES, localizedBorder, matchesBorderQuery } from '../data/borderLocale'
 import { rotateEdges } from '../logic/connectivity'
 import { buildSingleChartSearch } from '../logic/regex'
 import type { Board, Borders, ChartData, Placement } from '../types'
 import { START_CELL, STAT_LABELS, STAT_SHORT } from '../types'
 import { tooltipProps } from './Tooltip'
+import { chartShapeLabel, voyageModText, voyageModShort, SCOPE_LABELS } from '../data/localization'
 
 interface Props {
   board: Board
   borders: Borders
   charts: Map<string, ChartData>
   perTile: number[]
+  strategyId?: string | null
+  scoreOptions?: ScoreOptions
   selectedCell: number | null
   highlightUid: string | null
   /** only flag connector mismatches as errors under the strict rule */
@@ -34,17 +44,21 @@ function BorderSelect({
   value,
   onChange,
   seg,
+  vertical,
+  affinityWeight,
 }: {
   value: string | null
   onChange: (id: string | null) => void
   seg: number
   vertical?: boolean
+  affinityWeight: number | null
 }) {
   const [open, setOpen] = useState(false)
   const [q, setQ] = useState('')
   const mod = value ? borderModById.get(value) : null
-  const eff = mod?.effects[0]
-  const filtered = BORDER_MODS.filter((m) => m.text.toLowerCase().includes(q.toLowerCase()))
+  const label = value ? localizedBorder(value) : undefined
+  const priority = borderAffinityPriority(affinityWeight)
+  const filtered = BORDER_CHOICES.filter((m) => matchesBorderQuery(m.id, q))
   // keep the popover on-screen: right-column segments align right, left-column align left
   const align = seg >= 3 && seg <= 5 ? 'right' : seg >= 9 ? 'left' : 'center'
 
@@ -55,21 +69,24 @@ function BorderSelect({
 
   return (
     <span
-      className={`bslot ${mod ? 'filled' : ''}`}
-      title={mod?.text ?? 'Border segment: click to search'}
+      className={`bslot ${mod ? 'filled' : ''} ${vertical ? 'bslot-vertical' : ''}`}
+      data-border-segment={seg}
+      data-affinity-band={priority?.band}
+      aria-label={`边界位置 ${seg + 1}`}
+      title={(label?.text ?? '边界位置：点击搜索') + (priority ? `\n${priority.label}` : '')}
       onClick={() => {
         setQ('')
         setOpen(true)
       }}
     >
       {mod ? (
-        <span>
-          {mod.short ??
-            (eff ? `+${eff.percent}% ${STAT_SHORT[eff.stat]}` : mod.magnitude ? `${mod.magnitude}% Magnitude` : '✦')}
+        <span className="bslot-label">
+          {label?.short}
         </span>
       ) : (
         <span className="bslot-empty">·</span>
       )}
+      {value && <CalibrationLink id={value} slot={seg} />}
       {open && (
         <>
           <span
@@ -82,7 +99,7 @@ function BorderSelect({
           <span className={`bpop bpop-${align}`} onClick={(e) => e.stopPropagation()}>
             <input
               autoFocus
-              placeholder="Search border mods…"
+              placeholder="搜索边界词缀…"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               onKeyDown={(e) => {
@@ -92,7 +109,7 @@ function BorderSelect({
             />
             <span className="bpop-list">
               <button className="bpop-item muted" onClick={() => pick(null)}>
-                No border
+                无边界词缀
               </button>
               {filtered.map((m) => (
                 <button
@@ -100,11 +117,10 @@ function BorderSelect({
                   className={`bpop-item ${m.id === value ? 'active' : ''}`}
                   onClick={() => pick(m.id)}
                 >
-                  {m.short && <span className="bpop-short">{m.short}</span>}
                   <span className="bpop-full">{m.text}</span>
                 </button>
               ))}
-              {filtered.length === 0 && <span className="bpop-none">No matches</span>}
+              {filtered.length === 0 && <span className="bpop-none">无匹配词缀</span>}
             </span>
           </span>
         </>
@@ -128,6 +144,9 @@ function Tile({
   onRemove,
   onRotate,
   onTogglePreserve,
+  region,
+  cellIndex,
+  onTargetDetails,
 }: {
   placement: Placement | null
   chart: ChartData | null
@@ -136,6 +155,9 @@ function Tile({
   highlighted: boolean
   placing: boolean
   isStart: boolean
+  region?: RegionalCell
+  cellIndex: number
+  onTargetDetails: () => void
   edgeStatus: EdgeStatus[]
   onClick: () => void
   onRemove: () => void
@@ -144,31 +166,30 @@ function Tile({
 }) {
   const [copied, setCopied] = useState(false)
   const startBadge = isStart ? (
-    <span className="tile-start" title="The Voyage begins here">
-      ⚓ Start
+    <span className="tile-start" title="航程从此处开始">
+      ⚓ 起点
     </span>
   ) : null
   if (!placement || !chart) {
     return (
       <div className={`tile empty ${placing ? 'placing' : ''}`} onClick={onClick}>
         {startBadge}
-        {placing ? 'place here' : ''}
+        {placing ? '放在此处' : ''}
       </div>
     )
   }
   const edges = rotateEdges(chart.edges, placement.rotation)
   const mods = chart.modIds.map((id) => voyageModById.get(id)).filter(Boolean)
-  const scopeLabel = { self: 'this Area', adjacent: 'adjacent Areas', global: 'the whole Voyage' }
   const tt = tooltipProps({
     title: chart.name,
     lines: [
-      { text: `Area Level: ${chart.level}${chart.shape ? ` · ${chart.shape}` : ''}`, cls: 'muted' },
+      { text: `区域等级：${chart.level}${chart.shape ? ` · ${chartShapeLabel(chart.shape)}` : ''}`, cls: 'muted' },
       ...(chart.rewards ?? []).map((e) => ({
         text: `+${e.percent}% ${STAT_LABELS[e.stat]}`,
         cls: 'scope-self',
       })),
       ...mods.map((m) => ({
-        text: `${m!.text}  (${scopeLabel[m!.scope]})`,
+        text: `${voyageModText(m!.id)}（${SCOPE_LABELS[m!.scope]}）`,
         cls: `scope-${m!.scope}`,
       })),
     ],
@@ -177,7 +198,7 @@ function Tile({
   const primary = mods.find((m) => m!.scope !== 'self') ?? mods[0]
   return (
     <div
-      className={`tile ${selected ? 'selected' : ''} ${highlighted ? 'highlighted' : ''} ${chart.preserved ? 'preserved' : ''} ${primary ? `tscope-${primary.scope}` : ''}`}
+      className={`tile ${region ? 'with-region-targets' : ''} ${selected ? 'selected' : ''} ${highlighted ? 'highlighted' : ''} ${chart.preserved ? 'preserved' : ''} ${primary ? `tscope-${primary.scope}` : ''}`}
       onClick={onClick}
       {...tt}
     >
@@ -188,13 +209,13 @@ function Tile({
         (primary.short ? (
           <div className="tile-duo">
             <span className="tile-duo-col">
-              <span className={`tile-duo-pct scope-${primary.scope}`}>{primary.short}</span>
+              <span className={`tile-duo-pct scope-${primary.scope}`}>{voyageModShort(primary.id)}</span>
               <span className="tile-duo-label">
                 {primary.scope === 'self'
-                  ? 'this area'
+                  ? '本区域'
                   : primary.scope === 'adjacent'
-                    ? 'adjacent areas'
-                    : 'whole voyage'}
+                    ? '相邻区域'
+                    : '全航程'}
               </span>
             </span>
           </div>
@@ -206,28 +227,28 @@ function Tile({
               </span>
               <span className="tile-duo-label">
                 {primary.scope === 'self'
-                  ? 'this area'
+                  ? '本区域'
                   : primary.scope === 'adjacent'
-                    ? 'adjacent areas'
-                    : 'whole voyage'}
+                    ? '相邻区域'
+                    : '全航程'}
               </span>
             </span>
           </div>
         ) : (
-          <div className={`tile-duo-text scope-${primary.scope}`}>{primary.text}</div>
+          <div className={`tile-duo-text scope-${primary.scope}`}>{voyageModText(primary.id)}</div>
         ))}
       {!primary && chart.implicitText && (
         <div className="tile-duo-text scope-global">{chart.implicitText}</div>
       )}
       {chart.preserved && (
-        <span className="tile-preserved-badge" title="Preserved: kept when you Finish Voyage">
-          🔒 Kept
+        <span className="tile-preserved-badge" title="已锁定：完成航程后确认是否保留">
+          🔒 保留
         </span>
       )}
       <div className="tile-actions">
         <button
           className={chart.preserved ? 'active' : ''}
-          title={chart.preserved ? 'Preserved: unmark to allow consuming' : 'Preserve: keep this chart when you Finish Voyage'}
+          title={chart.preserved ? '已锁定：取消后允许消耗' : '锁定海图：完成航程时确认是否保留'}
           onClick={(e) => {
             e.stopPropagation()
             onTogglePreserve()
@@ -236,7 +257,7 @@ function Tile({
           {chart.preserved ? '🔒' : '🔓'}
         </button>
         <button
-          title="Copy an in-game search string (name + modifier) to find this exact chart"
+          title="复制游戏定位文本（名称与词缀），查找此海图"
           onClick={(e) => {
             e.stopPropagation()
             navigator.clipboard.writeText(buildSingleChartSearch(chart)).catch(() => {})
@@ -247,7 +268,7 @@ function Tile({
           {copied ? '✓' : '⧉'}
         </button>
         <button
-          title="Rotate"
+          title="旋转"
           onClick={(e) => {
             e.stopPropagation()
             onRotate()
@@ -256,7 +277,7 @@ function Tile({
           ⟳
         </button>
         <button
-          title="Remove"
+          title="移除"
           onClick={(e) => {
             e.stopPropagation()
             onRemove()
@@ -265,8 +286,9 @@ function Tile({
           ✕
         </button>
       </div>
+      {region && <RegionTargets cell={region} index={cellIndex} onDetails={onTargetDetails} />}
       {startBadge}
-      <span className="tile-lvl">lvl {chart.level}</span>
+      <span className="tile-lvl">区域 {chart.level}</span>
       <div className="tile-score">{score.toFixed(1)}</div>
     </div>
   )
@@ -281,6 +303,12 @@ const DIRS = [
 
 export function BoardView(props: Props) {
   const { board, borders, charts } = props
+  const [targetMode, setTargetMode] = useState<RegionTargetMode>('off')
+  const targetModeName = useId()
+  const [detailCell, setDetailCell] = useState<number | null>(null)
+  const targets = regionTargets(board, borders, charts, props.strategyId ?? null, props.scoreOptions)
+  const targetViews = targets.map(cell => regionalTargetView(cell, targetMode === 'valuable' ? 'valuable' : 'all'))
+  const affinity = evaluateBorderAffinity(props.strategyId ?? null, borders)
 
   const edgesAt = (i: number) => {
     const p = board[i]
@@ -311,6 +339,9 @@ export function BoardView(props: Props) {
     return (
       <Tile
         key={i}
+        cellIndex={i}
+        region={targetMode === 'off' || (targetMode === 'valuable' && targetViews[i].groups.length === 0) ? undefined : targetViews[i]}
+        onTargetDetails={() => setDetailCell(i)}
         placement={p}
         chart={p ? charts.get(p.chartUid) ?? null : null}
         score={props.perTile[i]}
@@ -332,16 +363,11 @@ export function BoardView(props: Props) {
       value={borders[seg]}
       seg={seg}
       vertical={vertical}
+      affinityWeight={affinity.contributions[seg].weight}
       onChange={(id) => props.onBorderChange(seg, id)}
     />
   )
 
-  const randomize = () => {
-    for (let seg = 0; seg < 12; seg++) {
-      const m = BORDER_MODS[Math.floor(Math.random() * BORDER_MODS.length)]
-      props.onBorderChange(seg, m.id)
-    }
-  }
   const clearBorders = () => {
     for (let seg = 0; seg < 12; seg++) props.onBorderChange(seg, null)
   }
@@ -349,13 +375,22 @@ export function BoardView(props: Props) {
   return (
     <div className="board-wrap">
       <div className="board-toolbar">
-        <span className="board-title">Voyage Board</span>
+        <span className="board-title">航程摆盘</span>
         <span className="spacer" />
-        <button onClick={randomize} title="Simulate a border reroll">
-          🎲 Random borders
-        </button>
-        <button onClick={clearBorders}>Clear borders</button>
+        <div className="region-target-control" role="radiogroup" aria-label="区域目标">
+          <span className="region-target-control-label" aria-hidden="true">区域目标</span>
+          {([['off', '关闭'], ['valuable', '高价值'], ['all', '全部']] as const).map(([mode, label]) => (
+            <label key={mode} className={`region-target-choice${targetMode === mode ? ' active' : ''}`}>
+              <input type="radio" name={targetModeName} value={mode} checked={targetMode === mode} onChange={() => setTargetMode(mode)} />
+              <span>{label}</span>
+            </label>
+          ))}
+        </div>
       </div>
+      <BorderAffinity strategyId={props.strategyId ?? null} borders={borders}>
+        <button onClick={clearBorders}>清空边界</button>
+      </BorderAffinity>
+      {detailCell !== null && <RegionTargetDetails cell={targets[detailCell]} index={detailCell} onClose={() => setDetailCell(null)} />}
       <div className="board-grid">
         <div className="corner" />
         {border(0)}
@@ -388,13 +423,12 @@ export function BoardView(props: Props) {
         <div className="corner" />
       </div>
       <div className="board-hint">
-        Corners get 2 border mods, edges 1, center 0. Click a library chart then a cell to
-        place; click two placed cells to swap.
+        角落有两条直接边界，中边一条，中心没有。先点击库存海图再点击格子放置；点击两个已放置格子可交换。
       </div>
       <div className="legend">
-        <span className="legend-item scope-self">■ this area</span>
-        <span className="legend-item scope-adjacent">■ adjacent</span>
-        <span className="legend-item scope-global">■ whole voyage</span>
+        <span className="legend-item scope-self">■ 本区域</span>
+        <span className="legend-item scope-adjacent">■ 相邻区域</span>
+        <span className="legend-item scope-global">■ 全航程</span>
       </div>
       {!props.sequenceActive && props.solveSlot}
       {!props.sequenceActive && (
@@ -403,17 +437,17 @@ export function BoardView(props: Props) {
             className="copy-into-game"
             disabled={board.every((p) => !p)}
             onClick={props.onCopySequence}
-            title="Step through each square in the in-game placement order (bottom-left first), copying its chart so you can Ctrl+Left-click them in the right order."
+            title="按游戏放置顺序从左下开始逐格复制定位文本，再按对应顺序 Ctrl+左键点击海图。"
           >
-            📋 Copy into game
+            📋 复制到游戏
           </button>
           <button
             className="finish-voyage"
             disabled={board.every((p) => !p)}
             onClick={props.onFinishVoyage}
-            title="Consume the charts on the board (they're used up), keeping any you've marked Preserved (🔒). Clears the board for the next voyage."
+            title="核销本盘实际消耗的海图，并逐张确认锁定海图（🔒）是否存活；随后清空摆盘，开始下一航程。"
           >
-            🌊 Finish Voyage
+            🌊 完成航程
           </button>
           {props.voyageMsg && <span className="voyage-msg">{props.voyageMsg}</span>}
         </div>

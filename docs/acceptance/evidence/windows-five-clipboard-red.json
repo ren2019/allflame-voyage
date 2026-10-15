@@ -1,0 +1,18 @@
+{
+  "source": "Actual authorized Windows Edge diagnosis after original five-chart failure",
+  "baselineDeployedIntegration": "104c058a82710f3fb420ada06a73aedfb9734b41",
+  "symptom": "Native navigator.clipboard.readText returned an empty string after guide copy",
+  "actualImportedCharts": 5,
+  "allFiveLabelsChecked": true,
+  "selectedChart": "航海 冒险 珊瑚暗礁海图",
+  "guideChart": "航海 冒险 珊瑚暗礁海图",
+  "nativeWriteObserved": true,
+  "nativeWriteState": "fulfilled",
+  "stateAtRead": "fulfilled",
+  "documentFocused": true,
+  "clipboardWritePermission": "granted",
+  "clipboardReadPermission": "granted",
+  "nativeReadsWithin2000Ms": 21,
+  "allReadsEmpty": true,
+  "diagnosisLimit": "The earlier empty-read cause was not established. A simple pending-write race was not supported by the captured fulfilled-at-read state. No application or clipboard-security setting was changed."
+}

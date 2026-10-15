@@ -1,0 +1,118 @@
+{
+  "source": {
+    "kind": "artificial-internal-model",
+    "baseCommit": "5a717bf",
+    "wording": "samples/text-library/library.json; source-only templates, not client copies",
+    "layout": "Nine fully connected four-arm charts (12 connections)"
+  },
+  "initialUids": [
+    "strategy-divine-boxes-0",
+    "strategy-divine-boxes-1",
+    "strategy-divine-boxes-2",
+    "strategy-divine-boxes-3",
+    "strategy-divine-boxes-4",
+    "strategy-divine-boxes-5",
+    "strategy-divine-boxes-6",
+    "strategy-divine-boxes-7",
+    "strategy-divine-boxes-8"
+  ],
+  "witness": [
+    {
+      "chartUid": "strategy-divine-boxes-0",
+      "rotation": 3
+    },
+    {
+      "chartUid": "strategy-divine-boxes-1",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-divine-boxes-2",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-divine-boxes-3",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-divine-boxes-4",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-divine-boxes-5",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-divine-boxes-6",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-divine-boxes-7",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-divine-boxes-8",
+      "rotation": 0
+    }
+  ],
+  "connections": 12,
+  "locked": [
+    {
+      "cell": 0,
+      "placement": {
+        "chartUid": "strategy-divine-boxes-0",
+        "rotation": 3
+      }
+    }
+  ],
+  "requiresBorder": "b-divine",
+  "hardConstraints": [
+    "nine distinct current eligible inventory instances",
+    "strict connectivity",
+    "preserved board position0/rotation3 pinned"
+  ],
+  "softPreferences": "Original position bonuses and layout penalty; never converted into product constraints",
+  "requirements": [
+    {
+      "areaTypes": [
+        "pelagic-abyss"
+      ],
+      "count": 1,
+      "label": "Pelagic Abyss chart (high pack size)"
+    },
+    {
+      "modIds": [
+        "adj-box-1",
+        "adj-box-2",
+        "adj-box-3",
+        "adj-divbox-1",
+        "adj-divbox-2",
+        "adj-arcbox-1",
+        "adj-arcbox-2",
+        "adj-opbox-1",
+        "adj-opbox-2"
+      ],
+      "count": 3,
+      "label": "Strongbox adjacent chart (any type)"
+    },
+    {
+      "modIds": [
+        "voy-rare"
+      ],
+      "count": 5,
+      "label": "Increased Rares (voyage) chart"
+    }
+  ],
+  "expectedConsumed": [
+    "strategy-divine-boxes-1",
+    "strategy-divine-boxes-2",
+    "strategy-divine-boxes-3",
+    "strategy-divine-boxes-4",
+    "strategy-divine-boxes-5",
+    "strategy-divine-boxes-6",
+    "strategy-divine-boxes-7",
+    "strategy-divine-boxes-8"
+  ],
+  "expectedSurvived": [
+    "strategy-divine-boxes-0"
+  ]
+}

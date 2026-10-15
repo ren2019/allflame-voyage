@@ -9,6 +9,7 @@ import { selectPieceBank } from '../logic/pieceKeeps'
 import type { StrategyDef } from '../data/strategies'
 import { GROUP_LABEL, GROUP_ORDER, REWARD_TYPES } from '../logic/rewards'
 import { displayValue } from './Library'
+import { createSolveResultContext, isExecutableResult, type SolveResultContext } from '../logic/executable'
 
 /** how many of your best charts to hold back from a filler voyage (one full board) */
 const KEEP_BEST = 9
@@ -18,7 +19,7 @@ interface Props {
   /** curated strategy currently overriding weights, or null for manual */
   activeStrategy: StrategyDef | null
   onPatch: (p: Partial<AppState>) => void
-  onResults: (r: SolverResult[]) => void
+  onResults: (r: SolverResult[], context: SolveResultContext | null) => void
   /** rendered inside the settings popup - shows a Done button that calls this */
   onClose?: () => void
 }
@@ -34,7 +35,7 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
   // strategies' banks off wholesale (the wizard's counts stay saved)
   const availableReservations = STRATEGY_RESERVATION_OPTIONS
   const bestRegex = useMemo(
-    () => buildBestModRegex(weights, regexCap, new Set(state.disabledMods)),
+    () => buildBestModRegex(weights, regexCap, new Set(state.disabledMods), 'zh-CN'),
     [weights, regexCap, state.disabledMods],
   )
 
@@ -75,9 +76,9 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
         const lockedUids = new Set(locked.filter(Boolean).map((p) => p!.chartUid))
         const fillerPool = state.pool.filter((c) => lockedUids.has(c.uid) || !keep.has(c.uid))
         if (fillerPool.length < 9) {
-          onResults([])
+          onResults([], null)
           setSolveNote(
-            `Only ${fillerPool.length} spare chart${fillerPool.length === 1 ? '' : 's'} - need 9 outside your best ${KEEP_BEST} and locked charts to build a filler voyage.`,
+            `仅有 ${fillerPool.length} 张备用海图；需要在最佳 ${KEEP_BEST} 张和锁定海图之外另有九张，才能组成备用航程。`,
           )
           return
         }
@@ -91,11 +92,12 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
           minimizeReward: true,
           locked,
         })
-        onResults(res)
+        const context = createSolveResultContext(state, fillerPool, locked, 'filler')
+        onResults(res, context)
         setSolveNote(
-          res[0]?.valid
-            ? 'Filler voyage: lowest-value runnable board from your spare charts (your best & locked charts untouched). Results are under the board.'
-            : 'No runnable filler layout from your spare charts.',
+          res[0] && isExecutableResult(res[0], state, context)
+            ? '已用低价值备用海图组成可执行航程，保留优质和锁定海图。结果显示在摆盘下方。'
+            : '现有备用海图无法组成可执行航程。',
         )
       } finally {
         setBusy(false)
@@ -106,23 +108,23 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
   return (
     <div className="solver">
       <div className="panel-title">
-        Solver Settings
+        求解设置
         {onClose && (
           <>
             <span className="spacer" />
-            <button onClick={onClose}>Done</button>
+            <button onClick={onClose}>完成</button>
           </>
         )}
       </div>
 
       <div className="field">
-        <label>Connector rule</label>
+        <label>连接规则</label>
         <select
           value={state.mode}
           onChange={(e) => onPatch({ mode: e.target.value as ConnectivityMode })}
         >
-          <option value="strict">Connectors must line up (real rule)</option>
-          <option value="any">Ignore connectors (experiment)</option>
+          <option value="strict">连接必须对齐（实际规则）</option>
+          <option value="any">忽略连接（实验）</option>
         </select>
       </div>
 
@@ -132,17 +134,17 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
           checked={state.allowRotation}
           onChange={(e) => onPatch({ allowRotation: e.target.checked })}
         />
-        Charts can be rotated
+        允许旋转海图
       </label>
 
       <div className="field">
-        <label>Adjacent modifiers reach</label>
+        <label>相邻词缀作用范围</label>
         <select
           value={state.adjacencyMode}
           onChange={(e) => onPatch({ adjacencyMode: e.target.value as AdjacencyMode })}
         >
-          <option value="physical">Any neighbouring area</option>
-          <option value="connected">Only connected neighbours</option>
+          <option value="physical">所有相邻区域</option>
+          <option value="connected">仅连接的相邻区域</option>
         </select>
       </div>
 
@@ -152,19 +154,18 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
           checked={state.adjacentAffectsSelf}
           onChange={(e) => onPatch({ adjacentAffectsSelf: e.target.checked })}
         />
-        Adjacent modifiers also affect their own area
+        相邻词缀也作用于自身区域
       </label>
 
       {activeStrategy && (
         <div className="strat-override-note">
-          ⚑ <strong>{activeStrategy.name}</strong> is steering the solver - your manual weights
-          below are ignored while it's active.
+          ⚑ <strong>{activeStrategy.name}</strong> 正在控制求解，启用期间不使用下方手动权重。
         </div>
       )}
 
       {availableReservations.length > 0 && (
         <fieldset className="strategy-reservations">
-          <legend>Protect charts for other strategies</legend>
+          <legend>为其他策略保护海图</legend>
           {availableReservations.map((option) => (
             <label className="check" key={option.id}>
               <input
@@ -185,8 +186,7 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
             </label>
           ))}
           <div className="muted small-note">
-            Enabled categories keep their banked charts out of solve pools (counts set in the
-            library's 🔖 wizard). A strategy always spends its own banked pieces.
+            开启后，相应策略已保留的海图不进入其他策略的求解库存；数量可在库存的 🔖 向导中设置。策略仍可使用自身所需的保留材料。
           </div>
         </fieldset>
       )}
@@ -199,10 +199,10 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
         open={!activeStrategy}
       >
         <summary className="panel-title small weights-summary">
-          Reward weights{activeStrategy ? ' (overridden)' : ''}
+          奖励权重{activeStrategy ? '（由策略覆盖）' : ''}
         </summary>
         <div className="muted small-note" style={{ marginTop: 0 }}>
-          Your personal priorities - slide up what you value. Each reward is weighted on its own.
+          按个人偏好调整，每种奖励独立计权。
         </div>
         <div className={`weights ${activeStrategy ? 'weights-overridden' : ''}`}>
           {GROUP_ORDER.map((group) => {
@@ -238,29 +238,27 @@ export function SolverPanel({ state, activeStrategy, onPatch, onResults, onClose
         className="filler-btn"
         onClick={runFiller}
         disabled={busy || state.pool.length < 10}
-        title="Build a throwaway voyage from your lowest-value spare charts, keeping your best and locked charts for a real run"
+        title="用价值较低的备用海图组成航程，保留优质海图与锁定海图"
       >
-        {busy ? 'Solving…' : '🗑 Filler voyage (spare charts)'}
+        {busy ? '正在求解…' : '🗑 备用海图航程'}
       </button>
       {solveNote && <div className="muted small-note">{solveNote}</div>}
 
-      <div className="panel-title small">Best-Charts Regex</div>
+      <div className="panel-title small">优选海图搜索</div>
       <div className="muted small-note" style={{ marginTop: 0 }}>
-        Paste into the in-game chart search to highlight charts worth taking, based on your
-        weights above. No import needed. Experimental: the in-game search may or may not
-        support this syntax, we'll see once live.
+        按当前权重生成优选海图搜索表达式，无需先导入。粘贴到游戏海图搜索框使用；中文词句来自离线词库，游戏内语法和匹配效果仍需现场验证。
       </div>
       <div className="regex-row">
         <input readOnly value={bestRegex.regex} onFocus={(e) => e.target.select()} />
-        <button onClick={copyRegex}>{copied ? '✓' : 'Copy'}</button>
+        <button onClick={copyRegex}>{copied ? '✓' : '复制'}</button>
       </div>
       <div className="regex-meta">
         <span className="muted">
-          {bestRegex.included.length} mods · {bestRegex.regex.length} chars
+          {bestRegex.included.length} 条词缀 · {bestRegex.regex.length} 字符
         </span>
         <span className="spacer" />
         <label className="muted">
-          max{' '}
+          长度上限{' '}
           <select value={regexCap} onChange={(e) => setRegexCap(parseInt(e.target.value, 10))}>
             <option value={50}>50</option>
             <option value={250}>250</option>

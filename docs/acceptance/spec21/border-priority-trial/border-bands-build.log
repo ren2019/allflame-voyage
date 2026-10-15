@@ -1,0 +1,20 @@
+
+> allflame-voyage-solver@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 99 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                             0.41 kB │ gzip:   0.32 kB
+dist/assets/CalibrationPage-DisZqHER.css   10.94 kB │ gzip:   2.60 kB
+dist/assets/index-Dh_yvYze.css             54.20 kB │ gzip:  11.49 kB
+dist/assets/CalibrationPage-75KAwAt4.js    17.95 kB │ gzip:   8.16 kB
+dist/assets/index-DHRVIqfU.js             664.98 kB │ gzip: 137.89 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 432ms

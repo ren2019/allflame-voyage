@@ -1,0 +1,350 @@
+{
+  "pool": [
+    {
+      "uid": "strategy-meatfish-0",
+      "name": "人工验收 稀有怪传说装 0 海图",
+      "level": 83,
+      "edges": [
+        false,
+        false,
+        true,
+        true
+      ],
+      "modIds": [
+        "voy-possess"
+      ],
+      "areaType": "sea-pillars",
+      "implicitText": "所有航行区域的稀有怪物有 100% 的几率被附身",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ],
+      "preserved": true
+    },
+    {
+      "uid": "strategy-meatfish-1",
+      "name": "人工验收 稀有怪传说装 1 海图",
+      "level": 83,
+      "edges": [
+        false,
+        true,
+        true,
+        true
+      ],
+      "modIds": [
+        "adj-star-1"
+      ],
+      "implicitText": "相邻区域包含 (4—5) 个额外巨型海星",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ]
+    },
+    {
+      "uid": "strategy-meatfish-2",
+      "name": "人工验收 稀有怪传说装 2 海图",
+      "level": 83,
+      "edges": [
+        false,
+        false,
+        true,
+        true
+      ],
+      "modIds": [
+        "adj-lantern"
+      ],
+      "implicitText": "相邻区域包含 4 个额外黄金灯笼",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ]
+    },
+    {
+      "uid": "strategy-meatfish-3",
+      "name": "人工验收 稀有怪传说装 3 海图",
+      "level": 83,
+      "edges": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "modIds": [
+        "voy-noequip"
+      ],
+      "implicitText": "所有航行区域中的怪物无法掉落装备、药剂或酊剂",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ]
+    },
+    {
+      "uid": "strategy-meatfish-4",
+      "name": "人工验收 稀有怪传说装 4 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "modIds": [
+        "adj-lantern"
+      ],
+      "implicitText": "相邻区域包含 4 个额外黄金灯笼",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ]
+    },
+    {
+      "uid": "strategy-meatfish-5",
+      "name": "人工验收 稀有怪传说装 5 海图",
+      "level": 83,
+      "edges": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "modIds": [
+        "adj-pantheon"
+      ],
+      "implicitText": "相邻区域的稀有怪物将带有众神词缀",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ]
+    },
+    {
+      "uid": "strategy-meatfish-6",
+      "name": "人工验收 稀有怪传说装 6 海图",
+      "level": 83,
+      "edges": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ]
+    },
+    {
+      "uid": "strategy-meatfish-7",
+      "name": "人工验收 稀有怪传说装 7 海图",
+      "level": 83,
+      "edges": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "modIds": [
+        "adj-star-1"
+      ],
+      "implicitText": "相邻区域包含 (4—5) 个额外巨型海星",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ]
+    },
+    {
+      "uid": "strategy-meatfish-8",
+      "name": "人工验收 稀有怪传说装 8 海图",
+      "level": 83,
+      "edges": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "modIds": [
+        "voy-sulph-1"
+      ],
+      "areaType": "sea-pillars",
+      "implicitText": "所有航行区域中找到的亡者硫磺提高 15%",
+      "rewards": [
+        {
+          "stat": "quantity",
+          "percent": 150
+        },
+        {
+          "stat": "sulphur",
+          "percent": 80
+        }
+      ]
+    }
+  ],
+  "board": [
+    {
+      "chartUid": "strategy-meatfish-0",
+      "rotation": 3
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "borders": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "weights": {
+    "self:quant": 5,
+    "self:sulph": 4,
+    "self:rarity": 1,
+    "self:pack": 3,
+    "self:gold": 3,
+    "adjacent:ess": 4,
+    "adjacent:box": 4,
+    "adjacent:octo": 3,
+    "adjacent:crab": 3,
+    "adjacent:magic": 2,
+    "adjacent:rare": 4,
+    "adjacent:msg": 4,
+    "adjacent:fish": 4,
+    "adjacent:wisps": 5,
+    "adjacent:atziri": 4,
+    "adjacent:gold": 3,
+    "adjacent:spirit": 3,
+    "adjacent:divbox": 6,
+    "adjacent:arcbox": 10,
+    "adjacent:opbox": 6,
+    "adjacent:barrel": 4,
+    "adjacent:star": 3,
+    "adjacent:lantern": 4,
+    "adjacent:pantheon": 4,
+    "adjacent:uring": 3,
+    "adjacent:uamu": 3,
+    "adjacent:ubelt": 3,
+    "voyage:pack": 3,
+    "voyage:quant": 5,
+    "voyage:rarity": 1,
+    "voyage:sulph": 4,
+    "voyage:rare": 4,
+    "voyage:magic": 2,
+    "voyage:minmagic": 2,
+    "voyage:possess": 3,
+    "voyage:essence": 4,
+    "voyage:fracture": 4,
+    "border:pack": 3,
+    "border:minmagic": 2,
+    "border:rare": 4,
+    "border:beasts": 3,
+    "border:crabs": 3,
+    "border:drowned": 3,
+    "border:keep": 3,
+    "border:octoboss": 4,
+    "border:lanterns": 4,
+    "border:ancient": 10,
+    "border:divine": 10,
+    "border:exalt": 10,
+    "border:annul": 10,
+    "border:chaos": 10,
+    "border:vaal": 10,
+    "border:gcp": 10,
+    "border:chrome": 10,
+    "border:regret": 10,
+    "border:blessed": 10,
+    "border:regal": 10,
+    "border:support": 10,
+    "border:locker": 4,
+    "border:pirates": 3,
+    "border:quantconn": 5,
+    "border:gold": 3,
+    "border:decks": 6,
+    "border:scarabdrop": 6,
+    "border:curr": 10,
+    "border:scarab": 6,
+    "border:rarity": 1,
+    "border:crabboss": 4,
+    "border:exp": 2,
+    "border:magicmods": 2,
+    "border:anchor": 4,
+    "border:sulphdrop": 4,
+    "border:goldlantern": 4,
+    "border:izaro": 4
+  },
+  "mode": "strict",
+  "allowRotation": true,
+  "adjacencyMode": "physical",
+  "adjacentAffectsSelf": false,
+  "disabledMods": [],
+  "strategyId": "milky-meatfish",
+  "strategyReservations": {
+    "divine": true,
+    "meatfish": true,
+    "ethereal": true
+  },
+  "pieceKeeps": {},
+  "layoutChoice": {},
+  "centerChoice": {}
+}

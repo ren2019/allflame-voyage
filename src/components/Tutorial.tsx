@@ -16,91 +16,66 @@ interface Step {
 
 const STEPS: Step[] = [
   {
-    icon: '🗺️',
-    title: 'What this site does',
-    where: 'The whole page, left to right: Library → Board → Strategies',
-    target: 'main',
+    icon: '🗺️', title: '这个工具能做什么', where: '左侧库存，中间摆盘，右侧选择策略并查看玩法', target: 'main',
     body: [
-      'The Voyage board takes 9 charts. Where each chart sits decides what its modifiers touch - adjacent bonuses shoot into neighbouring squares, border rolls only pay out on the tiles they touch, and connectors have to line up or the voyage will not run.',
-      'This site keeps your chart collection, knows the real placement rules, and finds the best runnable board for you - either with your own priorities or with a curated community strategy.',
+      '九张海图组成一次航程。海图位置决定词缀作用范围：相邻效果覆盖邻格，边界只作用于直接接触的格子；连接必须匹配才能运行。',
+      '工具管理海图库存，并按你的奖励权重或社区策略寻找可执行摆盘。',
     ],
   },
   {
-    icon: '📥',
-    title: 'Get your charts in',
-    where: 'Chart Library (left column) and the Import panel below it',
-    target: '.library-col',
+    icon: '📥', title: '导入海图库存', where: '左侧海图库存及下方导入面板', target: '.library-col',
     body: [
-      'Ctrl+C a chart in game, then Ctrl+V anywhere on this page. It imports instantly - name, level, modifiers, shape, everything - and re-pasting a chart you already imported is skipped automatically.',
-      'Big library? The optional chart collector (Import panel) counts your own Ctrl+C copies with an on-screen tally and imports them all in one paste - it sends zero inputs to the game. Works with English and Korean clients.',
-      'Rare charts trigger a golden alert so you know Divine fuel arrived.',
+      '在国服游戏中 Ctrl+Alt+C 高级复制已测绘海图，再在本页 Ctrl+V 导入。名称、区域等级、奖励、航行词缀和形状会一并读取，重复扫描按原版规则跳过。',
+      '可一次粘贴多张海图。原版英文/韩文采集器仅保留为参考，未做国服采集或 OCR 适配；国服使用手动复制。',
+      '导入稀有怪物类型海图时会出现醒目提示，提醒你保留神圣石策略材料。',
     ],
   },
   {
-    icon: '🧭',
-    title: 'Enter your borders',
-    where: 'The board (middle) - the small slots around its edge',
-    target: '.board-grid',
+    icon: '🧭', title: '填写十二个边界', where: '中间摆盘外圈的小槽位', target: '.board-grid',
     body: [
-      'Border modifiers (Corruption Currents) only affect the tiles they touch, so the solver needs to know them.',
-      'Click any border slot and search for the modifier. Corners touch 2 tiles, edges 1 - all 12 take about a minute.',
-      'Faster: with the collector running (Import panel), hold Alt in game and press F8 - all 12 tooltips are read from a screenshot with local OCR and pasted in one go. Zero inputs to the game.',
-      'Watch for the jackpot: a "+1 Divine Orb per Rare Monster" border turns a rares board into a money printer - the site flags it loudly when you enter one.',
+      '边界只作用于直接接触的海图格，因此求解前需要填写当前边界。',
+      '点击任一边界槽位，搜索并选择词缀。四角每格接触两个边界，边中格各接触一个，中心没有直接边界。',
+      '发现“稀有怪物额外掉落神圣石”边界时，可以考虑对应神圣石策略；界面会显示材料是否齐备。',
     ],
   },
   {
-    icon: '⚑',
-    title: 'Pick a strategy (or go manual)',
-    where: 'Strategies (right column)',
-    target: '.strategies',
+    icon: '⚑', title: '选择策略或手动配置', where: '右侧策略按钮与下方玩法说明', target: '.strategies',
     body: [
-      'Curated community builds: Alc & Go for burning spares, Speedrun Strongboxes as the daily farm, Meatfish and Magic Ethereal as the juiced boards, and two Divine-border jackpot builds.',
-      'Each card shows the guide, the in-game rolling regexes, and whether you actually have the pieces - if not, it tells you what is missing and what to run in the meantime.',
-      'Prefer your own priorities? Stay on "None (manual)" and set per-reward weights in Solver Settings.',
+      '沿用七个社区策略：普通速刷、锚地垂钓、保险箱速刷、肉鱼、魔法虚灵和两类神圣石边界策略。',
+      '策略按钮下显示玩法摘要与材料状态，右侧提供完整说明及搜索参考。材料不足时会列出缺项；偏好与硬性要求仍按原版规则区分。',
+      '希望自行安排奖励优先级时，选择手动模式并在求解设置调整权重。',
     ],
   },
   {
-    icon: '🔖',
-    title: 'Bank your keeper charts',
-    where: 'Chart Library → "Save charts for strategies…"',
-    target: '.savefor-bar',
+    icon: '🔖', title: '为策略保留海图', where: '库存 → 为策略保留海图', target: '.savefor-bar',
     body: [
-      'The keep-count wizard walks each strategy\'s recommended chart types with a "keep X" stepper - the solver banks your best X of each and spends everything beyond that.',
-      'Banked charts wear a 🔒 naming their strategy, never get burned by other solves or filler voyages, and are always available when their own strategy runs.',
-      'Defaults match what each strategy actually needs, so you can skip this entirely and it just works.',
+      '保留向导按策略逐类设置数量。求解器保留每类价值最高的指定数量，超出的海图可正常使用；设为零表示不保留。',
+      '保留海图在库存显示 🔒 和对应策略，其他求解不会使用它们；对应策略仍可按原有规则使用。',
+      '默认数量依照各策略需要，可保持默认，也可随时调整。',
     ],
   },
   {
-    icon: '⚙',
-    title: 'Solve',
-    where: 'The big gold button under the board',
-    target: '.solve-bar',
+    icon: '⚙', title: '求解并选择候选', where: '摆盘下方的求解按钮', target: '.solve-bar',
     body: [
-      'Press Solve. The best runnable board loads instantly; four alternatives sit beside it as cards - click any to load it.',
-      'Every suggestion obeys the real rules: connectors match, all 9 squares filled, everything reachable from the ⚓ start.',
-      'The ⚙ Settings button beside it holds connector rules, reward weights, protections and the filler-voyage builder (a throwaway board from your worst spares).',
+      '点击求解后，最佳候选会载入摆盘，旁边显示其他候选。点击候选可载入其海图实例和朝向。',
+      '执行前检查可执行标记：九格填满、连接匹配且从左下起点可达；不完整或连接无效的方案仅作参考。',
+      '设置按钮包含连接规则、奖励权重、保留保护、填充航程和优选海图搜索。',
     ],
   },
   {
-    icon: '📋',
-    title: 'Copy it into the game',
-    where: '"Copy into game" under the results',
-    target: '.voyage-finish',
+    icon: '📋', title: '按顺序放入游戏', where: '候选下方的游戏内放置指南', target: '.voyage-finish',
     body: [
-      'The game fills the board bottom-left first - this walks your board in exactly that order.',
-      'Each step copies an in-game search string for the right chart: paste it in your chart inventory, Ctrl+click the chart it highlights, press Ctrl+C here to advance. Nine charts, no mistakes.',
-      'Lock a chart to a square first? Mark it 🔒 preserved on the tile and every future solve pins it exactly there.',
+      '指南按左下、中下、右下、左中、正中、右中、左上、中上、右上的顺序推进。',
+      '每步复制当前海图的游戏内搜索文本。在游戏中粘贴搜索，并 Ctrl+左键放置找到的海图，再在本页点击复制并下一步或按 Ctrl+C。复制不会核销库存。',
+      '在摆盘中标记 🔒 保留的海图后，后续求解会固定其位置和朝向。',
     ],
   },
   {
-    icon: '🌊',
-    title: 'Run it, finish it, repeat',
-    where: '"Finish Voyage" - then 📋 Plan (next to Solve) for the big picture',
-    target: '.solve-bar',
+    icon: '🌊', title: '完成航程，再次规划', where: '完成航程按钮及求解旁的航程计划', target: '.solve-bar',
     body: [
-      'After the voyage, press Finish Voyage (next to Copy into game): it consumes the board charts and asks, one by one, which preserved charts actually survived.',
-      'The 📋 Plan button beside Solve sequences your whole library into a run order - juiced boards when ready, Speedruns while centre charts last, Alc & Go with the rest.',
-      'The Updates button up top lists everything new. Good luck out there - may every border be Divine.',
+      '实际航程结束后点击完成航程，逐张确认保留海图是否存活。只移除本盘使用且未存活的实例；未使用库存保持保留。',
+      '核销后摆盘清空，边界和配置保留。补充海图、更新边界即可规划下一航程；航程计划可查看整个库存的运行顺序建议。',
+      '同一浏览器和地址会自动保存规划；右上方“导出规划备份／恢复规划备份”可保存与恢复库存、摆盘、边界、设置及航程历史。更新记录可查看原版历史功能。',
     ],
   },
 ]
@@ -176,7 +151,7 @@ export function Tutorial({ onClose }: Props) {
         </div>
         <div className="sw-actions">
           <button disabled={step === 0} onClick={() => setStep((x) => x - 1)}>
-            ← Back
+            ← 上一步
           </button>
           <span className="spacer" />
           <span className="muted tut-count">
@@ -185,12 +160,12 @@ export function Tutorial({ onClose }: Props) {
           <span className="spacer" />
           {!last && (
             <button className="primary tut-next" onClick={() => setStep((x) => x + 1)}>
-              Next →
+              下一步 →
             </button>
           )}
           {last && (
             <button className="primary tut-next" onClick={onClose}>
-              ⚓ Set sail
+              ⚓ 开始规划
             </button>
           )}
         </div>

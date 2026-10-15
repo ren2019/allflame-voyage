@@ -3,6 +3,13 @@
 Planner + auto-solver for the **Voyage Board** in Path of Exile 3.29 *Curse of the
 Allflame*. 
 
+国服个人内网版的Mac启动/停止、固定HTTPS地址和Windows Edge证书及现场
+验收步骤见 [手动内网部署](docs/local-deployment.md)。
+
+本 fork 的日常代码在 `main`；原英文仓库通过 `upstream` 保留为上游。
+后续更新请按 [同步上游](docs/upstream-sync.md) 合并，保留国服改动和提交历史。
+当前使用内网 HTTPS；本次不启用 GitHub Pages，原工作流保留供以后单独配置。
+
 ## Features
 
 - 3×3 Voyage Board with the 12 border-modifier segments (corners get 2, edges 1, center 0)

@@ -1,3 +1,4 @@
+import { TEXT_LIBRARY } from './textLibrary'
 import type { ChartAreaType } from '../types'
 
 export interface ChartAreaDefinition {
@@ -62,6 +63,14 @@ const chartAreaByAlias = new Map<string, ChartAreaType>()
 for (const area of CHART_AREAS) {
   chartAreaByAlias.set(normalize(area.english), area.id)
   chartAreaByAlias.set(normalize(area.korean), area.id)
+}
+// Acquired source-only candidates and real-client calibrated names share the
+// existing destination IDs. Conflicting, missing and unmatched records stay out.
+for (const record of TEXT_LIBRARY.records) {
+  if (record.kind !== 'destination' || !record.cnText ||
+      !['confirmed', 'source-only'].includes(record.status)) continue
+  const area = CHART_AREAS.find((area) => area.id === record.internalId)
+  if (area) chartAreaByAlias.set(normalize(record.cnText), area.id)
 }
 
 /** Exact localized-name lookup; unknown future destinations remain undefined. */

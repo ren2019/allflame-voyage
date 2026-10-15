@@ -1,0 +1,38 @@
+[WebServer] (node:84094) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:84096) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[DEBUG-card-overlap] minimal [{"cards":1,"cardWidth":88,"stride":null,"overlap":0},{"cards":2,"cardWidth":88,"stride":82,"overlap":6}]
+  ✘  1 tests/browser/.inventory-overlap-probe.spec.ts:5:1 › 最小两张空白海图复现相邻卡片重叠 (347ms)
+
+
+  1) tests/browser/.inventory-overlap-probe.spec.ts:5:1 › 最小两张空白海图复现相邻卡片重叠 ─────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 6
+
+      17 |   console.log('[DEBUG-card-overlap] minimal', JSON.stringify(results))
+      18 |   expect(results[0].overlap).toBe(0)
+    > 19 |   expect(results[1].overlap).toBe(0)
+         |                              ^
+      20 | })
+      21 |
+        at /Users/steipete/Projects/allflame-voyage/tests/browser/.inventory-overlap-probe.spec.ts:19:30
+
+    Error Context: test-results/.inventory-overlap-probe-最小两张空白海图复现相邻卡片重叠/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/.inventory-overlap-probe-最小两张空白海图复现相邻卡片重叠/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/.inventory-overlap-probe-最小两张空白海图复现相邻卡片重叠/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/browser/.inventory-overlap-probe.spec.ts:5:1 › 最小两张空白海图复现相邻卡片重叠 ──────────────────────────

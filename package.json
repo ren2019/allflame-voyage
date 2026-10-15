@@ -8,13 +8,24 @@
     "build": "tsc --noEmit && vite build",
     "test": "vitest run && npm run test:border-ocr",
     "test:border-ocr": "node tests/border-ocr-regression.cjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:browser": "playwright test",
+    "site:init": "node scripts/local-site.mjs init",
+    "site:start": "node scripts/local-site.mjs start",
+    "site:stop": "node scripts/local-site.mjs stop",
+    "site:status": "node scripts/local-site.mjs status",
+    "site:update": "node scripts/local-site.mjs update",
+    "test:deployment": "node --test tests/deployment/local-site.test.mjs",
+    "test:https": "node tests/deployment/verify-browser.mjs",
+    "test:windows": "node tests/deployment/verify-windows-edge.mjs",
+    "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",

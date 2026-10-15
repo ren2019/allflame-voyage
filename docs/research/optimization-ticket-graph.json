@@ -1,0 +1,142 @@
+{
+  "parent": "https://github.com/ren2019/allflame-voyage/issues/21",
+  "verifiedAt": "2026-10-15T05:35:07.971325+00:00",
+  "tickets": [
+    {
+      "number": 19,
+      "id": 5859809472,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/19",
+      "title": "极简明暗主题与全局入口同步",
+      "role": "ready-for-agent",
+      "bodySha256": "ae6e81ce917f4e0ddaa1918a86dd433e7620553a804c2d24d9f41fcb4e1b960c"
+    },
+    {
+      "number": 13,
+      "id": 5858304768,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/13",
+      "title": "默认简洁的校准模式与清晰库存预留标记",
+      "role": "ready-for-agent",
+      "bodySha256": "13f590c35b2307911de96469022685a7daa2cbec798fe3a3221ee04f629b3ae7"
+    },
+    {
+      "number": 20,
+      "id": 5859809745,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/20",
+      "title": "搜索参考的小复制图标与完整正则弹窗",
+      "role": "ready-for-agent",
+      "bodySha256": "eff221acd5974ea376fb16ee8217b76d6b41492563f6cd6df199a50f21b59c67"
+    },
+    {
+      "number": 14,
+      "id": 5858406409,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/14",
+      "title": "配置驱动的四槽区域目标overlay与同类合并",
+      "role": "ready-for-agent",
+      "bodySha256": "bf02892b83cc1294a2f08adc2686f622747e045ffe481f1b9d2a3fbcb153cd91"
+    },
+    {
+      "number": 15,
+      "id": 5858593504,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/15",
+      "title": "无需库存的留图助手：每策略一条完整正则",
+      "role": "ready-for-agent",
+      "bodySha256": "fa71f9ba715992e4b2a76f90a2e24904c2f1ff9db82291876148aa88e4abc6a4"
+    },
+    {
+      "number": 16,
+      "id": 5858720881,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/16",
+      "title": "按策略与十二条边界展示边界适配分",
+      "role": "ready-for-agent",
+      "bodySha256": "5aff11b410c44f38c73caed4b1d0c4d453e6c22feb4e81945191b95d17a9145a"
+    },
+    {
+      "number": 22,
+      "id": 5860709891,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/22",
+      "title": "完成航程后可查看并恢复一次性历史记录",
+      "role": "ready-for-agent",
+      "bodySha256": "7f9b2fa5092dd8a701256b904379ab852b1dcd387971dc10f95b1f42e2bf0fe8"
+    },
+    {
+      "number": 17,
+      "id": 5858736280,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/17",
+      "title": "以最近同口径航程分布提示当前摆盘质量",
+      "role": "ready-for-agent",
+      "bodySha256": "ed5249d4553b709821f61153cfbf9b6d025a50dd0fed4626dee93251554caa6a"
+    },
+    {
+      "number": 23,
+      "id": 5860710671,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/23",
+      "title": "跨功能规划闭环与Windows Edge原生验收",
+      "role": "ready-for-agent",
+      "bodySha256": "84a3bc473a3c0a642c74f6009491cb8c9381a575f82c751f33bd891dddf0d8f1"
+    },
+    {
+      "number": 24,
+      "id": 5860710990,
+      "url": "https://github.com/ren2019/allflame-voyage/issues/24",
+      "title": "国服游戏搜索与区域目标的人工现场验收",
+      "role": "ready-for-human",
+      "bodySha256": "4e2b698670475d36a3320b7d50a4ad0dfcc26572b549fc206b37408847bd51dd"
+    }
+  ],
+  "nativeEdges": [
+    {
+      "blocker": 20,
+      "blocked": 15
+    },
+    {
+      "blocker": 22,
+      "blocked": 17
+    },
+    {
+      "blocker": 19,
+      "blocked": 23
+    },
+    {
+      "blocker": 13,
+      "blocked": 23
+    },
+    {
+      "blocker": 14,
+      "blocked": 23
+    },
+    {
+      "blocker": 15,
+      "blocked": 23
+    },
+    {
+      "blocker": 16,
+      "blocked": 23
+    },
+    {
+      "blocker": 17,
+      "blocked": 23
+    },
+    {
+      "blocker": 23,
+      "blocked": 24
+    }
+  ],
+  "frontierAtPublication": [
+    19,
+    13,
+    20,
+    14,
+    16,
+    22
+  ],
+  "parentBodySha256": "42a7d036d2e8288cd4622c3aeb8ae1b963fa48b49a08a017f86f69b956adcaa8",
+  "checks": {
+    "liveBodiesTitlesRolesAndStates": true,
+    "exactChildSet": true,
+    "exactNativeDependencies": true,
+    "parentContentAndRoleUnchanged": true,
+    "sourceIssues12And18Unchanged": true,
+    "all62StoriesCovered": true
+  },
+  "scope": "Ticket publication only; product implementation and deployment not changed."
+}

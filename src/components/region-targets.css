@@ -1,0 +1,194 @@
+/* Region reminders use independent display priorities; original game art keeps its colours. */
+.region-target-control { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 3px; font-size: 12px; }
+.region-target-control-label { color: var(--muted); margin-right: 3px; }
+.region-target-choice { position: relative; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px; background: var(--panel); color: var(--text); }
+.region-target-choice.active { border-color: var(--accent); background: var(--panel2); color: var(--accent); }
+.region-target-choice input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; padding: 0; border: 0; cursor: pointer; z-index: 1; }
+.region-target-choice:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.region-targets {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: calc(100% - 22px);
+  max-width: 155px;
+  z-index: 4;
+  cursor: default;
+}
+.region-target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 34px;
+  padding: 3px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+}
+.region-target img,
+.region-vector {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.region-vector {
+  background: currentColor;
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+.band-high,
+.band-medium,
+.band-low {
+  --region-band-color: var(--region-band-color-dark);
+  --region-band-bg: var(--region-band-bg-dark);
+  color: var(--region-band-color);
+}
+.region-target {
+  background: var(--region-band-bg, var(--panel));
+}
+.region-target:focus-visible,
+.region-target-empty:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+.region-more {
+  font-size: 20px;
+  color: var(--text);
+}
+.region-target-empty {
+  font-size: 11px;
+  color: var(--muted);
+  padding: 3px 7px;
+  background: var(--panel);
+}
+.region-details {
+  width: min(600px, calc(100vw - 30px));
+  max-height: 85vh;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  background: var(--panel);
+}
+.region-details::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+.region-details-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.region-details h2 {
+  margin: 0;
+  font-size: 18px;
+}
+.region-details h3 {
+  font-size: 15px;
+}
+.region-details h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  color: var(--text);
+}
+.region-detail-group {
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+  padding-top: 8px;
+}
+.region-details article p,
+.region-details li {
+  color: var(--text);
+  font-size: 13px;
+}
+.region-details details {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 12px 0;
+}
+.region-details summary {
+  cursor: pointer;
+}
+:root[data-theme='light'] :is(.band-high, .band-medium, .band-low) {
+  --region-band-color: var(--region-band-color-light);
+  --region-band-bg: var(--region-band-bg-light);
+}
+.region-target:hover {
+  color: var(--region-band-color, var(--text));
+  background: var(--region-band-bg, var(--panel));
+  border-color: currentColor;
+}
+@media (max-width: 500px) {
+  .region-targets {
+    gap: 3px;
+    width: calc(100% - 12px);
+    max-width: 75px;
+  }
+  .region-target {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+  }
+  .region-target img,
+  .region-target .region-vector {
+    width: 24px;
+    height: 24px;
+  }
+  .region-details {
+    padding: 14px;
+  }
+}
+
+/* Keep the provider summary above the central reminder row. Full wording remains in the tile tooltip. */
+.tile.with-region-targets .tile-duo {
+  left: 5px;
+  right: 5px;
+  max-height: 38px;
+}
+.tile.with-region-targets .tile-duo-col {
+  min-width: 0;
+  width: 100%;
+}
+.tile.with-region-targets .tile-duo-pct {
+  display: block;
+  font-size: 13px;
+  line-height: 1.15;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tile.with-region-targets .tile-duo-label {
+  font-size: 10px;
+  white-space: nowrap;
+}
+.tile.with-region-targets .tile-duo-text {
+  font-size: 11px;
+  line-height: 1.2;
+  max-height: 28px;
+  overflow: hidden;
+}
+@media (max-width: 500px) {
+  .board-grid .tile.with-region-targets {
+    min-height: 150px;
+  }
+  .tile.with-region-targets .tile-duo-pct {
+    font-size: 11px;
+  }
+  .tile.with-region-targets .tile-start {
+    bottom: 22px;
+    font-size: 9px;
+  }
+  .tile.with-region-targets .tile-duo-text {
+    font-size: 10px;
+  }
+}

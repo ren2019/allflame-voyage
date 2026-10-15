@@ -1,4 +1,9 @@
+import { createVoyageRecord, voyagesNewestFirst } from './logic/voyageHistory'
+import { saveTheme } from './logic/theme'
+import { CalibrationMode } from './components/CalibrationLink'
+import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { VoyageComparison } from './components/VoyageComparison'
 import { BoardView } from './components/Board'
 import { ModBrowser } from './components/ModBrowser'
 import { Onboarding } from './components/Onboarding'
@@ -6,6 +11,8 @@ import { TooltipLayer } from './components/Tooltip'
 import { generateDemoCharts } from './logic/demo'
 import { buildChartSearch, buildSingleChartSearch } from './logic/regex'
 import { ImportPanel } from './components/ImportPanel'
+import { PlanningBackup } from './components/PlanningBackup'
+import { KeeperAssistant } from './components/KeeperAssistant'
 import { Library } from './components/Library'
 import { SolverPanel } from './components/SolverPanel'
 import { SolveBar } from './components/SolveBar'
@@ -14,13 +21,16 @@ import { LATEST_UPDATE_DATE } from './data/updates'
 import { SessionPlanner } from './components/SessionPlanner'
 import { SaveWizard } from './components/SaveWizard'
 import { Tutorial } from './components/Tutorial'
-import { borderModById, voyageModById } from './data/mods'
+import { chartShapeLabel, voyageModShort, voyageModText } from './data/localization'
+import { localizedBorder } from './data/borderLocale'
+import { BORDER_MODS, borderModById, voyageModById } from './data/mods'
 import { strategyById } from './data/strategies'
-import { StrategiesPanel, pieceStatus } from './components/StrategiesPanel'
+import { StrategiesPanel, StrategyGuide, pieceStatus } from './components/StrategiesPanel'
 import { scoreBoard } from './logic/scoring'
 import { checkConnectivity } from './logic/connectivity'
 import type { SolverResult } from './logic/solver'
-import { decodeShare, defaultState, encodeShare, loadLocal, saveLocal, type AppState } from './logic/storage'
+import type { SolveResultContext } from './logic/executable'
+import { decodeShare, defaultState, encodeShare, loadLocalWithStatus, saveLocal, type AppState } from './logic/storage'
 import type { ChartData } from './types'
 import { ALL_STATS, STAT_LABELS, borderTouches, emptyBoard } from './types'
 
@@ -32,19 +42,21 @@ const isNotable = (text: string) => !/^\d+% (increased|more|reduced) /i.test(tex
  *  acceptable, and no tool is worth anyone's account) */
 const AHK_RETIRED_KEY = 'announce-ahk-retired'
 /** issues live here - linked from the header and the update popup */
-const ISSUES_URL = 'https://github.com/one-more-map/one-more-map.github.io/issues'
+const ISSUES_URL = 'https://github.com/ren2019/allflame-voyage/issues'
 
-function initialState(): AppState {
+function initialState(): { state: AppState; damagedHistory: boolean } {
   const hash = window.location.hash.replace(/^#/, '')
   if (hash.length > 20) {
     const shared = decodeShare(hash)
-    if (shared) return shared
+    if (shared) return { state: shared, damagedHistory: false }
   }
-  return loadLocal() ?? defaultState()
+  const restored = loadLocalWithStatus()
+  return { state: restored.state ?? defaultState(), damagedHistory: restored.damagedHistory }
 }
 
 export default function App() {
-  const [state, setState] = useState<AppState>(initialState)
+  const [startup] = useState(initialState)
+  const [state, setState] = useState<AppState>(startup.state)
   const [showOnboarding, setShowOnboarding] = useState<boolean>(() => {
     try {
       return !localStorage.getItem('onboarding-seen')
@@ -60,6 +72,7 @@ export default function App() {
       /* ignore */
     }
   }
+  const [calibrationMode, setCalibrationMode] = useState(false)
   const [showMods, setShowMods] = useState(false)
   // one-time importer-retired popup - returning visitors only (first-timers
   // never had the script, so mark it seen for them)
@@ -105,6 +118,9 @@ export default function App() {
     }
   }
   const [voyageMsg, setVoyageMsg] = useState('')
+  const [storageFailed, setStorageFailed] = useState(false)
+  const latestVoyage = useMemo(() => voyagesNewestFirst(state.voyageHistory)[0], [state.voyageHistory])
+  const completion = useRef<{ id: string; committed: boolean; board: AppState['board'] } | null>(null)
   const [preserveConfirm, setPreserveConfirm] = useState<{
     charts: ChartData[]
     index: number
@@ -113,22 +129,23 @@ export default function App() {
   // guided "copy into game": walk the board in the in-game Ctrl+click fill order
   // (bottom-left, then right, then up a row): board cells 6,7,8, 3,4,5, 0,1,2
   const [copySeq, setCopySeq] = useState<{ order: number[]; step: number } | null>(null)
-  const [harvestTheme, setHarvestTheme] = useState(() =>
-    document.body.classList.contains('theme-harvest'),
-  )
-  const toggleTheme = () => {
-    const next = !harvestTheme
-    setHarvestTheme(next)
-    document.body.classList.toggle('theme-harvest', next)
-    try {
-      localStorage.setItem('theme', next ? 'harvest' : 'allflame')
-    } catch {
-      /* ignore */
+  const [lightTheme, setLightTheme] = useState(() => document.documentElement.dataset.theme === 'light')
+  useEffect(() => {
+    const syncTheme = (event: StorageEvent) => {
+      if (event.key === 'theme') setLightTheme(document.documentElement.dataset.theme === 'light')
     }
+    window.addEventListener('storage', syncTheme)
+    return () => window.removeEventListener('storage', syncTheme)
+  }, [])
+  const toggleTheme = () => {
+    const next = !lightTheme
+    setLightTheme(next)
+    saveTheme(next ? 'light' : 'dark')
   }
   const [selectedChart, setSelectedChart] = useState<string | null>(null)
   const [selectedCell, setSelectedCell] = useState<number | null>(null)
   const [results, setResults] = useState<SolverResult[]>([])
+  const [resultContext, setResultContext] = useState<SolveResultContext | null>(null)
   // which solver result is currently loaded on the board (highlights its card)
   const [appliedIdx, setAppliedIdx] = useState<number | null>(null)
   const [shareMsg, setShareMsg] = useState('')
@@ -137,7 +154,8 @@ export default function App() {
   // debounced autosave
   useEffect(() => {
     window.clearTimeout(saveTimer.current)
-    saveTimer.current = window.setTimeout(() => saveLocal(state), 300)
+    saveTimer.current = window.setTimeout(() => setStorageFailed(!saveLocal(state)), 300)
+    return () => window.clearTimeout(saveTimer.current)
   }, [state])
 
   const chartMap = useMemo(() => new Map(state.pool.map((c) => [c.uid, c])), [state.pool])
@@ -167,23 +185,19 @@ export default function App() {
     [state.board, chartMap, state.mode],
   )
 
-  // jackpot detection (Milky: the mechanic's only two real jackpots) - flag
-  // them loudly and offer the matching strategy in one click. Each banner
-  // runs the SAME requirements check as the strategy card, so it can never
-  // say "switch!" while the card says "wait" (issue #38)
+  // Recommendations reuse the strategy material check. Viewing or choosing one
+  // never reserves charts, applies a solver result, or completes a voyage.
   const jackpots = useMemo(() => {
-    const out: { piece: string; action: string; strategyId: string; missing: string[] }[] = []
+    const out: { piece: string; strategyId: string; missing: string[] }[] = []
     if (state.pool.some((c) => c.modIds.includes('voy-noequip')))
       out.push({
-        piece: '"Monsters cannot drop Equipment" chart in your library',
-        action: 'build the Meatfish board around it',
+        piece: '库存中有“怪物无法掉落装备”海图',
         strategyId: 'milky-meatfish',
         missing: [],
       })
     if (state.borders.includes('b-divine'))
       out.push({
-        piece: '"+1 Divine Orb per Rare" border rolled',
-        action: 'park a Sea-Pillar on it and feed it Strongboxes',
+        piece: '边界有“稀有怪物额外掉落神圣石”',
         strategyId: 'divine-border-rares',
         missing: [],
       })
@@ -230,7 +244,7 @@ export default function App() {
     state.borders.forEach((id, seg) => {
       if (!id || !state.board[borderTouches(seg)]) return
       const mod = borderModById.get(id)
-      if (mod && isNotable(mod.text)) add(mod.id, mod.short ?? mod.text, mod.text)
+      if (mod && isNotable(mod.text)) add(mod.id, localizedBorder(mod.id)?.short ?? '边界效果', localizedBorder(mod.id)?.text ?? '边界效果')
     })
     state.board.forEach((p) => {
       if (!p) return
@@ -238,7 +252,7 @@ export default function App() {
       if (!chart) return
       for (const modId of chart.modIds) {
         const mod = voyageModById.get(modId)
-        if (mod && isNotable(mod.text)) add(mod.id, mod.text, mod.text)
+        if (mod && isNotable(mod.text)) add(mod.id, voyageModShort(mod.id), voyageModText(mod.id))
       }
     })
     return [...counts.values()]
@@ -271,7 +285,7 @@ export default function App() {
     }))
 
   const clearCharts = () => {
-    if (!window.confirm('Remove all charts from the library and clear the board? (Borders and weights are kept.)'))
+    if (!window.confirm('移除全部库存海图并清空摆盘？边界和权重会保留。'))
       return
     setState((s) => ({ ...s, pool: [], board: emptyBoard() }))
     setSelectedChart(null)
@@ -289,39 +303,37 @@ export default function App() {
   // apply the voyage result: keep charts whose uid is in keptUids, consume the
   // rest of the board; charts not on the board are untouched.
   const commitFinish = (keptUids: Set<string>) => {
-    setState((s) => {
-      const onBoard = new Set(s.board.filter(Boolean).map((p) => p!.chartUid))
-      let consumed = 0
-      let kept = 0
-      const pool = s.pool.filter((c) => {
-        if (!onBoard.has(c.uid)) return true // not run this voyage
-        if (keptUids.has(c.uid)) {
-          kept++
-          return true
-        }
-        consumed++
-        return false
-      })
-      setVoyageMsg(
-        `Voyage finished: consumed ${consumed} chart${consumed === 1 ? '' : 's'}` +
-          (kept ? `, kept ${kept}` : ''),
-      )
-      window.setTimeout(() => setVoyageMsg(''), 4000)
-      return {
-        ...s,
-        pool: pool.map((c) => (keptUids.has(c.uid) ? { ...c, preserved: false } : c)),
-        board: emptyBoard(),
-      }
-    })
+    const event = completion.current
+    if (!event || event.committed) return
+    event.committed = true
+    // Capture the final confirmed state before inventory consumption. Updaters
+    // stay pure: React StrictMode may replay them.
+    const record = createVoyageRecord(state, event.id, new Date().toISOString())
+    const onBoard = new Set(state.board.filter(Boolean).map((p) => p!.chartUid))
+    const consumed = state.pool.filter((c) => onBoard.has(c.uid) && !keptUids.has(c.uid)).length
+    const kept = state.pool.filter((c) => onBoard.has(c.uid) && keptUids.has(c.uid)).length
+    setState((s) => ({
+      ...s,
+      pool: s.pool.filter((c) => !onBoard.has(c.uid) || keptUids.has(c.uid))
+        .map((c) => keptUids.has(c.uid) ? { ...c, preserved: false } : c),
+      board: emptyBoard(),
+      voyageHistory: record && !s.voyageHistory.some((entry) => entry.completionId === record.completionId)
+        ? [...s.voyageHistory, record] : s.voyageHistory,
+    }))
+    setVoyageMsg(`航程已完成：消耗 ${consumed} 张海图` + (kept ? `，保留 ${kept} 张` : ''))
+    window.setTimeout(() => setVoyageMsg(''), 4000)
     setPreserveConfirm(null)
   }
 
   const finishVoyage = () => {
+    // Replayed DOM events can share a stale render before React commits the
+    // empty board. Keep that render tied to one completion identity.
+    if (preserveConfirm || !state.board.some(Boolean) || completion.current?.board === state.board) return
+    completion.current = { id: crypto.randomUUID(), committed: false, board: state.board }
     const preserved = state.board
       .filter(Boolean)
       .map((p) => chartMap.get(p!.chartUid))
       .filter((c): c is ChartData => !!c && !!c.preserved)
-    // no charts marked to keep -> consume everything on the board outright
     if (preserved.length === 0) commitFinish(new Set())
     else setPreserveConfirm({ charts: preserved, index: 0, kept: [] })
   }
@@ -331,7 +343,7 @@ export default function App() {
   // game's own wording, and our stored mod texts can drift from it (issue #3)
   const chartImplicit = (chart: ChartData): string =>
     chart.implicitText ??
-    chart.modIds.map((id) => voyageModById.get(id)).find((m) => m && m.scope !== 'self')?.text ??
+    chart.modIds.map((id) => voyageModById.get(id)).filter((m) => m && m.scope !== 'self').map((m) => voyageModText(m!.id))[0] ??
     ''
   const copyChartDetails = (chart: ChartData) => {
     navigator.clipboard.writeText(buildSingleChartSearch(chart)).catch(() => {})
@@ -414,7 +426,7 @@ export default function App() {
     const str = buildChartSearch(placed.filter(Boolean), others)
     try {
       await navigator.clipboard.writeText(str)
-      setSearchMsg('Copied!')
+      setSearchMsg('已复制！')
     } catch {
       setSearchMsg(str)
     }
@@ -425,15 +437,16 @@ export default function App() {
     const url = `${location.origin}${location.pathname}#${encodeShare(state)}`
     try {
       await navigator.clipboard.writeText(url)
-      setShareMsg('Link copied!')
+      setShareMsg('链接已复制！')
     } catch {
       window.location.hash = encodeShare(state)
-      setShareMsg('Link set in address bar')
+      setShareMsg('链接已写入地址栏')
     }
     window.setTimeout(() => setShareMsg(''), 2500)
   }
 
   return (
+    <CalibrationMode.Provider value={calibrationMode}>
     <div className="app">
       <TooltipLayer />
       {showOnboarding && (
@@ -456,41 +469,31 @@ export default function App() {
         <div className="onboard-backdrop" onClick={dismissAhkNotice}>
           <div className="onboard ahk-notice" onClick={(e) => e.stopPropagation()}>
             <div className="panel-title">
-              📥 The Windows bulk importer has been retired
+              📥 原版 Windows 批量导入脚本已停用
               <span className="spacer" />
               <button onClick={dismissAhkNotice}>✕</button>
             </div>
             <p className="tut-body">
-              GGG's macro rules ask that each keypress performs only <strong>one</strong> action
-              that interacts with the game, and there's no clear ruling for tools like this -
-              the bulk sweep sits in a grey area, and no convenience tool is worth risking
-              anyone's account. So the script is gone. If you still have a copy, please stop
-              using it.
+              原版批量导入脚本已移除并保持停用。原作者因游戏宏规则和适用范围未明确而停止提供该脚本。
             </p>
             <p className="tut-body">
-              Importing still works the compliant way, one chart at a time:{' '}
-              <strong>Ctrl+C a chart in game, then Ctrl+V anywhere on this page</strong> - it
-              imports instantly, and re-pasting a chart you've already imported is detected and
-              skipped. Borders: click each border slot on the board and pick the modifier -
-              about a minute of clicking. Everything else (strategies, solver, planner) is
-              unchanged.
+              国服流程使用手动复制：<strong>在国服游戏中 Ctrl+Alt+C 高级复制海图，再在本页 Ctrl+V 导入</strong>。
+              已导入的重复扫描会按原版规则跳过。边界则逐个点击摆盘外圈槽位，搜索并选择对应词缀。
             </p>
             <p className="tut-body">
-              Big library? The new <strong>chart + border collector</strong> (Import panel)
-              counts your own Ctrl+C copies with an on-screen tally, reads all 12 borders from
-              a screenshot you take with Alt held (F8), and imports everything here in one
-              paste - it sends zero inputs to the game, every keypress is yours.
+              导入面板仍保留原版英文海图与边界采集器参考。它不向游戏发送输入，
+              但未做国服采集或 OCR 适配；本版国服使用手动复制和边界选择。
             </p>
             <div className="sw-actions">
               <span className="spacer" />
-              <button onClick={dismissAhkNotice}>Got it</button>
+              <button onClick={dismissAhkNotice}>知道了</button>
             </div>
             <div className="muted small-note">
-              Questions?{' '}
+              问题？{' '}
               <a href={ISSUES_URL} target="_blank" rel="noopener noreferrer">
-                GitHub issues
+                GitHub 问题反馈
               </a>{' '}
-              - actively monitored.
+              欢迎提交反馈。
             </div>
           </div>
         </div>
@@ -521,8 +524,9 @@ export default function App() {
               state={state}
               activeStrategy={activeStrategy}
               onPatch={patch}
-              onResults={(r) => {
+              onResults={(r, context) => {
                 setResults(r)
+                setResultContext(context)
                 setAppliedIdx(null)
               }}
               onClose={() => setShowSolverSettings(false)}
@@ -532,47 +536,53 @@ export default function App() {
       )}
       <header>
         <h1>
-          Allflame <span className="accent">Voyage Solver</span>
+          永火 <span className="accent">航程规划</span>
         </h1>
-        <button className="tutorial-btn" onClick={() => setShowTutorial(true)}>
-          🧭 TUTORIAL · how to use this
-        </button>
+        <div className="tutorial-tools" role="group" aria-label="教程与示例">
+          <button className="tutorial-btn" onClick={() => setShowTutorial(true)}>🧭 使用教程</button>
+          <button title="生成随机示例海图体验工具" onClick={() => addCharts(generateDemoCharts(25))}>🎲 示例 ×25</button>
+          <button title="模拟重置边界词缀" onClick={() => patch({ borders: Array.from({ length: 12 }, () => BORDER_MODS[Math.floor(Math.random() * BORDER_MODS.length)].id) })}>🎲 随机边界</button>
+        </div>
         <div className="header-right">
-          <span className="tag">PoE 3.29: Curse of the Allflame</span>
-          <button title="How it works" onClick={() => setShowOnboarding(true)}>
+          <button className="calibration-mode-toggle" aria-label="单条中文校准模式"
+            aria-pressed={calibrationMode} title={calibrationMode ? '关闭单条校准入口' : '显示单条校准入口'}
+            onClick={() => setCalibrationMode(enabled => !enabled)}>✎</button>
+          <a className="feedback-link" href={calibrationUrl()} target="_blank" rel="noopener noreferrer">中文校准 ↗</a>
+          <span className="tag">流放之路 3.29：永火之咒</span>
+          <button title="首次使用说明" onClick={() => setShowOnboarding(true)}>
             ?
           </button>
           <button
             className={updatesSeen < LATEST_UPDATE_DATE ? 'updates-btn unseen' : 'updates-btn'}
-            title="What's new on the site"
+            title="查看站点更新记录"
             onClick={openUpdates}
           >
-            Updates
+            更新记录
           </button>
           <a
             className="feedback-link"
             href={ISSUES_URL}
             target="_blank"
             rel="noopener noreferrer"
-            title="Bug reports and feature requests on GitHub - actively monitored"
+            title="在 GitHub 提交问题或建议"
           >
-            🐛 Feedback
+            🐛 反馈
           </a>
-          <button title="Browse all modifiers and switch off ones you don't want" onClick={() => setShowMods(true)}>
-            Mods{state.disabledMods.length > 0 ? ` (${state.disabledMods.length} off)` : ''}
+          <button title="浏览全部词缀并停用不需要的效果" onClick={() => setShowMods(true)}>
+            词缀{state.disabledMods.length > 0 ? `（已停用 ${state.disabledMods.length} 项）` : ''}
           </button>
           <button
             className="theme-link"
-            title={
-              harvestTheme
-                ? 'Back to the Allflame theme'
-                : 'Harvest Edition, like the old garden planner sheets'
-            }
+            title={lightTheme ? '切换到深色主题' : '切换到浅色主题'}
+            aria-label={lightTheme ? '切换到深色主题' : '切换到浅色主题'}
             onClick={toggleTheme}
           >
-            {harvestTheme ? '🔥' : '🌱'}
+            {lightTheme ? '☾' : '☀'}
           </button>
-          <button onClick={share}>{shareMsg || 'Share layout'}</button>
+          <div className="planning-transfer">
+            <button onClick={share}>{shareMsg || '分享摆盘'}</button>
+            <PlanningBackup state={state} onLoadState={setState} />
+          </div>
         </div>
       </header>
 
@@ -597,6 +607,7 @@ export default function App() {
             onOpenSaveWizard={() => setShowSaveWizard(true)}
           />
           <ImportPanel onImport={addCharts} state={state} onLoadState={setState} />
+          <KeeperAssistant />
         </section>
 
         <section className="col board-col">
@@ -605,6 +616,8 @@ export default function App() {
             borders={state.borders}
             charts={chartMap}
             perTile={score.perTile}
+            strategyId={state.strategyId}
+            scoreOptions={{ adjacencyMode: state.adjacencyMode, adjacentAffectsSelf: state.adjacentAffectsSelf, disabledMods: disabledSet }}
             selectedCell={selectedCell}
             highlightUid={
               copySeq
@@ -650,9 +663,11 @@ export default function App() {
                 state={state}
                 activeStrategy={activeStrategy}
                 results={results}
+                resultContext={resultContext}
                 appliedIdx={appliedIdx}
-                onResults={(r) => {
+                onResults={(r, context) => {
                   setResults(r)
+                  setResultContext(context)
                   setAppliedIdx(null)
                 }}
                 onApply={(r, idx) => {
@@ -667,12 +682,21 @@ export default function App() {
             }
           />
 
+          <VoyageComparison state={state} />
+
+          <section className="voyage-history muted pad" aria-label="航程历史">
+            <strong>航程历史</strong> · 已记录 {state.voyageHistory.length} 次
+            {latestVoyage && <> · 最近完成分数 {latestVoyage.score.toFixed(1)}</>}
+            <div>仅记录功能启用后完成的有效九格摆盘，不代表游戏出发记录。</div>
+            {startup.damagedHistory && <div role="alert">已忽略损坏航程历史，库存与规划偏好已保留。</div>}
+            {storageFailed && <div role="alert">本地存储写入失败，当前历史未持久化。请导出规划备份；本次核销结果保持有效。</div>}
+          </section>
+
           {copySeq && (
             <div className="preserve-confirm copyseq">
               <div className="pc-head">
-                Place into game in this order (its square is glowing). Copy pastes an in-game search
-                string; Ctrl+Left-click the chart it finds. They fill bottom-left first. Step{' '}
-                {copySeq.step + 1} of {copySeq.order.length}.
+                按高亮格的顺序在游戏中放置海图：复制搜索文本，在游戏中找到海图并 Ctrl+左键放入。
+                从左下角开始。第 {copySeq.step + 1}/{copySeq.order.length} 步。
               </div>
               {(() => {
                 const c = chartMap.get(state.board[copySeq.order[copySeq.step]]!.chartUid)
@@ -682,7 +706,7 @@ export default function App() {
                     <div className="pc-name">{c.name}</div>
                     <div className="pc-sub">
                       {chartImplicit(c)}
-                      {c.shape ? ` · Shape: ${c.shape}` : ''}
+                      {c.shape ? ` · 形状：${chartShapeLabel(c.shape)}` : ''}
                     </div>
                   </>
                 )
@@ -690,12 +714,12 @@ export default function App() {
               <div className="copyseq-actions">
                 <button className="copyseq-go" onClick={copyCurrentAndAdvance}>
                   {copySeq.step + 1 >= copySeq.order.length
-                    ? '📋 Copy last & finish'
-                    : '📋 Copy & next'}
-                  <span className="copyseq-hint">or press Ctrl+C</span>
+                    ? '📋 复制最后一张并结束'
+                    : '📋 复制并下一步'}
+                  <span className="copyseq-hint">或按 Ctrl+C</span>
                 </button>
                 <button className="pc-lost" onClick={() => setCopySeq(null)}>
-                  Cancel
+                  取消
                 </button>
               </div>
             </div>
@@ -704,16 +728,17 @@ export default function App() {
           {preserveConfirm && (
             <div className="preserve-confirm">
               <div className="pc-head">
-                Preserved chart {preserveConfirm.index + 1} of {preserveConfirm.charts.length} (its
-                square is glowing). Did it actually survive the Voyage?
+                确认保留海图 {preserveConfirm.index + 1}/{preserveConfirm.charts.length}（对应格已高亮）：
+                这张海图在实际航程后是否存活？
               </div>
               <div className="pc-name">{preserveConfirm.charts[preserveConfirm.index].name}</div>
+              <button onClick={() => { completion.current = null; setPreserveConfirm(null) }}>取消核销</button>
               <div className="pc-actions">
                 <button className="pc-kept" onClick={() => decidePreserve(true)}>
-                  ✓ Kept it
+                  ✓ 已存活，保留
                 </button>
                 <button className="pc-lost" onClick={() => decidePreserve(false)}>
-                  ✕ Was consumed
+                  ✕ 已被消耗
                 </button>
               </div>
             </div>
@@ -721,18 +746,18 @@ export default function App() {
 
           <div className={`conn-status ${conn.valid ? 'ok' : 'bad'}`}>
             {state.mode === 'any'
-              ? 'Connector rules ignored'
+              ? '已忽略连接规则'
               : conn.valid
-                ? '✓ Connector layout valid'
+                ? '✓ 连接布局有效'
                 : [
                     conn.mismatches > 0
-                      ? `✗ ${conn.mismatches} connector mismatch${conn.mismatches === 1 ? '' : 'es'}`
+                      ? `✗ ${conn.mismatches} 处连接不匹配`
                       : null,
                     conn.disconnected > 0
-                      ? `${conn.disconnected} chart${conn.disconnected === 1 ? '' : 's'} not linked to the ⚓ start`
+                      ? `${conn.disconnected} 张海图未连通到 ⚓ 起点`
                       : null,
                     conn.unfilled > 0
-                      ? `${conn.unfilled} empty square${conn.unfilled === 1 ? '' : 's'} (all 9 must be filled)`
+                      ? `${conn.unfilled} 格为空（需要填满九格）`
                       : null,
                   ]
                     .filter(Boolean)
@@ -741,29 +766,28 @@ export default function App() {
 
           {modCount.total > 0 && (
             <div className="modcount">
-              <span className="modcount-title">Voyage Mod Count</span>
-              <span className="modcount-item scope-self">This area {modCount.self}</span>
-              <span className="modcount-item scope-adjacent">Adjacent {modCount.adjacent}</span>
-              <span className="modcount-item scope-global">Whole voyage {modCount.global}</span>
-              <span className="modcount-item modcount-conn">🔗 {conn.connections} connections</span>
+              <span className="modcount-title">航行词缀统计</span>
+              <span className="modcount-item scope-self">本区域 {modCount.self}</span>
+              <span className="modcount-item scope-adjacent">相邻区域 {modCount.adjacent}</span>
+              <span className="modcount-item scope-global">全航程 {modCount.global}</span>
+              <span className="modcount-item modcount-conn">🔗 {conn.connections} 条连接</span>
             </div>
           )}
 
           <div className="score-panel">
             <div className="score-total">
-              Voyage Rewards <strong>{score.total.toFixed(1)}</strong>
+              航程奖励 <strong>{score.total.toFixed(1)}</strong>
               <span className="spacer" />
               <button
                 onClick={copySearch}
                 disabled={state.board.every((p) => !p)}
-                title="Copy a search string for the in-game chart inventory that highlights exactly the charts on this board"
+                title="复制游戏内搜索文本，定位当前摆盘使用的海图"
               >
-                {searchMsg || '⌕ Copy in-game search'}
+                {searchMsg || '⌕ 复制游戏内搜索'}
               </button>
             </div>
             <div className="muted small-note" style={{ marginTop: 0 }}>
-              A relative score for comparing your layouts, based on your weights and estimated mod
-              values. Not exact loot value. See the actual contents below.
+              按奖励权重和词缀估值比较摆盘的相对评分，不代表实际掉落价值。下方列出当前效果。
             </div>
             <div className="reward-grid">
               {ALL_STATS.filter((s) => score.perStat[s] > 0)
@@ -775,15 +799,15 @@ export default function App() {
                   </div>
                 ))}
               {ALL_STATS.every((s) => score.perStat[s] === 0) && (
-                <div className="muted">Place charts to see bonuses</div>
+                <div className="muted">放入海图后查看加成</div>
               )}
             </div>
             {ALL_STATS.some((s) => score.perStat[s] > 0) && (
-              <div className="muted small-note">Average bonus per area across the Voyage.</div>
+              <div className="muted small-note">全航程各区域的平均加成。</div>
             )}
             {notables.length > 0 && (
               <>
-                <div className="panel-title small">Guaranteed & Notable</div>
+                <div className="panel-title small">固定与特殊效果</div>
                 <div className="notable-list">
                   {notables.map((n) => (
                     <span key={n.label} className="notable-item" title={n.full}>
@@ -798,23 +822,6 @@ export default function App() {
         </section>
 
         <section className="col solver-col">
-          {jackpots.map((j) => (
-            <div key={j.strategyId} className="jackpot-banner">
-              <span className="jackpot-label">
-                {j.missing.length === 0 ? (
-                  <>🎰 JACKPOT: {j.piece} - {j.action}.</>
-                ) : (
-                  <>
-                    🎰 JACKPOT piece: {j.piece}. It's banked 🔒 and safe - but you're still
-                    missing {j.missing.join(', ')}. Collect those before running it.
-                  </>
-                )}
-              </span>
-              <button onClick={() => patch({ strategyId: j.strategyId })}>
-                {j.missing.length === 0 ? 'Switch strategy' : 'Switch anyway'}
-              </button>
-            </div>
-          ))}
           <StrategiesPanel
             activeId={state.strategyId}
             pool={state.pool}
@@ -829,8 +836,30 @@ export default function App() {
               patch({ centerChoice: { ...state.centerChoice, [sid]: cid } })
             }
           />
+          {jackpots.length > 0 && <section className="strategy-recommendations" aria-label="策略推荐">
+            <div className="panel-title small">其他策略推荐</div>
+            {jackpots.map((j) => {
+              const strategy = strategyById.get(j.strategyId)!
+              return <article key={j.strategyId} className="strategy-recommendation" aria-label={`推荐${strategy.name}`}>
+                <p>发现：{j.piece}</p>
+                <p>可用于：<strong>{strategy.name}</strong></p>
+                {j.missing.length > 0 ? <>
+                  <p className="recommendation-missing">尚缺：{j.missing.join('、')}。</p>
+                  <p>可先切换查看玩法，建议补齐后运行。</p>
+                </> : <>
+                  <p>材料齐备（按策略材料与必要边界检查）。</p>
+                  <p className="muted">仍需检查九格摆盘与连接，不保证收益。</p>
+                </>}
+                <button onClick={() => patch({ strategyId: j.strategyId })}>切换到{strategy.name}</button>
+              </article>
+            })}
+            <p className="muted small-note">切换只更改当前策略，不会自动求解或预留海图。</p>
+          </section>}
+          <StrategyGuide strategy={activeStrategy} />
+
         </section>
       </main>
     </div>
+    </CalibrationMode.Provider>
   )
 }

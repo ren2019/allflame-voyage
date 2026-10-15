@@ -1,0 +1,97 @@
+{
+  "source": {
+    "kind": "artificial-internal-model",
+    "baseCommit": "5a717bf",
+    "wording": "samples/text-library/library.json; source-only templates, not client copies",
+    "layout": "Nine fully connected four-arm charts (12 connections)"
+  },
+  "initialUids": [
+    "strategy-anchor-0",
+    "strategy-anchor-1",
+    "strategy-anchor-2",
+    "strategy-anchor-3",
+    "strategy-anchor-4",
+    "strategy-anchor-5",
+    "strategy-anchor-6",
+    "strategy-anchor-7",
+    "strategy-anchor-8"
+  ],
+  "witness": [
+    {
+      "chartUid": "strategy-anchor-0",
+      "rotation": 3
+    },
+    {
+      "chartUid": "strategy-anchor-1",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-anchor-2",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-anchor-3",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-anchor-4",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-anchor-5",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-anchor-6",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-anchor-7",
+      "rotation": 0
+    },
+    {
+      "chartUid": "strategy-anchor-8",
+      "rotation": 0
+    }
+  ],
+  "connections": 12,
+  "locked": [
+    {
+      "cell": 0,
+      "placement": {
+        "chartUid": "strategy-anchor-0",
+        "rotation": 3
+      }
+    }
+  ],
+  "requiresBorder": null,
+  "hardConstraints": [
+    "nine distinct current eligible inventory instances",
+    "strict connectivity",
+    "preserved board position0/rotation3 pinned",
+    "original destination solve-pool cap"
+  ],
+  "softPreferences": "Original position bonuses and layout penalty; never converted into product constraints",
+  "requirements": [
+    {
+      "areaTypes": [
+        "anchorfield"
+      ],
+      "count": 1,
+      "label": "Anchorfield chart"
+    }
+  ],
+  "expectedConsumed": [
+    "strategy-anchor-1",
+    "strategy-anchor-2",
+    "strategy-anchor-3",
+    "strategy-anchor-4",
+    "strategy-anchor-5",
+    "strategy-anchor-6",
+    "strategy-anchor-7",
+    "strategy-anchor-8"
+  ],
+  "expectedSurvived": [
+    "strategy-anchor-0"
+  ]
+}
