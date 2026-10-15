@@ -6,9 +6,9 @@
 
 [原版英文工具](https://one-more-map.github.io/allflame-voyage-solver/) · [使用与部署](docs/README.md) · [反馈问题](https://github.com/ren2019/allflame-voyage/issues) · [参与贡献](CONTRIBUTING.md)
 
-![规划界面：左侧库存、中间九宫格与区域目标、右侧策略](docs/images/planner.png)
+![真实国服海图：库存、已求解的九宫格布局、区域目标与策略](docs/images/planner-real-layout.png)
 
-*界面截图使用演示库存。*
+*使用[九张真实国服海图](src/logic/__fixtures__/real-inventory-layout.json)重新求解的可执行布局；截图展示库存、十二条边界和区域目标。*
 
 ## 功能
 
