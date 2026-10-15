@@ -185,23 +185,19 @@ export default function App() {
     [state.board, chartMap, state.mode],
   )
 
-  // jackpot detection (Milky: the mechanic's only two real jackpots) - flag
-  // them loudly and offer the matching strategy in one click. Each banner
-  // runs the SAME requirements check as the strategy card, so it can never
-  // say "switch!" while the card says "wait" (issue #38)
+  // Recommendations reuse the strategy material check. Viewing or choosing one
+  // never reserves charts, applies a solver result, or completes a voyage.
   const jackpots = useMemo(() => {
-    const out: { piece: string; action: string; strategyId: string; missing: string[] }[] = []
+    const out: { piece: string; strategyId: string; missing: string[] }[] = []
     if (state.pool.some((c) => c.modIds.includes('voy-noequip')))
       out.push({
         piece: '库存中有“怪物无法掉落装备”海图',
-        action: '围绕它规划肉鱼摆盘',
         strategyId: 'milky-meatfish',
         missing: [],
       })
     if (state.borders.includes('b-divine'))
       out.push({
-        piece: '边界为“稀有怪物额外掉落神圣石”',
-        action: '在对应格放置海之柱，并用保险箱效果强化',
+        piece: '边界有“稀有怪物额外掉落神圣石”',
         strategyId: 'divine-border-rares',
         missing: [],
       })
@@ -615,20 +611,6 @@ export default function App() {
         </section>
 
         <section className="col board-col">
-          <StrategiesPanel
-            activeId={state.strategyId}
-            pool={state.pool}
-            borders={state.borders}
-            onSelect={(id) => patch({ strategyId: id })}
-            layoutChoice={state.layoutChoice}
-            onLayoutChoice={(sid, lid) =>
-              patch({ layoutChoice: { ...state.layoutChoice, [sid]: lid } })
-            }
-            centerChoice={state.centerChoice}
-            onCenterChoice={(sid, cid) =>
-              patch({ centerChoice: { ...state.centerChoice, [sid]: cid } })
-            }
-          />
           <BoardView
             board={state.board}
             borders={state.borders}
@@ -840,22 +822,39 @@ export default function App() {
         </section>
 
         <section className="col solver-col">
-          {jackpots.map((j) => (
-            <div key={j.strategyId} className="jackpot-banner">
-              <span className="jackpot-label">
-                {j.missing.length === 0 ? (
-                  <>🎰 关键奖励：{j.piece}，{j.action}。</>
-                ) : (
-                  <>
-                    🎰 关键材料：{j.piece}，已锁定保留 🔒。还缺少 {j.missing.join('、')}，补齐后再运行。
-                  </>
-                )}
-              </span>
-              <button onClick={() => patch({ strategyId: j.strategyId })}>
-                {j.missing.length === 0 ? '切换策略' : '仍然切换'}
-              </button>
-            </div>
-          ))}
+          <StrategiesPanel
+            activeId={state.strategyId}
+            pool={state.pool}
+            borders={state.borders}
+            onSelect={(id) => patch({ strategyId: id })}
+            layoutChoice={state.layoutChoice}
+            onLayoutChoice={(sid, lid) =>
+              patch({ layoutChoice: { ...state.layoutChoice, [sid]: lid } })
+            }
+            centerChoice={state.centerChoice}
+            onCenterChoice={(sid, cid) =>
+              patch({ centerChoice: { ...state.centerChoice, [sid]: cid } })
+            }
+          />
+          {jackpots.length > 0 && <section className="strategy-recommendations" aria-label="策略推荐">
+            <div className="panel-title small">其他策略推荐</div>
+            {jackpots.map((j) => {
+              const strategy = strategyById.get(j.strategyId)!
+              return <article key={j.strategyId} className="strategy-recommendation" aria-label={`推荐${strategy.name}`}>
+                <p>发现：{j.piece}</p>
+                <p>可用于：<strong>{strategy.name}</strong></p>
+                {j.missing.length > 0 ? <>
+                  <p className="recommendation-missing">尚缺：{j.missing.join('、')}。</p>
+                  <p>可先切换查看玩法，建议补齐后运行。</p>
+                </> : <>
+                  <p>材料齐备（按策略材料与必要边界检查）。</p>
+                  <p className="muted">仍需检查九格摆盘与连接，不保证收益。</p>
+                </>}
+                <button onClick={() => patch({ strategyId: j.strategyId })}>切换到{strategy.name}</button>
+              </article>
+            })}
+            <p className="muted small-note">切换只更改当前策略，不会自动求解或预留海图。</p>
+          </section>}
           <StrategyGuide strategy={activeStrategy} />
 
         </section>
