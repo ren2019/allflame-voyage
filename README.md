@@ -8,7 +8,7 @@ Allflame*.
 
 本 fork 的日常代码在 `main`；原英文仓库通过 `upstream` 保留为上游。
 后续更新请按 [同步上游](docs/upstream-sync.md) 合并，保留国服改动和提交历史。
-GitHub Pages 仅允许手动触发，合并 `main` 不自动发布公网。
+当前使用内网 HTTPS；本次不启用 GitHub Pages，原工作流保留供以后单独配置。
 
 ## Features
 

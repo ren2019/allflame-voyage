@@ -1,7 +1,8 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Personal fork uses LAN HTTPS; merging code must not publish a public site.
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

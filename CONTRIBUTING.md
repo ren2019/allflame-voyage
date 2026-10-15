@@ -38,6 +38,9 @@ npm run build    # tsc --noEmit + production build (must pass before a PR)
 
 ## PRs
 
-Fork, branch, and open a pull request against `main`. Merges to `main`
-auto-deploy to the public site via GitHub Actions, so PRs should build clean
-(`npm run build`) and describe how they were tested.
+Fork, branch, and open a pull request against `main`. PRs should build clean
+(`npm run build`) and describe how they were tested. This personal fork uses
+LAN HTTPS and has no configured Pages site. The upstream main-push Pages
+workflow remains; any workflow run must be checked separately from LAN serving.
+For upstream updates, preserve merge ancestry as described in
+[the synchronization guide](docs/upstream-sync.md).
