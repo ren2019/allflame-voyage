@@ -741,6 +741,7 @@ textarea {
 }
 /* in-game style chart stash grid */
 .chart-grid {
+  /* Square cards need tracks at least as wide as their minimum height. */
   --chart-min-size: 88px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--chart-min-size), 1fr));
