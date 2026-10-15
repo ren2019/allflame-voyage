@@ -1,4 +1,4 @@
-import { createVoyageRecord } from './logic/voyageHistory'
+import { createVoyageRecord, voyagesNewestFirst } from './logic/voyageHistory'
 import { saveTheme } from './logic/theme'
 import { CalibrationMode } from './components/CalibrationLink'
 import { calibrationUrl } from './logic/calibrationLinks'
@@ -118,7 +118,8 @@ export default function App() {
   }
   const [voyageMsg, setVoyageMsg] = useState('')
   const [storageFailed, setStorageFailed] = useState(false)
-  const completion = useRef<{ id: string; committed: boolean } | null>(null)
+  const latestVoyage = useMemo(() => voyagesNewestFirst(state.voyageHistory)[0], [state.voyageHistory])
+  const completion = useRef<{ id: string; committed: boolean; board: AppState['board'] } | null>(null)
   const [preserveConfirm, setPreserveConfirm] = useState<{
     charts: ChartData[]
     index: number
@@ -328,8 +329,10 @@ export default function App() {
   }
 
   const finishVoyage = () => {
-    if (preserveConfirm || !state.board.some(Boolean)) return
-    completion.current = { id: crypto.randomUUID(), committed: false }
+    // Replayed DOM events can share a stale render before React commits the
+    // empty board. Keep that render tied to one completion identity.
+    if (preserveConfirm || !state.board.some(Boolean) || completion.current?.board === state.board) return
+    completion.current = { id: crypto.randomUUID(), committed: false, board: state.board }
     const preserved = state.board
       .filter(Boolean)
       .map((p) => chartMap.get(p!.chartUid))
@@ -680,7 +683,7 @@ export default function App() {
 
           <section className="voyage-history muted pad" aria-label="航程历史">
             <strong>航程历史</strong> · 已记录 {state.voyageHistory.length} 次
-            {state.voyageHistory.length > 0 && <> · 最近完成分数 {state.voyageHistory[state.voyageHistory.length - 1].score.toFixed(1)}</>}
+            {latestVoyage && <> · 最近完成分数 {latestVoyage.score.toFixed(1)}</>}
             <div>仅记录功能启用后完成的有效九格摆盘，不代表游戏出发记录。</div>
             {startup.damagedHistory && <div role="alert">已忽略损坏航程历史，库存与规划偏好已保留。</div>}
             {storageFailed && <div role="alert">本地存储写入失败，当前历史未持久化。请导出规划备份；本次核销结果保持有效。</div>}
