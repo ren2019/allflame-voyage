@@ -1,7 +1,6 @@
 # 新真实客户端形状证据与解析闭环
 
-2026-10-14。用户追加文件为 `/Users/steipete/Downloads/临时 1.md`，
-与最初的`临时.md`不同。经用户授权，将新文件前三张高级复制原文精确
+2026-10-14。玩家另行追加三张真实国服海图。经授权，将三张高级复制原文精确
 保存为 `samples/charted-extra-shapes.zh-CN.txt`；原有两张样本的文件和
 内容保持不变。来源文件包含末尾原有两张，未将它们再次计为新采集。
 三个全文不是基于网页模板构造的测试数据。
@@ -91,7 +90,7 @@ Edge配置而非用户其他应用。探针未写剪贴板、未收集其他内�
 配置与SSH隧道全部清理。浏览器未使用TLS绕过或虚构剪贴板替身。
 
 此前五张入口曾读取空字符串，实际红灯信号见
-[诊断摘要](evidence/windows-five-clipboard-red.json)。观测到写入已fulfilled、
+[诊断摘要](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/acceptance/evidence/windows-five-clipboard-red.json)。观测到写入已fulfilled、
 焦点与权限正常，2秒内21次真实读回仍为空，所以不能断言只是尚未等待
 写Promise。此前空读的具体外因未被证实；没有修改App或放宽保护。
 最终入口加强了原生调用完成的观测、有限真实读回等待及独立OS数据核对；

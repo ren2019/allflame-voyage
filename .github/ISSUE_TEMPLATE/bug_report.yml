@@ -1,22 +1,22 @@
-name: Bug report
-description: Something broken in the solver site
+name: 问题反馈
+description: 国服导入、摆盘或界面问题
 body:
   - type: textarea
     id: what-happened
     attributes:
-      label: What happened?
-      description: What did you do, what did you expect, and what happened instead?
+      label: 问题与复现步骤
+      description: 做了什么、预期结果和实际结果分别是什么？请先移除无关个人信息。
     validations:
       required: true
   - type: textarea
     id: chart-text
     attributes:
-      label: Chart text (for import problems)
+      label: 海图高级复制原文（导入问题）
       description: >
-        If a chart imports wrongly, paste its full Ctrl+C item text here so the
-        exact case can be reproduced.
+        请粘贴 Ctrl+Alt+C 得到的完整物品文本，并说明客户端版本。
+        只提供复现所需样本，不提交完整私人库存、证书或浏览器数据。
   - type: input
     id: display
     attributes:
-      label: Display setup
-      placeholder: e.g. 2560x1440, 125% scaling, 2 monitors
+      label: 浏览器与显示设置
+      placeholder: 例如 Edge，2560×1440，缩放 125%

@@ -1,24 +1,73 @@
-# Allflame Voyage Solver
+# 永火航程规划 · 国服简体版
 
-Planner + auto-solver for the **Voyage Board** in Path of Exile 3.29 *Curse of the
-Allflame*. 
+面向《流放之路》3.29 永火航程的海图库存与九宫格摆盘工具，支持国服海图导入、策略求解和跑图目标提示。
 
-国服个人内网版的Mac启动/停止、固定HTTPS地址和Windows Edge证书及现场
-验收步骤见 [手动内网部署](docs/local-deployment.md)。
+本项目基于 **[one-more-map 的 Allflame Voyage Solver](https://github.com/one-more-map/one-more-map.github.io)** 开发，是独立维护的国服适配 fork。原版的规划板、求解器与策略框架由原作者及贡献者提供；本仓库在此基础上增加简体中文、国服文本解析和下述规划辅助功能。感谢原作者开源。
 
-本 fork 的日常代码在 `main`；原英文仓库通过 `upstream` 保留为上游。
-后续更新请按 [同步上游](docs/upstream-sync.md) 合并，保留国服改动和提交历史。
-当前使用内网 HTTPS；本次不启用 GitHub Pages，原工作流保留供以后单独配置。
+[原版英文工具](https://one-more-map.github.io/allflame-voyage-solver/) · [使用与部署](docs/README.md) · [反馈问题](https://github.com/ren2019/allflame-voyage/issues) · [参与贡献](CONTRIBUTING.md)
 
-## Features
+![规划界面：左侧库存、中间九宫格与区域目标、右侧策略](docs/images/planner.png)
 
-- 3×3 Voyage Board with the 12 border-modifier segments (corners get 2, edges 1, center 0)
-- Chart library with per-chart editor (name, level, voyage mod, connector edges)
-- Paste-importer for Ctrl+C chart item text (format is a guess until launch - unmatched
-  mod lines are kept as raw text, nothing is lost)
-- Live score panel with per-stat bonus breakdown and connector validity check
-- Auto-solver: exhaustive (optimal) for pools ≤ 9 charts without rotation, hill-climbing
-  with restarts otherwise; configurable reward weights and connector rule
-- Independent Divine, Meatfish and Magic Ethereal keeper protections for Alc & Go and
-  Speedrun Strongboxes, so imported charts can be used when a protection is switched off
-- Share layouts via URL, autosave to localStorage, JSON export/import
+*界面截图使用演示库存。*
+
+## 功能
+
+保留原版的 3×3 规划板、十二条边界、海图旋转与位置锁定、候选求解、效果统计及分享能力。
+
+| 国服适配与新增功能 | 用途 |
+| --- | --- |
+| **国服高级复制导入** | 从游戏以 `Ctrl+Alt+C` 复制海图，粘贴解析名称、区域等级、目的地、连接形状和词缀；五种形状已有真实客户端样本。无法可靠识别的内容会给出反馈。 |
+| **集中式策略选择** | 七种策略和手动模式集中在右侧；玩法、材料缺项、布局、中心偏好及攻略随选择更新。特殊材料触发的推荐会说明原因和缺项，由玩家主动切换。 |
+| **区域目标提示** | 在九宫格中央显示本格应关注的目标，结合目的地及实际生效的词缀，按策略排序。同类合并，最多四槽，支持「关闭／高价值／全部」及展开详情。 |
+| **当前边界价值** | 按当前策略给每条边界分为灰色「可略」、蓝色「留意」、金色「优先」。分析弹窗按权重降序展示十二条边界的理由、来源和规则版本。 |
+| **独立留图助手** | 不用先导入库存，即可按策略查看留图条件；有专项规则时可复制一条完整正则，在游戏中手动寻找和整理海图。 |
+| **清楚的策略预留** | 库存标记展示哪些海图为策略材料预留；策略预留与摆盘位置锁定分别管理。网页不会替你锁定或移动游戏内的物品。 |
+| **航程核销与历史参考** | 实际完成航程后确认存活海图、核销消耗，记录航程。用最近同策略、同计分口径的个人历史比较当前摆盘；样本不足时明确提示。 |
+| **中文校准** | 默认隐藏维护入口，打开铅笔模式后可直达单条词库记录。建议和备注可保存、导出供维护者应用，保留英文、中文与来源对照。 |
+| **本地保存与完整备份** | 库存、摆盘、边界、策略配置与历史在浏览器保存，支持 JSON 备份和恢复；另提供独立的校准记录备份。支持简洁的明暗主题。 |
+
+## 快速开始
+
+需要 **Node.js 20+** 和 npm。
+
+```sh
+git clone https://github.com/ren2019/allflame-voyage.git
+cd allflame-voyage
+npm ci
+npm run dev
+```
+
+打开终端显示的本机地址，通常为 `http://localhost:5173`。构建静态站点：
+
+```sh
+npm run build
+```
+
+生成目录为 `dist/`，可自行部署到静态服务器。多台电脑经局域网使用时，按 [HTTPS 部署说明](docs/local-deployment.md) 配置证书，让一键复制可用。
+
+## 一次航程的用法
+
+1. 在游戏中高级复制海图，粘贴到导入框，核对库存；填写外圈十二条边界。
+2. 在右侧选择策略，查看材料和摆法要求，按需设置预留、布局及中心海图。
+3. 点击求解，检查并应用可执行候选。区域目标帮助跑图，边界分析解释当前策略看重哪些边。
+4. 使用复制指南，在游戏中手动搜索海图、摆放和调整朝向。
+5. 实际跑完后点击「完成航程」，确认存活与消耗，更新库存和历史，再规划下一轮。
+
+## 数据与适用范围
+
+- **无需账号或后端。** 规划和校准记录保存在当前浏览器、当前站点地址的本地存储。更换浏览器、协议、IP 或端口前，请导出备份；分享摆盘与完整规划备份的用途不同。
+- **策略与提示需要结合游戏版本。** 目标、边界和留图规则由版本化配置驱动。译名参考真实国服复制样本及 [PoEDB](https://poedb.tw/cn/)，尚未逐条在目标客户端确认的资料保留来源和缺口。
+- **分数是规划参考。** 摆盘评分、边界权重、目标展示优先级和个人历史位置衡量的对象不同，均不表示收益保证或通用的策略起跑门槛。
+- 中文校准保存的是建议；不会直接覆盖正式译文、解析规则或评分。详见 [校准说明](docs/calibration.md)。
+
+## 开发与反馈
+
+验证命令、目录说明和提交要求见 [CONTRIBUTING.md](CONTRIBUTING.md)。同步原版更新见 [上游同步指南](docs/upstream-sync.md)。
+
+报告导入问题时，请提供客户端版本、完整高级复制原文及预期；布局问题请附浏览器、窗口尺寸与缩放比例。先移除与问题无关的个人信息，勿提交完整私人库存或证书私钥。
+
+## 致谢与许可
+
+- 原项目：[one-more-map/one-more-map.github.io](https://github.com/one-more-map/one-more-map.github.io)，作者 **one-more-map 及贡献者**。
+- 社区文本与资料：[PoEDB](https://poedb.tw/cn/)。本项目不代表 PoEDB、GGG 或国服运营方。
+- 代码沿用 [MIT License](LICENSE)，保留原项目版权声明。游戏美术与第三方图标另见 [素材署名](THIRD_PARTY_NOTICES.md)，不因随代码分发而改变其原有权利与许可。
