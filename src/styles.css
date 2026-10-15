@@ -741,8 +741,9 @@ textarea {
 }
 /* in-game style chart stash grid */
 .chart-grid {
+  --chart-min-size: 88px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--chart-min-size), 1fr));
   gap: 6px;
   max-height: 46vh;
   overflow-y: auto;
@@ -2502,7 +2503,7 @@ textarea {
 .mb-row .calibration-link { margin-left: auto; }
 .bslot .calibration-link { width: 16px; height: 16px; font-size: 11px; }
 /* Reserve a real row for each kind of information rather than stacking corner badges. */
-.chart-sq { flex-direction: column; justify-content: space-between; min-height: 88px; padding: 3px; gap: 3px; }
+.chart-sq { flex-direction: column; justify-content: space-between; min-height: var(--chart-min-size); padding: 3px; gap: 3px; }
 .sq-head, .sq-footer { display: flex; width: 100%; align-items: center; gap: 2px; flex-shrink: 0; }
 .sq-shape, .sq-lock, .sq-val, .sq-lvl, .sq-del { position: static; }
 .sq-shape { flex-shrink: 0; }
