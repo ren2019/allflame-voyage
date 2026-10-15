@@ -1,9 +1,9 @@
 import { RegionTargets, RegionTargetDetails } from './RegionTargets'
-import { regionTargets, type RegionalCell } from '../logic/regionTargets'
+import { regionalTargetView, regionTargets, type RegionalCell, type RegionTargetMode } from '../logic/regionTargets'
 import { borderAffinityPriority, evaluateBorderAffinity } from '../logic/borderAffinity'
 import type { ScoreOptions } from '../logic/scoring'
 import { CalibrationLink } from './CalibrationLink'
-import { useState, type ReactNode } from 'react'
+import { useId, useState, type ReactNode } from 'react'
 import { BORDER_MODS, borderModById, voyageModById } from '../data/mods'
 import { BORDER_CHOICES, localizedBorder, matchesBorderQuery } from '../data/borderLocale'
 import { rotateEdges } from '../logic/connectivity'
@@ -302,9 +302,11 @@ const DIRS = [
 
 export function BoardView(props: Props) {
   const { board, borders, charts } = props
-  const [showTargets, setShowTargets] = useState(false)
+  const [targetMode, setTargetMode] = useState<RegionTargetMode>('off')
+  const targetModeName = useId()
   const [detailCell, setDetailCell] = useState<number | null>(null)
   const targets = regionTargets(board, borders, charts, props.strategyId ?? null, props.scoreOptions)
+  const targetViews = targets.map(cell => regionalTargetView(cell, targetMode === 'valuable' ? 'valuable' : 'all'))
   const affinity = evaluateBorderAffinity(props.strategyId ?? null, borders)
 
   const edgesAt = (i: number) => {
@@ -337,7 +339,7 @@ export function BoardView(props: Props) {
       <Tile
         key={i}
         cellIndex={i}
-        region={showTargets ? targets[i] : undefined}
+        region={targetMode === 'off' || (targetMode === 'valuable' && targetViews[i].groups.length === 0) ? undefined : targetViews[i]}
         onTargetDetails={() => setDetailCell(i)}
         placement={p}
         chart={p ? charts.get(p.chartUid) ?? null : null}
@@ -380,7 +382,15 @@ export function BoardView(props: Props) {
       <div className="board-toolbar">
         <span className="board-title">航程摆盘</span>
         <span className="spacer" />
-        <button type="button" aria-pressed={showTargets} onClick={() => setShowTargets(v => !v)}>区域目标</button>
+        <div className="region-target-control" role="radiogroup" aria-label="区域目标">
+          <span className="region-target-control-label" aria-hidden="true">区域目标</span>
+          {([['off', '关闭'], ['valuable', '高价值'], ['all', '全部']] as const).map(([mode, label]) => (
+            <label key={mode} className={`region-target-choice${targetMode === mode ? ' active' : ''}`}>
+              <input type="radio" name={targetModeName} value={mode} checked={targetMode === mode} onChange={() => setTargetMode(mode)} />
+              <span>{label}</span>
+            </label>
+          ))}
+        </div>
         <button onClick={randomize} title="模拟重置边界词缀">
           🎲 随机边界
         </button>

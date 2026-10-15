@@ -35,6 +35,21 @@ export interface RegionalCell {
   context: string[]
   uncovered: string[]
 }
+export type RegionTargetMode = 'off' | 'valuable' | 'all'
+
+function targetSlots(groups: TargetGroup[], maxIcons = config.display.maxIcons) {
+  const overflow = groups.length > maxIcons
+  return { overflow, visible: groups.slice(0, overflow ? maxIcons - 1 : maxIcons) }
+}
+
+/** Filter before assigning icon slots so hidden low-priority groups never create overflow. */
+export function regionalTargetView(cell: RegionalCell, mode: Exclude<RegionTargetMode, 'off'>): RegionalCell {
+  const groups = mode === 'all' ? cell.groups : cell.groups.filter(group => {
+    const band = priorityBand(group.weight)?.id
+    return band === 'high' || band === 'medium'
+  })
+  return { ...cell, groups, ...targetSlots(groups) }
+}
 const defaultOptions: ScoreOptions = {
   adjacencyMode: 'physical',
   adjacentAffectsSelf: false,
@@ -181,11 +196,7 @@ export function regionTargets(
           b.weight - a.weight ||
           a.representative.tieBreak - b.representative.tieBreak,
       )
-    cell.overflow = cell.groups.length > config.display.maxIcons
-    cell.visible = cell.groups.slice(
-      0,
-      cell.overflow ? config.display.maxIcons - 1 : config.display.maxIcons,
-    )
+    Object.assign(cell, targetSlots(cell.groups, config.display.maxIcons))
   })
   return cells
 }

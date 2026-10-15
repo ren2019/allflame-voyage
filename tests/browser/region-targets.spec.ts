@@ -34,7 +34,7 @@ test('词缀计分开关更新分数但保留真实区域目标和规划', async
   const before = await exportState(page)
   const score = page.locator('.score-total strong')
   await expect(score).toHaveText('14.4')
-  await page.getByRole('button', { name: '区域目标', exact: true }).click()
+  await page.getByRole('radio', { name: '全部', exact: true }).check()
   const cells = page.locator('.region-targets')
   const targetNames = await cells.locator('button').evaluateAll((buttons) =>
     buttons.map((button) => button.getAttribute('aria-label')),
@@ -76,9 +76,9 @@ test('真实库存重算盘的中央目标可开关、键盘查看且不改变�
   await openEmptyApp(page)
   await loadState(page, real as AppState)
   const before = await exportState(page)
-  const toggle = page.getByRole('button', { name: '区域目标', exact: true })
-  await toggle.click()
-  await expect(toggle).toHaveAttribute('aria-pressed', 'true')
+  const toggle = page.getByRole('radio', { name: '全部', exact: true })
+  await toggle.check()
+  await expect(toggle).toBeChecked()
   const cells = page.locator('.region-targets')
   await expect(cells).toHaveCount(9)
   const gameArt = page.locator('.region-target img')
@@ -132,7 +132,7 @@ test('真实库存重算盘的中央目标可开关、键盘查看且不改变�
       expect(top!.y + top!.height).toBeLessThanOrEqual(overlay!.y)
     }
   }
-  await toggle.click()
+  await page.getByRole('radio', { name: '关闭', exact: true }).check()
   await expect(cells).toHaveCount(0)
   expect(await exportState(page)).toEqual(before)
 })
@@ -173,7 +173,7 @@ test('派生合并与神圣条件样例支持四槽溢出、策略切换和空�
     borders: [null, 'b-divine', ...Array(10).fill(null)],
   }
   await loadState(page, derived as AppState)
-  await page.getByRole('button', { name: '区域目标', exact: true }).click()
+  await page.getByRole('radio', { name: '全部', exact: true }).check()
   const cells = page.locator('.region-targets')
   await expect(cells).toHaveCount(2)
   await expect(
@@ -264,7 +264,7 @@ test('单一目的地目标与明暗主题保持优先级颜色，原图不染�
     borders: Array(12).fill(null),
   }
   await loadState(page, one as AppState)
-  await page.getByRole('button', { name: '区域目标', exact: true }).click()
+  await page.getByRole('radio', { name: '全部', exact: true }).check()
   await expect(page.locator('.region-targets')).toHaveCount(1)
   const icon = page.locator('.region-targets button')
   await expect(icon).toHaveCount(1)
@@ -275,4 +275,52 @@ test('单一目的地目标与明暗主题保持优先级颜色，原图不染�
   await page.screenshot({
     path: testInfo.outputPath('light.png'),
   })
+})
+
+test('区域目标三态筛选先排除灰色再计算四槽和更多，切策略同步且不改规划', async ({ page }, testInfo) => {
+  await openEmptyApp(page)
+  const chart = (uid: string, modIds: string[], areaType?: string) => ({ uid, name: uid, level: 83, edges: [true, true, true, true], modIds, areaType })
+  const pool = [chart('filter-source', ['adj-box-1', 'adj-lantern', 'adj-msg-1', 'adj-spirit-1', 'adj-fish', 'voy-jelly', 'voy-essence']), chart('filter-recipient', [], 'clam-infested-shelf')]
+  const state = { ...real, strategyId: 'alc-and-go', pool, board: [{ chartUid: pool[0].uid, rotation: 0 }, { chartUid: pool[1].uid, rotation: 0 }, ...Array(7).fill(null)], borders: Array(12).fill(null) }
+  await loadState(page, state as AppState)
+  const before = await exportState(page)
+  const controls = page.getByRole('radiogroup', { name: '区域目标', exact: true })
+  await expect(controls.getByRole('radio', { name: '关闭', exact: true })).toBeChecked()
+  await expect(page.locator('.region-targets')).toHaveCount(0)
+  await controls.getByRole('radio', { name: '全部', exact: true }).check()
+  await expect(page.locator('.region-targets')).toHaveCount(2)
+  await expect(page.locator('.region-targets .band-low')).toHaveCount(2)
+  await expect(page.getByRole('button', { name: /更多目标/ })).toBeVisible()
+  await controls.getByRole('radio', { name: '高价值', exact: true }).check()
+  await expect(page.locator('.region-targets')).toHaveCount(1)
+  await expect(page.locator('.region-targets button')).toHaveCount(4)
+  await expect(page.locator('.region-targets .band-low')).toHaveCount(0)
+  await expect(page.getByRole('button', { name: /更多目标|暂无目标/ })).toHaveCount(0)
+  await expect(page.locator('.region-targets').getByRole('button', { name: /箱子 · 中优先级 40/ })).toBeVisible()
+  expect(await exportState(page)).toEqual(before)
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 })
+    for (const theme of ['dark', 'light']) {
+      const button = page.getByRole('button', { name: `切换到${theme === 'dark' ? '深色' : '浅色'}主题`, exact: true })
+      if (await button.count()) await button.click()
+      expect(await controls.evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
+      await page.locator('.board-wrap').screenshot({ path: testInfo.outputPath(`target-modes-${theme}-${width}.png`) })
+    }
+  }
+  await loadState(page, { ...state, borders: [null, 'b-anchor-1', ...Array(10).fill(null)] } as AppState)
+  await expect(page.getByRole('button', { name: '更多目标 · 共 5 类', exact: true })).toBeVisible()
+  await expect(page.locator('.region-targets button')).toHaveCount(4)
+  await expect(page.locator('.region-targets .band-low')).toHaveCount(0)
+  await page.locator('.strat-card').filter({ has: page.locator('.strat-name').filter({ hasText: '稀有怪传说装' }) }).locator('.strat-use').click()
+  await expect(page.locator('.region-targets').getByRole('button', { name: /箱子/ })).toHaveCount(0)
+  await expect(page.locator('.region-targets').getByRole('button', { name: /罪魂牢笼/ })).toBeVisible()
+  const afterStrategy = await exportState(page)
+  await controls.getByRole('radio', { name: '全部', exact: true }).check()
+  await expect(page.locator('.region-targets .band-low')).toHaveCount(2)
+  await controls.getByRole('radio', { name: '关闭', exact: true }).check()
+  await expect(page.locator('.region-targets,.region-details')).toHaveCount(0)
+  await controls.getByRole('radio', { name: '关闭', exact: true }).focus()
+  await page.keyboard.press('ArrowRight')
+  await expect(controls.getByRole('radio', { name: '高价值', exact: true })).toBeChecked()
+  expect(await exportState(page)).toEqual(afterStrategy)
 })

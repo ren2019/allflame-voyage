@@ -61,7 +61,7 @@ export async function fullCycle(page) {
   expect(selected).toContain('journey-01')
   expect(selected).toContain('journey-02')
   const beforeScore = await page.locator('.score-total strong').innerText()
-  await page.getByRole('button', { name: '区域目标', exact: true }).click()
+  await page.getByRole('radio', { name: '全部', exact: true }).check()
   await expect(page.locator('.region-targets')).toHaveCount(9)
   await expect(page.getByRole('region', { name: '边界适配分' }).getByText('依据', { exact: true })).toBeVisible()
   await expect(page.getByLabel('当前摆盘历史参考')).toContainText('样本不足')
@@ -103,8 +103,7 @@ export async function fullCycle(page) {
 }
 export async function visualTargets(page, screenshot) {
   await load(page, realLayout)
-  const toggle = page.getByRole('button', { name: '区域目标', exact: true })
-  if (await toggle.getAttribute('aria-pressed') !== 'true') await toggle.click()
+  await page.getByRole('radio', { name: '全部', exact: true }).check()
   await expect(page.locator('.region-targets')).toHaveCount(9)
   const images = page.locator('.region-target img')
   expect(await images.count()).toBeGreaterThan(0)
