@@ -25,9 +25,9 @@
   "gameAcceptance": "pending; do not close #24",
   "manualTrial": {
     "currentPreview": true,
-    "sourceSha": "86857f6ccb772b541ab13a705f073ae74fac39a4",
-    "buildSha256": "dfa41a830ffb639a7f4871db49d55fd0476115f38a6ff8d29e9759a356167e43",
-    "record": "border-labels-trial/manifest.json",
+    "sourceSha": "c963f1dbf135b8c8159fb0c764301cca0609f212",
+    "buildSha256": "07e4510a6e6998c6ddb522e3ed7e997938ce67b677d1fb512273ef35d25df4e6",
+    "record": "target-modes-trial/manifest.json",
     "status": "provisional; top-level candidate retains prior full-run evidence"
   }
 }

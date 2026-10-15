@@ -1,0 +1,102 @@
+[WebServer] (node:71977) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:71998) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/region-targets.spec.ts:15:1 › 词缀计分开关更新分数但保留真实区域目标和规划 (813ms)
+  ✘  2 tests/browser/region-targets.spec.ts:73:1 › 真实库存重算盘的中央目标可开关、键盘查看且不改变规划 (30.1s)
+(node:72692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/browser/region-targets.spec.ts:140:1 › 派生合并与神圣条件样例支持四槽溢出、策略切换和空格 (601ms)
+  ✓  4 tests/browser/region-targets.spec.ts:246:1 › 单一目的地目标与明暗主题保持优先级颜色，原图不染色 (346ms)
+  ✓  5 tests/browser/region-targets.spec.ts:280:1 › 区域目标三态筛选先排除灰色再计算四槽和更多，切策略同步且不改规划 (1.0s)
+  ✘  6 tests/browser/spec21-integration.spec.ts:5:1 › 规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复 (1.0m)
+
+
+  1) tests/browser/region-targets.spec.ts:73:1 › 真实库存重算盘的中央目标可开关、键盘查看且不改变规划 ────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Browser logs:
+
+    <launching> /Users/steipete/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/var/folders/1k/b09t4txs3v12pmwj5nl75x080000gn/T/playwright_chromiumdev_profile-Rp6CX2 --remote-debugging-pipe --no-startup-window
+    <launched> pid=71999
+    [pid=71999][err] [1015/165546.854134:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+    [pid=71999][err] [1015/165546.879365:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+    [pid=71999][err] [1015/165546.888413:INFO:CONSOLE:495] "[vite] connecting...", source: http://127.0.0.1:4394/@vite/client (495)
+    [pid=71999][err] [1015/165546.891053:INFO:CONSOLE:618] "[vite] connected.", source: http://127.0.0.1:4394/@vite/client (618)
+    [pid=71999][err] [1015/165546.967146:INFO:CONSOLE:21549] "%cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold", source: http://127.0.0.1:4394/node_modules/.vite/deps/chunk-373CG7ZK.js?v=9bc6ed8e (21549)
+    [pid=71999][err] [1015/165547.654963:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+    [pid=71999][err] [1015/165547.705988:ERROR:ui/display/mac/cv_display_link_mac.mm:188] CVDisplayLinkCreateWithCGDisplay failed. CVReturn: -6670
+    [pid=71999][err] [1015/165547.716319:INFO:CONSOLE:495] "[vite] connecting...", source: http://127.0.0.1:4394/@vite/client (495)
+    [pid=71999][err] [1015/165547.722583:INFO:CONSOLE:618] "[vite] connected.", source: http://127.0.0.1:4394/@vite/client (618)
+    [pid=71999][err] [1015/165547.779073:INFO:CONSOLE:21549] "%cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold", source: http://127.0.0.1:4394/node_modules/.vite/deps/chunk-373CG7ZK.js?v=9bc6ed8e (21549)
+    [pid=71999] <gracefully close start>
+    Call log:
+      - waiting for getByRole('radio', { name: '全部', exact: true })
+        - locator resolved to <input name=":r7:" value="all" type="radio"/>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <span>全部</span> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <span>全部</span> intercepts pointer events
+        - retrying click action
+          - waiting 100ms
+        57 × waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <span>全部</span> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+
+
+      78 |   const before = await exportState(page)
+      79 |   const toggle = page.getByRole('radio', { name: '全部', exact: true })
+    > 80 |   await toggle.check()
+         |                ^
+      81 |   await expect(toggle).toBeChecked()
+      82 |   const cells = page.locator('.region-targets')
+      83 |   await expect(cells).toHaveCount(9)
+        at /Users/steipete/Projects/allflame-voyage/tests/browser/region-targets.spec.ts:80:16
+
+    Error Context: test-results/region-targets-真实库存重算盘的中央目标可开关、键盘查看且不改变规划/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/region-targets-真实库存重算盘的中央目标可开关、键盘查看且不改变规划/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/region-targets-真实库存重算盘的中央目标可开关、键盘查看且不改变规划/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/browser/spec21-integration.spec.ts:5:1 › 规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复 ────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error Context: test-results/spec21-integration-规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/spec21-integration-规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/spec21-integration-规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/browser/region-targets.spec.ts:73:1 › 真实库存重算盘的中央目标可开关、键盘查看且不改变规划 ─────────────────────────
+    tests/browser/spec21-integration.spec.ts:5:1 › 规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复 ─────────
+  4 passed (1.6m)

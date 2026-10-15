@@ -1,0 +1,15 @@
+[WebServer] (node:74784) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:74786) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/browser/region-targets.spec.ts:15:1 › 词缀计分开关更新分数但保留真实区域目标和规划 (733ms)
+  ✓  2 tests/browser/region-targets.spec.ts:73:1 › 真实库存重算盘的中央目标可开关、键盘查看且不改变规划 (647ms)
+  ✓  3 tests/browser/region-targets.spec.ts:140:1 › 派生合并与神圣条件样例支持四槽溢出、策略切换和空格 (589ms)
+  ✓  4 tests/browser/region-targets.spec.ts:246:1 › 单一目的地目标与明暗主题保持优先级颜色，原图不染色 (362ms)
+  ✓  5 tests/browser/region-targets.spec.ts:280:1 › 区域目标三态筛选先排除灰色再计算四槽和更多，切策略同步且不改规划 (1.0s)
+  ✓  6 tests/browser/spec21-integration.spec.ts:5:1 › 规格21整页闭环保留原评分和核销，提示复制不改业务状态，下一轮刷新与备份可恢复 (9.8s)
+
+  6 passed (13.9s)
