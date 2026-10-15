@@ -1,3 +1,4 @@
+import { BorderAffinity } from './BorderAffinity'
 import { RegionTargets, RegionTargetDetails } from './RegionTargets'
 import { regionalTargetView, regionTargets, type RegionalCell, type RegionTargetMode } from '../logic/regionTargets'
 import { borderAffinityPriority, evaluateBorderAffinity } from '../logic/borderAffinity'
@@ -387,6 +388,7 @@ export function BoardView(props: Props) {
         </div>
         <button onClick={clearBorders}>清空边界</button>
       </div>
+      <BorderAffinity strategyId={props.strategyId ?? null} borders={borders} />
       {detailCell !== null && <RegionTargetDetails cell={targets[detailCell]} index={detailCell} onClose={() => setDetailCell(null)} />}
       <div className="board-grid">
         <div className="corner" />
