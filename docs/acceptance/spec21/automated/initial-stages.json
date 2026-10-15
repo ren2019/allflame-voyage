@@ -1,0 +1,96 @@
+{
+  "inputSha256": "4ed8079d89e4b03595856959b7b66d31d4aa0d0e411451a0778959fc3ed313b1",
+  "startedUtc": "2026-10-15T06:18:51.021Z",
+  "offlineBrowser": true,
+  "externalOriginsBlocked": true,
+  "stages": [
+    {
+      "name": "unit",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--reporter=json",
+        "--outputFile=/private/tmp/allflame-spec21-worktrees/issue-23/verification-results/unit.json"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:18:51.022Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:19:07.406Z",
+      "testCount": 0,
+      "log": "unit.log"
+    },
+    {
+      "name": "border-ocr",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "tests/border-ocr-regression.cjs"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:19:07.407Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:19:07.659Z",
+      "testCount": 0,
+      "log": "border-ocr.log"
+    },
+    {
+      "name": "text-library-audit",
+      "command": [
+        "python3",
+        "scripts/check-text-library.py"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:19:07.660Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:19:07.829Z",
+      "testCount": 0,
+      "log": "text-library-audit.log"
+    },
+    {
+      "name": "deployment",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "--test",
+        "tests/deployment/local-site.test.mjs"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:19:07.829Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:19:11.477Z",
+      "testCount": 5,
+      "log": "deployment.log"
+    },
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:19:11.477Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:19:13.319Z",
+      "testCount": 0,
+      "log": "build.log"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "node_modules/playwright/cli.js",
+        "test",
+        "--workers=1",
+        "--reporter=line,json"
+      ],
+      "status": "failed",
+      "startedUtc": "2026-10-15T06:19:13.319Z",
+      "exitCode": 1,
+      "finishedUtc": "2026-10-15T06:20:42.405Z",
+      "testCount": 0,
+      "log": "browser.log"
+    }
+  ],
+  "status": "failed",
+  "failure": "Verification stage failed: browser"
+}

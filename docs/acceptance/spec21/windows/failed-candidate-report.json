@@ -1,0 +1,29 @@
+{
+  "candidateSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+  "buildSha256": "f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df",
+  "runnerSha256": "26b43b6b713d5f720a5bd69bc4057f74001981275bd6525896e218033d793e16",
+  "url": "https://192.168.1.8:9443",
+  "startedUtc": "2026-10-15T06:23:25.509Z",
+  "targetWindows": true,
+  "certificateBypass": false,
+  "integratedCycle": {
+    "originalScore": "13.0",
+    "chosenScore": "13.0",
+    "consumed": 8,
+    "retained": 1,
+    "historyRecords": 1,
+    "nextInventory": 9,
+    "refreshedAndBackupRestored": true
+  },
+  "perStrategyNativeClipboard": [],
+  "failure": "锚地赐福: exact full native clipboard readback\n+ actual - expected\n\n+ ''\n- '\"锚地|物品数量.*(1[2-9].|[2-9]..)%|稀有怪物数量\"'\n",
+  "cleanup": {
+    "TaskRemoved": true,
+    "ProfileRemoved": true,
+    "RemainingOwnProcesses": 0,
+    "SshTunnelClosed": true,
+    "NativeClipboardProbeRemoved": true
+  },
+  "finishedUtc": "2026-10-15T06:24:24.872Z",
+  "clipboardPermissions": "granted to isolated candidate origin; native implementation and OS clipboard independently checked"
+}

@@ -26,7 +26,7 @@ const request = (path, ca, method = 'GET') => new Promise((resolve, reject) => {
     res.on('data', (data) => { chunks.push(data) })
     res.on('end', () => {
       const raw = Buffer.concat(chunks)
-      resolve({ status: res.statusCode, body: raw.toString('utf8'), raw })
+      resolve({ status: res.statusCode, body: raw.toString('utf8'), raw, headers: res.headers })
     })
   })
   req.on('error', reject)
@@ -81,4 +81,28 @@ test('Windows can download only the public certificate matching this project CA'
   assert.equal((await request('/ca.key', ca)).status, 404)
   assert.equal((await request('/server.key', ca)).status, 404)
   run('stop')
+})
+
+
+test('accepted WebP and JPEG target art has image MIME, nosniff and original bytes', async () => {
+  const art = [
+    ['.webp', 'image/webp', new URL('../../public/target-icons/essence.webp', import.meta.url)],
+    ['.jpg', 'image/jpeg', new URL('../../public/target-icons/lost-ruins.jpeg', import.meta.url)],
+  ]
+  for (const [extension, , source] of art) writeFileSync(join(build, `target${extension}`), readFileSync(source))
+  writeFileSync(join(build, 'target.jpeg'), readFileSync(art[1][2]))
+  run('start')
+  try {
+    const ca = readFileSync(join(site, 'ca.crt'))
+    for (const [extension, mime, source] of [...art, ['.jpeg', 'image/jpeg', art[1][2]]]) {
+      const result = await request(`/target${extension}`, ca)
+      assert.equal(result.status, 200)
+      assert.equal(result.headers['content-type'], mime)
+      assert.equal(result.headers['x-content-type-options'], 'nosniff')
+      assert.deepEqual(result.raw, readFileSync(source))
+      const head = await request(`/target${extension}`, ca, 'HEAD')
+      assert.equal(head.headers['content-type'], mime)
+      assert.equal(head.raw.length, 0)
+    }
+  } finally { run('stop') }
 })

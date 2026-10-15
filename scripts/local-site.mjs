@@ -113,7 +113,7 @@ async function stop() {
 }
 
 function serve() {
-  const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8' }
+  const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.woff': 'font/woff', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8' }
   const root = realpathSync(path('www'))
   const server = https.createServer({ key: readFileSync(path('server.key')), cert: readFileSync(path('server.crt')) }, (req, res) => {
     if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405); res.end(); return }

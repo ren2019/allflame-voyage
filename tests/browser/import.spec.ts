@@ -31,7 +31,8 @@ test('real import controls add both real charts in a Windows batch', async ({ pa
   await importCharts(page, samples.replace(/\n/g, '\r\n'))
   await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 2 张海图')
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(2)
-  await expect(page.locator('.chart-grid .sq-lvl')).toHaveText(['等级:83', '等级:83'])
+  await expect(page.locator('.chart-grid .sq-lvl')).toHaveText(['83', '83'])
+  await expect(page.locator('.chart-grid [title="区域等级 83"]')).toHaveCount(2)
   const state = await exportState(page)
   expect(state.pool).toEqual([
     expect.objectContaining({ name: '航海 冒险 珊瑚暗礁海图', level: 83, areaType: 'clam-infested-shelf', shape: 'End', edges: [true, false, false, false], modIds: ['adj-crab-1'], rewards: [{ stat: 'quantity', percent: 110 }, { stat: 'sulphur', percent: 75 }] }),

@@ -1,0 +1,105 @@
+{
+  "recordedUtc": "2026-10-15T06:36:00.565Z",
+  "productSourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+  "buildSha256": "f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df",
+  "unit": {
+    "passed": 534,
+    "failed": 0,
+    "pending": 0,
+    "report": "automated/unit.json"
+  },
+  "ocr": {
+    "currentTooltips": 64,
+    "aliases": 12,
+    "passed": true
+  },
+  "textLibrary": {
+    "mods": 141,
+    "destinations": 15,
+    "shapeStatuses": 5,
+    "sourceDigestsValid": true
+  },
+  "deployment": {
+    "passed": 5
+  },
+  "stages": [
+    {
+      "name": "unit",
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:18:51.022Z",
+      "finishedUtc": "2026-10-15T06:19:07.406Z",
+      "exitCode": 0,
+      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+      "log": "automated/unit.log"
+    },
+    {
+      "name": "border-ocr",
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:19:07.407Z",
+      "finishedUtc": "2026-10-15T06:19:07.659Z",
+      "exitCode": 0,
+      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+      "log": "automated/border-ocr.log"
+    },
+    {
+      "name": "text-library-audit",
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:19:07.660Z",
+      "finishedUtc": "2026-10-15T06:19:07.829Z",
+      "exitCode": 0,
+      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+      "log": "automated/text-library-audit.log"
+    },
+    {
+      "name": "deployment",
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:19:07.829Z",
+      "finishedUtc": "2026-10-15T06:19:11.477Z",
+      "exitCode": 0,
+      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+      "log": "automated/deployment.log"
+    },
+    {
+      "name": "build",
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:19:11.477Z",
+      "finishedUtc": "2026-10-15T06:19:13.319Z",
+      "exitCode": 0,
+      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+      "log": "automated/build.log"
+    }
+  ],
+  "browser": {
+    "sourceSha": "a699add511180443dc7ca6602852662fa276e7a3",
+    "command": "OFFLINE_ACCEPTANCE=1 PLAYWRIGHT_PORT=4183 PLAYWRIGHT_JSON_OUTPUT_FILE=/tmp/allflame-implement-21/issue-23-browser-final.json npm exec -- playwright test --workers=1 --reporter=line,json",
+    "stats": {
+      "startTime": "2026-10-15T06:22:09.265Z",
+      "duration": 83358.199,
+      "expected": 67,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "report": "automated/browser.json",
+    "offline": true,
+    "externalOriginsBlocked": true
+  },
+  "initialFullVerify": {
+    "passed": false,
+    "failedOnly": "stale import UI expectation 等级:83; compact UI correctly 83 with 区域等级 83 title",
+    "correctedIn": "be49a93264d9b4442b63a86cefcc7ba9dd067340",
+    "finalFullBrowserRerunPassed": true,
+    "record": "automated/initial-stages.json"
+  },
+  "spec21Coverage": {
+    "wholePageCycle": "spec21-integration.spec.ts",
+    "themeAndCalibration": "theme.spec.ts, calibration-mode.spec.ts, shared native visualCalibration",
+    "targets": "region-targets.spec.ts + regionTargets tests",
+    "keeperAndCopy": "keeper-assistant.spec.ts, compact-copy.spec.ts, keeperAssistant tests",
+    "borders": "border-affinity.spec.ts + borderAffinity tests",
+    "history": "voyage-history.spec.ts, voyage-comparison.spec.ts + voyageHistory/comparison tests",
+    "scoringAndProtection": "existing seven-strategy solver, scoring, filler-candidates and planning-cycle suites"
+  },
+  "native": "UI partial evidence; full native clipboard acceptance NOT passed",
+  "game": "not exercised; #24 human checkpoint"
+}

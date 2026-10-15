@@ -1,0 +1,24 @@
+[spec21] Windows native environment ready; starting integrated cycle
+[spec21] Integrated cycle passed; checking themes and target details
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 锚地赐福: exact full native clipboard readback
++ actual - expected
+
++ ''
+- '"锚地|物品数量.*(1[2-9].|[2-9]..)%|稀有怪物数量"'
+
+    at file:///private/tmp/allflame-spec21-worktrees/issue-23/tests/deployment/verify-spec21-windows-edge.mjs:141:12
+    at async keeper (file:///private/tmp/allflame-spec21-worktrees/issue-23/tests/browser/spec21-flow.mjs:40:17)
+    at async file:///private/tmp/allflame-spec21-worktrees/issue-23/tests/deployment/verify-spec21-windows-edge.mjs:134:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '',
+  expected: '"锚地|物品数量.*(1[2-9].|[2-9]..)%|稀有怪物数量"',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.7.0
