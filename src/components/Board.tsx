@@ -192,7 +192,7 @@ function Tile({
   const primary = mods.find((m) => m!.scope !== 'self') ?? mods[0]
   return (
     <div
-      className={`tile ${selected ? 'selected' : ''} ${highlighted ? 'highlighted' : ''} ${chart.preserved ? 'preserved' : ''} ${primary ? `tscope-${primary.scope}` : ''}`}
+      className={`tile ${region ? 'with-region-targets' : ''} ${selected ? 'selected' : ''} ${highlighted ? 'highlighted' : ''} ${chart.preserved ? 'preserved' : ''} ${primary ? `tscope-${primary.scope}` : ''}`}
       onClick={onClick}
       {...tt}
     >

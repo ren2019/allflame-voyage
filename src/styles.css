@@ -2517,31 +2517,3 @@ textarea {
 .chart-mod .calibration-link { vertical-align: middle; }
 .header-right { flex-wrap: wrap; }
 .reservation-detail { max-width: min(460px, calc(100vw - 32px)); }
-
-/* Region reminders use independent display priorities; original game art keeps its colours. */
-.region-targets { position:absolute; inset:50% auto auto 50%; transform:translate(-50%,-50%); display:flex; justify-content:center; flex-wrap:wrap; gap:5px; width:calc(100% - 22px); max-width:155px; z-index:4; cursor:default; }
-.region-target { display:flex; align-items:center; justify-content:center; flex:0 0 32px; width:32px; height:34px; padding:3px; border:1px solid currentColor; border-radius:5px; }
-.region-target img,.region-vector { display:inline-block; width:26px; height:26px; object-fit:contain; flex-shrink:0; }
-.region-vector { background:currentColor; mask-size:contain; mask-position:center; mask-repeat:no-repeat; }
-.band-high { color:#f6c66a; --region-band-bg:#322a1d; }
-.band-medium { color:#74b6f4; --region-band-bg:#202e40; }
-.band-low { color:#a4adba; --region-band-bg:#2a303a; }
-.region-target { background:var(--region-band-bg,var(--panel)); }
-.region-target:focus-visible,.region-target-empty:focus-visible { outline:2px solid var(--text); outline-offset:2px; }
-.region-more { font-size:20px; color:var(--text); }
-.region-target-empty { font-size:11px; color:var(--muted); padding:3px 7px; background:var(--panel); }
-.region-details { width:min(600px,calc(100vw - 30px)); max-height:85vh; padding:20px; border:1px solid var(--border); border-radius:8px; color:var(--text); background:var(--panel); }
-.region-details::backdrop { background:rgba(0,0,0,.5); }
-.region-details-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; }
-.region-details h2 { margin:0; font-size:18px; }
-.region-details h3 { font-size:15px; }
-.region-details h4 { display:flex; align-items:center; gap:8px; margin:10px 0; color:var(--text); }
-.region-detail-group { border-top:1px solid var(--border); margin-top:16px; padding-top:8px; }
-.region-details article p,.region-details li { color:var(--text); font-size:13px; }
-.region-details details { font-size:12px; color:var(--muted); margin:12px 0; }
-.region-details summary { cursor:pointer; }
-:root[data-theme='light'] .band-high { color:#8a5b00; --region-band-bg:#fff3d6; }
-:root[data-theme='light'] .band-medium { color:#205f9b; --region-band-bg:#eaf2fd; }
-:root[data-theme='light'] .band-low { color:#626e7e; --region-band-bg:#eef0f3; }
-@media(max-width:500px) { .region-targets { gap:3px; width:calc(100% - 12px); max-width:75px; } .region-target { flex-basis:30px; width:30px; height:30px; } .region-target img,.region-target .region-vector { width:24px; height:24px; } .region-details { padding:14px; } }
-
