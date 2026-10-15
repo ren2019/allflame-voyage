@@ -46,7 +46,7 @@ test('完整非空规划经刷新和实际 JSON 下载载入恢复所有持久�
 test('所选候选完成九步复制后仅核销已消耗实例，补库存和边界再执行第二航程', async ({ page }) => {
   // Two real client copies enter through the game-text UI. They stay alongside
   // the explicitly artificial four-connector planning models throughout.
-  await page.locator('.import-panel textarea').fill(realCopies)
+  await page.locator('.import-panel textarea[placeholder]').fill(realCopies)
   await page.getByRole('button', { name: '解析并加入', exact: true }).click()
   await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 2 张海图')
   const realInventory = (await downloadPlanningState(page)).pool
