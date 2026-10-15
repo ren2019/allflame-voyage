@@ -1,22 +1,11 @@
 import { borderModById, voyageModById } from '../data/mods'
 import type { Board, Borders, ChartData, ModEffect, Stat, Weights } from '../types'
 import { ALL_STATS, borderTouches } from '../types'
-import { rotateEdges } from './connectivity'
+import { boardEffectScope } from './effectScope'
 import { borderRewardKey, voyageRewardKey } from './rewards'
 
 /** an effect tagged with the reward-type key it should be weighted under */
 type Tagged = ModEffect & { reward: string }
-
-const NEIGHBOURS: number[][] = Array.from({ length: 9 }, (_, i) => {
-  const r = Math.floor(i / 3)
-  const c = i % 3
-  const out: number[] = []
-  if (r > 0) out.push(i - 3)
-  if (r < 2) out.push(i + 3)
-  if (c > 0) out.push(i - 1)
-  if (c < 2) out.push(i + 1)
-  return out
-})
 
 export interface ScoreBreakdown {
   total: number
@@ -60,45 +49,7 @@ export function scoreBoard(
     if (mod?.magnitude) tileMagnitude[borderTouches(seg)] += mod.magnitude
   })
 
-  // matched-connection count per tile (for mods that scale with connections)
-  const edgesAt = (i: number): [boolean, boolean, boolean, boolean] | null => {
-    const p = board[i]
-    if (!p) return null
-    const c = charts.get(p.chartUid)
-    return c ? rotateEdges(c.edges, p.rotation) : null
-  }
-  const connCount: number[] = Array(9).fill(0)
-  const connectedNeighbours: number[][] = Array.from({ length: 9 }, () => [])
-  board.forEach((_, i) => {
-    const e = edgesAt(i)
-    if (!e) return
-    const r = Math.floor(i / 3)
-    const col = i % 3
-    const dirs = [
-      { dr: -1, dc: 0, edge: 0, opp: 2 },
-      { dr: 0, dc: 1, edge: 1, opp: 3 },
-      { dr: 1, dc: 0, edge: 2, opp: 0 },
-      { dr: 0, dc: -1, edge: 3, opp: 1 },
-    ]
-    for (const d of dirs) {
-      const nr = r + d.dr
-      const nc = col + d.dc
-      if (nr < 0 || nr > 2 || nc < 0 || nc > 2) continue
-      const j = nr * 3 + nc
-      const ne = edgesAt(j)
-      if (e[d.edge] && ne?.[d.opp]) {
-        connCount[i]++
-        connectedNeighbours[i].push(j)
-      }
-    }
-  })
-
-  // which neighbours does an Adjacent mod on tile i reach?
-  const adjacentTargets = (i: number): number[] => {
-    const base =
-      opts.adjacencyMode === 'connected' ? connectedNeighbours[i] : NEIGHBOURS[i].filter((n) => board[n])
-    return opts.adjacentAffectsSelf ? [...base, i] : base
-  }
+  const { connCount, adjacentTargets } = boardEffectScope(board, charts, opts)
 
   // collect effects per tile, each tagged with its reward-type key
   const tileEffects: Tagged[][] = Array.from({ length: 9 }, () => [])
