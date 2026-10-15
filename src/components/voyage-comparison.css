@@ -1,0 +1,24 @@
+.voyage-comparison {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.voyage-comparison p { margin: 6px 0; }
+.voyage-comparison-summary, .voyage-comparison-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 6px;
+}
+.voyage-comparison-counts { color: var(--muted); }
+.voyage-comparison-verdict { font-weight: 600; }
+.voyage-comparison-verdict.low { color: var(--bad); }
+.voyage-comparison-verdict.high { color: var(--good); }
+.voyage-comparison details { margin-top: 8px; color: var(--muted); }
+.voyage-comparison summary { cursor: pointer; }
