@@ -2,6 +2,7 @@ import { saveTheme } from './logic/theme'
 import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { BoardView } from './components/Board'
+import { BorderAffinity } from './components/BorderAffinity'
 import { ModBrowser } from './components/ModBrowser'
 import { Onboarding } from './components/Onboarding'
 import { TooltipLayer } from './components/Tooltip'
@@ -595,6 +596,7 @@ export default function App() {
         </section>
 
         <section className="col board-col">
+          <BorderAffinity strategyId={state.strategyId} borders={state.borders} />
           <BoardView
             board={state.board}
             borders={state.borders}
