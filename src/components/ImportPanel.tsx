@@ -6,7 +6,8 @@ import { parseBorderOcrPayload } from '../logic/borderOcr'
 import { isChartClipboardText, parseChartText } from '../logic/parser'
 import { dedupeNewCharts } from '../logic/importDedupe'
 import type { AppState } from '../logic/storage'
-import { defaultState } from '../logic/storage'
+import { defaultState, restorePlanningState } from '../logic/storage'
+import { restoreVoyageHistory } from '../logic/voyageHistory'
 import type { ChartData } from '../types'
 import { CompactCopyText } from './CompactCopyText'
 
@@ -137,8 +138,9 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
   const importJson = (file: File) => {
     file.text().then((t) => {
       try {
-        onLoadState({ ...defaultState(), ...JSON.parse(t) })
-        setMsg('已从 JSON 载入规划状态')
+        const parsed = JSON.parse(t)
+        onLoadState(restorePlanningState(parsed))
+        setMsg('已从 JSON 载入规划状态' + (restoreVoyageHistory(parsed?.voyageHistory).damaged ? '；已忽略损坏航程历史，其余规划数据已保留' : ''))
       } catch {
         setMsg('JSON 文件无效')
       }

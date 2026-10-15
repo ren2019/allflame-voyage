@@ -1,3 +1,4 @@
+import { createVoyageRecord } from './logic/voyageHistory'
 import { saveTheme } from './logic/theme'
 import { CalibrationMode } from './components/CalibrationLink'
 import { calibrationUrl } from './logic/calibrationLinks'
@@ -28,7 +29,7 @@ import { scoreBoard } from './logic/scoring'
 import { checkConnectivity } from './logic/connectivity'
 import type { SolverResult } from './logic/solver'
 import type { SolveResultContext } from './logic/executable'
-import { decodeShare, defaultState, encodeShare, loadLocal, saveLocal, type AppState } from './logic/storage'
+import { decodeShare, defaultState, encodeShare, loadLocalWithStatus, saveLocal, type AppState } from './logic/storage'
 import type { ChartData } from './types'
 import { ALL_STATS, STAT_LABELS, borderTouches, emptyBoard } from './types'
 
@@ -42,17 +43,19 @@ const AHK_RETIRED_KEY = 'announce-ahk-retired'
 /** issues live here - linked from the header and the update popup */
 const ISSUES_URL = 'https://github.com/ren2019/allflame-voyage/issues'
 
-function initialState(): AppState {
+function initialState(): { state: AppState; damagedHistory: boolean } {
   const hash = window.location.hash.replace(/^#/, '')
   if (hash.length > 20) {
     const shared = decodeShare(hash)
-    if (shared) return shared
+    if (shared) return { state: shared, damagedHistory: false }
   }
-  return loadLocal() ?? defaultState()
+  const restored = loadLocalWithStatus()
+  return { state: restored.state ?? defaultState(), damagedHistory: restored.damagedHistory }
 }
 
 export default function App() {
-  const [state, setState] = useState<AppState>(initialState)
+  const [startup] = useState(initialState)
+  const [state, setState] = useState<AppState>(startup.state)
   const [showOnboarding, setShowOnboarding] = useState<boolean>(() => {
     try {
       return !localStorage.getItem('onboarding-seen')
@@ -114,6 +117,8 @@ export default function App() {
     }
   }
   const [voyageMsg, setVoyageMsg] = useState('')
+  const [storageFailed, setStorageFailed] = useState(false)
+  const completion = useRef<{ id: string; committed: boolean } | null>(null)
   const [preserveConfirm, setPreserveConfirm] = useState<{
     charts: ChartData[]
     index: number
@@ -147,7 +152,8 @@ export default function App() {
   // debounced autosave
   useEffect(() => {
     window.clearTimeout(saveTimer.current)
-    saveTimer.current = window.setTimeout(() => saveLocal(state), 300)
+    saveTimer.current = window.setTimeout(() => setStorageFailed(!saveLocal(state)), 300)
+    return () => window.clearTimeout(saveTimer.current)
   }, [state])
 
   const chartMap = useMemo(() => new Map(state.pool.map((c) => [c.uid, c])), [state.pool])
@@ -299,39 +305,35 @@ export default function App() {
   // apply the voyage result: keep charts whose uid is in keptUids, consume the
   // rest of the board; charts not on the board are untouched.
   const commitFinish = (keptUids: Set<string>) => {
-    setState((s) => {
-      const onBoard = new Set(s.board.filter(Boolean).map((p) => p!.chartUid))
-      let consumed = 0
-      let kept = 0
-      const pool = s.pool.filter((c) => {
-        if (!onBoard.has(c.uid)) return true // not run this voyage
-        if (keptUids.has(c.uid)) {
-          kept++
-          return true
-        }
-        consumed++
-        return false
-      })
-      setVoyageMsg(
-        `航程已完成：消耗 ${consumed} 张海图` +
-          (kept ? `，保留 ${kept} 张` : ''),
-      )
-      window.setTimeout(() => setVoyageMsg(''), 4000)
-      return {
-        ...s,
-        pool: pool.map((c) => (keptUids.has(c.uid) ? { ...c, preserved: false } : c)),
-        board: emptyBoard(),
-      }
-    })
+    const event = completion.current
+    if (!event || event.committed) return
+    event.committed = true
+    // Capture the final confirmed state before inventory consumption. Updaters
+    // stay pure: React StrictMode may replay them.
+    const record = createVoyageRecord(state, event.id, new Date().toISOString())
+    const onBoard = new Set(state.board.filter(Boolean).map((p) => p!.chartUid))
+    const consumed = state.pool.filter((c) => onBoard.has(c.uid) && !keptUids.has(c.uid)).length
+    const kept = state.pool.filter((c) => onBoard.has(c.uid) && keptUids.has(c.uid)).length
+    setState((s) => ({
+      ...s,
+      pool: s.pool.filter((c) => !onBoard.has(c.uid) || keptUids.has(c.uid))
+        .map((c) => keptUids.has(c.uid) ? { ...c, preserved: false } : c),
+      board: emptyBoard(),
+      voyageHistory: record && !s.voyageHistory.some((entry) => entry.completionId === record.completionId)
+        ? [...s.voyageHistory, record] : s.voyageHistory,
+    }))
+    setVoyageMsg(`航程已完成：消耗 ${consumed} 张海图` + (kept ? `，保留 ${kept} 张` : ''))
+    window.setTimeout(() => setVoyageMsg(''), 4000)
     setPreserveConfirm(null)
   }
 
   const finishVoyage = () => {
+    if (preserveConfirm || !state.board.some(Boolean)) return
+    completion.current = { id: crypto.randomUUID(), committed: false }
     const preserved = state.board
       .filter(Boolean)
       .map((p) => chartMap.get(p!.chartUid))
       .filter((c): c is ChartData => !!c && !!c.preserved)
-    // no charts marked to keep -> consume everything on the board outright
     if (preserved.length === 0) commitFinish(new Set())
     else setPreserveConfirm({ charts: preserved, index: 0, kept: [] })
   }
@@ -676,6 +678,14 @@ export default function App() {
             }
           />
 
+          <section className="voyage-history muted pad" aria-label="航程历史">
+            <strong>航程历史</strong> · 已记录 {state.voyageHistory.length} 次
+            {state.voyageHistory.length > 0 && <> · 最近完成分数 {state.voyageHistory[state.voyageHistory.length - 1].score.toFixed(1)}</>}
+            <div>仅记录功能启用后完成的有效九格摆盘，不代表游戏出发记录。</div>
+            {startup.damagedHistory && <div role="alert">已忽略损坏航程历史，库存与规划偏好已保留。</div>}
+            {storageFailed && <div role="alert">本地存储写入失败，当前历史未持久化。请导出规划备份；本次核销结果保持有效。</div>}
+          </section>
+
           {copySeq && (
             <div className="preserve-confirm copyseq">
               <div className="pc-head">
@@ -716,6 +726,7 @@ export default function App() {
                 这张海图在实际航程后是否存活？
               </div>
               <div className="pc-name">{preserveConfirm.charts[preserveConfirm.index].name}</div>
+              <button onClick={() => { completion.current = null; setPreserveConfirm(null) }}>取消核销</button>
               <div className="pc-actions">
                 <button className="pc-kept" onClick={() => decidePreserve(true)}>
                   ✓ 已存活，保留

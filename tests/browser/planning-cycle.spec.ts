@@ -9,7 +9,7 @@ import { strategyById } from '../../src/data/strategies'
 import { downloadPlanningState, loadPlanningState, recordGuideClipboard } from './journey-helpers'
 
 const realCopies = readFileSync(new URL('../../samples/charted.zh-CN.txt', import.meta.url), 'utf8')
-const initial = fixture as AppState
+const initial = { ...fixture, voyageHistory: [] } as AppState
 const score = (state: AppState) => scoreBoard(state.board, state.borders, new Map(state.pool.map((chart) => [chart.uid, chart])), state.strategyId ? strategyById.get(state.strategyId)!.weights : state.weights, { adjacencyMode: state.adjacencyMode, adjacentAffectsSelf: state.adjacentAffectsSelf, disabledMods: new Set(state.disabledMods) })
 
 test.beforeEach(async ({ page }) => {
@@ -68,6 +68,7 @@ test('所选候选完成九步复制后仅核销已消耗实例，补库存和�
   await expect(page.locator('.solve-result:not(.invalid)').first()).toBeVisible()
   await page.locator('.solve-result:not(.invalid)').last().click()
   const chosen = await downloadPlanningState(page)
+  expect(chosen.voyageHistory).toEqual([])
   const selected = new Set(chosen.board.map((placement) => placement!.chartUid))
   expect(selected.size).toBe(9)
   expect(selected.has(oracle.survivedUid)).toBe(true)
@@ -101,7 +102,8 @@ test('所选候选完成九步复制后仅核销已消耗实例，补库存和�
   expect(finished.pool).toHaveLength(6)
   expect(finished.pool.filter((chart) => realUids.includes(chart.uid))).toEqual(realInventory)
   expect(finished.board).toEqual(Array(9).fill(null))
-  expect({ ...finished, pool: chosen.pool, board: chosen.board }).toEqual(chosen)
+  expect(finished.voyageHistory).toHaveLength(1)
+  expect({ ...finished, pool: chosen.pool, board: chosen.board, voyageHistory: chosen.voyageHistory }).toEqual(chosen)
   expect(finished.pool.find((chart) => chart.uid === oracle.survivedUid)?.preserved).toBe(false)
   for (let index = 0; index < oracle.second.addBlankCount; index++) await page.getByRole('button', { name: '+ 添加海图', exact: true }).click()
   await page.getByTitle('列表视图（编辑海图）', { exact: true }).click()
@@ -118,6 +120,7 @@ test('所选候选完成九步复制后仅核销已消耗实例，补库存和�
   await page.locator('.solve-big').click()
   await expect(page.locator('.solve-result:not(.invalid)').first()).toBeVisible()
   const second = await downloadPlanningState(page)
+  expect(second.voyageHistory).toHaveLength(1)
   const secondUids = second.board.map((placement) => placement!.chartUid)
   expect(new Set(secondUids).size).toBe(9)
   expect(new Set(secondUids)).toEqual(new Set(replenished.pool.filter((chart) => chart.edges.every(Boolean)).map((chart) => chart.uid)))
@@ -139,5 +142,6 @@ test('未标记保留时仅消耗本盘九张，三张未使用库存与全部�
   const finished = await downloadPlanningState(page)
   expect(finished.pool.map((chart) => chart.uid)).toEqual(['journey-10', 'journey-11', 'journey-12'])
   expect(finished.board).toEqual(Array(9).fill(null))
-  expect({ ...finished, pool: state.pool, board: state.board }).toEqual(state)
+  expect(finished.voyageHistory).toHaveLength(1)
+  expect({ ...finished, pool: state.pool, board: state.board, voyageHistory: state.voyageHistory }).toEqual(state)
 })

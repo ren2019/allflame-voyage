@@ -13,7 +13,7 @@ export interface SolveResultContext {
 
 // Loading a candidate changes the board, not the solve inputs. Any change to
 // inventory, protection, borders or settings requires solving again.
-const solveInputs = (state: AppState) => JSON.stringify({ ...state, board: undefined })
+const solveInputs = (state: AppState) => JSON.stringify({ ...state, board: undefined, voyageHistory: undefined })
 
 export function createSolveResultContext(
   state: AppState, eligiblePool: ChartData[], locked: Board, origin: SolveResultContext['origin'],
