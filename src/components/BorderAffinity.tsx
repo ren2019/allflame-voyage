@@ -15,27 +15,28 @@ export function BorderAffinity({ strategyId, borders }: { strategyId: string | n
   return (
     <section className="border-affinity" aria-label="边界适配分">
       <div className="border-affinity-heading">
-        <strong>边界优先级</strong>
-        <span role="status" aria-live="polite">{evaluation.status !== 'complete' ? '待评估' : `重点 ${high} 条 · 适配 ${medium} 条`}</span>
+        <strong>边界</strong>
+        <div className="border-affinity-legend" aria-label="边界相关度分档">
+          <span data-affinity-band="low">可忽略</span>
+          <span data-affinity-band="medium">适配</span>
+          <span data-affinity-band="high">重点</span>
+        </div>
       </div>
-      <p className="muted">每条 0–10 分，表示与当前策略的相关程度。直接查看九宫格外圈的十二条边界。</p>
-      <div className="border-affinity-legend" aria-label="边界相关度分档">
-        <span data-affinity-band="low">0–2 可忽略</span>
-        <span data-affinity-band="medium">3–6 适配</span>
-        <span data-affinity-band="high">7–10 重点</span>
-      </div>
-      {evaluation.status === 'no-strategy' && <p>请选择策略后查看边界适配。</p>}
-      {evaluation.status === 'incomplete' && <p>已录入 {entered}/12 条边界，尚不能完整评估。</p>}
-      {evaluation.status === 'unsupported' && <p>当前策略或边界规则尚未覆盖，不能完整评估。</p>}
-      {evaluation.requiredBorder && (
-        <p className={evaluation.requiredBorder.present ? 'border-affinity-required' : 'border-affinity-required missing'}>
-          {evaluation.requiredBorder.present ? '必要边界已具备：' : evaluation.status === 'incomplete' ? '已录入边界尚未见必要边界：' : '必要边界缺失：'}
+      {evaluation.status === 'no-strategy' && <p>先选策略</p>}
+      {evaluation.status === 'incomplete' && <p>边界未填满（{entered}/12）</p>}
+      {evaluation.status === 'unsupported' && <p>部分边界暂无规则</p>}
+      {evaluation.requiredBorder && !evaluation.requiredBorder.present && (
+        <p className="border-affinity-required missing">
+          {evaluation.status === 'incomplete' ? '尚缺必要边界：' : '缺少必要边界：'}
           {localizedBorder(evaluation.requiredBorder.id)?.short ?? evaluation.requiredBorder.id}
         </p>
       )}
       <details>
-        <summary>查看十二条贡献与依据</summary>
-        {evaluation.total !== null && <p className="muted">查表合计 {evaluation.total}，供核对逐条权重。</p>}
+        <summary>依据</summary>
+        <p role="status" aria-live="polite">{evaluation.status !== 'complete' ? '待评估' : `重点 ${high} 条 · 适配 ${medium} 条`}</p>
+        <p>0–2 可忽略；3–6 适配；7–10 重点。</p>
+        {evaluation.requiredBorder?.present && <p className="border-affinity-required">必要边界已具备：{localizedBorder(evaluation.requiredBorder.id)?.short ?? evaluation.requiredBorder.id}</p>}
+        {evaluation.total !== null && <p className="muted">权重合计 {evaluation.total}</p>}
         <p className="muted">{BORDER_AFFINITY_RULES.basis} 规则版本：{evaluation.version}。</p>
         <ol className="border-affinity-entries">
           {evaluation.contributions.map((entry) => (
@@ -45,8 +46,8 @@ export function BorderAffinity({ strategyId, borders }: { strategyId: string | n
                 <span>{entry.borderId ? localizedBorder(entry.borderId)?.short ?? entry.borderId : '尚未录入'}</span>
                 <strong>{entry.weight === null ? '待评估' : `${entry.weight}/10 · ${priorities[entry.segment]?.label ?? '待评估'}`}</strong>
               </div>
-              <p>{entry.reason ?? (entry.borderId ? strategyId ? '此策略或边界尚无权重规则。' : '选择策略后查看贡献。' : '缺少输入，不计作零价值。')}</p>
-              {entry.sourceIds.length > 0 && <div className="border-affinity-sources">依据：{entry.sourceIds.map((id) => {
+              <p>{entry.reason ?? (entry.borderId ? strategyId ? '暂无规则' : '未选策略' : '未录入')}</p>
+              {entry.sourceIds.length > 0 && <div className="border-affinity-sources">来源：{entry.sourceIds.map((id) => {
                 const source = BORDER_AFFINITY_RULES.sources[id]
                 return source ? <a key={id} href={source.url} target="_blank" rel="noreferrer">{source.label}</a> : <span key={id}>来源未覆盖</span>
               })}</div>}

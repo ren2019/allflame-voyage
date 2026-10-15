@@ -72,7 +72,7 @@ function BorderSelect({
       data-border-segment={seg}
       data-affinity-band={priority?.band}
       aria-label={`边界位置 ${seg + 1}`}
-      title={(label?.text ?? '边界位置：点击搜索') + (priority ? `\n策略相关度 ${affinityWeight}/10 · ${priority.label}` : '')}
+      title={(label?.text ?? '边界位置：点击搜索') + (priority ? `\n${priority.label}` : '')}
       onClick={() => {
         setQ('')
         setOpen(true)
@@ -85,7 +85,6 @@ function BorderSelect({
       ) : (
         <span className="bslot-empty">·</span>
       )}
-      {priority && <span className="bslot-affinity">{affinityWeight}</span>}
       {value && <CalibrationLink id={value} slot={seg} />}
       {open && (
         <>
