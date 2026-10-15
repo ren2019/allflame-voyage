@@ -129,11 +129,17 @@ try {
   console.error('[spec21] Integrated cycle passed; checking themes and target details')
   await visualTargets(page, (name, target) => target.screenshot({ path: resolve(output, `${name}.png`) }))
   await visualCalibration(page, (name, target) => target.screenshot({ path: resolve(output, `${name}.png`) }))
+  await page.bringToFront()
   report.perStrategyNativeClipboard = []
   await keeper(page, async (name, expression) => {
-    const actual = await page.evaluate(() => navigator.clipboard.readText())
+    let actual = '', readAttempts = 0
+    for (; readAttempts < 30; readAttempts++) {
+      actual = await page.evaluate(() => navigator.clipboard.readText())
+      if (actual === expression) break
+      await page.waitForTimeout(100)
+    }
     assert.equal(actual, expression, `${name}: exact full native clipboard readback`)
-    report.perStrategyNativeClipboard.push({ strategy: name, expression, utf16Length: expression.length, matchesExpected: true })
+    report.perStrategyNativeClipboard.push({ strategy: name, expression, utf16Length: expression.length, matchesExpected: true, readAttempts: readAttempts + 1 })
   })
   console.error('[spec21] All six full expressions copied with native readback')
   await page.getByText('留图助手', { exact: true }).click()
