@@ -1,0 +1,753 @@
+{
+  "format": "allflame-ui-review",
+  "version": 1,
+  "exportedAt": "2026-10-15T04:15:37.686Z",
+  "configVersion": "3.29-display-priority-draft-1",
+  "preferences": {
+    "theme": "light"
+  },
+  "records": [
+    {
+      "key": "feature.header-links",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:14:29.522Z",
+      "snapshot": {
+        "fingerprint": "ba49bb2d140e03ecb279a957ff66307d2bbbdcf02f65660c4daece3d9fa594f9",
+        "label": "反馈与中文校准跟随主题",
+        "kind": "feature",
+        "iconAsset": null,
+        "iconSourceUrl": null
+      },
+      "currentFingerprint": "ba49bb2d140e03ecb279a957ff66307d2bbbdcf02f65660c4daece3d9fa594f9"
+    },
+    {
+      "key": "feature.priority-colors",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:14:38.370Z",
+      "snapshot": {
+        "fingerprint": "2b8650f593d6fc00c55feacfe640a7ece6b0fd3ea7f7bf6b4f607c6c1dbee80e",
+        "label": "高／中／低三档提醒",
+        "kind": "feature",
+        "iconAsset": null,
+        "iconSourceUrl": null
+      },
+      "currentFingerprint": "2b8650f593d6fc00c55feacfe640a7ece6b0fd3ea7f7bf6b4f607c6c1dbee80e"
+    },
+    {
+      "key": "feature.regex-copy",
+      "decision": "change",
+      "comment": "复制改成小 icon 按钮，不要文字。 空间有限，要节约。  正则文本反而不需要全文显示，可以点开在弹窗里看完整的",
+      "updatedAt": "2026-10-15T04:15:24.985Z",
+      "snapshot": {
+        "fingerprint": "371ff56f0e585c88bac6e5f6fc6509fc34d00e069566be9efa6f244d29c60500",
+        "label": "洗练与保留海图：一键复制",
+        "kind": "feature",
+        "iconAsset": null,
+        "iconSourceUrl": null
+      },
+      "currentFingerprint": "371ff56f0e585c88bac6e5f6fc6509fc34d00e069566be9efa6f244d29c60500"
+    },
+    {
+      "key": "target:anchorfield-loot",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:05.146Z",
+      "snapshot": {
+        "fingerprint": "7e71848c622890a4778a001f1923022b4a1656dfb503b81236195f3963a549b0",
+        "label": "锚地沉没宝藏",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/strongbox.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/chest.html"
+      },
+      "currentFingerprint": "7e71848c622890a4778a001f1923022b4a1656dfb503b81236195f3963a549b0"
+    },
+    {
+      "key": "target:arcanist-box",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:17.367Z",
+      "snapshot": {
+        "fingerprint": "4c733bc86b19f13e40a87375d2f905c6be8be69bee89e2b07033886f5ef451c8",
+        "label": "奥术师保险箱",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/strongbox.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/chest.html"
+      },
+      "currentFingerprint": "4c733bc86b19f13e40a87375d2f905c6be8be69bee89e2b07033886f5ef451c8"
+    },
+    {
+      "key": "target:barrels",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:15.217Z",
+      "snapshot": {
+        "fingerprint": "19ee5e548cb536daa4e23a67b61baf12f141b97aa898a5c8bb2491807349ca9d",
+        "label": "木桶群",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/barrels.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/barrel.html"
+      },
+      "currentFingerprint": "19ee5e548cb536daa4e23a67b61baf12f141b97aa898a5c8bb2491807349ca9d"
+    },
+    {
+      "key": "target:bathyspheres",
+      "decision": "change",
+      "comment": "换成潜水球图标",
+      "updatedAt": "2026-10-15T04:10:18.096Z",
+      "snapshot": {
+        "fingerprint": "9fc64f0a6673aa1b5a175341f2e1f47bd6fbafea8f2883b7525aabe997e7d269",
+        "label": "感染潜航球遭遇",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/bathyspheres.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/mini-submarine.html"
+      },
+      "currentFingerprint": "9fc64f0a6673aa1b5a175341f2e1f47bd6fbafea8f2883b7525aabe997e7d269"
+    },
+    {
+      "key": "target:brine-king",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:09:26.534Z",
+      "snapshot": {
+        "fingerprint": "b151017a0ae2dd01c9e0f6cddd95615c810549d7680062bc39c1aa59489a55d7",
+        "label": "海王领域特殊遭遇",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/brine-king.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/trident.html"
+      },
+      "currentFingerprint": "b151017a0ae2dd01c9e0f6cddd95615c810549d7680062bc39c1aa59489a55d7"
+    },
+    {
+      "key": "target:captainsbane",
+      "decision": "change",
+      "comment": "换成 boss 图标，各个 boss 用同一个",
+      "updatedAt": "2026-10-15T04:10:01.539Z",
+      "snapshot": {
+        "fingerprint": "989e2b0a5dc1f0249fad600b2a05819545cde2caed792d57eb062870ba550a61",
+        "label": "Captainsbane 首领",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/captainsbane.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/crab.html"
+      },
+      "currentFingerprint": "989e2b0a5dc1f0249fad600b2a05819545cde2caed792d57eb062870ba550a61"
+    },
+    {
+      "key": "target:deep-offering",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:48.534Z",
+      "snapshot": {
+        "fingerprint": "6cd55f4f6c556a56f10b0e90a2d1f0287d1f8c4254b147f247cb4097c55e0a10",
+        "label": "深海赐福祭坛",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/deep-offering.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/star-altar.html"
+      },
+      "currentFingerprint": "6cd55f4f6c556a56f10b0e90a2d1f0287d1f8c4254b147f247cb4097c55e0a10"
+    },
+    {
+      "key": "target:divination-chest",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:44.717Z",
+      "snapshot": {
+        "fingerprint": "54f0d78521b658dfa489de4ddb2c3d17ded16483476a38038e3c8c91a1d2e751",
+        "label": "目的地命运卡箱",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/strongbox.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/chest.html"
+      },
+      "currentFingerprint": "54f0d78521b658dfa489de4ddb2c3d17ded16483476a38038e3c8c91a1d2e751"
+    },
+    {
+      "key": "target:diviner-box",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:16.516Z",
+      "snapshot": {
+        "fingerprint": "6ea3f52b170eef8308b3413e16e7ef39e6f0229e62669a341fc9375e5f9987eb",
+        "label": "神圣秘宝／占卜师箱",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/strongbox.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/chest.html"
+      },
+      "currentFingerprint": "6ea3f52b170eef8308b3413e16e7ef39e6f0229e62669a341fc9375e5f9987eb"
+    },
+    {
+      "key": "target:eldritch-depths",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:10:31.830Z",
+      "snapshot": {
+        "fingerprint": "6c12c4c3d191dc79a8c580972fc6b17d26158f12b1ef4df31829374b0839f0ca",
+        "label": "古灵深渊特殊遭遇",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/eldritch-depths.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/tentacles-skull.html"
+      },
+      "currentFingerprint": "6c12c4c3d191dc79a8c580972fc6b17d26158f12b1ef4df31829374b0839f0ca"
+    },
+    {
+      "key": "target:essence",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:06.162Z",
+      "snapshot": {
+        "fingerprint": "83ae68813b9872ca003bd6f91edec23c3d1539525d455ade9f5c5896d883f4f5",
+        "label": "精华囚禁怪",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/essence.webp",
+        "iconSourceUrl": "https://poedb.tw/us/"
+      },
+      "currentFingerprint": "83ae68813b9872ca003bd6f91edec23c3d1539525d455ade9f5c5896d883f4f5"
+    },
+    {
+      "key": "target:exotic-fish",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:14.118Z",
+      "snapshot": {
+        "fingerprint": "b7985feb035947e152d4a606f023ce4cefaf69c052e942aec93dddfe35d727b9",
+        "label": "珍稀鱼",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/exotic-fish.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/tropical-fish.html"
+      },
+      "currentFingerprint": "b7985feb035947e152d4a606f023ce4cefaf69c052e942aec93dddfe35d727b9"
+    },
+    {
+      "key": "target:extra-packs",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:51.923Z",
+      "snapshot": {
+        "fingerprint": "121b132b421a97ebc48f8b212c1227313687be0194bffd1568b4028891108278",
+        "label": "额外普通怪群",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/extra-packs.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/triple-skulls.html"
+      },
+      "currentFingerprint": "121b132b421a97ebc48f8b212c1227313687be0194bffd1568b4028891108278"
+    },
+    {
+      "key": "target:filthscrabble",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:37.628Z",
+      "snapshot": {
+        "fingerprint": "e089dfb1c0e1b031dc56794adf6ae11639d0b3b8804d625fc44417a39133bf5f",
+        "label": "污秽蟹群首领",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/filthscrabble.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/octopus.html"
+      },
+      "currentFingerprint": "e089dfb1c0e1b031dc56794adf6ae11639d0b3b8804d625fc44417a39133bf5f"
+    },
+    {
+      "key": "target:friendly-jellyfish",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:16.166Z",
+      "snapshot": {
+        "fingerprint": "329c9dcf2eb847946db030bfcf09352284ed7e7ed7856563722adef36de1f5cd",
+        "label": "友好水母",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/friendly-jellyfish.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/jellyfish.html"
+      },
+      "currentFingerprint": "329c9dcf2eb847946db030bfcf09352284ed7e7ed7856563722adef36de1f5cd"
+    },
+    {
+      "key": "target:giant-starfish",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:11:03.866Z",
+      "snapshot": {
+        "fingerprint": "95936e4b129a5e4ff74124ba5b47874b29f4fee189ecf846a047365071a78a87",
+        "label": "巨型海星",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/giant-starfish.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/sea-star.html"
+      },
+      "currentFingerprint": "95936e4b129a5e4ff74124ba5b47874b29f4fee189ecf846a047365071a78a87"
+    },
+    {
+      "key": "target:goddess-altar",
+      "decision": "change",
+      "comment": "换更简单的祭坛图标",
+      "updatedAt": "2026-10-15T04:12:13.033Z",
+      "snapshot": {
+        "fingerprint": "6c86441e100bfd92bc18b3de4ed2a4fc3b46aba4431eb981f970a9fb1dda83a0",
+        "label": "女神祭坛",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/goddess-altar.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/sword-altar.html"
+      },
+      "currentFingerprint": "6c86441e100bfd92bc18b3de4ed2a4fc3b46aba4431eb981f970a9fb1dda83a0"
+    },
+    {
+      "key": "target:gold-pile",
+      "decision": "change",
+      "comment": "金币图标，简单一点，一个金币",
+      "updatedAt": "2026-10-15T04:12:11.953Z",
+      "snapshot": {
+        "fingerprint": "50195097181cf9fcd434c52eee739a04f196ebe5b52027f29f529ce16604e180",
+        "label": "金币堆",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/gold-pile.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/coins-pile.html"
+      },
+      "currentFingerprint": "50195097181cf9fcd434c52eee739a04f196ebe5b52027f29f529ce16604e180"
+    },
+    {
+      "key": "target:golden-lantern",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:13.481Z",
+      "snapshot": {
+        "fingerprint": "41a07ae1f097f374652020ce75830f14a0c575c154f320461437765632107aa7",
+        "label": "黄金灯笼",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/golden-lantern.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/lantern.html"
+      },
+      "currentFingerprint": "41a07ae1f097f374652020ce75830f14a0c575c154f320461437765632107aa7"
+    },
+    {
+      "key": "target:hazardous-depths",
+      "decision": "change",
+      "comment": "金币图标",
+      "updatedAt": "2026-10-15T04:10:51.927Z",
+      "snapshot": {
+        "fingerprint": "fd5c8a882b2c139863b9f2f93941be7bf3b09868f52cb5fabedc3f042773e66f",
+        "label": "险恶深渊金币／纪念币遭遇",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/hazardous-depths.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/skull-crossed-bones.html"
+      },
+      "currentFingerprint": "fd5c8a882b2c139863b9f2f93941be7bf3b09868f52cb5fabedc3f042773e66f"
+    },
+    {
+      "key": "target:kishara-boss",
+      "decision": "change",
+      "comment": "换成 boss 图标，各个 boss 用同一个",
+      "updatedAt": "2026-10-15T04:09:58.842Z",
+      "snapshot": {
+        "fingerprint": "d50d29c6b86bc4e977fc4b95b0dc4edc69717bde9eb8aa22931186758ad52824",
+        "label": "琪莎拉安息处 Boss",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/kishara-boss.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/witch-flight.html"
+      },
+      "currentFingerprint": "d50d29c6b86bc4e977fc4b95b0dc4edc69717bde9eb8aa22931186758ad52824"
+    },
+    {
+      "key": "target:lost-ruins",
+      "decision": "pending",
+      "comment": "换成瓦尔图标（poedb.tw）",
+      "updatedAt": "2026-10-15T04:10:28.708Z",
+      "snapshot": {
+        "fingerprint": "e9778c046aaee3e776dc26c80b1792254ba1f3e9f0ce8ba5c2c83af2ae50dd7b",
+        "label": "失落遗迹瓦尔遭遇",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/lost-ruins.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/ancient-ruins.html"
+      },
+      "currentFingerprint": "e9778c046aaee3e776dc26c80b1792254ba1f3e9f0ce8ba5c2c83af2ae50dd7b"
+    },
+    {
+      "key": "target:magic-monster",
+      "decision": "change",
+      "comment": "字母 M",
+      "updatedAt": "2026-10-15T04:12:38.397Z",
+      "snapshot": {
+        "fingerprint": "aef95f91813a9966976a70a164f8a2f24e8ce5d73de095719f39d6bcfad5db0b",
+        "label": "魔法怪",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/magic-monster.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/skull-bolt.html"
+      },
+      "currentFingerprint": "aef95f91813a9966976a70a164f8a2f24e8ce5d73de095719f39d6bcfad5db0b"
+    },
+    {
+      "key": "target:mercenary",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:10:38.618Z",
+      "snapshot": {
+        "fingerprint": "cc2c2771c60447ba8508ac27986ed8510639728cc133d1d9d62f9b00f246a33c",
+        "label": "深海浅滩佣兵",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/mercenary.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/crossed-swords.html"
+      },
+      "currentFingerprint": "cc2c2771c60447ba8508ac27986ed8510639728cc133d1d9d62f9b00f246a33c"
+    },
+    {
+      "key": "target:message-bottle",
+      "decision": "change",
+      "comment": "换个更简单的 一封信",
+      "updatedAt": "2026-10-15T04:08:58.988Z",
+      "snapshot": {
+        "fingerprint": "db66acfa49a92f3e7e7bed1c0bddb4dfddebe2bdc90dfed69aaf18e083008165",
+        "label": "瓶中信",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/message-bottle.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/brandy-bottle.html"
+      },
+      "currentFingerprint": "db66acfa49a92f3e7e7bed1c0bddb4dfddebe2bdc90dfed69aaf18e083008165"
+    },
+    {
+      "key": "target:operative-box",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:09:22.562Z",
+      "snapshot": {
+        "fingerprint": "9728728e5da5cd99731f23500ae62d785ef511e783d7c40a88b7e90d55ccbeb9",
+        "label": "侦探保险箱",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/strongbox.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/chest.html"
+      },
+      "currentFingerprint": "9728728e5da5cd99731f23500ae62d785ef511e783d7c40a88b7e90d55ccbeb9"
+    },
+    {
+      "key": "target:pelagic-abyss",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:09:29.595Z",
+      "snapshot": {
+        "fingerprint": "53e7ee90fca31bbd7171642478edf5993bd9ffe25f0a96f7aaaa76feb35e4220",
+        "label": "远洋深渊坑洞／遭遇",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/pelagic-abyss.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/hole.html"
+      },
+      "currentFingerprint": "53e7ee90fca31bbd7171642478edf5993bd9ffe25f0a96f7aaaa76feb35e4220"
+    },
+    {
+      "key": "target:pirate-locker",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:10:04.062Z",
+      "snapshot": {
+        "fingerprint": "f7803c895ff3ff422a8979b08a13bf2c99954539d6fdb6037e7f039d9ad8e0f0",
+        "label": "海盗储物柜",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/pirate-locker.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/locked-chest.html"
+      },
+      "currentFingerprint": "f7803c895ff3ff422a8979b08a13bf2c99954539d6fdb6037e7f039d9ad8e0f0"
+    },
+    {
+      "key": "target:rare-ancient",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:09:25.079Z",
+      "snapshot": {
+        "fingerprint": "f807faf02824085d8c29c895bc539c761168bc4aee16511d6ff7dc482a0e44c8",
+        "label": "稀有怪额外掉远古石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-ancient.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Ancient_Orb"
+      },
+      "currentFingerprint": "f807faf02824085d8c29c895bc539c761168bc4aee16511d6ff7dc482a0e44c8"
+    },
+    {
+      "key": "target:rare-annul",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:11:02.719Z",
+      "snapshot": {
+        "fingerprint": "1882e6bbb0545bd1b9185764e05650c6ff7259405aca45b9e042bc3c54bd4113",
+        "label": "稀有怪额外掉剥离石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-annul.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Orb_of_Annulment"
+      },
+      "currentFingerprint": "1882e6bbb0545bd1b9185764e05650c6ff7259405aca45b9e042bc3c54bd4113"
+    },
+    {
+      "key": "target:rare-blessed",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:07.002Z",
+      "snapshot": {
+        "fingerprint": "e9794ae4162b4065f455b9f1f7c59743d8efd1b68ed45dfd0b027997a88dec4f",
+        "label": "稀有怪额外掉祝福石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-blessed.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Blessed_Orb"
+      },
+      "currentFingerprint": "e9794ae4162b4065f455b9f1f7c59743d8efd1b68ed45dfd0b027997a88dec4f"
+    },
+    {
+      "key": "target:rare-chaos",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:11:06.952Z",
+      "snapshot": {
+        "fingerprint": "1a0fdb4398f3f755872ea1a74d521c65fc76062021451edf79bab94fdf454323",
+        "label": "稀有怪额外掉混沌石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-chaos.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Chaos_Orb"
+      },
+      "currentFingerprint": "1a0fdb4398f3f755872ea1a74d521c65fc76062021451edf79bab94fdf454323"
+    },
+    {
+      "key": "target:rare-chrome",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:07.982Z",
+      "snapshot": {
+        "fingerprint": "4dfe9b61531881c3ba83dc4dba54134c599d662e538385e552d4fca3d630cb83",
+        "label": "稀有怪额外掉幻色石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-chrome.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Chromatic_Orb"
+      },
+      "currentFingerprint": "4dfe9b61531881c3ba83dc4dba54134c599d662e538385e552d4fca3d630cb83"
+    },
+    {
+      "key": "target:rare-divine",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:00.814Z",
+      "snapshot": {
+        "fingerprint": "9bfc4fc9aefe73926ae32e7a70a16844874bbd3e0532e14e93fdbc3679ebc240",
+        "label": "稀有怪额外掉神圣石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-divine.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Divine_Orb"
+      },
+      "currentFingerprint": "9bfc4fc9aefe73926ae32e7a70a16844874bbd3e0532e14e93fdbc3679ebc240"
+    },
+    {
+      "key": "target:rare-exalt",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:18.697Z",
+      "snapshot": {
+        "fingerprint": "7f989a11f27129a0023a373693dc9fce274cc90cd8557939b127c1df457e372b",
+        "label": "稀有怪额外掉崇高石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-exalt.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Exalted_Orb"
+      },
+      "currentFingerprint": "7f989a11f27129a0023a373693dc9fce274cc90cd8557939b127c1df457e372b"
+    },
+    {
+      "key": "target:rare-gcp",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:12:14.931Z",
+      "snapshot": {
+        "fingerprint": "6460ab9a9ded682021847bb69d6eaabc181150390cce6fd3d2d7d075a589afce",
+        "label": "稀有怪额外掉宝石匠棱石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-gcp.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Gemcutters_Prism"
+      },
+      "currentFingerprint": "6460ab9a9ded682021847bb69d6eaabc181150390cce6fd3d2d7d075a589afce"
+    },
+    {
+      "key": "target:rare-monster",
+      "decision": "change",
+      "comment": "换成字母 R",
+      "updatedAt": "2026-10-15T04:11:16.846Z",
+      "snapshot": {
+        "fingerprint": "c81bfa4150db5ba667967cffe41cd5da06ed7f7955d2a3e120c2d48e1da76cf0",
+        "label": "稀有怪",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-monster.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/crowned-skull.html"
+      },
+      "currentFingerprint": "c81bfa4150db5ba667967cffe41cd5da06ed7f7955d2a3e120c2d48e1da76cf0"
+    },
+    {
+      "key": "target:rare-regal",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:09.564Z",
+      "snapshot": {
+        "fingerprint": "c6ef563e53e7f1a87f1476eab0afcb0ac2c1f6109b3d767990f8590f736d5079",
+        "label": "稀有怪额外掉富豪石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-regal.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Regal_Orb"
+      },
+      "currentFingerprint": "c6ef563e53e7f1a87f1476eab0afcb0ac2c1f6109b3d767990f8590f736d5079"
+    },
+    {
+      "key": "target:rare-regret",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:13:10.629Z",
+      "snapshot": {
+        "fingerprint": "c89bb5a10cf46ad75e1979a32d9485361bc085315cef88c12bcb1330558c6290",
+        "label": "稀有怪额外掉后悔石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-regret.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Orb_of_Regret"
+      },
+      "currentFingerprint": "c89bb5a10cf46ad75e1979a32d9485361bc085315cef88c12bcb1330558c6290"
+    },
+    {
+      "key": "target:rare-scarabdrop",
+      "decision": "change",
+      "comment": "换成圣甲虫图标",
+      "updatedAt": "2026-10-15T04:09:41.396Z",
+      "snapshot": {
+        "fingerprint": "a84f6180cc05c09ab7c39dfd27c548b6fc020acb75d457ff67b6bff44582bb5f",
+        "label": "稀有怪额外掉圣甲虫",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-scarabdrop.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Scarab"
+      },
+      "currentFingerprint": "a84f6180cc05c09ab7c39dfd27c548b6fc020acb75d457ff67b6bff44582bb5f"
+    },
+    {
+      "key": "target:rare-sulphdrop",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:10:06.782Z",
+      "snapshot": {
+        "fingerprint": "ef50efabb9418d684aa00423ca6475356c46fa2d247189e7bef63afe1d10b9fa",
+        "label": "稀有怪额外掉亡者硫磺",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-sulphdrop.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Dead_Mans_Sulphur"
+      },
+      "currentFingerprint": "ef50efabb9418d684aa00423ca6475356c46fa2d247189e7bef63afe1d10b9fa"
+    },
+    {
+      "key": "target:rare-support",
+      "decision": "change",
+      "comment": "换成 lesser multiple projectile 技能宝石",
+      "updatedAt": "2026-10-15T04:13:48.122Z",
+      "snapshot": {
+        "fingerprint": "9f64ab485e6dbcc4c93ec8d9efbc22c4d6b60dc5c60237d8e47859629057522f",
+        "label": "稀有怪额外掉辅助宝石",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-support.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Added_Fire_Damage_Support"
+      },
+      "currentFingerprint": "9f64ab485e6dbcc4c93ec8d9efbc22c4d6b60dc5c60237d8e47859629057522f"
+    },
+    {
+      "key": "target:rare-vaal",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:12:11.329Z",
+      "snapshot": {
+        "fingerprint": "f60c1782772216f28fe574d73bce9ab33416f0419b923bd7fd64202f534ec783",
+        "label": "稀有怪额外掉瓦尔宝珠",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/rare-vaal.webp",
+        "iconSourceUrl": "https://poedb.tw/us/Vaal_Orb"
+      },
+      "currentFingerprint": "f60c1782772216f28fe574d73bce9ab33416f0419b923bd7fd64202f534ec783"
+    },
+    {
+      "key": "target:spirit-cage",
+      "decision": "change",
+      "comment": "换成 poedb.tw 的罪魂图标",
+      "updatedAt": "2026-10-15T04:12:28.586Z",
+      "snapshot": {
+        "fingerprint": "661ea49266774cc1cf116dcb6e98b4f28b7892af179339ddd4b31dc1ebd35669",
+        "label": "罪魂牢笼",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/spirit-cage.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/cage.html"
+      },
+      "currentFingerprint": "661ea49266774cc1cf116dcb6e98b4f28b7892af179339ddd4b31dc1ebd35669"
+    },
+    {
+      "key": "target:strongbox",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:10:37.535Z",
+      "snapshot": {
+        "fingerprint": "6563397d243b42ede9952641356b088f264c838ef95e0a0ddd52932263e52a4e",
+        "label": "普通保险箱",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/strongbox.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/chest.html"
+      },
+      "currentFingerprint": "6563397d243b42ede9952641356b088f264c838ef95e0a0ddd52932263e52a4e"
+    },
+    {
+      "key": "target:sunken-totems",
+      "decision": "change",
+      "comment": "换成精英图标，不要图腾",
+      "updatedAt": "2026-10-15T04:11:47.184Z",
+      "snapshot": {
+        "fingerprint": "ab1649177f2cb3a689d8655743a94fc5b4e390fd4fb68eee48b35aaf2a6ffc04",
+        "label": "沉没图腾精英遭遇",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/sunken-totems.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/totem.html"
+      },
+      "currentFingerprint": "ab1649177f2cb3a689d8655743a94fc5b4e390fd4fb68eee48b35aaf2a6ffc04"
+    },
+    {
+      "key": "target:treasure-anchor",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:08:43.115Z",
+      "snapshot": {
+        "fingerprint": "b8e14ee85bd45340707a8a58beaa4e5e85fe0f30825df0d6d8bd64a6d7995d39",
+        "label": "宝藏锚",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/treasure-anchor.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/lorc/anchor.html"
+      },
+      "currentFingerprint": "b8e14ee85bd45340707a8a58beaa4e5e85fe0f30825df0d6d8bd64a6d7995d39"
+    },
+    {
+      "key": "target:treasure-clam",
+      "decision": "change",
+      "comment": "换成金币图标",
+      "updatedAt": "2026-10-15T04:11:00.571Z",
+      "snapshot": {
+        "fingerprint": "a8945baeec2a6b7c63fbffdb72abc7cfd8bbec42d19fbbf94247d18ee339413d",
+        "label": "藏宝蛤蜊",
+        "kind": "target",
+        "iconAsset": "assets/target-icons/treasure-clam.svg",
+        "iconSourceUrl": "https://game-icons.net/1x1/delapouite/oyster-pearl.html"
+      },
+      "currentFingerprint": "a8945baeec2a6b7c63fbffdb72abc7cfd8bbec42d19fbbf94247d18ee339413d"
+    },
+    {
+      "key": "theme:dark",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:14:45.303Z",
+      "snapshot": {
+        "fingerprint": "bbb8be9ed71732f9dba75b464a42b45f4b5eae2d21fb39ae87233faf200a1aac",
+        "label": "极简深色",
+        "kind": "feature",
+        "iconAsset": null,
+        "iconSourceUrl": null
+      },
+      "currentFingerprint": "bbb8be9ed71732f9dba75b464a42b45f4b5eae2d21fb39ae87233faf200a1aac"
+    },
+    {
+      "key": "theme:light",
+      "decision": "accepted",
+      "comment": "",
+      "updatedAt": "2026-10-15T04:14:32.622Z",
+      "snapshot": {
+        "fingerprint": "53952f2ffbc38fd6a38cb5ee8bcf7a1f11e79fe5d636e50499c567f4b8329279",
+        "label": "极简浅色",
+        "kind": "feature",
+        "iconAsset": null,
+        "iconSourceUrl": null
+      },
+      "currentFingerprint": "53952f2ffbc38fd6a38cb5ee8bcf7a1f11e79fe5d636e50499c567f4b8329279"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "provenance": "真实剩余库存新求解的固定验证盘，非刚完成的旧盘",
+  "actualStrategy": "alc-and-go",
+  "originalInventoryCount": 52,
+  "tiles": [
+    {
+      "cell": 1,
+      "position": "左上",
+      "destination": "深渊平原",
+      "targetIds": [
+        "essence",
+        "extra-packs",
+        "magic-monster",
+        "treasure-anchor"
+      ],
+      "activeModIds": [
+        "adj-crab-2",
+        "b-anchor-1",
+        "b-mag-1",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    },
+    {
+      "cell": 2,
+      "position": "上中",
+      "destination": "海底山脊",
+      "targetIds": [
+        "arcanist-box",
+        "essence",
+        "magic-monster"
+      ],
+      "activeModIds": [
+        "adj-arcbox-2",
+        "b-keep-2",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    },
+    {
+      "cell": 3,
+      "position": "右上",
+      "destination": "海底林地",
+      "targetIds": [
+        "essence",
+        "extra-packs",
+        "magic-monster",
+        "spirit-cage"
+      ],
+      "activeModIds": [
+        "adj-crab-2",
+        "adj-spirit-2",
+        "b-mag-1",
+        "b-quantconn-1",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    },
+    {
+      "cell": 4,
+      "position": "左中",
+      "destination": "深渊平原",
+      "targetIds": [
+        "arcanist-box",
+        "essence",
+        "magic-monster"
+      ],
+      "activeModIds": [
+        "adj-arcbox-2",
+        "b-exp-1",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    },
+    {
+      "cell": 5,
+      "position": "中央",
+      "destination": "深渊平原",
+      "targetIds": [
+        "barrels",
+        "essence",
+        "extra-packs",
+        "magic-monster",
+        "spirit-cage"
+      ],
+      "activeModIds": [
+        "adj-barrel-2",
+        "adj-crab-2",
+        "adj-spirit-2",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    },
+    {
+      "cell": 6,
+      "position": "右中",
+      "destination": "海底山脊",
+      "targetIds": [
+        "arcanist-box",
+        "essence",
+        "extra-packs",
+        "magic-monster"
+      ],
+      "activeModIds": [
+        "adj-arcbox-2",
+        "adj-octo-2",
+        "b-pack-1",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    },
+    {
+      "cell": 7,
+      "position": "左下",
+      "destination": "海底山脊",
+      "targetIds": [
+        "barrels",
+        "essence",
+        "magic-monster",
+        "rare-monster"
+      ],
+      "activeModIds": [
+        "adj-barrel-2",
+        "b-quantconn-1",
+        "b-rare-1",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    },
+    {
+      "cell": 8,
+      "position": "下中",
+      "destination": "深渊平原",
+      "targetIds": [
+        "arcanist-box",
+        "essence",
+        "extra-packs",
+        "magic-monster"
+      ],
+      "activeModIds": [
+        "adj-arcbox-2",
+        "adj-octo-2",
+        "b-scarab-2",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    },
+    {
+      "cell": 9,
+      "position": "右下",
+      "destination": "海底林地",
+      "targetIds": [
+        "barrels",
+        "essence",
+        "extra-packs",
+        "magic-monster",
+        "spirit-cage"
+      ],
+      "activeModIds": [
+        "adj-barrel-2",
+        "adj-spirit-2",
+        "b-beasts-3",
+        "b-mag-2",
+        "voy-essence",
+        "voy-magic",
+        "voy-pack-2",
+        "voy-rarity-1"
+      ]
+    }
+  ]
+}
