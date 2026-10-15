@@ -7,7 +7,7 @@ import { strategyById } from '../src/data/strategies'
 import { defaultState, decodeShare, encodeShare } from '../src/logic/storage'
 import type { AppState } from '../src/logic/storage'
 
-const state = fixture as AppState
+const state = { ...fixture, voyageHistory: [] } as AppState
 
 describe('artificial two-voyage fixture at public boundaries', () => {
   it('proves the full-state witness uses nine distinct real inventory instances and valid connections', () => {

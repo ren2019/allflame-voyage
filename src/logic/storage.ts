@@ -1,3 +1,4 @@
+import { restoreVoyageHistory, type VoyageRecord } from './voyageHistory'
 import type { AdjacencyMode } from './scoring'
 import type { Board, Borders, ChartData, ConnectivityMode, Weights } from '../types'
 import { emptyBoard, emptyBorders } from '../types'
@@ -8,6 +9,7 @@ import {
 } from '../data/strategies'
 
 export interface AppState {
+  voyageHistory: VoyageRecord[]
   pool: ChartData[]
   board: Board
   borders: Borders
@@ -32,6 +34,7 @@ export interface AppState {
 }
 
 export const defaultState = (): AppState => ({
+  voyageHistory: [],
   pool: [],
   board: emptyBoard(),
   borders: emptyBorders(),
@@ -55,25 +58,31 @@ const STATE_VERSION = 4 // v4: parsed canonical Chart destination/area types
 export function saveLocal(state: AppState) {
   try {
     localStorage.setItem(LS_KEY, JSON.stringify({ ...state, v: STATE_VERSION }))
+    return true
   } catch {
-    /* storage full / unavailable - ignore */
+    return false
   }
 }
 
 export function loadLocal(): AppState | null {
+  return loadLocalWithStatus().state
+}
+
+export function loadLocalWithStatus(): { state: AppState | null; damagedHistory: boolean } {
   try {
     const raw = localStorage.getItem(LS_KEY)
-    if (!raw) return null
+    if (!raw) return { state: null, damagedHistory: false }
     const parsed = JSON.parse(raw)
-    const revived = revive(parsed)
+    const revived = restorePlanningState(parsed)
+    const damagedHistory = restoreVoyageHistory(parsed?.voyageHistory).damaged
     if (parsed?.v !== STATE_VERSION) {
       // mod data model changed: keep the user's preferences (weights, disabled
       // mods, settings) but reset the transient board that references mod ids.
-      return { ...revived, pool: [], board: emptyBoard(), borders: emptyBorders() }
+      return { state: { ...revived, pool: [], board: emptyBoard(), borders: emptyBorders() }, damagedHistory }
     }
-    return revived
+    return { state: revived, damagedHistory }
   } catch {
-    return null
+    return { state: null, damagedHistory: false }
   }
 }
 
@@ -86,13 +95,13 @@ export function encodeShare(state: AppState): string {
 export function decodeShare(hash: string): AppState | null {
   try {
     const json = decodeURIComponent(escape(atob(hash)))
-    return revive(JSON.parse(json))
+    return restorePlanningState(JSON.parse(json))
   } catch {
     return null
   }
 }
 
-function revive(obj: unknown): AppState {
+export function restorePlanningState(obj: unknown): AppState {
   const d = defaultState()
   if (typeof obj !== 'object' || obj === null) return d
   const o = obj as Partial<AppState>
@@ -104,6 +113,7 @@ function revive(obj: unknown): AppState {
       ? o.strategyReservations
       : null
   return {
+    voyageHistory: restoreVoyageHistory(o.voyageHistory).records,
     pool: Array.isArray(o.pool) ? o.pool : d.pool,
     board: Array.isArray(o.board) && o.board.length === 9 ? o.board : d.board,
     borders: Array.isArray(o.borders) && o.borders.length === 12 ? o.borders : d.borders,
