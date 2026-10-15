@@ -1,8 +1,8 @@
-✔ operator initializes, starts and stops a static site verified by its project CA (503.965375ms)
-✔ the static site serves assets and refuses secrets, traversal and writes (237.348834ms)
-✔ a release update keeps its URL and project CA (2320.984042ms)
-✔ Windows can download only the public certificate matching this project CA (236.415ms)
-✔ accepted WebP and JPEG target art has image MIME, nosniff and original bytes (241.378166ms)
+✔ operator initializes, starts and stops a static site verified by its project CA (494.242584ms)
+✔ the static site serves assets and refuses secrets, traversal and writes (237.587625ms)
+✔ a release update keeps its URL and project CA (2311.896ms)
+✔ Windows can download only the public certificate matching this project CA (234.759417ms)
+✔ accepted WebP and JPEG target art has image MIME, nosniff and original bytes (244.043042ms)
 ℹ tests 5
 ℹ suites 0
 ℹ pass 5
@@ -10,4 +10,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 3617.462042
+ℹ duration_ms 3600.186958

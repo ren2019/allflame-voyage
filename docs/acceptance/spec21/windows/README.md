@@ -1,0 +1,5 @@
+# Older-source Windows diagnostics
+
+Every PNG in this directory and `failed-candidate-report.json` / `failed-candidate.log` belongs to product source `d2e835c94502f6ec70d4f94bf9e42695d923a6c4` and build SHA-256 `f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df`. The corresponding exact manifest is `failed-candidate-build-manifest.json`; runner source was `39ae91068e9279ea0f40dd1a43cdb8837f20561d` (runner SHA-256 `26b43b6b713d5f720a5bd69bc4057f74001981275bd6525896e218033d793e16`).
+
+That run captured partial UI evidence and **failed** exact native clipboard readback. None of these images or diagnostics is evidence that the new `fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0` candidate was exercised in Windows. Native acceptance for the new candidate is **NOT RUN** and #23 stays open. The earlier dirty-source pilot remains separately labelled in `../diagnostics/pilot-not-final.log`; it is not final-candidate evidence. SSH/remote cleanup limitations remain in `../native-owned-resources.json`.

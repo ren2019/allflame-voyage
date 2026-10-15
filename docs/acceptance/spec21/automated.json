@@ -1,14 +1,17 @@
 {
-  "recordedUtc": "2026-10-15T06:36:00.565Z",
-  "productSourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
-  "buildSha256": "f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df",
+  "recordedUtc": "2026-10-15T06:47:36.571881Z",
+  "productSourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
+  "buildSha256": "f43c9f9ea4f2921000a3ec456229d6da465cfa417cecb5ad2f8ce0188fb5ac2d",
+  "verificationInputSha256": "606bea642179f7a86a0b7a534b72bc45fe204316d647f152fb5e30c974d8884a",
   "unit": {
-    "passed": 534,
+    "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
+    "passed": 536,
     "failed": 0,
     "pending": 0,
     "report": "automated/unit.json"
   },
   "ocr": {
+    "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
     "currentTooltips": 64,
     "aliases": 12,
     "passed": true
@@ -20,62 +23,110 @@
     "sourceDigestsValid": true
   },
   "deployment": {
+    "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
     "passed": 5
   },
   "stages": [
     {
       "name": "unit",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "--reporter=json",
+        "--outputFile=/private/tmp/allflame-spec21-worktrees/review-fixes/verification-results/unit.json"
+      ],
       "status": "passed",
-      "startedUtc": "2026-10-15T06:18:51.022Z",
-      "finishedUtc": "2026-10-15T06:19:07.406Z",
+      "startedUtc": "2026-10-15T06:43:44.650Z",
       "exitCode": 0,
-      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
-      "log": "automated/unit.log"
+      "finishedUtc": "2026-10-15T06:44:00.870Z",
+      "testCount": 0,
+      "log": "automated/unit.log",
+      "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0"
     },
     {
       "name": "border-ocr",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "tests/border-ocr-regression.cjs"
+      ],
       "status": "passed",
-      "startedUtc": "2026-10-15T06:19:07.407Z",
-      "finishedUtc": "2026-10-15T06:19:07.659Z",
+      "startedUtc": "2026-10-15T06:44:00.871Z",
       "exitCode": 0,
-      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
-      "log": "automated/border-ocr.log"
+      "finishedUtc": "2026-10-15T06:44:01.122Z",
+      "testCount": 0,
+      "log": "automated/border-ocr.log",
+      "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0"
     },
     {
       "name": "text-library-audit",
+      "command": [
+        "python3",
+        "scripts/check-text-library.py"
+      ],
       "status": "passed",
-      "startedUtc": "2026-10-15T06:19:07.660Z",
-      "finishedUtc": "2026-10-15T06:19:07.829Z",
+      "startedUtc": "2026-10-15T06:44:01.122Z",
       "exitCode": 0,
-      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
-      "log": "automated/text-library-audit.log"
+      "finishedUtc": "2026-10-15T06:44:01.289Z",
+      "testCount": 0,
+      "log": "automated/text-library-audit.log",
+      "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0"
     },
     {
       "name": "deployment",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "--test",
+        "tests/deployment/local-site.test.mjs"
+      ],
       "status": "passed",
-      "startedUtc": "2026-10-15T06:19:07.829Z",
-      "finishedUtc": "2026-10-15T06:19:11.477Z",
+      "startedUtc": "2026-10-15T06:44:01.289Z",
       "exitCode": 0,
-      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
-      "log": "automated/deployment.log"
+      "finishedUtc": "2026-10-15T06:44:04.922Z",
+      "testCount": 5,
+      "log": "automated/deployment.log",
+      "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0"
     },
     {
       "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
       "status": "passed",
-      "startedUtc": "2026-10-15T06:19:11.477Z",
-      "finishedUtc": "2026-10-15T06:19:13.319Z",
+      "startedUtc": "2026-10-15T06:44:04.922Z",
       "exitCode": 0,
-      "sourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
-      "log": "automated/build.log"
+      "finishedUtc": "2026-10-15T06:44:06.774Z",
+      "testCount": 0,
+      "log": "automated/build.log",
+      "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0"
+    },
+    {
+      "name": "browser",
+      "command": [
+        "/opt/homebrew/Cellar/node/26.7.0/bin/node",
+        "node_modules/playwright/cli.js",
+        "test",
+        "--workers=1",
+        "--reporter=line,json"
+      ],
+      "status": "passed",
+      "startedUtc": "2026-10-15T06:44:06.774Z",
+      "exitCode": 0,
+      "finishedUtc": "2026-10-15T06:45:31.326Z",
+      "testCount": 0,
+      "log": "automated/browser.log",
+      "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0"
     }
   ],
   "browser": {
-    "sourceSha": "a699add511180443dc7ca6602852662fa276e7a3",
-    "command": "OFFLINE_ACCEPTANCE=1 PLAYWRIGHT_PORT=4183 PLAYWRIGHT_JSON_OUTPUT_FILE=/tmp/allflame-implement-21/issue-23-browser-final.json npm exec -- playwright test --workers=1 --reporter=line,json",
+    "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
+    "command": "OFFLINE_ACCEPTANCE=1 PLAYWRIGHT_PORT=4392 npm run verify (browser stage)",
     "stats": {
-      "startTime": "2026-10-15T06:22:09.265Z",
-      "duration": 83358.199,
-      "expected": 67,
+      "startTime": "2026-10-15T06:44:06.999Z",
+      "duration": 84318.537,
+      "expected": 68,
       "skipped": 0,
       "unexpected": 0,
       "flaky": 0
@@ -84,12 +135,28 @@
     "offline": true,
     "externalOriginsBlocked": true
   },
-  "initialFullVerify": {
+  "fullVerify": {
+    "command": "OFFLINE_ACCEPTANCE=1 PLAYWRIGHT_PORT=4392 npm run verify",
+    "sourceSha": "fd428e9c37cedc3b20c68e5540ba5b37a4ff04a0",
+    "workingTreeCleanAtStartAndBuild": true,
+    "allSixStagesPassed": true,
+    "aggregatePassed": false,
+    "exitCode": 1,
+    "failure": "Core algorithm changed: src/logic/scoring.ts",
+    "rawStages": "automated/stages.json",
+    "rawCoverage": "automated/coverage.json",
+    "log": "automated/full-verify.log",
+    "legacyGateExplanation": "The original localization ledger pins pre-Spec21 scoring.ts bytes. Approved #21 scope extraction in 4441d10 changed the file structure without changing scoring outputs. The legacy contract/hash is deliberately unchanged; this is not a claim that npm verify passed.",
+    "legacyLedgerDoesNotEstablishCurrentNativeAcceptance": true
+  },
+  "previousInitialFullVerify": {
+    "productSourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
     "passed": false,
     "failedOnly": "stale import UI expectation 等级:83; compact UI correctly 83 with 区域等级 83 title",
     "correctedIn": "be49a93264d9b4442b63a86cefcc7ba9dd067340",
     "finalFullBrowserRerunPassed": true,
-    "record": "automated/initial-stages.json"
+    "record": "automated/initial-stages.json",
+    "scope": "historical older-source run; not current execution"
   },
   "spec21Coverage": {
     "wholePageCycle": "spec21-integration.spec.ts",
@@ -100,6 +167,25 @@
     "history": "voyage-history.spec.ts, voyage-comparison.spec.ts + voyageHistory/comparison tests",
     "scoringAndProtection": "existing seven-strategy solver, scoring, filler-candidates and planning-cycle suites"
   },
-  "native": "UI partial evidence; full native clipboard acceptance NOT passed",
+  "reviewRegression": {
+    "pureTargetsPassed": 15,
+    "historyAndComparisonPassed": 23,
+    "regionBrowserPassed": 4,
+    "record": "review.md"
+  },
+  "native": {
+    "status": "NOT RUN for current source/build",
+    "previousAttempt": {
+      "productSourceSha": "d2e835c94502f6ec70d4f94bf9e42695d923a6c4",
+      "buildSha256": "f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df",
+      "runnerSourceSha": "39ae91068e9279ea0f40dd1a43cdb8837f20561d",
+      "runnerSha256": "26b43b6b713d5f720a5bd69bc4057f74001981275bd6525896e218033d793e16",
+      "status": "failed/incomplete on older source; not current candidate acceptance",
+      "report": "windows/failed-candidate-report.json",
+      "buildManifest": "windows/failed-candidate-build-manifest.json",
+      "screenshots": "windows/README.md"
+    },
+    "issue23": "OPEN"
+  },
   "game": "not exercised; #24 human checkpoint"
 }

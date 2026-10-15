@@ -1,0 +1,15 @@
+[WebServer] (node:40723) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 4 tests using 1 worker
+
+(node:40725) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/4] tests/browser/region-targets.spec.ts:15:1 › 词缀计分开关更新分数但保留真实区域目标和规划
+[2/4] tests/browser/region-targets.spec.ts:73:1 › 真实库存重算盘的中央目标可开关、键盘查看且不改变规划
+[3/4] tests/browser/region-targets.spec.ts:140:1 › 派生合并与神圣条件样例支持四槽溢出、策略切换和空格
+[4/4] tests/browser/region-targets.spec.ts:246:1 › 单一目的地目标与明暗主题保持优先级颜色，原图不染色
+  4 passed (3.1s)

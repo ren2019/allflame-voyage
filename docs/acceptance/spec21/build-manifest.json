@@ -1,8 +1,8 @@
 {
   "files": {
-    "assets/CalibrationPage-BiFVB9Z3.js": "82ae12f25856dde52cfbf24d5a4aaaf94063abd875dd3d847aaf99db48f967f5",
     "assets/CalibrationPage-DisZqHER.css": "395efcb2b2dfef8e2bf28f46cf933a4128dd7961169cc0f6839baa0dfcbe9d5f",
-    "assets/index-CFuwsVXV.js": "8bfc2319d15a2d2d87f845fafe1671916d0f4e81bfeb8bc3933ee2020b9e7ad1",
+    "assets/CalibrationPage-znNmQInJ.js": "c074526a9dec36255be33083163f6145d6bf9cda59d65707678b1d39e87d4cf7",
+    "assets/index-Bh86cQg5.js": "3c0c816ebb071b7c83218fe23de7e3b15c1efbf0f152429b0ed47bebef60f96f",
     "assets/index-DTS43T2C.css": "09511514837482f227f06027325490348a89d54cc2e0abc33ea5433d4dd190d6",
     "bg.webp": "bfc285e17adb8cd61a2951e80bcf7ac670d8b1e2b20021de62e8a26c3f4298c5",
     "diagnose-windows.ps1": "1c737bec256eda04e27bcad402297cb83d8c18f25212f841d44dfc3a0ba94542",
@@ -21,7 +21,7 @@
     "icon-rares.png": "5e937d96a40979336c83f75523a58e9745a7ab2bbe4b6f737ea0426c190aaa21",
     "icon-scarabs.png": "d694822251604f09f0f6dece6b33ce33ca40b3f8a4ffeb7aa1d5da0bf79c09a3",
     "icon-sulphur.png": "adde4ffbece4257b882d317e9da7f9acc15ad229bffe3d507040a22c5a935945",
-    "index.html": "cc5727c3dac647aa30fe23a14bb5cab08b7ab9f12b2c9184d433138771ed9ff0",
+    "index.html": "7bbc36e843b544fe1d466f6d974f053b53e652d3b4a2508ce65cab2875333547",
     "mockups.html": "435830978e2eb400d8f37858b7dc2dc98043eba14516bb3044366e70316b86cc",
     "panel-frame.webp": "79b786ac284b74569919ad41daaaafa92d46e2749b522d0e8172eda6f00e7ab2",
     "target-icons/altar-simple.svg": "9521a23538642c46ac2887948b69a139f7d3c81ba509b2f23bd21ee3f20a7da2",
@@ -65,5 +65,5 @@
     "target-icons/treasure-anchor.svg": "4f09ae908b977a1bb7fe66cec1739412b81fe47a9de0067ea18d51c9a7226f6d",
     "voyage-clip-collector.ahk": "d7e21db039e29eb92704989be27fc79f858655a5e0b598fa25240dcf267d4f2f"
   },
-  "sha256": "f33e3a4f3199c889cfad122bdf8531c8d761022a332cf314bf9a8cb31a8a35df"
+  "sha256": "f43c9f9ea4f2921000a3ec456229d6da465cfa417cecb5ad2f8ce0188fb5ac2d"
 }
