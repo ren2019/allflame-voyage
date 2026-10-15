@@ -69,7 +69,7 @@
     "voyage-clip-collector.ahk": "d7e21db039e29eb92704989be27fc79f858655a5e0b598fa25240dcf267d4f2f"
   },
   "archive": "/tmp/allflame-implement-21/target-modes-trial-c963f1d/dist",
-  "status": "provisional; awaiting user review",
+  "status": "accepted by user; subsequent inventory layout fix recorded separately",
   "modes": {
     "off": "No regional overlay",
     "valuable": "Only high/gold and medium/blue groups; filter before four-slot/more calculation; empty means no overlay",

@@ -1,0 +1,40 @@
+[WebServer] (node:85936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:85939) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[DEBUG-card-overlap] minimal [{"cards":1,"cardWidth":88,"stride":null,"overlap":0},{"cards":2,"cardWidth":88,"stride":82,"overlap":6}]
+[DEBUG-card-overlap] variants [{"probe":"baseline","width":88,"stride":82,"overlap":6,"columns":"76px 76px 76px 76px","minWidth":"auto","minHeight":"88px","aspectRatio":"1 / 1","boxSizing":"border-box","transform":"none"},{"probe":"min-width","width":88,"stride":82,"overlap":6},{"probe":"transform","width":88,"stride":82,"overlap":6},{"probe":"box-sizing","width":88,"stride":82,"overlap":6},{"probe":"grid-min88","width":103.328125,"stride":109.328125,"overlap":0}]
+  ✘  1 tests/browser/.inventory-overlap-probe.spec.ts:5:1 › 最小两张空白海图复现相邻卡片重叠 (321ms)
+
+
+  1) tests/browser/.inventory-overlap-probe.spec.ts:5:1 › 最小两张空白海图复现相邻卡片重叠 ─────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 6
+
+      35 |   console.log('[DEBUG-card-overlap] variants',JSON.stringify(variants))
+      36 |   expect(variants[0].overlap).toBe(6)
+    > 37 |   expect(variants[1].overlap).toBe(0)
+         |                               ^
+      38 |   expect(variants[2].overlap).toBe(6)
+      39 |   expect(variants[3].overlap).toBe(6)
+      40 |   expect(variants[4].overlap).toBe(0)
+        at /Users/steipete/Projects/allflame-voyage/tests/browser/.inventory-overlap-probe.spec.ts:37:31
+
+    Error Context: test-results/.inventory-overlap-probe-最小两张空白海图复现相邻卡片重叠/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/.inventory-overlap-probe-最小两张空白海图复现相邻卡片重叠/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/.inventory-overlap-probe-最小两张空白海图复现相邻卡片重叠/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/browser/.inventory-overlap-probe.spec.ts:5:1 › 最小两张空白海图复现相邻卡片重叠 ──────────────────────────
