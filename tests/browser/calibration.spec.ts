@@ -70,6 +70,7 @@ test('imports backups atomically and preserves newer records and unrelated draft
 test('a modifier opens its own calibration record without toggling planning effects', async ({ page }) => {
   await page.goto('/')
   await page.locator('.onboard-actions button').last().click()
+  await page.getByRole('button', { name: '单条中文校准模式' }).click()
   await page.getByRole('button', { name: /^词缀$/ }).click()
   await page.getByPlaceholder('搜索词缀…').fill('死者硫磺')
   const checkbox = page.locator('.mb-row input[type=checkbox]')

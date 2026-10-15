@@ -67,7 +67,7 @@ function BorderSelect({
       className={`bslot ${mod ? 'filled' : ''}`}
       data-border-segment={seg}
       aria-label={`边界位置 ${seg + 1}`}
-      title={label ? `${label.text}（${label.statusLabel}）` : '边界位置：点击搜索'}
+      title={label?.text ?? '边界位置：点击搜索'}
       onClick={() => {
         setQ('')
         setOpen(true)
@@ -81,7 +81,6 @@ function BorderSelect({
         <span className="bslot-empty">·</span>
       )}
       {value && <CalibrationLink id={value} slot={seg} />}
-      {label?.status === 'conflict' && <span aria-label="译名冲突">⚠</span>}
       {open && (
         <>
           <span
@@ -112,7 +111,6 @@ function BorderSelect({
                   className={`bpop-item ${m.id === value ? 'active' : ''}`}
                   onClick={() => pick(m.id)}
                 >
-                  <span className="bpop-short">{m.statusLabel}</span>
                   <span className="bpop-full">{m.text}</span>
                 </button>
               ))}

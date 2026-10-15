@@ -16,7 +16,7 @@ interface Props {
 interface Group {
   title: string
   hint: string
-  mods: { id: string; text: string; short?: string; value?: string; statusLabel?: string }[]
+  mods: { id: string; text: string; short?: string; value?: string }[]
 }
 
 const valueLabel = (effects: { stat: string; percent: number }[]): string | undefined => {
@@ -46,7 +46,6 @@ export function ModBrowser({ disabled, onToggle, onBulk, onClose }: Props) {
         mods: BORDER_MODS.map((m) => ({
           id: m.id,
           text: localizedBorder(m.id)!.text,
-          statusLabel: localizedBorder(m.id)!.statusLabel,
           value: valueLabel(m.effects) ?? (m.magnitude ? `${m.magnitude}% 幅度` : undefined),
         })),
       },
@@ -104,7 +103,6 @@ export function ModBrowser({ disabled, onToggle, onBulk, onClose }: Props) {
                         onChange={(e) => onToggle(m.id, !e.target.checked)}
                       />
                       <span className="mb-text">{m.text}</span>
-                      {m.statusLabel && <span className="muted">{m.statusLabel}</span>}
                       {m.value && <span className="mb-value">{m.value}</span>}
                       <CalibrationLink id={m.id} />
                     </label>

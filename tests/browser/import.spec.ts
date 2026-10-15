@@ -7,7 +7,7 @@ const [first, second] = samples.trim().split(/\n\s*(?=物品类别: 海图)/)
 const unknown = first.replace(/(\{ 基底属性 \}\n)[^\n]+/, '$1明确未知的测试航行词缀')
 
 async function importCharts(page: Page, text: string) {
-  await page.locator('.import-panel textarea').fill(text)
+  await page.locator('.import-panel textarea[placeholder]').fill(text)
   await page.locator('.import-actions button').first().click()
 }
 

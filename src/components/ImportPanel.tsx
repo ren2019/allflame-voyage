@@ -8,6 +8,7 @@ import { dedupeNewCharts } from '../logic/importDedupe'
 import type { AppState } from '../logic/storage'
 import { defaultState } from '../logic/storage'
 import type { ChartData } from '../types'
+import { CompactCopyText } from './CompactCopyText'
 
 interface Props {
   onImport: (charts: ChartData[]) => void
@@ -204,18 +205,9 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
           优质词缀搜索使用已复核的 PoEDB 简中候选模板，游戏内匹配效果仍需现场验证。
           其余表达式保留原版英文参考。
         </p>
-        <div className="roll-regex-row">
-          <span className="roll-regex-label">优质词缀（简中候选）</span>
-          <input readOnly value={ALL_GOOD_MODS_REGEX} onFocus={(e) => e.target.select()} />
-        </div>
-        <div className="roll-regex-row">
-          <span className="roll-regex-label">数量 120% 以上（英文参考）</span>
-          <input readOnly value={'"m q.*(1[2-9].|[2-9]..)%"'} onFocus={(e) => e.target.select()} />
-        </div>
-        <div className="roll-regex-row">
-          <span className="roll-regex-label">硫磺 75% 以上（污秽蟹群，英文参考）</span>
-          <input readOnly value={'"sul.*(7[5-9]|[89].|\\d..)%"'} onFocus={(e) => e.target.select()} />
-        </div>
+        <CompactCopyText label="优质词缀（简中候选）" text={ALL_GOOD_MODS_REGEX} />
+        <CompactCopyText label="数量 120% 以上（英文参考）" text={'"m q.*(1[2-9].|[2-9]..)%"'} />
+        <CompactCopyText label="硫磺 75% 以上（污秽蟹群，英文参考）" text={'"sul.*(7[5-9]|[89].|\\d..)%"'} />
       </details>
 
       <details className="ahk-help">

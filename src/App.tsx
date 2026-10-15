@@ -1,3 +1,5 @@
+import { saveTheme } from './logic/theme'
+import { CalibrationMode } from './components/CalibrationLink'
 import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { BoardView } from './components/Board'
@@ -64,6 +66,7 @@ export default function App() {
       /* ignore */
     }
   }
+  const [calibrationMode, setCalibrationMode] = useState(false)
   const [showMods, setShowMods] = useState(false)
   // one-time importer-retired popup - returning visitors only (first-timers
   // never had the script, so mark it seen for them)
@@ -117,18 +120,18 @@ export default function App() {
   // guided "copy into game": walk the board in the in-game Ctrl+click fill order
   // (bottom-left, then right, then up a row): board cells 6,7,8, 3,4,5, 0,1,2
   const [copySeq, setCopySeq] = useState<{ order: number[]; step: number } | null>(null)
-  const [harvestTheme, setHarvestTheme] = useState(() =>
-    document.body.classList.contains('theme-harvest'),
-  )
-  const toggleTheme = () => {
-    const next = !harvestTheme
-    setHarvestTheme(next)
-    document.body.classList.toggle('theme-harvest', next)
-    try {
-      localStorage.setItem('theme', next ? 'harvest' : 'allflame')
-    } catch {
-      /* ignore */
+  const [lightTheme, setLightTheme] = useState(() => document.documentElement.dataset.theme === 'light')
+  useEffect(() => {
+    const syncTheme = (event: StorageEvent) => {
+      if (event.key === 'theme') setLightTheme(document.documentElement.dataset.theme === 'light')
     }
+    window.addEventListener('storage', syncTheme)
+    return () => window.removeEventListener('storage', syncTheme)
+  }, [])
+  const toggleTheme = () => {
+    const next = !lightTheme
+    setLightTheme(next)
+    saveTheme(next ? 'light' : 'dark')
   }
   const [selectedChart, setSelectedChart] = useState<string | null>(null)
   const [selectedCell, setSelectedCell] = useState<number | null>(null)
@@ -439,6 +442,7 @@ export default function App() {
   }
 
   return (
+    <CalibrationMode.Provider value={calibrationMode}>
     <div className="app">
       <TooltipLayer />
       {showOnboarding && (
@@ -534,6 +538,9 @@ export default function App() {
           🧭 使用教程
         </button>
         <div className="header-right">
+          <button className="calibration-mode-toggle" aria-label="单条中文校准模式"
+            aria-pressed={calibrationMode} title={calibrationMode ? '关闭单条校准入口' : '显示单条校准入口'}
+            onClick={() => setCalibrationMode(enabled => !enabled)}>✎</button>
           <a className="feedback-link" href={calibrationUrl()} target="_blank" rel="noopener noreferrer">中文校准 ↗</a>
           <span className="tag">流放之路 3.29：永火之咒</span>
           <button title="首次使用说明" onClick={() => setShowOnboarding(true)}>
@@ -560,14 +567,11 @@ export default function App() {
           </button>
           <button
             className="theme-link"
-            title={
-              harvestTheme
-                ? '切回永火主题'
-                : '切换到丰收花园风格主题'
-            }
+            title={lightTheme ? '切换到深色主题' : '切换到浅色主题'}
+            aria-label={lightTheme ? '切换到深色主题' : '切换到浅色主题'}
             onClick={toggleTheme}
           >
-            {harvestTheme ? '🔥' : '🌱'}
+            {lightTheme ? '☾' : '☀'}
           </button>
           <button onClick={share}>{shareMsg || '分享摆盘'}</button>
         </div>
@@ -830,5 +834,6 @@ export default function App() {
         </section>
       </main>
     </div>
+    </CalibrationMode.Provider>
   )
 }

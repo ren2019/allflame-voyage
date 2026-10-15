@@ -2,16 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './styles.css'
-import './styles-harvest.css'
+import './styles-minimal.css'
+import { restoreTheme } from './logic/theme'
 
-// Harvest Edition: Google Sheets garden-planner theme, for old times' sake
-try {
-  if (localStorage.getItem('theme') === 'harvest' || window.location.pathname.includes('harvest')) {
-    document.body.classList.add('theme-harvest')
-  }
-} catch {
-  /* ignore */
-}
+restoreTheme()
+window.addEventListener('storage', (event) => {
+  if (event.key === 'theme') restoreTheme()
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root')!)
 if (new URLSearchParams(location.search).get('view') === 'calibration') {
