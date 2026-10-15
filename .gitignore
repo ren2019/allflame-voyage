@@ -11,3 +11,19 @@ voyage-import*.ini
 !public/voyage-clip-collector.ahk
 
 verification-results/
+
+# Local environment, credentials and generated files
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.log
+*.tsbuildinfo
+coverage/
+.local-site-*/
+.private/
