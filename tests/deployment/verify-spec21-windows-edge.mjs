@@ -37,7 +37,7 @@ try {
     if (!$edge) { throw 'Installed Microsoft Edge not found' }
     if (Get-NetTCPConnection -LocalPort ${port} -State Listen -ErrorAction SilentlyContinue) { throw 'Requested CDP port is already in use' }
     $edgeProfileDir = Join-Path $env:TEMP '${name}'
-    $arguments = '--remote-debugging-port=${port} --remote-debugging-address=127.0.0.1 --user-data-dir="' + $edgeProfileDir + '" --no-first-run --no-default-browser-check --new-window about:blank'
+    $arguments = '--remote-debugging-port=${port} --remote-debugging-address=127.0.0.1 --user-data-dir="' + $edgeProfileDir + '" --no-first-run --no-default-browser-check --disable-extensions --new-window about:blank'
     $action = New-ScheduledTaskAction -Execute $edge -Argument $arguments
     $principal = New-ScheduledTaskPrincipal -UserId (whoami) -LogonType Interactive -RunLevel Limited
     Register-ScheduledTask -TaskName '${name}' -Action $action -Principal $principal | Out-Null
