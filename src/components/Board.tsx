@@ -386,9 +386,10 @@ export function BoardView(props: Props) {
             </label>
           ))}
         </div>
-        <button onClick={clearBorders}>清空边界</button>
       </div>
-      <BorderAffinity strategyId={props.strategyId ?? null} borders={borders} />
+      <BorderAffinity strategyId={props.strategyId ?? null} borders={borders}>
+        <button onClick={clearBorders}>清空边界</button>
+      </BorderAffinity>
       {detailCell !== null && <RegionTargetDetails cell={targets[detailCell]} index={detailCell} onClose={() => setDetailCell(null)} />}
       <div className="board-grid">
         <div className="corner" />

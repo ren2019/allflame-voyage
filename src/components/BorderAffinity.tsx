@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import type { Borders } from '../types'
 import { localizedBorder } from '../data/borderLocale'
 import { strategyById } from '../data/strategies'
@@ -64,8 +64,8 @@ function BorderAnalysis({ evaluation, strategyId, onClose }: {
   )
 }
 
-/** Board-local, read-only legend and analysis. Accepts no planning mutations. */
-export function BorderAffinity({ strategyId, borders }: { strategyId: string | null; borders: Borders }) {
+/** Board-local, read-only analysis with board-provided actions beside the legend. */
+export function BorderAffinity({ strategyId, borders, children }: { strategyId: string | null; borders: Borders; children: ReactNode }) {
   const [open, setOpen] = useState(false)
   const evaluation = evaluateBorderAffinity(strategyId, borders)
   const entered = borders.slice(0, 12).filter(Boolean).length
@@ -74,12 +74,15 @@ export function BorderAffinity({ strategyId, borders }: { strategyId: string | n
     <div className="border-affinity" role="region" aria-label="边界适配分">
       <div className="border-affinity-heading">
         <div className="border-affinity-legend" aria-label="边界相关度分档">
-          <span className="muted">当前策略</span>
+          <span className="muted">当前边界价值</span>
           <span data-affinity-band="low">可略</span>
           <span data-affinity-band="medium">留意</span>
           <span data-affinity-band="high">优先</span>
         </div>
-        <button type="button" onClick={() => setOpen(true)}>边界分析</button>
+        <div className="border-affinity-actions">
+          {children}
+          <button type="button" onClick={() => setOpen(true)}>边界分析</button>
+        </div>
       </div>
       {evaluation.status === 'no-strategy' && <p>先选策略</p>}
       {entered < 12 && <p>边界未填满（{entered}/12）</p>}
