@@ -157,6 +157,7 @@ function ChartEditor({ chart, onUpdate }: { chart: ChartData; onUpdate: (c: Char
 }
 
 export function Library(props: Props) {
+  const [reservationDetail, setReservationDetail] = useState<string | null>(null)
   const [editing, setEditing] = useState<string | null>(null)
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState<SortMode>('value')
@@ -242,6 +243,7 @@ export function Library(props: Props) {
           </select>
           <button
             title={view === 'grid' ? '列表视图（编辑海图）' : '网格视图'}
+            aria-label={view === 'grid' ? '列表视图（编辑海图）' : '网格视图'}
             onClick={() => setViewPersist(view === 'grid' ? 'list' : 'grid')}
           >
             {view === 'grid' ? '☰' : '⊞'}
@@ -292,7 +294,12 @@ export function Library(props: Props) {
                 onClick={() => props.onSelect(c.uid)}
                 {...tooltipProps({ title: c.name, lines })}
               >
-                {mod && <CalibrationLink id={mod.id} />}
+                <span className="sq-head">
+                  <span className="sq-shape"><EdgeGlyph edges={c.edges} size={15} /></span>
+                  {lock && <button className="sq-lock" title={lock} aria-label={`查看策略预留：${lock}`}
+                    onClick={event => { event.stopPropagation(); setReservationDetail(lock) }}>🔒</button>}
+                  <span className="sq-val">{val}</span>
+                </span>
                 {mod?.short ? (
                   <span className={`sq-reward-text scope-${mod.scope}`}>
                     <span className="sq-shortname">{voyageModShort(mod.id)}</span>
@@ -309,28 +316,20 @@ export function Library(props: Props) {
                 ) : (
                   <EdgeGlyph edges={c.edges} size={26} />
                 )}
-                {mod && (
-                  <span className="sq-shape">
-                    <EdgeGlyph edges={c.edges} size={15} />
-                  </span>
-                )}
-                {lock && (
-                  <span className="sq-lock" title={lock}>
-                    🔒
-                  </span>
-                )}
-                <span className="sq-val">{val}</span>
-                <span className="sq-lvl">等级:{c.level}</span>
-                <button
-                  className="sq-del"
-                  title="删除"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    props.onRemove(c.uid)
-                  }}
-                >
-                  ✕
-                </button>
+                <span className="sq-footer">
+                  <span className="sq-lvl" title={`区域等级 ${c.level}`}>{c.level}</span>
+                  {mod && <CalibrationLink id={mod.id} />}
+                  <button
+                    className="sq-del"
+                    title="删除"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      props.onRemove(c.uid)
+                    }}
+                  >
+                    ✕
+                  </button>
+                </span>
               </div>
             )
           })}
@@ -353,9 +352,9 @@ export function Library(props: Props) {
                 <span className="chart-name">{c.name}</span>
                 <span className="chart-level">区域等级 {c.level}</span>
                 {lock && (
-                  <span className="badge lock" title={`${lock} · 其他求解不会使用它`}>
-                    🔒
-                  </span>
+                  <button className="badge lock" title={`${lock} · 其他求解不会使用它`}
+                    aria-label={`查看策略预留：${lock}`}
+                    onClick={event => { event.stopPropagation(); setReservationDetail(lock) }}>🔒 预留</button>
                 )}
                 {onBoard.has(c.uid) && <span className="badge">已摆入</span>}
                 <span className="spacer" />
@@ -404,6 +403,13 @@ export function Library(props: Props) {
         })}
       </div>
       )}
+      {reservationDetail && <div className="onboard-backdrop" onClick={() => setReservationDetail(null)}>
+        <div className="onboard reservation-detail" role="dialog" aria-modal="true" aria-label="策略预留详情"
+          onClick={event => event.stopPropagation()} onKeyDown={event => { if (event.key === 'Escape') setReservationDetail(null) }}>
+          <div className="panel-title">策略预留详情<span className="spacer" /><button autoFocus onClick={() => setReservationDetail(null)}>关闭</button></div>
+          <p>{reservationDetail}</p><p className="muted">该实例已为策略预留；无关策略不会将它用作普通海图。此标记不代表游戏内已锁定。</p>
+        </div>
+      </div>}
     </div>
   )
 }

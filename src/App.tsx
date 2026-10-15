@@ -1,4 +1,5 @@
 import { saveTheme } from './logic/theme'
+import { CalibrationMode } from './components/CalibrationLink'
 import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { BoardView } from './components/Board'
@@ -65,6 +66,7 @@ export default function App() {
       /* ignore */
     }
   }
+  const [calibrationMode, setCalibrationMode] = useState(false)
   const [showMods, setShowMods] = useState(false)
   // one-time importer-retired popup - returning visitors only (first-timers
   // never had the script, so mark it seen for them)
@@ -440,6 +442,7 @@ export default function App() {
   }
 
   return (
+    <CalibrationMode.Provider value={calibrationMode}>
     <div className="app">
       <TooltipLayer />
       {showOnboarding && (
@@ -535,6 +538,9 @@ export default function App() {
           🧭 使用教程
         </button>
         <div className="header-right">
+          <button className="calibration-mode-toggle" aria-label="单条中文校准模式"
+            aria-pressed={calibrationMode} title={calibrationMode ? '关闭单条校准入口' : '显示单条校准入口'}
+            onClick={() => setCalibrationMode(enabled => !enabled)}>✎</button>
           <a className="feedback-link" href={calibrationUrl()} target="_blank" rel="noopener noreferrer">中文校准 ↗</a>
           <span className="tag">流放之路 3.29：永火之咒</span>
           <button title="首次使用说明" onClick={() => setShowOnboarding(true)}>
@@ -826,5 +832,6 @@ export default function App() {
         </section>
       </main>
     </div>
+    </CalibrationMode.Provider>
   )
 }
