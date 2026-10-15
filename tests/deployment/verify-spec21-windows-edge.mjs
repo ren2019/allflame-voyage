@@ -234,6 +234,26 @@ public static class ClipboardProbe {
   `))
   assert.equal(clipboardOwner.OwnEdge, true, 'Clipboard ownership must belong to this temporary Edge, not another application')
   assert.equal(clipboardOwner.Session, desktopClipboard.Session)
+  // Exercise a real native rejection by denying only this disposable origin's
+  // clipboard permission. No API replacement, OS-wide setting or game input.
+  await downloadSession.send('Browser.setPermission', { permission: { name: 'clipboard-write' }, setting: 'denied', origin: url })
+  try {
+    const permission = await page.evaluate(async () => (await navigator.permissions.query({ name: 'clipboard-write' })).state)
+    assert.equal(permission, 'denied')
+    await assistant.getByRole('button', { name: '复制稀有怪传说装留图搜索', exact: true }).click()
+    await page.waitForFunction(() => window.clipboardAcknowledgement.state === 'rejected', { timeout: 5000 })
+    const rejected = await page.evaluate(() => window.clipboardAcknowledgement)
+    const fallback = page.getByRole('dialog', { name: '稀有怪传说装留图搜索' })
+    await fallback.waitFor({ state: 'visible' })
+    assert.equal(await fallback.getByRole('textbox').inputValue(), expectedSearch)
+    assert.match(await fallback.getByRole('status').innerText(), /复制失败/)
+    assert.doesNotMatch(await fallback.getByRole('status').innerText(), /已复制/)
+    report.nativeClipboardRejection = { actualNativeApi: true, permission, state: rejected.state, error: rejected.error, fallbackFullText: true, visibleFailure: true, scope: 'disposable origin permission only; restored before cleanup' }
+    await page.keyboard.press('Escape')
+  } finally {
+    await downloadSession.send('Browser.setPermission', { permission: { name: 'clipboard-write' }, setting: 'granted', origin: url })
+  }
+  assert.equal(await page.evaluate(() => navigator.clipboard.readText()), expectedSearch, 'Denied write must not overwrite the successful full OS clipboard value')
   const { readdirSync } = await import('node:fs')
   const assetPaths = readdirSync(new URL('../../public/target-icons/', import.meta.url)).map(file => `/target-icons/${file}`)
   report.assetDecode = await page.evaluate(async (paths) => Promise.all(paths.map(async path => {
@@ -254,7 +274,7 @@ public static class ClipboardProbe {
   assert.deepEqual(pageErrors, [])
   report.externalOriginsRequested = externalRequests
   report.pageErrors = pageErrors
-  Object.assign(report, { edge: info.Edge, userAgent: environment.userAgent, cdpLoopbackOnly: info.Loopback, secureContext: true, actualWindowsClipboardWrite: true, nativeClipboardImplementation: true, clipboardWriteAcknowledgement: acknowledgement.state, browserReadAttempts: readAttempts + 1, windowsDesktopClipboard: desktopClipboard, keeperClipboard: chartSearch, visibleSuccessAcknowledgement: true, failedResources: 0, gameSearch: 'not exercised; #24 remains human checkpoint', nativeClipboardFailure: 'not forced; controlled API rejection is separate offline browser evidence' })
+  Object.assign(report, { edge: info.Edge, userAgent: environment.userAgent, cdpLoopbackOnly: info.Loopback, secureContext: true, actualWindowsClipboardWrite: true, nativeClipboardImplementation: true, clipboardWriteAcknowledgement: acknowledgement.state, browserReadAttempts: readAttempts + 1, windowsDesktopClipboard: desktopClipboard, keeperClipboard: chartSearch, visibleSuccessAcknowledgement: true, failedResources: 0, gameSearch: 'not exercised; #24 remains human checkpoint', nativeClipboardFailure: 'real native API rejection under isolated per-origin permission denial; separate from mocked offline rejection' })
 } catch (error) {
   report.failure = error.message
   throw error
