@@ -602,6 +602,8 @@ export default function App() {
             borders={state.borders}
             charts={chartMap}
             perTile={score.perTile}
+            strategyId={state.strategyId}
+            scoreOptions={{ adjacencyMode: state.adjacencyMode, adjacentAffectsSelf: state.adjacentAffectsSelf, disabledMods: disabledSet }}
             selectedCell={selectedCell}
             highlightUid={
               copySeq
