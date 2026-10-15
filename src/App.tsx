@@ -10,6 +10,7 @@ import { TooltipLayer } from './components/Tooltip'
 import { generateDemoCharts } from './logic/demo'
 import { buildChartSearch, buildSingleChartSearch } from './logic/regex'
 import { ImportPanel } from './components/ImportPanel'
+import { KeeperAssistant } from './components/KeeperAssistant'
 import { Library } from './components/Library'
 import { SolverPanel } from './components/SolverPanel'
 import { SolveBar } from './components/SolveBar'
@@ -599,6 +600,7 @@ export default function App() {
             onOpenSaveWizard={() => setShowSaveWizard(true)}
           />
           <ImportPanel onImport={addCharts} state={state} onLoadState={setState} />
+          <KeeperAssistant />
         </section>
 
         <section className="col board-col">
