@@ -5,7 +5,6 @@ import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { VoyageComparison } from './components/VoyageComparison'
 import { BoardView } from './components/Board'
-import { BorderAffinity } from './components/BorderAffinity'
 import { ModBrowser } from './components/ModBrowser'
 import { Onboarding } from './components/Onboarding'
 import { TooltipLayer } from './components/Tooltip'
@@ -630,7 +629,6 @@ export default function App() {
               patch({ centerChoice: { ...state.centerChoice, [sid]: cid } })
             }
           />
-          <BorderAffinity strategyId={state.strategyId} borders={state.borders} />
           <BoardView
             board={state.board}
             borders={state.borders}
