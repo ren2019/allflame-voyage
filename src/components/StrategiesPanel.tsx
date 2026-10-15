@@ -105,136 +105,43 @@ export function StrategiesPanel({
   centerChoice,
   onCenterChoice,
 }: Props) {
-  const [expanded, setExpanded] = useState<string | null>(activeId)
+  const strategy = STRATEGIES.find((s) => s.id === activeId)
+  const chosenLayout = strategy?.layouts?.find((v) => v.id === layoutChoice?.[strategy.id]) ?? strategy?.layouts?.[0]
+  const chosenCenter = strategy?.centerOptions?.find((o) => o.id === centerChoice?.[strategy.id]) ?? strategy?.centerOptions?.[0]
 
   return (
-    <div className="strategies">
-      <div className="panel-title">
-        策略
-        {activeId && <span className="strat-live-badge">使用中</span>}
+    <section className="strategies" aria-label="规划策略">
+      <div className="strategy-controls">
+        <label>策略
+          <select aria-label="当前策略" value={strategy?.id ?? ''} onChange={(e) => onSelect(e.target.value || null)}>
+            <option value="">无策略（手动）</option>
+            {STRATEGIES.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
+          </select>
+        </label>
+        {strategy && chosenLayout && <label>布局
+          <select aria-label="策略布局" value={chosenLayout.id} onChange={(e) => onLayoutChoice?.(strategy.id, e.target.value)}>
+            {strategy.layouts!.map((v) => <option key={v.id} value={v.id}>{v.label}</option>)}
+          </select>
+        </label>}
+        {strategy && chosenCenter && <label>中心海图
+          <select aria-label="中心海图" value={chosenCenter.id} onChange={(e) => onCenterChoice?.(strategy.id, e.target.value)}>
+            {strategy.centerOptions!.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
+          </select>
+        </label>}
       </div>
-      <div className="muted small-note" style={{ marginTop: 0 }}>
-        社区策略。选中后使用该策略的奖励权重和位置偏好，关闭后恢复手动权重。
-      </div>
-
-      <button
-        className={`strat-card strat-none ${activeId === null ? 'active' : ''}`}
-        onClick={() => onSelect(null)}
-      >
-        <span className="strat-name">无策略（手动）</span>
-        <span className="strat-tagline">
-          使用自己的奖励权重，可在求解旁的 ⚙ 设置中调整。
-        </span>
-      </button>
-
-      {STRATEGIES.map((s) => {
-        const isActive = activeId === s.id
-        const isOpen = expanded === s.id
-        // the centre pick reshapes readiness, so the card must reflect it
-        const effective = applyCenterChoice(s, centerChoice?.[s.id])
-        return (
-          <div key={s.id} className={`strat-card ${isActive ? 'active' : ''}`}>
-            <button
-              className="strat-head"
-              onClick={() => setExpanded(isOpen ? null : s.id)}
-              title="查看详情"
-            >
-              <span className="strat-name">
-                {s.name}
-                {s.badge && <span className="strat-badge-new">{s.badge}</span>}
-              </span>
-              <span className="strat-tagline">{s.tagline}</span>
-            </button>
-            {isOpen && (
-              <div className="strat-body">
-                <ul className="strat-guide">
-                  {s.guide.map((g, i) => (
-                    <li key={i}>{g}</li>
-                  ))}
-                </ul>
-                {s.source.url ? (
-                  <a className="strat-source" href={s.source.url} target="_blank" rel="noopener noreferrer">
-                    ▶ {s.source.label}
-                  </a>
-                ) : (
-                  <span className="strat-source">{s.source.label}</span>
-                )}
-                {s.extraLinks?.map((l) => (
-                  <a
-                    key={l.url}
-                    className="strat-source strat-extra-link"
-                    href={l.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🔗 {l.label}
-                  </a>
-                ))}
-              </div>
-            )}
-            {(isActive || isOpen) &&
-              s.layouts &&
-              (() => {
-                const chosen =
-                  s.layouts.find((v) => v.id === layoutChoice?.[s.id]) ?? s.layouts[0]
-                return (
-                  <div className="strat-layouts">
-                    <div className="strat-layouts-row">
-                      <span className="strat-layouts-label">布局</span>
-                      <select
-                        value={chosen.id}
-                        onChange={(e) => onLayoutChoice?.(s.id, e.target.value)}
-                      >
-                        {s.layouts.map((v) => (
-                          <option key={v.id} value={v.id}>
-                            {v.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="strat-layouts-hint muted">{chosen.hint}</div>
-                  </div>
-                )
-              })()}
-            {(isActive || isOpen) &&
-              s.centerOptions &&
-              (() => {
-                const chosen =
-                  s.centerOptions.find((o) => o.id === centerChoice?.[s.id]) ?? s.centerOptions[0]
-                return (
-                  <div className="strat-layouts">
-                    <div className="strat-layouts-row">
-                      <span className="strat-layouts-label">中心海图</span>
-                      <select
-                        value={chosen.id}
-                        onChange={(e) => onCenterChoice?.(s.id, e.target.value)}
-                      >
-                        {s.centerOptions.map((o) => (
-                          <option key={o.id} value={o.id}>
-                            {o.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    {chosen.id !== s.centerOptions[0].id && (
-                      <div className="strat-layouts-hint muted">
-                        中心优先使用{chosen.label.replace('仅', '')}海图，其他中心材料留在库存中
-                      </div>
-                    )}
-                  </div>
-                )
-              })()}
-            {(isActive || isOpen) && s.searchRegex && <RegexRow regex={s.searchRegex} />}
-            {(isActive || isOpen) && <Readiness strategy={effective} pool={pool} borders={borders} />}
-            <button
-              className={`strat-use ${isActive ? 'on' : ''}`}
-              onClick={() => onSelect(isActive ? null : s.id)}
-            >
-              {isActive ? '✓ 已启用，点击关闭' : '使用此策略'}
-            </button>
-          </div>
-        )
-      })}
-    </div>
+      {strategy ? <>
+        <Readiness strategy={applyCenterChoice(strategy, centerChoice?.[strategy.id])} pool={pool} borders={borders} />
+        <details className="strategy-guide" key={strategy.id}>
+          <summary>攻略与材料</summary>
+          <p>{strategy.tagline}</p>
+          {chosenLayout && <p className="muted">{chosenLayout.hint}</p>}
+          {chosenCenter && chosenCenter.id !== strategy.centerOptions![0].id && <p className="muted">中心优先使用{chosenCenter.label.replace('仅', '')}海图，其他中心材料留在库存中</p>}
+          <ul className="strat-guide">{strategy.guide.map((line, i) => <li key={i}>{line}</li>)}</ul>
+          {strategy.source.url ? <a className="strat-source" href={strategy.source.url} target="_blank" rel="noopener noreferrer">{strategy.source.label}</a> : <span className="strat-source">{strategy.source.label}</span>}
+          {strategy.extraLinks?.map((link) => <a key={link.url} className="strat-source strat-extra-link" href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>)}
+          {strategy.searchRegex && <RegexRow regex={strategy.searchRegex} />}
+        </details>
+      </> : <p className="muted strategy-manual-note">手动权重可在求解旁的设置中调整。</p>}
+    </section>
   )
 }

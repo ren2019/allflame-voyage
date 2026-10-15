@@ -21,8 +21,7 @@ interface Props {
   onOpenSettings: () => void
 }
 
-/** The front-and-centre solve control: sits under the board, above
- *  "Copy into game", so solve → pick a result → copy is one straight line. */
+/** Plan controls precede the board: choose strategy → solve → copy. */
 export function SolveBar({ state, activeStrategy, results, resultContext, appliedIdx, onResults, onApply, onOpenPlanner, onOpenSettings }: Props) {
   const [busy, setBusy] = useState(false)
   const [solveNote, setSolveNote] = useState('')

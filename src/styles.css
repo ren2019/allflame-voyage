@@ -741,10 +741,9 @@ textarea {
 }
 /* in-game style chart stash grid */
 .chart-grid {
-  /* Square cards need tracks at least as wide as their minimum height. */
-  --chart-min-size: 88px;
+  /* Four columns in the original sidebar, including space for classic scrollbars. */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--chart-min-size), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
   gap: 6px;
   max-height: 46vh;
   overflow-y: auto;
@@ -754,7 +753,7 @@ textarea {
 }
 .chart-sq {
   position: relative;
-  aspect-ratio: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2504,7 +2503,7 @@ textarea {
 .mb-row .calibration-link { margin-left: auto; }
 .bslot .calibration-link { width: 16px; height: 16px; font-size: 11px; }
 /* Reserve a real row for each kind of information rather than stacking corner badges. */
-.chart-sq { flex-direction: column; justify-content: space-between; min-height: var(--chart-min-size); padding: 3px; gap: 3px; }
+.chart-sq { flex-direction: column; justify-content: space-between; min-height: 88px; padding: 3px; gap: 3px; }
 .sq-head, .sq-footer { display: flex; width: 100%; align-items: center; gap: 2px; flex-shrink: 0; }
 .sq-shape, .sq-lock, .sq-val, .sq-lvl, .sq-del { position: static; }
 .sq-shape { flex-shrink: 0; }

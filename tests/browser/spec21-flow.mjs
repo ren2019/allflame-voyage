@@ -49,7 +49,7 @@ export async function keeper(page, onCopy) {
 export async function fullCycle(page) {
   await page.locator('.onboard-actions button').last().click()
   await load(page, { ...fixture, strategyId: null, voyageHistory: [] })
-  await page.locator('.strat-card').filter({ has: page.locator('.strat-name').filter({ hasText: /^点金速刷$/ }) }).locator('.strat-use').click()
+  await page.getByRole('combobox', { name: '当前策略', exact: true }).selectOption({ label: '点金速刷' })
   await expect(page.locator('.score-total strong')).toHaveText('13.0')
   await page.locator('.solve-big').click()
   await expect(page.locator('.solve-result:not(.invalid)').first()).toBeVisible({ timeout: 120000 })

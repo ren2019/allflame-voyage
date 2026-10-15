@@ -58,7 +58,7 @@ test('所选候选完成九步复制后仅核销已消耗实例，补库存和�
     await page.getByPlaceholder('搜索边界词缀…').fill('怪物群规模提高 16%')
     await page.locator('.bpop-item').filter({ hasText: '相邻区域的怪物群规模提高 16%' }).click()
   }
-  await page.locator('.strat-card').filter({ has: page.locator('.strat-name').filter({ hasText: '点金速刷' }) }).locator('.strat-use').click()
+  await page.getByRole('combobox', { name: '当前策略', exact: true }).selectOption({ label: '点金速刷' })
   const prepared = await downloadPlanningState(page)
   expect(prepared.pool).toHaveLength(14)
   expect(prepared.pool.filter((chart) => realUids.includes(chart.uid))).toEqual(realInventory)

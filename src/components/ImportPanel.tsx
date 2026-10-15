@@ -155,7 +155,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     <div className="import-panel">
       <div className="panel-title">导入海图</div>
       <textarea
-        rows={5}
+        rows={3}
         placeholder={
           '在国服游戏中 Ctrl+Alt+C 高级复制已测绘海图，再在本页 Ctrl+V 导入；也可粘贴到此处后解析。名称、区域等级、奖励、航行词缀和形状会一并读取。'
         }
@@ -200,64 +200,67 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
         </div>
       )}
 
-      <details className="ahk-help">
-        <summary>🎲 洗练与保留海图（搜索参考）</summary>
-        <p className="muted">
-          海图完成测绘后无法洗练，应先洗练再运行；物品数量会影响保险箱奖励。
-          优质词缀搜索使用已复核的 PoEDB 简中候选模板，游戏内匹配效果仍需现场验证。
-          其余表达式保留原版英文参考。
-        </p>
-        <CompactCopyText label="优质词缀（简中候选）" text={ALL_GOOD_MODS_REGEX} />
-        <CompactCopyText label="数量 120% 以上（英文参考）" text={'"m q.*(1[2-9].|[2-9]..)%"'} />
-        <CompactCopyText label="硫磺 75% 以上（污秽蟹群，英文参考）" text={'"sul.*(7[5-9]|[89].|\\d..)%"'} />
-      </details>
+      <details className="import-reference">
+        <summary>导入说明与搜索参考</summary>
+        <details className="ahk-help">
+          <summary>🎲 洗练与保留海图（搜索参考）</summary>
+          <p className="muted">
+            海图完成测绘后无法洗练，应先洗练再运行；物品数量会影响保险箱奖励。
+            优质词缀搜索使用已复核的 PoEDB 简中候选模板，游戏内匹配效果仍需现场验证。
+            其余表达式保留原版英文参考。
+          </p>
+          <CompactCopyText label="优质词缀（简中候选）" text={ALL_GOOD_MODS_REGEX} />
+          <CompactCopyText label="数量 120% 以上（英文参考）" text={'"m q.*(1[2-9].|[2-9]..)%"'} />
+          <CompactCopyText label="硫磺 75% 以上（污秽蟹群，英文参考）" text={'"sul.*(7[5-9]|[89].|\\d..)%"'} />
+        </details>
 
-      <details className="ahk-help">
-        <summary>📋 原版英文海图及边界采集器（Windows 参考）</summary>
-        <p className="muted">
-          原版可选辅助脚本<strong>不会向游戏发送按键或点击</strong>。所有按键由玩家自己操作；
-          脚本读取主动复制的剪贴板内容，以及玩家按住 Alt 时的截图。
-          原版 OCR 在 Windows 本地运行。此脚本和边界 OCR 未做国服适配。
-        </p>
-        <a
-          className="ahk-dl"
-          href={`${import.meta.env.BASE_URL}voyage-clip-collector.ahk`}
-          download
-        >
-          ⬇ 下载原版 voyage-clip-collector.ahk
-        </a>
-        <ol className="ahk-steps">
-          <li>
-            安装{' '}
-            <a href="https://www.autohotkey.com/" target="_blank" rel="noopener noreferrer">
-              AutoHotkey v2
-            </a>{' '}
-            后运行脚本（在系统托盘中）。
-          </li>
-          <li>
-            按 <kbd>F7</kbd> 开启复制模式，屏幕显示计数器。
-          </li>
-          <li>
-            在原版支持的客户端中，逐张悬停海图并自行按 <kbd>Ctrl+C</kbd>，计数器增加。
-            非海图和误操作的重复复制会被忽略。
-          </li>
-          <li>
-            原版边界采集：<strong>按住 Alt</strong> 显示全部 12 个边界悬停提示，按{' '}
-            <kbd>F8</kbd>，听到提示音后松开；文本在本地读取并加入批次。
-          </li>
-          <li>
-            再次按 <kbd>F7</kbd>，切回本页并按 <kbd>Ctrl+V</kbd>，一次导入海图与边界；
-            已在库存中的海图会跳过。
-          </li>
-        </ol>
+        <details className="ahk-help">
+          <summary>📋 原版英文海图及边界采集器（Windows 参考）</summary>
+          <p className="muted">
+            原版可选辅助脚本<strong>不会向游戏发送按键或点击</strong>。所有按键由玩家自己操作；
+            脚本读取主动复制的剪贴板内容，以及玩家按住 Alt 时的截图。
+            原版 OCR 在 Windows 本地运行。此脚本和边界 OCR 未做国服适配。
+          </p>
+          <a
+            className="ahk-dl"
+            href={`${import.meta.env.BASE_URL}voyage-clip-collector.ahk`}
+            download
+          >
+            ⬇ 下载原版 voyage-clip-collector.ahk
+          </a>
+          <ol className="ahk-steps">
+            <li>
+              安装{' '}
+              <a href="https://www.autohotkey.com/" target="_blank" rel="noopener noreferrer">
+                AutoHotkey v2
+              </a>{' '}
+              后运行脚本（在系统托盘中）。
+            </li>
+            <li>
+              按 <kbd>F7</kbd> 开启复制模式，屏幕显示计数器。
+            </li>
+            <li>
+              在原版支持的客户端中，逐张悬停海图并自行按 <kbd>Ctrl+C</kbd>，计数器增加。
+              非海图和误操作的重复复制会被忽略。
+            </li>
+            <li>
+              原版边界采集：<strong>按住 Alt</strong> 显示全部 12 个边界悬停提示，按{' '}
+              <kbd>F8</kbd>，听到提示音后松开；文本在本地读取并加入批次。
+            </li>
+            <li>
+              再次按 <kbd>F7</kbd>，切回本页并按 <kbd>Ctrl+V</kbd>，一次导入海图与边界；
+              已在库存中的海图会跳过。
+            </li>
+          </ol>
+          <p className="muted small">
+            <kbd>Shift+F7</kbd> 可关闭提示音，屏幕计数器继续工作。
+            游戏与原版采集器需要相同的权限级别才能响应快捷键。
+          </p>
+        </details>
         <p className="muted small">
-          <kbd>Shift+F7</kbd> 可关闭提示音，屏幕计数器继续工作。
-          游戏与原版采集器需要相同的权限级别才能响应快捷键。
+          旧版批量操作脚本保持停用。上方保留原版英文采集器参考，国服流程使用手动复制与粘贴。
         </p>
       </details>
-      <p className="muted small">
-        旧版批量操作脚本保持停用。上方保留原版英文采集器参考，国服流程使用手动复制与粘贴。
-      </p>
       <p className="muted small">
         问题或建议？{' '}
         <a

@@ -9,6 +9,7 @@ test('真实库存网格与列表的海图卡片及内容互不重叠', async ({
   await openEmptyApp(page)
   await loadState(page, inventory)
   const before = await exportState(page)
+  await page.getByRole('button', { name: '单条中文校准模式', exact: true }).click()
   for (const theme of ['dark', 'light']) {
     const switcher = page.getByRole('button', { name: `切换到${theme === 'dark' ? '深色' : '浅色'}主题`, exact: true })
     if (await switcher.count()) await switcher.click()

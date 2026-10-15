@@ -198,13 +198,7 @@ test('派生合并与神圣条件样例支持四槽溢出、策略切换和空�
   ])
     await expect(detail).toContainText(text)
   await page.keyboard.press('Escape')
-  await page
-    .locator('.strat-card')
-    .filter({
-      has: page.locator('.strat-name').filter({ hasText: '魔法怪流' }),
-    })
-    .locator('.strat-use')
-    .click()
+  await page.getByRole('combobox', { name: '当前策略', exact: true }).selectOption({ label: '魔法怪流' })
   await expect(
     cells.nth(1).getByRole('button', { name: /箱子 · 中优先级 40/ }),
   ).toBeVisible()
@@ -311,7 +305,7 @@ test('区域目标三态筛选先排除灰色再计算四槽和更多，切策�
   await expect(page.getByRole('button', { name: '更多目标 · 共 5 类', exact: true })).toBeVisible()
   await expect(page.locator('.region-targets button')).toHaveCount(4)
   await expect(page.locator('.region-targets .band-low')).toHaveCount(0)
-  await page.locator('.strat-card').filter({ has: page.locator('.strat-name').filter({ hasText: '稀有怪传说装' }) }).locator('.strat-use').click()
+  await page.getByRole('combobox', { name: '当前策略', exact: true }).selectOption({ label: '稀有怪传说装' })
   await expect(page.locator('.region-targets').getByRole('button', { name: /箱子/ })).toHaveCount(0)
   await expect(page.locator('.region-targets').getByRole('button', { name: /罪魂牢笼/ })).toBeVisible()
   const afterStrategy = await exportState(page)

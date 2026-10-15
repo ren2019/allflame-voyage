@@ -585,7 +585,7 @@ export default function App() {
         </div>
       </header>
 
-      <main>
+      <main className={state.pool.length ? 'has-inventory' : undefined}>
         <section className="col library-col">
           <Library
             pool={state.pool}
@@ -605,60 +605,27 @@ export default function App() {
             onClearCharts={clearCharts}
             onOpenSaveWizard={() => setShowSaveWizard(true)}
           />
-          <ImportPanel onImport={addCharts} state={state} onLoadState={setState} />
           <KeeperAssistant />
+          <ImportPanel onImport={addCharts} state={state} onLoadState={setState} />
         </section>
 
         <section className="col board-col">
-          <BorderAffinity strategyId={state.strategyId} borders={state.borders} />
-          <BoardView
-            board={state.board}
-            borders={state.borders}
-            charts={chartMap}
-            perTile={score.perTile}
-            strategyId={state.strategyId}
-            scoreOptions={{ adjacencyMode: state.adjacencyMode, adjacentAffectsSelf: state.adjacentAffectsSelf, disabledMods: disabledSet }}
-            selectedCell={selectedCell}
-            highlightUid={
-              copySeq
-                ? (state.board[copySeq.order[copySeq.step]]?.chartUid ?? null)
-                : preserveConfirm
-                  ? preserveConfirm.charts[preserveConfirm.index].uid
-                  : selectedChart && state.board.some((p) => p?.chartUid === selectedChart)
-                    ? selectedChart
-                    : null
-            }
-            strictMode={state.mode !== 'any'}
-            placingChart={selectedChart ? chartMap.get(selectedChart) ?? null : null}
-            onCellClick={onCellClick}
-            onRemove={(i) =>
-              setState((s) => {
-                const board = [...s.board]
-                board[i] = null
-                return { ...s, board }
-              })
-            }
-            onRotate={(i) =>
-              setState((s) => {
-                const board = [...s.board]
-                const p = board[i]
-                if (p) board[i] = { ...p, rotation: (p.rotation + 1) % 4 }
-                return { ...s, board }
-              })
-            }
-            onBorderChange={(seg, id) =>
-              setState((s) => {
-                const borders = [...s.borders]
-                borders[seg] = id
-                return { ...s, borders }
-              })
-            }
-            onTogglePreserve={togglePreserve}
-            onFinishVoyage={finishVoyage}
-            onCopySequence={startCopySeq}
-            voyageMsg={voyageMsg}
-            sequenceActive={!!copySeq || !!preserveConfirm}
-            solveSlot={
+          <div className="planning-controls">
+            <StrategiesPanel
+              activeId={state.strategyId}
+              pool={state.pool}
+              borders={state.borders}
+              onSelect={(id) => patch({ strategyId: id })}
+              layoutChoice={state.layoutChoice}
+              onLayoutChoice={(sid, lid) =>
+                patch({ layoutChoice: { ...state.layoutChoice, [sid]: lid } })
+              }
+              centerChoice={state.centerChoice}
+              onCenterChoice={(sid, cid) =>
+                patch({ centerChoice: { ...state.centerChoice, [sid]: cid } })
+              }
+            />
+            {!(copySeq || preserveConfirm) && (
               <SolveBar
                 state={state}
                 activeStrategy={activeStrategy}
@@ -679,19 +646,8 @@ export default function App() {
                 onOpenPlanner={() => setShowPlanner(true)}
                 onOpenSettings={() => setShowSolverSettings(true)}
               />
-            }
-          />
-
-          <VoyageComparison state={state} />
-
-          <section className="voyage-history muted pad" aria-label="航程历史">
-            <strong>航程历史</strong> · 已记录 {state.voyageHistory.length} 次
-            {latestVoyage && <> · 最近完成分数 {latestVoyage.score.toFixed(1)}</>}
-            <div>仅记录功能启用后完成的有效九格摆盘，不代表游戏出发记录。</div>
-            {startup.damagedHistory && <div role="alert">已忽略损坏航程历史，库存与规划偏好已保留。</div>}
-            {storageFailed && <div role="alert">本地存储写入失败，当前历史未持久化。请导出规划备份；本次核销结果保持有效。</div>}
-          </section>
-
+            )}
+          </div>
           {copySeq && (
             <div className="preserve-confirm copyseq">
               <div className="pc-head">
@@ -744,6 +700,115 @@ export default function App() {
             </div>
           )}
 
+          <BoardView
+            board={state.board}
+            borders={state.borders}
+            charts={chartMap}
+            perTile={score.perTile}
+            strategyId={state.strategyId}
+            scoreOptions={{ adjacencyMode: state.adjacencyMode, adjacentAffectsSelf: state.adjacentAffectsSelf, disabledMods: disabledSet }}
+            selectedCell={selectedCell}
+            highlightUid={
+              copySeq
+                ? (state.board[copySeq.order[copySeq.step]]?.chartUid ?? null)
+                : preserveConfirm
+                  ? preserveConfirm.charts[preserveConfirm.index].uid
+                  : selectedChart && state.board.some((p) => p?.chartUid === selectedChart)
+                    ? selectedChart
+                    : null
+            }
+            strictMode={state.mode !== 'any'}
+            placingChart={selectedChart ? chartMap.get(selectedChart) ?? null : null}
+            onCellClick={onCellClick}
+            onRemove={(i) =>
+              setState((s) => {
+                const board = [...s.board]
+                board[i] = null
+                return { ...s, board }
+              })
+            }
+            onRotate={(i) =>
+              setState((s) => {
+                const board = [...s.board]
+                const p = board[i]
+                if (p) board[i] = { ...p, rotation: (p.rotation + 1) % 4 }
+                return { ...s, board }
+              })
+            }
+            onBorderChange={(seg, id) =>
+              setState((s) => {
+                const borders = [...s.borders]
+                borders[seg] = id
+                return { ...s, borders }
+              })
+            }
+            onTogglePreserve={togglePreserve}
+            onFinishVoyage={finishVoyage}
+            onCopySequence={startCopySeq}
+            voyageMsg={voyageMsg}
+            sequenceActive={!!copySeq || !!preserveConfirm}
+          />
+
+        </section>
+
+        <section className="col solver-col">
+          <div className="score-panel">
+            <div className="score-total">
+              摆盘评分 <strong>{score.total.toFixed(1)}</strong>
+              <span className="spacer" />
+              <button
+                onClick={copySearch}
+                disabled={state.board.every((p) => !p)}
+                title="复制游戏内搜索文本，定位当前摆盘使用的海图"
+              >
+                {searchMsg || '⌕ 复制游戏内搜索'}
+              </button>
+            </div>
+            <details className="reward-details"><summary>奖励与效果</summary>
+              <div className="muted small-note" style={{ marginTop: 0 }}>
+                按奖励权重和词缀估值比较摆盘的相对评分，不代表实际掉落价值。下方列出当前效果。
+              </div>
+              <div className="reward-grid">
+                {ALL_STATS.filter((s) => score.perStat[s] > 0)
+                  .sort((a, b) => score.perStat[b] - score.perStat[a])
+                  .map((s, i) => (
+                    <div key={s} className={`reward-card ${i === 0 ? 'best' : ''}`}>
+                      <div className="reward-value">+{Math.round(score.perStat[s] * 100)}%</div>
+                      <div className="reward-label">{STAT_LABELS[s]}</div>
+                    </div>
+                  ))}
+                {ALL_STATS.every((s) => score.perStat[s] === 0) && (
+                  <div className="muted">放入海图后查看加成</div>
+                )}
+              </div>
+              {ALL_STATS.some((s) => score.perStat[s] > 0) && (
+                <div className="muted small-note">全航程各区域的平均加成。</div>
+              )}
+              {notables.length > 0 && (
+                <>
+                  <div className="panel-title small">固定与特殊效果</div>
+                  <div className="notable-list">
+                    {notables.map((n) => (
+                      <span key={n.label} className="notable-item" title={n.full}>
+                        {n.label}
+                        {n.count > 1 ? ` ×${n.count}` : ''}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              )}
+            </details>
+          </div>
+          <VoyageComparison state={state} />
+
+          <section className="voyage-history muted pad" aria-label="航程历史">
+            <strong>航程历史</strong> · 已记录 {state.voyageHistory.length} 次
+            {latestVoyage && <> · 最近完成分数 {latestVoyage.score.toFixed(1)}</>}
+            <details><summary>记录说明</summary><p>仅记录功能启用后完成的有效九格摆盘，不代表游戏出发记录。</p></details>
+            {startup.damagedHistory && <div role="alert">已忽略损坏航程历史，库存与规划偏好已保留。</div>}
+            {storageFailed && <div role="alert">本地存储写入失败，当前历史未持久化。请导出规划备份；本次核销结果保持有效。</div>}
+          </section>
+
           <div className={`conn-status ${conn.valid ? 'ok' : 'bad'}`}>
             {state.mode === 'any'
               ? '已忽略连接规则'
@@ -764,6 +829,8 @@ export default function App() {
                     .join(' · ')}
           </div>
 
+          <BorderAffinity strategyId={state.strategyId} borders={state.borders} />
+
           {modCount.total > 0 && (
             <div className="modcount">
               <span className="modcount-title">航行词缀统计</span>
@@ -774,54 +841,7 @@ export default function App() {
             </div>
           )}
 
-          <div className="score-panel">
-            <div className="score-total">
-              航程奖励 <strong>{score.total.toFixed(1)}</strong>
-              <span className="spacer" />
-              <button
-                onClick={copySearch}
-                disabled={state.board.every((p) => !p)}
-                title="复制游戏内搜索文本，定位当前摆盘使用的海图"
-              >
-                {searchMsg || '⌕ 复制游戏内搜索'}
-              </button>
-            </div>
-            <div className="muted small-note" style={{ marginTop: 0 }}>
-              按奖励权重和词缀估值比较摆盘的相对评分，不代表实际掉落价值。下方列出当前效果。
-            </div>
-            <div className="reward-grid">
-              {ALL_STATS.filter((s) => score.perStat[s] > 0)
-                .sort((a, b) => score.perStat[b] - score.perStat[a])
-                .map((s, i) => (
-                  <div key={s} className={`reward-card ${i === 0 ? 'best' : ''}`}>
-                    <div className="reward-value">+{Math.round(score.perStat[s] * 100)}%</div>
-                    <div className="reward-label">{STAT_LABELS[s]}</div>
-                  </div>
-                ))}
-              {ALL_STATS.every((s) => score.perStat[s] === 0) && (
-                <div className="muted">放入海图后查看加成</div>
-              )}
-            </div>
-            {ALL_STATS.some((s) => score.perStat[s] > 0) && (
-              <div className="muted small-note">全航程各区域的平均加成。</div>
-            )}
-            {notables.length > 0 && (
-              <>
-                <div className="panel-title small">固定与特殊效果</div>
-                <div className="notable-list">
-                  {notables.map((n) => (
-                    <span key={n.label} className="notable-item" title={n.full}>
-                      {n.label}
-                      {n.count > 1 ? ` ×${n.count}` : ''}
-                    </span>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-        </section>
 
-        <section className="col solver-col">
           {jackpots.map((j) => (
             <div key={j.strategyId} className="jackpot-banner">
               <span className="jackpot-label">
@@ -838,20 +858,7 @@ export default function App() {
               </button>
             </div>
           ))}
-          <StrategiesPanel
-            activeId={state.strategyId}
-            pool={state.pool}
-            borders={state.borders}
-            onSelect={(id) => patch({ strategyId: id })}
-            layoutChoice={state.layoutChoice}
-            onLayoutChoice={(sid, lid) =>
-              patch({ layoutChoice: { ...state.layoutChoice, [sid]: lid } })
-            }
-            centerChoice={state.centerChoice}
-            onCenterChoice={(sid, cid) =>
-              patch({ centerChoice: { ...state.centerChoice, [sid]: cid } })
-            }
-          />
+
         </section>
       </main>
     </div>

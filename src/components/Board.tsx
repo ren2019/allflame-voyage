@@ -3,7 +3,7 @@ import { regionalTargetView, regionTargets, type RegionalCell, type RegionTarget
 import { borderAffinityPriority, evaluateBorderAffinity } from '../logic/borderAffinity'
 import type { ScoreOptions } from '../logic/scoring'
 import { CalibrationLink } from './CalibrationLink'
-import { useId, useState, type ReactNode } from 'react'
+import { useId, useState } from 'react'
 import { BORDER_MODS, borderModById, voyageModById } from '../data/mods'
 import { BORDER_CHOICES, localizedBorder, matchesBorderQuery } from '../data/borderLocale'
 import { rotateEdges } from '../logic/connectivity'
@@ -35,8 +35,6 @@ interface Props {
   voyageMsg: string
   /** a copy/preserve step-through is active - hide the action buttons to avoid confusion */
   sequenceActive?: boolean
-  /** the solve control, rendered front-and-centre above "Copy into game" */
-  solveSlot?: ReactNode
 }
 
 function BorderSelect({
@@ -396,6 +394,27 @@ export function BoardView(props: Props) {
         </button>
         <button onClick={clearBorders}>清空边界</button>
       </div>
+      {!props.sequenceActive && (
+        <div className="voyage-finish">
+          <button
+            className="copy-into-game"
+            disabled={board.every((p) => !p)}
+            onClick={props.onCopySequence}
+            title="按游戏放置顺序从左下开始逐格复制定位文本，再按对应顺序 Ctrl+左键点击海图。"
+          >
+            📋 复制到游戏
+          </button>
+          <button
+            className="finish-voyage"
+            disabled={board.every((p) => !p)}
+            onClick={props.onFinishVoyage}
+            title="核销本盘实际消耗的海图，并逐张确认锁定海图（🔒）是否存活；随后清空摆盘，开始下一航程。"
+          >
+            🌊 完成航程
+          </button>
+          {props.voyageMsg && <span className="voyage-msg">{props.voyageMsg}</span>}
+        </div>
+      )}
       {detailCell !== null && <RegionTargetDetails cell={targets[detailCell]} index={detailCell} onClose={() => setDetailCell(null)} />}
       <div className="board-grid">
         <div className="corner" />
@@ -428,36 +447,16 @@ export function BoardView(props: Props) {
         {border(8)}
         <div className="corner" />
       </div>
-      <div className="board-hint">
-        角落有两条直接边界，中边一条，中心没有。先点击库存海图再点击格子放置；点击两个已放置格子可交换。
-      </div>
-      <div className="legend">
-        <span className="legend-item scope-self">■ 本区域</span>
-        <span className="legend-item scope-adjacent">■ 相邻区域</span>
-        <span className="legend-item scope-global">■ 全航程</span>
-      </div>
-      {!props.sequenceActive && props.solveSlot}
-      {!props.sequenceActive && (
-        <div className="voyage-finish">
-          <button
-            className="copy-into-game"
-            disabled={board.every((p) => !p)}
-            onClick={props.onCopySequence}
-            title="按游戏放置顺序从左下开始逐格复制定位文本，再按对应顺序 Ctrl+左键点击海图。"
-          >
-            📋 复制到游戏
-          </button>
-          <button
-            className="finish-voyage"
-            disabled={board.every((p) => !p)}
-            onClick={props.onFinishVoyage}
-            title="核销本盘实际消耗的海图，并逐张确认锁定海图（🔒）是否存活；随后清空摆盘，开始下一航程。"
-          >
-            🌊 完成航程
-          </button>
-          {props.voyageMsg && <span className="voyage-msg">{props.voyageMsg}</span>}
+      <details className="board-help"><summary>摆盘操作说明</summary>
+        <div className="board-hint">
+          角落有两条直接边界，中边一条，中心没有。先点击库存海图再点击格子放置；点击两个已放置格子可交换。
         </div>
-      )}
+        <div className="legend">
+          <span className="legend-item scope-self">■ 本区域</span>
+          <span className="legend-item scope-adjacent">■ 相邻区域</span>
+          <span className="legend-item scope-global">■ 全航程</span>
+        </div>
+      </details>
     </div>
   )
 }

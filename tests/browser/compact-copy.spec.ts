@@ -7,6 +7,7 @@ const quantityRegex = '"m q.*(1[2-9].|[2-9]..)%"'
 test('搜索参考默认紧凑，名称打开可选择全文的键盘弹窗，关闭后复制仍有可见反馈', async ({ page }) => {
   await installClipboardRecorder(page)
   await openEmptyApp(page)
+  await page.getByText('导入说明与搜索参考', { exact: true }).click()
   await page.getByText('🎲 洗练与保留海图（搜索参考）', { exact: true }).click()
   const reference = page.locator('.ahk-help').first()
   await expect(reference.locator('input')).toHaveCount(0)
@@ -36,6 +37,7 @@ test('剪贴板未确认时不能报成功，拒绝后展示失败并保留手�
     } })
   })
   await openEmptyApp(page)
+  await page.getByText('导入说明与搜索参考', { exact: true }).click()
   await page.getByText('🎲 洗练与保留海图（搜索参考）', { exact: true }).click()
   const row = page.locator('.ahk-help').first()
   await row.getByRole('button', { name: `复制${quantity}`, exact: true }).click()
@@ -55,6 +57,7 @@ test('剪贴板不可用时，弹窗内复制也给出可访问的失败状态�
     Object.defineProperty(navigator, 'clipboard', { configurable: true, value: undefined })
   })
   await openEmptyApp(page)
+  await page.getByText('导入说明与搜索参考', { exact: true }).click()
   await page.getByText('🎲 洗练与保留海图（搜索参考）', { exact: true }).click()
   await page.getByRole('button', { name: quantity, exact: true }).click()
   const dialog = page.getByRole('dialog', { name: quantity })
@@ -71,7 +74,8 @@ for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 })
     await installClipboardRecorder(page)
     await openEmptyApp(page)
-    await page.getByText('🎲 洗练与保留海图（搜索参考）', { exact: true }).click()
+    await page.getByText('导入说明与搜索参考', { exact: true }).click()
+  await page.getByText('🎲 洗练与保留海图（搜索参考）', { exact: true }).click()
     // Literals preserved from the original search references, rather than importing implementation constants.
     const references = [
       ['优质词缀（简中候选）', '"至少为魔法|无法掉落|被附身|分裂|瓶中信|神圣的秘宝|奥术师|侦探|巨型海星|众神词缀|腰带|黄金灯笼|4000.*鬼灵|保险箱|所有航行区域的稀有怪物数量|所有航行区域中找到的亡者硫磺"'],
