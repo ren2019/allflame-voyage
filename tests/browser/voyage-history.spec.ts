@@ -70,3 +70,37 @@ test('本地损坏历史不抹除库存、偏好或有效记录，刷新不追�
   await expect(page.getByLabel('航程历史')).toContainText('已记录 1 次')
   expect(await downloadPlanningState(page)).toEqual(finished)
 })
+
+test('同一渲染内重复完成点击只核销一次，重新载入新航程仍可完成', async ({ page }) => {
+  await page.goto('/')
+  await page.locator('.onboard-actions button').last().click()
+  const ready = { ...fixture, pool: fixture.pool.map(({ preserved: _, ...chart }) => chart) }
+  await loadPlanningState(page, ready)
+  await page.evaluate(() => {
+    const finish = document.querySelector<HTMLButtonElement>('.finish-voyage')!
+    finish.click()
+    finish.click()
+  })
+  await expect(page.getByLabel('航程历史')).toContainText('已记录 1 次')
+  const first = await downloadPlanningState(page)
+  expect(first.pool).toHaveLength(3)
+  await loadPlanningState(page, { ...ready, voyageHistory: first.voyageHistory })
+  await page.locator('.finish-voyage').click()
+  await expect(page.getByLabel('航程历史')).toContainText('已记录 2 次')
+  const second = await downloadPlanningState(page)
+  expect(new Set(second.voyageHistory.map((entry) => entry.completionId)).size).toBe(2)
+})
+
+test('恢复乱序历史时最近完成分数按完成时间展示', async ({ page }) => {
+  await page.goto('/')
+  await page.locator('.onboard-actions button').last().click()
+  await loadPlanningState(page, { ...fixture, pool: fixture.pool.map(({ preserved: _, ...chart }) => chart) })
+  await page.locator('.finish-voyage').click()
+  const finished = await downloadPlanningState(page)
+  const base = finished.voyageHistory[0]
+  const newer = { ...base, completionId: 'newer', completedAt: '2026-10-15T10:00:00.000Z', score: 27.25 }
+  const older = { ...base, completionId: 'older', completedAt: '2026-10-14T10:00:00.000Z', score: 5.5 }
+  await loadPlanningState(page, { ...finished, voyageHistory: [newer, older] })
+  await expect(page.getByLabel('航程历史')).toContainText('最近完成分数 27.3')
+  expect((await downloadPlanningState(page)).voyageHistory).toEqual([newer, older])
+})

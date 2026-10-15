@@ -106,3 +106,9 @@ export function restoreVoyageHistory(value: unknown): { records: VoyageRecord[];
   }
   return { records, damaged }
 }
+
+/** A read-only chronological view. Restoring a backup preserves its array order;
+ * recency uses completedAt, with stable input order when timestamps are equal. */
+export function voyagesNewestFirst(records: readonly VoyageRecord[]): VoyageRecord[] {
+  return [...records].sort((a, b) => Date.parse(b.completedAt) - Date.parse(a.completedAt))
+}
