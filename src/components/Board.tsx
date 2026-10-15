@@ -1,5 +1,6 @@
 import { RegionTargets, RegionTargetDetails } from './RegionTargets'
 import { regionTargets, type RegionalCell } from '../logic/regionTargets'
+import { borderAffinityPriority, evaluateBorderAffinity } from '../logic/borderAffinity'
 import type { ScoreOptions } from '../logic/scoring'
 import { CalibrationLink } from './CalibrationLink'
 import { useState, type ReactNode } from 'react'
@@ -43,16 +44,19 @@ function BorderSelect({
   onChange,
   seg,
   vertical,
+  affinityWeight,
 }: {
   value: string | null
   onChange: (id: string | null) => void
   seg: number
   vertical?: boolean
+  affinityWeight: number | null
 }) {
   const [open, setOpen] = useState(false)
   const [q, setQ] = useState('')
   const mod = value ? borderModById.get(value) : null
   const label = value ? localizedBorder(value) : undefined
+  const priority = borderAffinityPriority(affinityWeight)
   const filtered = BORDER_CHOICES.filter((m) => matchesBorderQuery(m.id, q))
   // keep the popover on-screen: right-column segments align right, left-column align left
   const align = seg >= 3 && seg <= 5 ? 'right' : seg >= 9 ? 'left' : 'center'
@@ -64,22 +68,24 @@ function BorderSelect({
 
   return (
     <span
-      className={`bslot ${mod ? 'filled' : ''}`}
+      className={`bslot ${mod ? 'filled' : ''} ${vertical ? 'bslot-vertical' : ''}`}
       data-border-segment={seg}
+      data-affinity-band={priority?.band}
       aria-label={`边界位置 ${seg + 1}`}
-      title={label?.text ?? '边界位置：点击搜索'}
+      title={(label?.text ?? '边界位置：点击搜索') + (priority ? `\n策略相关度 ${affinityWeight}/10 · ${priority.label}` : '')}
       onClick={() => {
         setQ('')
         setOpen(true)
       }}
     >
       {mod ? (
-        <span style={{ maxWidth: vertical ? 56 : 125, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <span className="bslot-label">
           {label?.short}
         </span>
       ) : (
         <span className="bslot-empty">·</span>
       )}
+      {priority && <span className="bslot-affinity">{affinityWeight}</span>}
       {value && <CalibrationLink id={value} slot={seg} />}
       {open && (
         <>
@@ -300,6 +306,7 @@ export function BoardView(props: Props) {
   const [showTargets, setShowTargets] = useState(false)
   const [detailCell, setDetailCell] = useState<number | null>(null)
   const targets = regionTargets(board, borders, charts, props.strategyId ?? null, props.scoreOptions)
+  const affinity = evaluateBorderAffinity(props.strategyId ?? null, borders)
 
   const edgesAt = (i: number) => {
     const p = board[i]
@@ -354,6 +361,7 @@ export function BoardView(props: Props) {
       value={borders[seg]}
       seg={seg}
       vertical={vertical}
+      affinityWeight={affinity.contributions[seg].weight}
       onChange={(id) => props.onBorderChange(seg, id)}
     />
   )

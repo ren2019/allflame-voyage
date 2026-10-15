@@ -12,20 +12,20 @@ test('空库存先看十二边适配，换策略或摆盘仅按输入重算，�
   await expect(panel).toContainText('请选择策略')
   const initial = { ...defaultState(), strategyId: 'divine-border-rares', borders }
   await loadState(page, initial)
-  await expect(panel.getByRole('status')).toHaveText('边界适配分 20')
+  await expect(panel.getByRole('status')).toHaveText('重点 1 条 · 适配 2 条')
   await expect(panel).toContainText('必要边界已具备')
   await panel.getByText('查看十二条贡献与依据').click()
   await expect(panel.locator('.border-affinity-entry')).toHaveCount(12)
-  await expect(panel.locator('.border-affinity-entry').nth(1)).toContainText('+5')
+  await expect(panel.locator('.border-affinity-entry').nth(1)).toContainText('5/10 · 适配')
   await expect(panel.locator('a').first()).toHaveAttribute('href', /github.com/)
   expect(await exportState(page)).toEqual(initial)
 
   await loadState(page, { ...fixture, strategyId: 'divine-border-rares', borders })
-  await expect(panel.getByRole('status')).toHaveText('边界适配分 20')
+  await expect(panel.getByRole('status')).toHaveText('重点 1 条 · 适配 2 条')
   await expect(page.locator('.tile:not(.empty)')).toHaveCount(9)
   const card = page.locator('.strat-card').filter({ has: page.locator('.strat-name').filter({ hasText: '魔法怪流' }) })
   await card.locator('.strat-use').click()
-  await expect(panel.getByRole('status')).toHaveText('边界适配分 0')
+  await expect(panel.getByRole('status')).toHaveText('重点 0 条 · 适配 0 条')
   const switched = await exportState(page)
   expect(switched.board).toEqual(fixture.board)
   expect(switched.pool).toEqual(fixture.pool)
@@ -37,7 +37,7 @@ test('未填全、缺必要边界和未覆盖规则清楚区分，窄屏明暗�
   const panel = page.getByRole('region', { name: '边界适配分' })
   await loadState(page, { ...defaultState(), strategyId: 'divine-border-rares', borders: Array(12).fill(null) })
   await expect(panel).toContainText('已录入 0/12 条边界，尚不能完整评估')
-  await expect(panel.getByRole('status')).toHaveText('边界适配分 · 待评估')
+  await expect(panel.getByRole('status')).toHaveText('待评估')
   await page.locator('[data-border-segment="0"]').click()
   await page.getByPlaceholder('搜索边界词缀…').fill('稀有怪物数量提高 50%')
   await page.locator('.bpop-item').filter({ hasText: '相邻区域的稀有怪物数量提高 50%' }).click()
@@ -45,7 +45,7 @@ test('未填全、缺必要边界和未覆盖规则清楚区分，窄屏明暗�
   await expect(panel).toContainText('已录入边界尚未见必要边界')
 
   await loadState(page, { ...defaultState(), strategyId: 'divine-border-rares', borders: Array(12).fill('b-rare-1') })
-  await expect(panel.getByRole('status')).toHaveText('边界适配分 60')
+  await expect(panel.getByRole('status')).toHaveText('重点 0 条 · 适配 12 条')
   await expect(panel).toContainText('必要边界缺失')
   await panel.getByText('查看十二条贡献与依据').click()
   const errors: string[] = []
@@ -66,6 +66,48 @@ test('未填全、缺必要边界和未覆盖规则清楚区分，窄屏明暗�
   }
   await loadState(page, { ...defaultState(), strategyId: 'alc-and-go', borders: [...Array(11).fill('b-pack-1'), 'unknown-future-border'] })
   await expect(panel).toContainText('规则尚未覆盖，不能完整评估')
-  await expect(panel.getByRole('status')).toHaveText('边界适配分 · 待评估')
+  await expect(panel.getByRole('status')).toHaveText('待评估')
   expect(errors).toEqual([])
+  await expect(page.locator('[data-border-segment="11"] .bslot-affinity')).toHaveCount(0)
+})
+
+
+test('每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划', async ({ page }, testInfo) => {
+  await openEmptyApp(page)
+  const state = { ...defaultState(), strategyId: 'divine-border-rares', borders: ['b-minmagic', 'b-pack-2', 'b-pack-3', 'b-rare-2', 'b-divine', ...Array(7).fill('b-minmagic')] }
+  await loadState(page, state)
+  const panel = page.getByRole('region', { name: '边界适配分' })
+  await expect(panel.getByRole('status')).toHaveText('重点 2 条 · 适配 1 条')
+  await expect(panel.getByText('查表合计 22')).not.toBeVisible()
+  for (const [segment, weight, band] of [[0, 0, 'low'], [1, 2, 'low'], [2, 3, 'medium'], [3, 7, 'high'], [4, 10, 'high']] as const) {
+    const edge = page.locator(`[data-border-segment="${segment}"]`)
+    await expect(edge).toHaveAttribute('data-affinity-band', band)
+    await expect(edge.locator('.bslot-affinity')).toHaveText(String(weight))
+    await expect(edge).toHaveAttribute('title', new RegExp(`策略相关度 ${weight}/10`))
+  }
+  expect(await exportState(page)).toEqual(state)
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 })
+    for (const theme of ['dark', 'light']) {
+      const button = page.getByRole('button', { name: `切换到${theme === 'dark' ? '深色' : '浅色'}主题`, exact: true })
+      if (await button.count()) await button.click()
+      const colors = await page.locator('.board-grid [data-affinity-band]').evaluateAll(edges => Object.fromEntries(edges.map(edge => [edge.getAttribute('data-border-segment'), getComputedStyle(edge).color])))
+      expect(colors[0]).toBe(theme === 'dark' ? 'rgb(166, 176, 190)' : 'rgb(98, 110, 126)')
+      expect(colors[2]).toBe(theme === 'dark' ? 'rgb(116, 182, 244)' : 'rgb(32, 95, 155)')
+      expect(colors[3]).toBe(theme === 'dark' ? 'rgb(246, 198, 106)' : 'rgb(138, 91, 0)')
+      for (const edge of await page.locator('.bslot').all()) {
+        expect(await edge.evaluate(element => element.scrollWidth <= element.clientWidth + 1)).toBe(true)
+      }
+      await page.locator('.board-wrap').screenshot({ path: testInfo.outputPath(`border-bands-${theme}-${width}.png`) })
+    }
+  }
+  await page.locator('.strat-card').filter({ has: page.locator('.strat-name').filter({ hasText: '魔法怪流' }) }).locator('.strat-use').click()
+  await expect(page.locator('[data-border-segment="0"]')).toHaveAttribute('data-affinity-band', 'high')
+  await expect(page.locator('[data-border-segment="1"]')).toHaveAttribute('data-affinity-band', 'medium')
+  await expect(page.locator('[data-border-segment="1"] .bslot-affinity')).toHaveText('6')
+  await expect(page.locator('[data-border-segment="4"]')).toHaveAttribute('data-affinity-band', 'low')
+  const after = await exportState(page)
+  expect(after.borders).toEqual(state.borders)
+  expect(after.pool).toEqual(state.pool)
+  expect(after.board).toEqual(state.board)
 })

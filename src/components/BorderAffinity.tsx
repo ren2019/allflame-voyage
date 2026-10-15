@@ -1,6 +1,6 @@
 import type { Borders } from '../types'
 import { localizedBorder } from '../data/borderLocale'
-import { BORDER_AFFINITY_RULES, evaluateBorderAffinity } from '../logic/borderAffinity'
+import { BORDER_AFFINITY_RULES, borderAffinityPriority, evaluateBorderAffinity } from '../logic/borderAffinity'
 import './border-affinity.css'
 
 const segmentLabel = (segment: number) => `${['上', '右', '下', '左'][Math.floor(segment / 3)]}${segment % 3 + 1}`
@@ -9,11 +9,20 @@ const segmentLabel = (segment: number) => `${['上', '右', '下', '左'][Math.f
 export function BorderAffinity({ strategyId, borders }: { strategyId: string | null; borders: Borders }) {
   const evaluation = evaluateBorderAffinity(strategyId, borders)
   const entered = borders.slice(0, 12).filter(Boolean).length
+  const priorities = evaluation.contributions.map(entry => borderAffinityPriority(entry.weight))
+  const high = priorities.filter(priority => priority?.band === 'high').length
+  const medium = priorities.filter(priority => priority?.band === 'medium').length
   return (
     <section className="border-affinity" aria-label="边界适配分">
       <div className="border-affinity-heading">
-        <strong role="status" aria-live="polite">{evaluation.total === null ? '边界适配分 · 待评估' : `边界适配分 ${evaluation.total}`}</strong>
-        <span className="muted">仅看策略与十二条边界</span>
+        <strong>边界优先级</strong>
+        <span role="status" aria-live="polite">{evaluation.status !== 'complete' ? '待评估' : `重点 ${high} 条 · 适配 ${medium} 条`}</span>
+      </div>
+      <p className="muted">每条 0–10 分，表示与当前策略的相关程度。直接查看九宫格外圈的十二条边界。</p>
+      <div className="border-affinity-legend" aria-label="边界相关度分档">
+        <span data-affinity-band="low">0–2 可忽略</span>
+        <span data-affinity-band="medium">3–6 适配</span>
+        <span data-affinity-band="high">7–10 重点</span>
       </div>
       {evaluation.status === 'no-strategy' && <p>请选择策略后查看边界适配。</p>}
       {evaluation.status === 'incomplete' && <p>已录入 {entered}/12 条边界，尚不能完整评估。</p>}
@@ -26,14 +35,15 @@ export function BorderAffinity({ strategyId, borders }: { strategyId: string | n
       )}
       <details>
         <summary>查看十二条贡献与依据</summary>
+        {evaluation.total !== null && <p className="muted">查表合计 {evaluation.total}，供核对逐条权重。</p>}
         <p className="muted">{BORDER_AFFINITY_RULES.basis} 规则版本：{evaluation.version}。</p>
         <ol className="border-affinity-entries">
           {evaluation.contributions.map((entry) => (
-            <li key={entry.segment} className="border-affinity-entry">
+            <li key={entry.segment} className="border-affinity-entry" data-affinity-band={priorities[entry.segment]?.band}>
               <div className="border-affinity-row">
                 <span className="muted">{segmentLabel(entry.segment)}</span>
                 <span>{entry.borderId ? localizedBorder(entry.borderId)?.short ?? entry.borderId : '尚未录入'}</span>
-                <strong>{entry.weight === null ? '待评估' : `+${entry.weight}`}</strong>
+                <strong>{entry.weight === null ? '待评估' : `${entry.weight}/10 · ${priorities[entry.segment]?.label ?? '待评估'}`}</strong>
               </div>
               <p>{entry.reason ?? (entry.borderId ? strategyId ? '此策略或边界尚无权重规则。' : '选择策略后查看贡献。' : '缺少输入，不计作零价值。')}</p>
               {entry.sourceIds.length > 0 && <div className="border-affinity-sources">依据：{entry.sourceIds.map((id) => {
