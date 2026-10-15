@@ -14,7 +14,7 @@ import type { AppState } from '../../src/logic/storage'
 
 test('真实库存重算盘的中央目标可开关、键盘查看且不改变规划', async ({
   page,
-}) => {
+}, testInfo) => {
   await openEmptyApp(page)
   await loadState(page, real as AppState)
   const before = await exportState(page)
