@@ -5,7 +5,7 @@ import type { AppState } from '../../src/logic/storage'
 
 const inventory: AppState = JSON.parse(readFileSync(new URL('../../src/logic/__fixtures__/real-inventory-layout.json', import.meta.url), 'utf8'))
 
-test('保留原栏宽和四列，顶部策略有玩法说明，求解评分复制核销恢复原位置', async ({ page }, testInfo) => {
+test('保留原栏宽和四列，右侧策略有玩法说明，求解评分复制核销恢复原位置', async ({ page }, testInfo) => {
   await installClipboardRecorder(page)
   await openEmptyApp(page)
   await loadState(page, inventory)
@@ -32,7 +32,10 @@ test('保留原栏宽和四列，顶部策略有玩法说明，求解评分复�
       if (width > 1100) {
         expect(geometry.library.width).toBe(360)
       }
-      expect(geometry.strategy.top).toBeLessThan(geometry.board.top)
+      if (width > 1100) {
+        expect(geometry.strategy.x).toBeGreaterThan(geometry.board.x + geometry.board.width)
+        expect(geometry.strategy.width).toBe(330)
+      }
       expect(geometry.solve.top).toBeGreaterThan(geometry.board.bottom)
       expect(geometry.score.top).toBeGreaterThan(geometry.solve.bottom)
       expect(geometry.overflows).toBe(false)

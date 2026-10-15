@@ -65,11 +65,12 @@ function Readiness({
             }`,
         )
         .join(', ')}
+      <p className="muted small-note">仍需检查九格摆盘与连接，不保证收益。</p>
     </div>
   )
 }
 
-/** Strategy selection stays above the board; gameplay guidance remains readable. */
+/** Concentrated sidebar choices; only the selected strategy exposes its guidance. */
 export function StrategiesPanel({
   activeId, pool, borders, onSelect, layoutChoice, onLayoutChoice, centerChoice, onCenterChoice,
 }: Props) {
