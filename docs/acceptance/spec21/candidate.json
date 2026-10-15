@@ -22,5 +22,12 @@
     "buildManifest": "windows/failed-candidate-build-manifest.json",
     "screenshots": "windows/README.md"
   },
-  "gameAcceptance": "pending; do not close #24"
+  "gameAcceptance": "pending; do not close #24",
+  "manualTrial": {
+    "currentPreview": true,
+    "sourceSha": "25e6e97e458065a4751d6bc36393a6b0c42f3826",
+    "buildSha256": "52a1c557490f51b95c880482a6a60d03059d7f8211a997c4ed9137f120cb36ac",
+    "record": "border-priority-trial/manifest.json",
+    "status": "provisional; top-level candidate retains prior full-run evidence"
+  }
 }

@@ -1,0 +1,47 @@
+[WebServer] (node:42505) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:42508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/browser/border-affinity.spec.ts:74:1 › 每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划 (5.3s)
+
+
+  1) tests/browser/border-affinity.spec.ts:74:1 › 每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划 ───────────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  getByRole('region', { name: '边界适配分' }).getByRole('status')
+    Expected: "重点 2 条 · 适配 1 条"
+    Received: "边界适配分 22"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" getByRole('region', { name: '边界适配分' }).getByRole('status') with timeout 5000ms
+      - waiting for getByRole('region', { name: '边界适配分' }).getByRole('status')
+        14 × locator resolved to <strong role="status" aria-live="polite">边界适配分 22</strong>
+           - unexpected value "边界适配分 22"
+
+
+      77 |   await loadState(page, state)
+      78 |   const panel = page.getByRole('region', { name: '边界适配分' })
+    > 79 |   await expect(panel.getByRole('status')).toHaveText('重点 2 条 · 适配 1 条')
+         |                                           ^
+      80 |   await expect(panel.getByText('查表合计 22')).not.toBeVisible()
+      81 |   for (const [segment, weight, band] of [[0, 0, 'low'], [1, 2, 'low'], [2, 3, 'medium'], [3, 7, 'high'], [4, 10, 'high']] as const) {
+      82 |     const edge = page.locator(`[data-border-segment="${segment}"]`)
+        at /Users/steipete/Projects/allflame-voyage/tests/browser/border-affinity.spec.ts:79:43
+
+    Error Context: test-results/border-affinity-每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/border-affinity-每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/border-affinity-每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/browser/border-affinity.spec.ts:74:1 › 每条实际边界按0–2弱化、3–6蓝色、7–10金色展示，切策略同步且不改规划 ────────────
