@@ -10,6 +10,7 @@
 
 ## 图标与字体
 
+- 页头 GitHub 图标使用 GitHub Inc. 的 [Octicons mark-github-16](https://github.com/primer/octicons/blob/main/icons/mark-github-16.svg)，以 MIT 许可分发，完整许可见 [octicons.txt](public/licenses/octicons.txt)。
 - Game-icons.net 图标作者包括 **Lorc、Delapouite**；具体作者按下表列出。来源网站声明为 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)，参见其[署名说明](https://game-icons.net/about.html)。项目为界面展示调整了 SVG 的颜色、尺寸或容器。
 - 标记为项目绘制的简化符号在运行配置中单独注明，不冒称原游戏美术。
 - `public/font/` 的 Fontin 字体随上游继承，作者为 **exljbris Font Foundry**。见[字体主页](https://www.exljbris.com/fontin.html)及其许可入口；不将字体改标为 MIT。
@@ -21,15 +22,15 @@
 
 | 资源 | 显示目标 | 作者／署名 | 来源与许可记录 |
 | --- | --- | --- | --- |
-| [target-icons/altar-simple.svg](public/target-icons/altar-simple.svg) | 女神祭坛 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
+| [target-icons/altar-simple.svg](public/target-icons/altar-simple.svg) | 女神祭坛 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
 | [target-icons/barrels.svg](public/target-icons/barrels.svg) | 木桶群 | Delapouite | [来源](https://game-icons.net/1x1/delapouite/barrel.html)；CC-BY-3.0 |
-| [target-icons/bathysphere.svg](public/target-icons/bathysphere.svg) | 感染潜航球遭遇 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
-| [target-icons/boss.svg](public/target-icons/boss.svg) | 污秽蟹群首领、船长灾星首领、琪莎拉安息处 Boss | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
+| [target-icons/bathysphere.svg](public/target-icons/bathysphere.svg) | 感染潜航球遭遇 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
+| [target-icons/boss.svg](public/target-icons/boss.svg) | 污秽蟹群首领、船长灾星首领、琪莎拉安息处 Boss | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
 | [target-icons/brine-king.svg](public/target-icons/brine-king.svg) | 海王领域特殊遭遇 | Lorc | [来源](https://game-icons.net/1x1/lorc/trident.html)；CC-BY-3.0 |
-| [target-icons/coin-single.svg](public/target-icons/coin-single.svg) | 藏宝蛤蜊、金币堆、险恶深渊金币／纪念币遭遇 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
+| [target-icons/coin-single.svg](public/target-icons/coin-single.svg) | 藏宝蛤蜊、金币堆、险恶深渊金币／纪念币遭遇 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
 | [target-icons/deep-offering.svg](public/target-icons/deep-offering.svg) | 深海赐福祭坛 | Delapouite | [来源](https://game-icons.net/1x1/delapouite/star-altar.html)；CC-BY-3.0 |
 | [target-icons/eldritch-depths.svg](public/target-icons/eldritch-depths.svg) | 古灵深渊特殊遭遇 | Lorc | [来源](https://game-icons.net/1x1/lorc/tentacles-skull.html)；CC-BY-3.0 |
-| [target-icons/envelope-simple.svg](public/target-icons/envelope-simple.svg) | 瓶中信 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
+| [target-icons/envelope-simple.svg](public/target-icons/envelope-simple.svg) | 瓶中信 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
 | [target-icons/essence.webp](public/target-icons/essence.webp) | 精华囚禁怪 | Grinding Gear Games | [来源](https://poedb.tw/us/)；Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY |
 | [target-icons/exotic-fish.svg](public/target-icons/exotic-fish.svg) | 珍稀鱼 | Delapouite | [来源](https://game-icons.net/1x1/delapouite/tropical-fish.html)；CC-BY-3.0 |
 | [target-icons/extra-packs.svg](public/target-icons/extra-packs.svg) | 额外普通怪群 | Lorc | [来源](https://game-icons.net/1x1/lorc/triple-skulls.html)；CC-BY-3.0 |
@@ -37,7 +38,7 @@
 | [target-icons/giant-starfish.svg](public/target-icons/giant-starfish.svg) | 巨型海星 | Delapouite | [来源](https://game-icons.net/1x1/delapouite/sea-star.html)；CC-BY-3.0 |
 | [target-icons/golden-lantern.svg](public/target-icons/golden-lantern.svg) | 黄金灯笼 | Lorc | [来源](https://game-icons.net/1x1/lorc/lantern.html)；CC-BY-3.0 |
 | [target-icons/lost-ruins.jpeg](public/target-icons/lost-ruins.jpeg) | 失落遗迹瓦尔遭遇 | Grinding Gear Games | [来源](https://www.poewiki.net/wiki/File:Atziri_forum_avatar.jpeg)；Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY |
-| [target-icons/magic-letter-m.svg](public/target-icons/magic-letter-m.svg) | 魔法怪 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
+| [target-icons/magic-letter-m.svg](public/target-icons/magic-letter-m.svg) | 魔法怪 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
 | [target-icons/mercenary.svg](public/target-icons/mercenary.svg) | 深海浅滩佣兵 | Lorc | [来源](https://game-icons.net/1x1/lorc/crossed-swords.html)；CC-BY-3.0 |
 | [target-icons/pelagic-abyss.svg](public/target-icons/pelagic-abyss.svg) | 远洋深渊坑洞／遭遇 | Delapouite | [来源](https://game-icons.net/1x1/delapouite/hole.html)；CC-BY-3.0 |
 | [target-icons/pirate-locker.svg](public/target-icons/pirate-locker.svg) | 海盗储物柜 | Lorc | [来源](https://game-icons.net/1x1/lorc/locked-chest.html)；CC-BY-3.0 |
@@ -49,7 +50,7 @@
 | [target-icons/rare-divine.webp](public/target-icons/rare-divine.webp) | 稀有怪额外掉神圣石 | Grinding Gear Games | [来源](https://poedb.tw/us/Divine_Orb)；Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY |
 | [target-icons/rare-exalt.webp](public/target-icons/rare-exalt.webp) | 稀有怪额外掉崇高石 | Grinding Gear Games | [来源](https://poedb.tw/us/Exalted_Orb)；Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY |
 | [target-icons/rare-gcp.webp](public/target-icons/rare-gcp.webp) | 稀有怪额外掉宝石匠棱石 | Grinding Gear Games | [来源](https://poedb.tw/us/Gemcutters_Prism)；Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY |
-| [target-icons/rare-letter-r.svg](public/target-icons/rare-letter-r.svg) | 稀有怪 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
+| [target-icons/rare-letter-r.svg](public/target-icons/rare-letter-r.svg) | 稀有怪 | 项目绘制 | [绘制记录](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/review-feedback-round-1.md)；Project-authored SVG; no third-party artwork |
 | [target-icons/rare-regal.webp](public/target-icons/rare-regal.webp) | 稀有怪额外掉富豪石 | Grinding Gear Games | [来源](https://poedb.tw/us/Regal_Orb)；Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY |
 | [target-icons/rare-regret.webp](public/target-icons/rare-regret.webp) | 稀有怪额外掉后悔石 | Grinding Gear Games | [来源](https://poedb.tw/us/Orb_of_Regret)；Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY |
 | [target-icons/rare-scarabdrop.webp](public/target-icons/rare-scarabdrop.webp) | 稀有怪额外掉圣甲虫 | Grinding Gear Games | [来源](https://poedb.tw/us/Ambush_Scarab)；Path of Exile game artwork; copyright Grinding Gear Games; not CC-BY |

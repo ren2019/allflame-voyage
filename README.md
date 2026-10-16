@@ -4,7 +4,7 @@
 
 本项目基于 **[one-more-map 的 Allflame Voyage Solver](https://github.com/one-more-map/one-more-map.github.io)** 开发，是独立维护的国服适配 fork。原版的规划板、求解器与策略框架由原作者及贡献者提供；本仓库在此基础上增加简体中文、国服文本解析和下述规划辅助功能。感谢原作者开源。
 
-[原版英文工具](https://one-more-map.github.io/allflame-voyage-solver/) · [使用与部署](docs/README.md) · [反馈问题](https://github.com/ren2019/allflame-voyage/issues) · [参与贡献](CONTRIBUTING.md)
+[原版英文工具](https://one-more-map.github.io/allflame-voyage-solver/) · [使用与部署](docs/README.md) · [反馈问题](https://github.com/ren2019/allflame-voyage-cn/issues) · [参与贡献](CONTRIBUTING.md)
 
 ![真实国服海图：库存、已求解的九宫格布局、区域目标与策略](docs/images/planner-real-layout.png)
 
@@ -23,16 +23,16 @@
 | **独立留图助手** | 不用先导入库存，即可按策略查看留图条件；有专项规则时可复制一条完整正则，在游戏中手动寻找和整理海图。 |
 | **清楚的策略预留** | 库存标记展示哪些海图为策略材料预留；策略预留与摆盘位置锁定分别管理。网页不会替你锁定或移动游戏内的物品。 |
 | **航程核销与历史参考** | 实际完成航程后确认存活海图、核销消耗，记录航程。用最近同策略、同计分口径的个人历史比较当前摆盘；样本不足时明确提示。 |
-| **中文校准** | 默认隐藏维护入口，打开铅笔模式后可直达单条词库记录。建议和备注可保存、导出供维护者应用，保留英文、中文与来源对照。 |
-| **本地保存与完整备份** | 库存、摆盘、边界、策略配置与历史在浏览器保存，支持 JSON 备份和恢复；另提供独立的校准记录备份。支持简洁的明暗主题。 |
+| **中文校准** | 默认隐藏维护入口，打开铅笔模式后可直达单条词库记录，查看英文、中文与来源对照。建议和备注保存后可预览并选择本次提交的记录与完整 JSON；较短内容自动预填 GitHub Issue 草稿，较长内容可复制完整正文后粘贴，最后在 GitHub 核对并发布。 |
+| **本地保存与完整备份** | 库存、摆盘、边界、策略配置与历史在浏览器保存，支持 JSON 备份和恢复；另保留旧校准记录备份的导入与损坏数据恢复。支持简洁的明暗主题。 |
 
 ## 快速开始
 
 需要 **Node.js 20+** 和 npm。
 
 ```sh
-git clone https://github.com/ren2019/allflame-voyage.git
-cd allflame-voyage
+git clone https://github.com/ren2019/allflame-voyage-cn.git
+cd allflame-voyage-cn
 npm ci
 npm run dev
 ```
@@ -45,6 +45,8 @@ npm run build
 
 生成目录为 `dist/`，可自行部署到静态服务器。多台电脑经局域网使用时，按 [HTTPS 部署说明](docs/local-deployment.md) 配置证书，让一键复制可用。
 
+GitHub Pages 的目标地址为 `https://ren2019.github.io/allflame-voyage-cn/`。仓库 Settings → Pages 的发布源选择 GitHub Actions 后，现有工作流会将 `dist/` 直接发布到项目站首页；可手动触发，也会在推送 `main` 时运行。启用状态、费用与限制见 [Pages 部署研究](docs/research/github-pages-deployment.md)。
+
 ## 一次航程的用法
 
 1. 在游戏中高级复制海图，粘贴到导入框，核对库存；填写外圈十二条边界。
@@ -55,7 +57,7 @@ npm run build
 
 ## 数据与适用范围
 
-- **无需账号或后端。** 规划和校准记录保存在当前浏览器、当前站点地址的本地存储。更换浏览器、协议、IP 或端口前，请导出备份；分享摆盘与完整规划备份的用途不同。
+- **无需账号或后端。** 规划和校准记录保存在当前浏览器、当前站点地址的本地存储。更换浏览器、协议、IP 或端口前，请导出规划备份并保留校准预览中的 JSON；分享摆盘与完整规划备份的用途不同。校准反馈需在 GitHub 登录并最终发布。
 - **策略与提示需要结合游戏版本。** 目标、边界和留图规则由版本化配置驱动。译名参考真实国服复制样本及 [PoEDB](https://poedb.tw/cn/)，尚未逐条在目标客户端确认的资料保留来源和缺口。
 - **分数是规划参考。** 摆盘评分、边界权重、目标展示优先级和个人历史位置衡量的对象不同，均不表示收益保证或通用的策略起跑门槛。
 - 中文校准保存的是建议；不会直接覆盖正式译文、解析规则或评分。详见 [校准说明](docs/calibration.md)。
@@ -68,6 +70,7 @@ npm run build
 
 ## 致谢与许可
 
+- 国服适配与维护：[ren2019/allflame-voyage-cn](https://github.com/ren2019/allflame-voyage-cn)，维护者 **ren2019**；首页标题与版本右侧提供 GitHub 图标链接，原作者署名位于页脚。
 - 原项目：[one-more-map/one-more-map.github.io](https://github.com/one-more-map/one-more-map.github.io)，作者 **one-more-map 及贡献者**。
 - 社区文本与资料：[PoEDB](https://poedb.tw/cn/)。本项目不代表 PoEDB、GGG 或国服运营方。
 - 代码沿用 [MIT License](LICENSE)，保留原项目版权声明。游戏美术与第三方图标另见 [素材署名](THIRD_PARTY_NOTICES.md)，不因随代码分发而改变其原有权利与许可。

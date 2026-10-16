@@ -90,7 +90,7 @@ Edge配置而非用户其他应用。探针未写剪贴板、未收集其他内�
 配置与SSH隧道全部清理。浏览器未使用TLS绕过或虚构剪贴板替身。
 
 此前五张入口曾读取空字符串，实际红灯信号见
-[诊断摘要](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/acceptance/evidence/windows-five-clipboard-red.json)。观测到写入已fulfilled、
+[诊断摘要](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/acceptance/evidence/windows-five-clipboard-red.json)。观测到写入已fulfilled、
 焦点与权限正常，2秒内21次真实读回仍为空，所以不能断言只是尚未等待
 写Promise。此前空读的具体外因未被证实；没有修改App或放宽保护。
 最终入口加强了原生调用完成的观测、有限真实读回等待及独立OS数据核对；

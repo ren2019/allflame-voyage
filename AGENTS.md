@@ -2,13 +2,13 @@
 
 Read `docs/handoff.md` before planning or implementing the mainland Chinese localization. It records the intended outcome, sample requirements, and acceptance criteria.
 
-This workspace forks `one-more-map/one-more-map.github.io`; `origin` is `ren2019/allflame-voyage` and `upstream` is the original English repository. The handoff's Taiwanese implementation paths are reference material; verify them against this source tree before editing.
+This workspace forks `one-more-map/one-more-map.github.io`; `origin` is `ren2019/allflame-voyage-cn` and `upstream` is the original English repository. The handoff's Taiwanese implementation paths are reference material; verify them against this source tree before editing.
 
 ## Agent skills
 
 ### Issue tracker
 
-Track issues and specs in GitHub Issues for `ren2019/allflame-voyage`. Before creating, reading, or updating work items, read `docs/agents/issue-tracker.md`.
+Track issues and specs in GitHub Issues for `ren2019/allflame-voyage-cn`. Before creating, reading, or updating work items, read `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 

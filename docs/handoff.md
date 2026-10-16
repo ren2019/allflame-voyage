@@ -9,4 +9,4 @@
 - 验证：按 [CONTRIBUTING](../CONTRIBUTING.md) 选择回归；既有总门禁字节指纹问题和现场边界见 [验收说明](acceptance/README.md)。
 - 上游同步：按 [同步指南](upstream-sync.md) 保留祖先关系。
 
-最初交接文档包含早期参考仓库、未完成假设和个人运维细节，已保存在[固定历史版本](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/handoff.md)。以当前源码和真实客户端样本核对实施路径。
+最初交接文档包含早期参考仓库、未完成假设和个人运维细节，已保存在[固定历史版本](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/handoff.md)。以当前源码和真实客户端样本核对实施路径。

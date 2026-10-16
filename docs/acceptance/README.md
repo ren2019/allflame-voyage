@@ -15,10 +15,10 @@
 
 2026-10-16 合并前的记录中，536 项逻辑、79 项浏览器、5 项部署检查、OCR、词库审计和构建均通过。整条 `npm run verify` 仍因旧合同的 `scoring.ts` 字节指纹不匹配而退出 1；后续共享作用范围的提取已有单独审查，合同尚未更新。不得将阶段通过表述为总门禁通过，也不得为掩盖行为变化直接替换指纹。
 
-原始结果与源码归属见[合并验证记录](https://github.com/ren2019/allflame-voyage/tree/93d197845d5ca0fe27da54191b877e240b60937b/docs/acceptance/main-merge-2026-10-16)。本轮文档整理不把这些旧结果归到新提交。
+原始结果与源码归属见[合并验证记录](https://github.com/ren2019/allflame-voyage-cn/tree/93d197845d5ca0fe27da54191b877e240b60937b/docs/acceptance/main-merge-2026-10-16)。本轮文档整理不把这些旧结果归到新提交。
 
-Windows 与游戏现场尚缺的证据由 [#23](https://github.com/ren2019/allflame-voyage/issues/23)、[#24](https://github.com/ren2019/allflame-voyage/issues/24) 等现有议题继续跟踪。
+Windows 与游戏现场尚缺的证据由 [#23](https://github.com/ren2019/allflame-voyage-cn/issues/23)、[#24](https://github.com/ren2019/allflame-voyage-cn/issues/24) 等现有议题继续跟踪。
 
 ## 历史材料
 
-试用截图、生成报告、诊断日志及逐轮部署记录已从日常源码树移到[固定历史快照](https://github.com/ren2019/allflame-voyage/tree/93d197845d5ca0fe27da54191b877e240b60937b/docs/acceptance)。保留其原始内容和提交归属，不将旧结果修饰为当前通过。
+试用截图、生成报告、诊断日志及逐轮部署记录已从日常源码树移到[固定历史快照](https://github.com/ren2019/allflame-voyage-cn/tree/93d197845d5ca0fe27da54191b877e240b60937b/docs/acceptance)。保留其原始内容和提交归属，不将旧结果修饰为当前通过。

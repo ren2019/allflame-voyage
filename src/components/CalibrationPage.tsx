@@ -4,8 +4,9 @@ import {
   calibrationRow, calibrationSample, searchCalibrationRows, type CalibrationRow,
 } from '../data/calibrationCatalogue'
 import { REVIEW_LABELS, blankCalibrationEdit, reviewedRecord, sameCalibrationEdit,
-  loadCalibrationRecords, saveCalibrationRecords, encodeCalibrationRecords, calibrationBaseChanged,
-  importCalibrationRecords, type CalibrationEdit } from '../logic/calibrationRecords'
+  loadCalibrationRecords, saveCalibrationRecords, calibrationBaseChanged,
+  importCalibrationRecords, type CalibrationEdit, type CalibrationRecords } from '../logic/calibrationRecords'
+import { CalibrationSubmission } from './CalibrationSubmission'
 import './calibration.css'
 
 function downloadCalibrationFile(text: string, name: string) {
@@ -26,9 +27,12 @@ export function CalibrationPage() {
   const [loaded, setLoaded] = useState(loadCalibrationRecords)
   const [drafts, setDrafts] = useState<Record<string, CalibrationEdit>>({})
   const [message, setMessage] = useState('')
+  const [submissionRecords, setSubmissionRecords] = useState<CalibrationRecords | null>(null)
+  const [submissionBlocked, setSubmissionBlocked] = useState(false)
   const [reviewFilter, setReviewFilter] = useState(initial.get('review') || 'all')
   const editFor = (r: CalibrationRow): CalibrationEdit => drafts[r.key] ?? loaded.records[r.key] ?? blankCalibrationEdit(r)
-  const dirtyKeys = Object.keys(drafts).filter(key => !sameCalibrationEdit(drafts[key], loaded.records[key] ?? blankCalibrationEdit(calibrationRow(key)!)))
+  const dirtyKeysFor = (records: CalibrationRecords) => Object.keys(drafts).filter(key => !sameCalibrationEdit(drafts[key], records[key] ?? blankCalibrationEdit(calibrationRow(key)!)))
+  const dirtyKeys = dirtyKeysFor(loaded.records)
   const matches = (q: string, k: string, e: string, review = reviewFilter) => {
     const base = new Set(searchCalibrationRows(q).map(r => r.key))
     const normalized = q.normalize('NFKC').toLowerCase().replace(/\s+/g, '')
@@ -43,9 +47,37 @@ export function CalibrationPage() {
       const records = saveCalibrationRecords(updates)
       setLoaded({ records, error: '', raw: null })
       setDrafts(previous => Object.fromEntries(Object.entries(previous).filter(([key]) => !keys.includes(key))))
-      setMessage('已保存 ' + keys.length + ' 条校准记录，仅存当前浏览器，可导出应用项目。')
-    } catch (error) { setMessage('保存失败：' + (error instanceof Error ? error.message : '浏览器存储不可用，草稿仍保留，请复制建议和备注备份。')) }
+      setMessage('已保存 ' + keys.length + ' 条校准记录，仅存当前浏览器，可预览并提交校准 Issue。')
+      return records
+    } catch (error) {
+      const current = loadCalibrationRecords()
+      if (current.error) setLoaded(current)
+      setMessage('保存失败：' + (error instanceof Error ? error.message : '浏览器存储不可用。') + ' 草稿仍保留，请复制建议和备注备份；恢复存储后可重新保存。')
+    }
   }
+  const retryLoad = () => {
+    const current = loadCalibrationRecords()
+    setLoaded(current.error && current.raw === null ? { ...current, raw: loaded.raw } : current)
+    setMessage(current.error ? '重新读取失败，现有数据和草稿仍保留；请复制建议和备注备份，恢复存储后重试。' : '已重新读取保存记录；未保存草稿仍保留，可继续编辑或保存。')
+  }
+  const startSubmission = () => {
+    const current = loadCalibrationRecords()
+    setLoaded(current)
+    if (current.error || !Object.keys(current.records).length) return
+    if (dirtyKeysFor(current.records).length) { setSubmissionBlocked(true); return }
+    setSubmissionBlocked(false)
+    setSubmissionRecords(current.records)
+  }
+  const saveAndContinue = () => {
+    const records = save(dirtyKeys)
+    if (!records) return
+    setSubmissionBlocked(false)
+    submissionButton.current?.focus()
+    setSubmissionRecords(records)
+  }
+  const submissionButton = useRef<HTMLButtonElement>(null)
+  const continueButton = useRef<HTMLButtonElement>(null)
+  useEffect(() => { if (submissionBlocked) continueButton.current?.focus() }, [submissionBlocked])
   const importFile = async (file: File) => {
     try {
       if (file.size > 5 * 1024 * 1024) throw new Error('文件超过 5 MB。')
@@ -81,15 +113,17 @@ export function CalibrationPage() {
   }, [selected, query, kind, evidence, reviewFilter])
   return <div className="cal-page">
     <header className="cal-app-header"><h1>永火 <span className="accent">航程规划</span></h1><span>词缀 / 中文化校准</span><a href="./" target="_blank" rel="noopener noreferrer">打开航程规划 ↗</a></header>
+    {submissionRecords && <CalibrationSubmission records={submissionRecords} onClose={() => setSubmissionRecords(null)} />}
     <div className="cal-content">
-      <div className="cal-heading"><div><small>P0 · 游戏词库优先</small><h2>中文化校准</h2><p>搜索定位单条，保存校准记录，再导出供项目应用。</p></div><div className="cal-toolbar">
-        <button disabled={!Object.keys(loaded.records).length} onClick={() => downloadCalibrationFile(encodeCalibrationRecords(loaded.records), '中文化校准记录.json')}>导出校准记录（{Object.keys(loaded.records).length}）</button>
+      <div className="cal-heading"><div><small>P0 · 游戏词库优先</small><h2>中文化校准</h2><p>搜索定位单条，保存校准记录，再预览并提交校准 Issue。</p></div><div className="cal-toolbar">
+        <button ref={submissionButton} disabled={!Object.keys(loaded.records).length || !!loaded.error} onClick={startSubmission}>提交校准 Issue（{Object.keys(loaded.records).length}）</button>
         {!!dirtyKeys.length && <button disabled={!!loaded.error} onClick={() => save(dirtyKeys)}>保存全部草稿（{dirtyKeys.length}）</button>}
         <label className="cal-import">导入校准记录<input type="file" aria-label="导入校准记录" accept=".json,application/json" onChange={event => { const file = event.target.files?.[0]; if (file) void importFile(file); event.target.value = '' }} /></label>
-        <span>导出的是已保存记录；规划显示与原词库保持独立。</span>
+        <span>{Object.keys(loaded.records).length ? '提交前可选择已保存记录；规划显示与原词库保持独立。' : '尚无有效已保存记录，请先编辑建议或备注并保存本条。'}</span>
       </div></div>
       <p role="status" className="cal-save-status">{message || (dirtyKeys.length ? dirtyKeys.length + ' 条未保存修改' : Object.keys(loaded.records).length + ' 条已保存校准记录')}</p>
-      {loaded.error && <div role="alert" className="cal-warning">{loaded.error} 现有数据仍保留。{loaded.raw && <button onClick={() => downloadCalibrationFile(loaded.raw!, '校准原始数据备份.json')}>导出原始保存数据</button>}</div>}
+      {submissionBlocked && <div role="alert" className="cal-draft-gate"><p>{dirtyKeys.length} 条未保存草稿。请保存全部草稿后继续，预览将包含最新建议、备注和审阅结果。</p><div className="cal-draft-gate-actions"><button ref={continueButton} disabled={!!loaded.error} onClick={saveAndContinue}>保存全部草稿并继续</button><button onClick={() => { setSubmissionBlocked(false); document.getElementById('cal-note')?.focus() }}>返回编辑</button></div></div>}
+      {loaded.error && <div role="alert" className="cal-warning">{loaded.error} 现有数据仍保留。存储恢复后可重新读取，无需刷新页面。<button onClick={retryLoad}>重新读取保存记录</button>{loaded.raw && <button onClick={() => downloadCalibrationFile(loaded.raw!, '校准原始数据备份.json')}>导出原始保存数据</button>}</div>}
       <div className="cal-metrics"><button onClick={() => { setReviewFilter('all'); updateFilters('', 'all', 'all') }}><b>{CALIBRATION_ROWS.length}</b>游戏词库</button>
         {['conflict', 'missing', 'source-only', 'confirmed'].map(status => <button key={status} onClick={() => updateFilters(query, kind, status)}><b>{CALIBRATION_ROWS.filter(r => r.source.status === status).length}</b>{EVIDENCE_LABELS[status]}</button>)}</div>
       {requested && !calibrationRow(requested) && <p role="alert">没有找到该条目标识，请用关键词搜索。</p>}

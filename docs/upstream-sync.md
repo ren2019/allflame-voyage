@@ -1,6 +1,6 @@
 # 持续同步原英文仓库
 
-`origin` 是个人 fork `ren2019/allflame-voyage`，`upstream` 是原英文仓库 `one-more-map/one-more-map.github.io`。日常开发及已接受的实现统一合入本 fork 的 `main`。每次同步前重新获取上游引用，以实际新增提交为准。
+`origin` 是个人 fork `ren2019/allflame-voyage-cn`，`upstream` 是原英文仓库 `one-more-map/one-more-map.github.io`。日常开发及已接受的实现统一合入本 fork 的 `main`。每次同步前重新获取上游引用，以实际新增提交为准。
 
 ## 每次更新
 
@@ -24,9 +24,9 @@ git merge --no-ff upstream/main
 
 ```sh
 git push -u origin sync/upstream-YYYYMMDD
-gh pr create --repo ren2019/allflame-voyage --base main
+gh pr create --repo ren2019/allflame-voyage-cn --base main
 # 审查、验证后，使用该 PR 的实际编号：
-gh pr merge PR_NUMBER --repo ren2019/allflame-voyage --merge --delete-branch
+gh pr merge PR_NUMBER --repo ren2019/allflame-voyage-cn --merge --delete-branch
 ```
 
 代码合并与站点发布分别验证。部署入口见 [部署说明](local-deployment.md)。浏览器库存属于协议、主机和端口；更新时沿用原地址，改地址前导出备份。代码合并不代表 Windows 原生复制或游戏现场验收通过。

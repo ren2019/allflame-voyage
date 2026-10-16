@@ -39,7 +39,7 @@
 
 ## 调查阶段的局部权重示例（非最终主表）
 
-完整且统一的建议以 [区域目标展示权重主表](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/region-target-priorities.md) 和配套 JSON 为准；下面保留调查阶段的局部示例，不是第二份生效配置。
+完整且统一的建议以 [区域目标展示权重主表](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/region-target-priorities.md) 和配套 JSON 为准；下面保留调查阶段的局部示例，不是第二份生效配置。
 
 下面都是 **0–100 展示优先值**，只决定有限图标位先给谁，不表示收益倍率。每个策略读取一组绝对覆盖值；未覆盖目标沿用基础配置。不相乘，不累加不同来源的权重，不引入组合搜索。
 

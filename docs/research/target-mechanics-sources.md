@@ -26,7 +26,7 @@
 
 ## 调查阶段的机制分类及局部权重示例
 
-完整且统一的建议以 [区域目标展示权重主表](https://github.com/ren2019/allflame-voyage/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/region-target-priorities.md) 和配套 JSON 为准；本表用于记录调查时的分类与推断，不是第二份生效配置。
+完整且统一的建议以 [区域目标展示权重主表](https://github.com/ren2019/allflame-voyage-cn/blob/93d197845d5ca0fe27da54191b877e240b60937b/docs/research/region-target-priorities.md) 和配套 JSON 为准；本表用于记录调查时的分类与推断，不是第二份生效配置。
 
 这是研究者给需求评审的初始排序，非游戏内置权重。建议统一使用 0–100：90–100 为策略核心，70–89 为值得主动寻找，40–69 为顺路优先，10–39 为补充目标，0 为仅详情中的状态。不同目标的差值不表示收益差值。
 
