@@ -5,6 +5,8 @@ import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { VoyageHistoryPanels } from './components/VoyageHistoryPanels'
 import { BoardView } from './components/Board'
+import { PreserveConfirmation } from './components/PreserveConfirmation'
+import { collectPreserveCandidates, FILL_ORDER, type PreserveCandidate } from './logic/voyageCompletion'
 import { GitHubIcon } from './components/icons'
 import { ModBrowser } from './components/ModBrowser'
 import { Onboarding } from './components/Onboarding'
@@ -121,9 +123,12 @@ export default function App() {
   }
   const [voyageMsg, setVoyageMsg] = useState('')
   const [storageFailed, setStorageFailed] = useState(false)
-  const completion = useRef<{ id: string; committed: boolean; board: AppState['board'] } | null>(null)
+  const currentState = useRef(state)
+  currentState.current = state
+  const completion = useRef<{ id: string; committed: boolean; snapshot: AppState; step: number } | null>(null)
   const [preserveConfirm, setPreserveConfirm] = useState<{
-    charts: ChartData[]
+    id: string
+    candidates: PreserveCandidate[]
     index: number
     kept: string[]
   } | null>(null)
@@ -131,6 +136,7 @@ export default function App() {
   // (bottom-left, then right, then up a row): board cells 6,7,8, 3,4,5, 0,1,2
   const [copySeq, setCopySeq] = useState<{ order: number[]; step: number } | null>(null)
   const copyControls = useRef<HTMLDivElement>(null)
+  const preserveControls = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!copySeq) return
     // Wait for the step's content to lay out; measuring actions must not rely on
@@ -138,6 +144,19 @@ export default function App() {
     const frame = requestAnimationFrame(() => copyControls.current?.scrollIntoView({ block: 'nearest' }))
     return () => cancelAnimationFrame(frame)
   }, [copySeq])
+  useEffect(() => {
+    if (!preserveConfirm) return
+    const event = completion.current
+    if (!event || event.committed) return
+    if (event.snapshot.board !== state.board || event.snapshot.pool !== state.pool || event.snapshot.borders !== state.borders) {
+      completion.current = null
+      setPreserveConfirm(null)
+      setVoyageMsg('摆盘、边界或库存已更改，已取消核销，请重新开始。')
+      return
+    }
+    const frame = requestAnimationFrame(() => preserveControls.current?.scrollIntoView({ block: 'nearest' }))
+    return () => cancelAnimationFrame(frame)
+  }, [preserveConfirm, state.board, state.pool, state.borders])
   const [lightTheme, setLightTheme] = useState(() => document.documentElement.dataset.theme === 'light')
   useEffect(() => {
     const syncTheme = (event: StorageEvent) => {
@@ -314,14 +333,17 @@ export default function App() {
   const commitFinish = (keptUids: Set<string>) => {
     const event = completion.current
     if (!event || event.committed) return
+    const snapshot = event.snapshot
+    const latest = currentState.current
+    if (snapshot.board !== latest.board || snapshot.pool !== latest.pool || snapshot.borders !== latest.borders) return
     event.committed = true
     // Capture the final confirmed state before inventory consumption. Updaters
     // stay pure: React StrictMode may replay them.
-    const record = createVoyageRecord(state, event.id, new Date().toISOString())
-    const onBoard = new Set(state.board.filter(Boolean).map((p) => p!.chartUid))
-    const consumed = state.pool.filter((c) => onBoard.has(c.uid) && !keptUids.has(c.uid)).length
-    const kept = state.pool.filter((c) => onBoard.has(c.uid) && keptUids.has(c.uid)).length
-    setState((s) => ({
+    const record = createVoyageRecord(latest, event.id, new Date().toISOString())
+    const onBoard = new Set(snapshot.board.filter(Boolean).map((p) => p!.chartUid))
+    const consumed = snapshot.pool.filter((c) => onBoard.has(c.uid) && !keptUids.has(c.uid)).length
+    const kept = snapshot.pool.filter((c) => onBoard.has(c.uid) && keptUids.has(c.uid)).length
+    setState((s) => snapshot.board !== s.board || snapshot.pool !== s.pool || snapshot.borders !== s.borders ? s : ({
       ...s,
       pool: s.pool.filter((c) => !onBoard.has(c.uid) || keptUids.has(c.uid))
         .map((c) => keptUids.has(c.uid) ? { ...c, preserved: false } : c),
@@ -337,17 +359,14 @@ export default function App() {
   const finishVoyage = () => {
     // Replayed DOM events can share a stale render before React commits the
     // empty board. Keep that render tied to one completion identity.
-    if (preserveConfirm || !state.board.some(Boolean) || completion.current?.board === state.board) return
-    completion.current = { id: crypto.randomUUID(), committed: false, board: state.board }
-    const preserved = state.board
-      .filter(Boolean)
-      .map((p) => chartMap.get(p!.chartUid))
-      .filter((c): c is ChartData => !!c && !!c.preserved)
-    if (preserved.length === 0) commitFinish(new Set())
-    else setPreserveConfirm({ charts: preserved, index: 0, kept: [] })
+    if (preserveConfirm || !state.board.some(Boolean) || completion.current?.snapshot.board === state.board) return
+    const id = crypto.randomUUID()
+    completion.current = { id, committed: false, snapshot: state, step: 0 }
+    const candidates = collectPreserveCandidates(state.board, state.borders, chartMap)
+    if (candidates.length === 0) commitFinish(new Set())
+    else setPreserveConfirm({ id, candidates, index: 0, kept: [] })
   }
 
-  const FILL_ORDER = [6, 7, 8, 3, 4, 5, 0, 1, 2]
   // the VERBATIM imported line comes first: the in-game search must match the
   // game's own wording, and our stored mod texts can drift from it (issue #3)
   const chartImplicit = (chart: ChartData): string =>
@@ -389,10 +408,15 @@ export default function App() {
   // step through each preserved chart, one at a time, its board tile highlighted
   const decidePreserve = (survived: boolean) => {
     if (!preserveConfirm) return
-    const { charts, index, kept } = preserveConfirm
-    const nextKept = survived ? [...kept, charts[index].uid] : kept
-    if (index + 1 >= charts.length) commitFinish(new Set(nextKept))
-    else setPreserveConfirm({ charts, index: index + 1, kept: nextKept })
+    const { id, candidates, index, kept } = preserveConfirm
+    const event = completion.current
+    if (!event || event.id !== id || event.committed || event.step !== index) return
+    const latest = currentState.current
+    if (event.snapshot.board !== latest.board || event.snapshot.pool !== latest.pool || event.snapshot.borders !== latest.borders) return
+    event.step++
+    const nextKept = survived ? [...kept, candidates[index].chart.uid] : kept
+    if (index + 1 >= candidates.length) commitFinish(new Set(nextKept))
+    else setPreserveConfirm({ id, candidates, index: index + 1, kept: nextKept })
   }
 
   const onCellClick = (i: number) => {
@@ -648,7 +672,7 @@ export default function App() {
               copySeq
                 ? (state.board[copySeq.order[copySeq.step]]?.chartUid ?? null)
                 : preserveConfirm
-                  ? preserveConfirm.charts[preserveConfirm.index].uid
+                  ? preserveConfirm.candidates[preserveConfirm.index].chart.uid
                   : selectedChart && state.board.some((p) => p?.chartUid === selectedChart)
                     ? selectedChart
                     : null
@@ -741,21 +765,12 @@ export default function App() {
           )}
 
           {preserveConfirm && (
-            <div className="preserve-confirm">
-              <div className="pc-head">
-                确认保留海图 {preserveConfirm.index + 1}/{preserveConfirm.charts.length}（对应格已高亮）：
-                这张海图在实际航程后是否存活？
-              </div>
-              <div className="pc-name">{preserveConfirm.charts[preserveConfirm.index].name}</div>
-              <button onClick={() => { completion.current = null; setPreserveConfirm(null) }}>取消核销</button>
-              <div className="pc-actions">
-                <button className="pc-kept" onClick={() => decidePreserve(true)}>
-                  ✓ 已存活，保留
-                </button>
-                <button className="pc-lost" onClick={() => decidePreserve(false)}>
-                  ✕ 已被消耗
-                </button>
-              </div>
+            <div ref={preserveControls}>
+              <PreserveConfirmation key={`${preserveConfirm.id}:${preserveConfirm.index}`}
+                candidate={preserveConfirm.candidates[preserveConfirm.index]}
+                step={preserveConfirm.index + 1} total={preserveConfirm.candidates.length}
+                onDecide={decidePreserve}
+                onCancel={() => { completion.current = null; setPreserveConfirm(null) }} />
             </div>
           )}
 
