@@ -27,5 +27,9 @@ export function calibrationSubmission(source: string, keys: readonly string[]) {
   ].join('\n\n')
   const shortUrl = new URL(ISSUE_TARGET)
   shortUrl.searchParams.set('title', title)
-  return { title, json, body, shortUrl: shortUrl.toString(), byteLength: new TextEncoder().encode(body).length }
+  const prefilledUrl = new URL(shortUrl)
+  prefilledUrl.searchParams.set('body', body)
+  const encodedUrl = prefilledUrl.toString()
+  return { title, json, body, shortUrl: shortUrl.toString(), prefilledUrl: encodedUrl.length <= 6000 ? encodedUrl : null,
+    byteLength: new TextEncoder().encode(body).length }
 }
