@@ -17,3 +17,7 @@ Use the five default triage roles. Before triaging or changing an issue's status
 ### Domain docs
 
 Use a single-context layout: root `GLOSSARY.md` and `docs/adr/`. Before exploring a domain or recording terms or decisions, read `docs/agents/domain.md`.
+
+### Releases
+
+Before completing an implementation PR or deploying a new version, follow the release-note requirements in `CONTRIBUTING.md` under `发布前检查`. Include concrete local-edition notes in the same PR as the change and verify them against the PR base or last successful deployment.

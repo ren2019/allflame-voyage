@@ -1,5 +1,5 @@
 // Local-edition updates and upstream history are maintained separately.
-// Newest first; the top local entry drives the header's unseen-updates dot.
+// Newest first; the top local entry's content drives the unseen-updates dot.
 
 export interface UpdateEntry {
   /** ISO date of the release note; the initial local edition is a consolidated baseline. */
@@ -11,6 +11,36 @@ export interface UpdateEntry {
 }
 
 export const UPDATES: UpdateEntry[] = [
+  {
+    date: '2026-10-16',
+    tag: 'reworked',
+    title: '紧凑边界选择与通货图标',
+    detail: '边界选择改为五个分类，首行可直接切换同类档位；通货掉落使用游戏物品图标。点击词缀行默认选第一个可见档位，当前选项用蓝色高亮。真实出现权重仍待补齐，暂按固定顺序排列。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'reworked',
+    title: '逐步复制操作保持可见',
+    detail: '复制操作紧邻摆盘，桌面历史参考移至右侧，窄屏默认折叠。逐步复制九格时会自动滚动到操作区；历史损坏与保存失败提示始终显示。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'reworked',
+    title: '连续导入反馈更清楚',
+    detail: '每次新增海图都会变化成功文案，并显示本次名称与新增张数；批量名称保持简短。重复、拒绝与边界识别结果继续分别提示。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'new',
+    title: '完成航程前核查保留海图',
+    detail: '自动收集接触保留边界的已放置海图，与手工标记合并后逐张核查。可复制当前海图的定位文本，失败时手动复制；全部确认后统一核销，取消不会扣除库存。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'reworked',
+    title: '发布前强制检查更新记录',
+    detail: '新版本发布前检查国服更新记录，缺少新增说明会停止部署。同一天再次发布时，更新记录也会重新显示未读提醒。',
+  },
   {
     date: '2026-10-16',
     tag: 'reworked',
@@ -257,5 +287,5 @@ export const UPSTREAM_UPDATES: UpdateEntry[] = [
   },
 ]
 
-/** the newest entry's date - drives the unseen-updates dot */
-export const LATEST_UPDATE_DATE = UPDATES[0].date
+/** Content identity makes another release on the same date unread again. */
+export const LATEST_UPDATE_ID = JSON.stringify(UPDATES[0])

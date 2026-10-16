@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -19,11 +20,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
       - run: npm ci
+      - name: Require release notes since the last successful deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          baseline=$(gh run list --workflow deploy.yml --branch main --status success --limit 1 --json headSha --jq '.[0].headSha // empty')
+          if [ -z "$baseline" ]; then
+            echo 'Cannot determine the last successful deployment; refusing to publish without a release-note baseline.' >&2
+            exit 1
+          fi
+          if [ "$baseline" = "$GITHUB_SHA" ]; then
+            echo 'Re-deploying the same published commit; existing release notes still apply.'
+          else
+            npm run check:release-notes -- --base "$baseline"
+          fi
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -20,7 +20,7 @@ import { Library } from './components/Library'
 import { SolverPanel } from './components/SolverPanel'
 import { SolveBar } from './components/SolveBar'
 import { UpdatesLog } from './components/UpdatesLog'
-import { LATEST_UPDATE_DATE } from './data/updates'
+import { LATEST_UPDATE_ID } from './data/updates'
 import { SessionPlanner } from './components/SessionPlanner'
 import { SaveWizard } from './components/SaveWizard'
 import { Tutorial } from './components/Tutorial'
@@ -119,9 +119,9 @@ export default function App() {
   })
   const openUpdates = () => {
     setShowUpdates(true)
-    setUpdatesSeen(LATEST_UPDATE_DATE)
+    setUpdatesSeen(LATEST_UPDATE_ID)
     try {
-      localStorage.setItem('updates-seen', LATEST_UPDATE_DATE)
+      localStorage.setItem('updates-seen', LATEST_UPDATE_ID)
     } catch {
       /* ignore */
     }
@@ -594,7 +594,7 @@ export default function App() {
         <div className="header-right">
           <div className="header-links" role="group" aria-label="站点信息">
             <button
-              className={updatesSeen < LATEST_UPDATE_DATE ? 'updates-btn unseen' : 'updates-btn'}
+              className={updatesSeen !== LATEST_UPDATE_ID ? 'updates-btn unseen' : 'updates-btn'}
               title="查看站点更新记录"
               onClick={openUpdates}
             >
