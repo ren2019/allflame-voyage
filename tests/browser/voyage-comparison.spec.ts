@@ -99,6 +99,9 @@ test('三档与并列次数在明暗主题和390px下可读，只有真实严格
     for (const theme of ['dark', 'light']) {
       const toggle = page.getByRole('button', { name: `切换到${theme === 'dark' ? '深色' : '浅色'}主题`, exact: true })
       if (await toggle.isVisible()) await toggle.click()
+      if (!await comparison.evaluate((element: HTMLDetailsElement) => element.open)) {
+        await comparison.locator(':scope > summary').click()
+      }
       await comparison.locator('details').evaluate((element: HTMLDetailsElement) => { element.open = true })
       await expect(comparison).toContainText('当前待运行盘不计入样本')
       expect(await comparison.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true)
