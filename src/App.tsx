@@ -1,9 +1,9 @@
-import { createVoyageRecord, voyagesNewestFirst } from './logic/voyageHistory'
+import { createVoyageRecord } from './logic/voyageHistory'
 import { saveTheme } from './logic/theme'
 import { CalibrationMode } from './components/CalibrationLink'
 import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { VoyageComparison } from './components/VoyageComparison'
+import { VoyageHistoryPanels } from './components/VoyageHistoryPanels'
 import { BoardView } from './components/Board'
 import { GitHubIcon } from './components/icons'
 import { ModBrowser } from './components/ModBrowser'
@@ -121,7 +121,6 @@ export default function App() {
   }
   const [voyageMsg, setVoyageMsg] = useState('')
   const [storageFailed, setStorageFailed] = useState(false)
-  const latestVoyage = useMemo(() => voyagesNewestFirst(state.voyageHistory)[0], [state.voyageHistory])
   const completion = useRef<{ id: string; committed: boolean; board: AppState['board'] } | null>(null)
   const [preserveConfirm, setPreserveConfirm] = useState<{
     charts: ChartData[]
@@ -131,6 +130,14 @@ export default function App() {
   // guided "copy into game": walk the board in the in-game Ctrl+click fill order
   // (bottom-left, then right, then up a row): board cells 6,7,8, 3,4,5, 0,1,2
   const [copySeq, setCopySeq] = useState<{ order: number[]; step: number } | null>(null)
+  const copyControls = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!copySeq) return
+    // Wait for the step's content to lay out; measuring actions must not rely on
+    // the browser scrolling a focused or clicked button into view for us.
+    const frame = requestAnimationFrame(() => copyControls.current?.scrollIntoView({ block: 'nearest' }))
+    return () => cancelAnimationFrame(frame)
+  }, [copySeq])
   const [lightTheme, setLightTheme] = useState(() => document.documentElement.dataset.theme === 'light')
   useEffect(() => {
     const syncTheme = (event: StorageEvent) => {
@@ -700,18 +707,8 @@ export default function App() {
             }
           />
 
-          <VoyageComparison state={state} />
-
-          <section className="voyage-history muted pad" aria-label="航程历史">
-            <strong>航程历史</strong> · 已记录 {state.voyageHistory.length} 次
-            {latestVoyage && <> · 最近完成分数 {latestVoyage.score.toFixed(1)}</>}
-            <div>仅记录功能启用后完成的有效九格摆盘，不代表游戏出发记录。</div>
-            {startup.damagedHistory && <div role="alert">已忽略损坏航程历史，库存与规划偏好已保留。</div>}
-            {storageFailed && <div role="alert">本地存储写入失败，当前历史未持久化。请导出规划备份；本次核销结果保持有效。</div>}
-          </section>
-
           {copySeq && (
-            <div className="preserve-confirm copyseq">
+            <div className="preserve-confirm copyseq" ref={copyControls}>
               <div className="pc-head">
                 按高亮格的顺序在游戏中放置海图：复制搜索文本，在游戏中找到海图并 Ctrl+左键放入。
                 从左下角开始。第 {copySeq.step + 1}/{copySeq.order.length} 步。
@@ -874,6 +871,8 @@ export default function App() {
             <p className="muted small-note">切换只更改当前策略，不会自动求解或预留海图。</p>
           </section>}
           <StrategyGuide strategy={activeStrategy} />
+
+          <VoyageHistoryPanels state={state} damagedHistory={startup.damagedHistory} storageFailed={storageFailed} />
 
         </section>
       </main>
