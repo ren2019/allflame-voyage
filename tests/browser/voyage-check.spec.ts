@@ -235,9 +235,9 @@ for (const width of [1280, 390]) {
           await assertVisible()
         }
         await expect(panel.locator('.pc-head')).toContainText('1/2')
-        expect(await downloadPlanningState(page)).toEqual(automatic)
         expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width)
         await page.screenshot({ path: `/tmp/allflame-40-fallback-${width}-${trigger}-${theme}.png` })
+        expect(await downloadPlanningState(page)).toEqual(automatic)
       }
     })
   }
