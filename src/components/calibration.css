@@ -90,3 +90,13 @@
 .cal-page .cal-shape b,.cal-page .cal-shape i{background:var(--accent)}
 .cal-page .cal-context-symbol,.cal-page .cal-evidence a,.cal-page .cal-app-header a{color:var(--accent)}
 @media(max-width:700px){.cal-filters input{min-width:0;flex-basis:100%}.cal-inspector{min-width:0}.cal-breadcrumb{padding-left:12px}}
+
+.cal-submission{box-sizing:border-box;width:min(920px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:1px solid var(--border);border-radius:8px;padding:24px;background:var(--panel);color:var(--text)}
+.cal-submission::backdrop{background:rgb(0 0 0 / .65)}
+.cal-submission h2{margin-top:0}.cal-submission p{line-height:1.7}.cal-submission textarea{display:block;min-height:180px;background:var(--panel2);color:var(--text);border:1px solid var(--border);margin:8px 0 20px;resize:vertical}
+.cal-submission-records{padding:0;list-style:none}.cal-submission-records li{border:1px solid var(--border);padding:14px;margin:12px 0;overflow-wrap:anywhere}.cal-submission-records dl{display:grid;grid-template-columns:85px minmax(0,1fr);gap:8px;margin-bottom:0}.cal-submission-records dd{margin:0;white-space:pre-wrap}.cal-submission-records dt{color:var(--muted)}
+.cal-submission-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.cal-submission-actions a{color:var(--accent)}
+@media(max-width:700px){.cal-submission{padding:16px}}
+
+.cal-submission-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.cal-submission-header h2{font-size:20px}.cal-submission-header button{flex-shrink:0}
+.cal-submission-records label{display:flex;align-items:center;gap:8px}.cal-submission-records input[type=checkbox]{width:auto;min-height:0;margin:0;flex-shrink:0;accent-color:var(--accent)}
