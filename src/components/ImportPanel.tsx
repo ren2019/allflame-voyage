@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
 import { ALL_GOOD_MODS_REGEX, RARE_IMPLICITS } from '../data/strategies'
 import { parseBorderOcrPayload } from '../logic/borderOcr'
@@ -18,6 +18,7 @@ interface Props {
 export function ImportPanel({ onImport, state, onLoadState }: Props) {
   const [text, setText] = useState('')
   const [msg, setMsg] = useState('')
+  const successfulImports = useRef(0)
   // celebratory alert when an import brings in rare-implicit (Divine fuel) charts
   const [rareAlert, setRareAlert] = useState('')
 
@@ -59,7 +60,13 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
     }
 
     const parts: string[] = []
-    if (fresh.length) parts.push(`导入 ${fresh.length} 张海图`)
+    if (fresh.length) {
+      const wording = ['已导入', '已加入库存', '已收录'][successfulImports.current % 3]
+      successfulImports.current += 1
+      const names = fresh.slice(0, 2).map(chart => chart.name).join('、')
+      const summary = fresh.length > 2 ? `${names} 等 ${fresh.length} 张` : names
+      parts.push(`${wording} ${fresh.length} 张海图：${summary}`)
+    }
     if (skipped)
       parts.push(
         `跳过 ${skipped} 张已在库存中的海图`
@@ -147,7 +154,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
           重置
         </button>
       </div>
-      {msg && <div className="muted pad">{msg}</div>}
+      <div className="import-result muted pad" role="status" aria-live="polite" aria-atomic="true">{msg}</div>
       {rareAlert && (
         <div className="import-rare-alert">
           <span>🎰 {rareAlert}</span>

@@ -15,7 +15,7 @@ test('简中导入和库存保持同批实例、重扫数量及已核对属性',
   }
   await importText(`${first}\n${first}`)
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(2)
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 2 张海图')
+  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已导入 2 张海图：航海 冒险 珊瑚暗礁海图、航海 冒险 珊瑚暗礁海图')
   await importText(`${first}\n${first}`)
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(2)
   await expect(page.locator('.import-panel .muted.pad')).toContainText('跳过 2 张已在库存中的海图')
@@ -47,7 +47,7 @@ test('简中导入和库存保持同批实例、重扫数量及已核对属性',
   // The original dedupe boundary keys on retained explicit rawText; this
   // distinct physical example also has a different explicit resistance roll.
   await importText(magic)
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 1 张海图')
+  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已收录 1 张海图：航海 冒险 珊瑚暗礁海图')
   await page.getByPlaceholder('按名称或词缀筛选…').fill('魔法怪物数量')
   await expect(cards).toHaveCount(1)
   await expect(cards).toContainText('相邻区域的魔法怪物数量提高 30%')
