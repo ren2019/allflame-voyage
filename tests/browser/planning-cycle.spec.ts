@@ -48,7 +48,7 @@ test('所选候选完成九步复制后仅核销已消耗实例，补库存和�
   // the explicitly artificial four-connector planning models throughout.
   await page.locator('.import-panel textarea[placeholder]').fill(realCopies)
   await page.getByRole('button', { name: '解析并加入', exact: true }).click()
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 2 张海图')
+  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已导入 2 张海图：航海 冒险 珊瑚暗礁海图、航海 深入 金沙海床海图')
   const realInventory = (await downloadPlanningState(page)).pool
   expect(realInventory.map((chart) => chart.modIds)).toEqual([['adj-crab-1'], ['voy-pack-1']])
   const realUids = realInventory.map((chart) => chart.uid)

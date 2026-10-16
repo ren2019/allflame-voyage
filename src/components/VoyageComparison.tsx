@@ -11,13 +11,13 @@ const verdictText = {
 }
 
 /** No setters: this panel cannot alter scores, solver settings or history. */
-export function VoyageComparison({ state }: { state: AppState }) {
+export function VoyageComparison({ state, expanded = true }: { state: AppState; expanded?: boolean }) {
   const comparison = useMemo(() => compareVoyageHistory(state), [state])
   const proportion = (count: number) => comparison?.count
     ? `${Number((100 * count / comparison.count).toFixed(1))}%` : '—'
   return (
-    <section className="voyage-comparison" aria-label="当前摆盘历史参考">
-      <strong>当前摆盘历史参考</strong>
+    <details className="voyage-comparison history-disclosure" aria-label="当前摆盘历史参考" open={expanded}>
+      <summary><strong>当前摆盘历史参考</strong></summary>
       {!comparison ? <p className="muted">{!state.strategyId
         ? '请选择策略后查看个人历史参考。'
         : '摆盘完整且连接有效后，再与已完成航程比较。'}</p> : <>
@@ -38,6 +38,6 @@ export function VoyageComparison({ state }: { state: AppState }) {
           <p>仅作个人历史参考，不是攻略固定门槛或收益保证。</p>
         </details>
       </>}
-    </section>
+    </details>
   )
 }

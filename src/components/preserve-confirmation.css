@@ -1,0 +1,7 @@
+.voyage-check { min-width: 0; }
+.voyage-check .pc-actions { flex-wrap: wrap; gap: 6px; }
+.voyage-check .pc-name, .voyage-check .pc-sub { overflow-wrap: anywhere; }
+.pc-instruction, .pc-copy-status { font-size: 12px; line-height: 1.45; color: var(--muted); }
+.pc-copy-status:empty { display: none; }
+.pc-full-text { margin: 6px 0; }
+.pc-full-text textarea { display: block; width: 100%; min-width: 0; max-height: 30vh; box-sizing: border-box; resize: vertical; margin-bottom: 6px; }

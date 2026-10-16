@@ -1,5 +1,5 @@
 .voyage-comparison {
-  margin-top: 12px;
+  margin-top: 0;
   padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -22,3 +22,7 @@
 .voyage-comparison-verdict.high { color: var(--good); }
 .voyage-comparison details { margin-top: 8px; color: var(--muted); }
 .voyage-comparison summary { cursor: pointer; }
+.history-disclosure > summary { cursor: pointer; color: var(--text); }
+.history-disclosure[open] > summary { margin-bottom: 8px; }
+.voyage-history { padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--panel); font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.voyage-history-warning { border-color: var(--bad); color: var(--text); }
