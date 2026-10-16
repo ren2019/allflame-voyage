@@ -108,6 +108,10 @@ test('submission rechecks storage and preserves corruption that appeared after o
   await expect(page.getByRole('button', { name: /提交校准 Issue/ })).toBeDisabled()
   await page.getByLabel('校准备注').fill('损坏时仍可手动复制的草稿')
   await expect(page.getByRole('button', { name: '保存本条', exact: true })).toBeDisabled()
+  await page.getByRole('button', { name: '重新读取保存记录', exact: true }).click()
+  await expect(page.getByRole('status')).toContainText('重新读取失败')
+  await expect(page.getByRole('button', { name: /提交校准 Issue/ })).toBeDisabled()
+  await expect(page.getByLabel('校准备注')).toHaveValue('损坏时仍可手动复制的草稿')
   const downloadPromise = page.waitForEvent('download')
   await page.getByRole('button', { name: '导出原始保存数据', exact: true }).click()
   const stream = await (await downloadPromise).createReadStream()
@@ -133,10 +137,14 @@ test('an unreadable store blocks feedback without losing the draft and resumes a
   await expect(page.getByRole('alert')).toContainText('现有数据仍保留')
   await expect(page.getByRole('button', { name: /提交校准 Issue/ })).toBeDisabled()
   await expect(page.getByLabel('校准备注')).toHaveValue('读取失败也要保留的备注')
-  await page.evaluate(() => {
-    window.dispatchEvent(new Event('test-restore-storage'))
-    window.dispatchEvent(new StorageEvent('storage', { key: 'allflame.calibration.v1' }))
-  })
+  await page.getByRole('button', { name: '重新读取保存记录', exact: true }).click()
+  await expect(page.getByRole('status')).toContainText('重新读取失败')
+  await expect(page.getByRole('button', { name: /提交校准 Issue/ })).toBeDisabled()
+  await expect(page.getByLabel('校准备注')).toHaveValue('读取失败也要保留的备注')
+  // Restoring browser access does not notify the app or fire a storage event.
+  await page.evaluate(() => window.dispatchEvent(new Event('test-restore-storage')))
+  await page.getByRole('button', { name: '重新读取保存记录', exact: true }).click()
+  await expect(page.getByLabel('校准备注')).toHaveValue('读取失败也要保留的备注')
   await page.getByRole('button', { name: '提交校准 Issue（1）', exact: true }).click()
   await page.getByRole('button', { name: '保存全部草稿并继续', exact: true }).click()
   await expect(page.getByRole('dialog', { name: previewName }).getByLabel('完整校准 JSON', { exact: true })).toContainText('读取失败也要保留的备注')
@@ -209,3 +217,29 @@ for (const theme of ['dark', 'light']) {
     })
   }
 }
+
+test('submission compares retained edits with freshly loaded records before deciding whether drafts need saving', async ({ page }) => {
+  await page.goto('/?view=calibration&entry=chart-implicit%3Aadj-crab-1')
+  await page.getByLabel('建议中文').fill('编辑器保留的建议')
+  await page.getByRole('button', { name: '保存本条', exact: true }).click()
+  await page.getByLabel('校准备注').fill('临时修改')
+  await page.getByLabel('校准备注').fill('')
+  await expect(page.getByRole('button', { name: '保存本条', exact: true })).toBeDisabled()
+  // Revalidate a changed storage snapshot without a storage notification.
+  await page.evaluate(() => {
+    const file = JSON.parse(localStorage.getItem('allflame.calibration.v1')!)
+    file.records[0].suggestion = '稍后写入浏览器存储的建议'
+    file.records[0].note = '编辑器中未显示的存储备注'
+    localStorage.setItem('allflame.calibration.v1', JSON.stringify(file))
+  })
+  await page.getByRole('button', { name: '提交校准 Issue（1）', exact: true }).click()
+  await expect(page.getByRole('dialog', { name: previewName })).toHaveCount(0)
+  await expect(page.getByRole('alert')).toContainText('1 条未保存草稿')
+  await page.getByRole('button', { name: '返回编辑', exact: true }).click()
+  await expect(page.getByLabel('建议中文')).toHaveValue('编辑器保留的建议')
+  await expect(page.getByLabel('校准备注')).toHaveValue('')
+  await page.getByRole('button', { name: '提交校准 Issue（1）', exact: true }).click()
+  await page.getByRole('button', { name: '保存全部草稿并继续', exact: true }).click()
+  const records = JSON.parse(await page.getByRole('dialog', { name: previewName }).getByLabel('完整校准 JSON', { exact: true }).inputValue()).records
+  expect(records[0]).toMatchObject({ suggestion: '编辑器保留的建议', note: '' })
+})

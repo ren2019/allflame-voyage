@@ -31,7 +31,8 @@ export function CalibrationPage() {
   const [submissionBlocked, setSubmissionBlocked] = useState(false)
   const [reviewFilter, setReviewFilter] = useState(initial.get('review') || 'all')
   const editFor = (r: CalibrationRow): CalibrationEdit => drafts[r.key] ?? loaded.records[r.key] ?? blankCalibrationEdit(r)
-  const dirtyKeys = Object.keys(drafts).filter(key => !sameCalibrationEdit(drafts[key], loaded.records[key] ?? blankCalibrationEdit(calibrationRow(key)!)))
+  const dirtyKeysFor = (records: CalibrationRecords) => Object.keys(drafts).filter(key => !sameCalibrationEdit(drafts[key], records[key] ?? blankCalibrationEdit(calibrationRow(key)!)))
+  const dirtyKeys = dirtyKeysFor(loaded.records)
   const matches = (q: string, k: string, e: string, review = reviewFilter) => {
     const base = new Set(searchCalibrationRows(q).map(r => r.key))
     const normalized = q.normalize('NFKC').toLowerCase().replace(/\s+/g, '')
@@ -54,11 +55,16 @@ export function CalibrationPage() {
       setMessage('保存失败：' + (error instanceof Error ? error.message : '浏览器存储不可用。') + ' 草稿仍保留，请复制建议和备注备份；恢复存储后可重新保存。')
     }
   }
+  const retryLoad = () => {
+    const current = loadCalibrationRecords()
+    setLoaded(current.error && current.raw === null ? { ...current, raw: loaded.raw } : current)
+    setMessage(current.error ? '重新读取失败，现有数据和草稿仍保留；请复制建议和备注备份，恢复存储后重试。' : '已重新读取保存记录；未保存草稿仍保留，可继续编辑或保存。')
+  }
   const startSubmission = () => {
     const current = loadCalibrationRecords()
     setLoaded(current)
     if (current.error || !Object.keys(current.records).length) return
-    if (dirtyKeys.length) { setSubmissionBlocked(true); return }
+    if (dirtyKeysFor(current.records).length) { setSubmissionBlocked(true); return }
     setSubmissionBlocked(false)
     setSubmissionRecords(current.records)
   }
@@ -117,7 +123,7 @@ export function CalibrationPage() {
       </div></div>
       <p role="status" className="cal-save-status">{message || (dirtyKeys.length ? dirtyKeys.length + ' 条未保存修改' : Object.keys(loaded.records).length + ' 条已保存校准记录')}</p>
       {submissionBlocked && <div role="alert" className="cal-draft-gate"><p>{dirtyKeys.length} 条未保存草稿。请保存全部草稿后继续，预览将包含最新建议、备注和审阅结果。</p><div className="cal-draft-gate-actions"><button ref={continueButton} disabled={!!loaded.error} onClick={saveAndContinue}>保存全部草稿并继续</button><button onClick={() => { setSubmissionBlocked(false); document.getElementById('cal-note')?.focus() }}>返回编辑</button></div></div>}
-      {loaded.error && <div role="alert" className="cal-warning">{loaded.error} 现有数据仍保留。{loaded.raw && <button onClick={() => downloadCalibrationFile(loaded.raw!, '校准原始数据备份.json')}>导出原始保存数据</button>}</div>}
+      {loaded.error && <div role="alert" className="cal-warning">{loaded.error} 现有数据仍保留。存储恢复后可重新读取，无需刷新页面。<button onClick={retryLoad}>重新读取保存记录</button>{loaded.raw && <button onClick={() => downloadCalibrationFile(loaded.raw!, '校准原始数据备份.json')}>导出原始保存数据</button>}</div>}
       <div className="cal-metrics"><button onClick={() => { setReviewFilter('all'); updateFilters('', 'all', 'all') }}><b>{CALIBRATION_ROWS.length}</b>游戏词库</button>
         {['conflict', 'missing', 'source-only', 'confirmed'].map(status => <button key={status} onClick={() => updateFilters(query, kind, status)}><b>{CALIBRATION_ROWS.filter(r => r.source.status === status).length}</b>{EVIDENCE_LABELS[status]}</button>)}</div>
       {requested && !calibrationRow(requested) && <p role="alert">没有找到该条目标识，请用关键词搜索。</p>}
