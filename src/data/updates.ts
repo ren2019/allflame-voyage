@@ -13,6 +13,12 @@ export interface UpdateEntry {
 export const UPDATES: UpdateEntry[] = [
   {
     date: '2026-10-16',
+    tag: 'reworked',
+    title: '中文校准改为 Issue 反馈',
+    detail: '校准记录保存后，可预览并选择本次公开的条目与完整 JSON。较短内容自动预填 GitHub Issue 草稿，较长内容可复制完整正文后粘贴，最后在 GitHub 核对并发布。',
+  },
+  {
+    date: '2026-10-16',
     tag: 'new',
     title: '国服高级复制导入与简体中文界面',
     detail: '在国服游戏中用 Ctrl+Alt+C 高级复制海图，再粘贴到左侧导入面板。支持国服名称、区域等级、连接形状与词缀解析；教程、策略与操作提示使用简体中文。',
@@ -44,8 +50,8 @@ export const UPDATES: UpdateEntry[] = [
   {
     date: '2026-10-16',
     tag: 'new',
-    title: '单条中文校准与记录备份',
-    detail: '顶部“中文校准”可查看词库对照，铅笔按钮可打开页面内的单条校准入口。建议和备注在本地保存、导出，供维护者核对后应用。',
+    title: '词库来源对照与单条中文校准',
+    detail: '打开铅笔模式后，可查看词库的英文、中文与来源对照，并从页面内的铅笔按钮直达单条校准。建议、备注和审阅结果保存在当前浏览器，供维护者核对后应用。',
   },
   {
     date: '2026-10-16',
