@@ -175,3 +175,16 @@ for (const width of [1280, 390]) {
     }
   })
 }
+
+test('核查期间调整评分策略不改变候选，最终历史仍记录完成时的计分口径', async ({ page }) => {
+  const panel = await openCheck(page)
+  await page.getByRole('group', { name: '当前策略', exact: true }).getByRole('button', { name: '无策略（手动）', exact: true }).click()
+  await expect(panel.locator('.pc-head')).toContainText('1/2')
+  expect((await downloadPlanningState(page)).strategyId).toBeNull()
+  await panel.locator('.pc-lost').click()
+  await panel.locator('.pc-lost').click()
+  const finished = await downloadPlanningState(page)
+  expect(finished.voyageHistory).toHaveLength(1)
+  expect(finished.voyageHistory[0].strategyId).toBeNull()
+  expect(finished.voyageHistory[0].scoringContext.strategyId).toBeNull()
+})

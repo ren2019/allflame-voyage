@@ -339,7 +339,7 @@ export default function App() {
     event.committed = true
     // Capture the final confirmed state before inventory consumption. Updaters
     // stay pure: React StrictMode may replay them.
-    const record = createVoyageRecord(snapshot, event.id, new Date().toISOString())
+    const record = createVoyageRecord(latest, event.id, new Date().toISOString())
     const onBoard = new Set(snapshot.board.filter(Boolean).map((p) => p!.chartUid))
     const consumed = snapshot.pool.filter((c) => onBoard.has(c.uid) && !keptUids.has(c.uid)).length
     const kept = snapshot.pool.filter((c) => onBoard.has(c.uid) && keptUids.has(c.uid)).length
