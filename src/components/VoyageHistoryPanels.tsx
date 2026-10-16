@@ -18,6 +18,8 @@ export function VoyageHistoryPanels({ state, damagedHistory, storageFailed }: {
   }, [])
   const latestVoyage = useMemo(() => voyagesNewestFirst(state.voyageHistory)[0], [state.voyageHistory])
   return <>
+    {damagedHistory && <div className="voyage-history voyage-history-warning" role="alert">已忽略损坏航程历史，库存与规划偏好已保留。</div>}
+    {storageFailed && <div className="voyage-history voyage-history-warning" role="alert">本地存储写入失败，当前历史未持久化。请导出规划备份；本次核销结果保持有效。</div>}
     <VoyageComparison state={state} expanded={expanded} />
     <details className="voyage-history history-disclosure muted pad" aria-label="航程历史" open={expanded}>
       <summary><strong>航程历史</strong></summary>
@@ -25,8 +27,6 @@ export function VoyageHistoryPanels({ state, damagedHistory, storageFailed }: {
         {latestVoyage && <> · 最近完成分数 {latestVoyage.score.toFixed(1)}</>}
       </div>
       <div>仅记录功能启用后完成的有效九格摆盘，不代表游戏出发记录。</div>
-      {damagedHistory && <div role="alert">已忽略损坏航程历史，库存与规划偏好已保留。</div>}
-      {storageFailed && <div role="alert">本地存储写入失败，当前历史未持久化。请导出规划备份；本次核销结果保持有效。</div>}
     </details>
   </>
 }

@@ -25,3 +25,4 @@
 .history-disclosure > summary { cursor: pointer; color: var(--text); }
 .history-disclosure[open] > summary { margin-bottom: 8px; }
 .voyage-history { padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--panel); font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.voyage-history-warning { border-color: var(--bad); color: var(--text); }
