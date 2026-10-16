@@ -1,5 +1,27 @@
 import { expect, test } from './offline'
 
+test('同一天已读旧记录的用户仍看到新发布提醒，并能查看本次四项调整', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('onboarding-seen', '1')
+    localStorage.setItem('announce-ahk-retired', '1')
+    if (!localStorage.getItem('updates-seen')) localStorage.setItem('updates-seen', '2026-10-16')
+  })
+  await page.goto('/')
+  const button = page.getByRole('button', { name: '更新记录', exact: true })
+  await expect(button).toHaveClass(/unseen/)
+  await button.click()
+  const rows = page.locator('.updates-list .update-title')
+  await expect(rows.nth(0)).toHaveText('紧凑边界选择与通货图标')
+  await expect(rows.nth(1)).toHaveText('逐步复制操作保持可见')
+  await expect(rows.nth(2)).toHaveText('连续导入反馈更清楚')
+  await expect(rows.nth(3)).toHaveText('完成航程前核查保留海图')
+  await expect(page.locator('.updates-list')).toContainText('真实出现权重')
+  await page.keyboard.press('Escape')
+  await expect(button).not.toHaveClass(/unseen/)
+  await page.reload()
+  await expect(button).not.toHaveClass(/unseen/)
+})
+
 test('页面标题、教程、更新记录和保留向导的完整交互说明使用简中', async ({ page }) => {
   await page.goto('/')
   await expect(page.locator('html')).toHaveAttribute('lang', 'zh-CN')

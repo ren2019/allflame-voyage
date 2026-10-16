@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "check:release-notes": "node scripts/check-release-notes.mjs",
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "test": "vitest run && npm run test:border-ocr",
