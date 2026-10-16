@@ -4,15 +4,15 @@
   "sources": {
     "strategy-reference": {
       "label": "现有策略说明（实施基线）",
-      "url": "https://github.com/ren2019/allflame-voyage/blob/aeb688d/src/data/strategies.ts"
+      "url": "https://github.com/ren2019/allflame-voyage-cn/blob/aeb688d/src/data/strategies.ts"
     },
     "border-reference": {
       "label": "现有边界机制（实施基线）",
-      "url": "https://github.com/ren2019/allflame-voyage/blob/aeb688d/src/data/mods.ts"
+      "url": "https://github.com/ren2019/allflame-voyage-cn/blob/aeb688d/src/data/mods.ts"
     },
     "maintainer-initial": {
       "label": "#21 初始权重约定",
-      "url": "https://github.com/ren2019/allflame-voyage/issues/21"
+      "url": "https://github.com/ren2019/allflame-voyage-cn/issues/21"
     }
   },
   "strategies": {

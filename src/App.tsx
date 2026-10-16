@@ -5,6 +5,7 @@ import { calibrationUrl } from './logic/calibrationLinks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { VoyageComparison } from './components/VoyageComparison'
 import { BoardView } from './components/Board'
+import { GitHubIcon } from './components/icons'
 import { ModBrowser } from './components/ModBrowser'
 import { Onboarding } from './components/Onboarding'
 import { TooltipLayer } from './components/Tooltip'
@@ -41,8 +42,9 @@ const isNotable = (text: string) => !/^\d+% (increased|more|reduced) /i.test(tex
  *  ask for one action per keypress; support couldn't confirm the sweep is
  *  acceptable, and no tool is worth anyone's account) */
 const AHK_RETIRED_KEY = 'announce-ahk-retired'
+const PROJECT_URL = 'https://github.com/ren2019/allflame-voyage-cn'
 /** issues live here - linked from the header and the update popup */
-const ISSUES_URL = 'https://github.com/ren2019/allflame-voyage/issues'
+const ISSUES_URL = `${PROJECT_URL}/issues`
 
 function initialState(): { state: AppState; damagedHistory: boolean } {
   const hash = window.location.hash.replace(/^#/, '')
@@ -535,50 +537,66 @@ export default function App() {
         </div>
       )}
       <header>
-        <h1>
-          永火 <span className="accent">航程规划</span>
-        </h1>
-        <div className="tutorial-tools" role="group" aria-label="教程与示例">
-          <button className="tutorial-btn" onClick={() => setShowTutorial(true)}>🧭 使用教程</button>
-          <button title="生成随机示例海图体验工具" onClick={() => addCharts(generateDemoCharts(25))}>🎲 示例 ×25</button>
-          <button title="模拟重置边界词缀" onClick={() => patch({ borders: Array.from({ length: 12 }, () => BORDER_MODS[Math.floor(Math.random() * BORDER_MODS.length)].id) })}>🎲 随机边界</button>
+        <div className="header-main">
+          <div className="site-identity">
+            <div className="site-title-row">
+              <h1>
+                永火 <span className="accent">航程规划</span>
+              </h1>
+              <div className="site-version-links">
+                <span className="tag">国服简体版 · 3.29</span>
+                <a className="project-github" href={PROJECT_URL} target="_blank" rel="noopener noreferrer"
+                  aria-label="国服适配：ren2019 · GitHub 项目" title="国服适配：ren2019 · 查看 GitHub 项目">
+                  <GitHubIcon />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="tutorial-tools" role="group" aria-label="教程与示例">
+            <button className="tutorial-btn" onClick={() => setShowTutorial(true)}>🧭 使用教程</button>
+            <button title="生成随机示例海图体验工具" onClick={() => addCharts(generateDemoCharts(25))}>🎲 示例 ×25</button>
+            <button title="模拟重置边界词缀" onClick={() => patch({ borders: Array.from({ length: 12 }, () => BORDER_MODS[Math.floor(Math.random() * BORDER_MODS.length)].id) })}>🎲 随机边界</button>
+          </div>
         </div>
         <div className="header-right">
-          <button className="calibration-mode-toggle" aria-label="单条中文校准模式"
-            aria-pressed={calibrationMode} title={calibrationMode ? '关闭单条校准入口' : '显示单条校准入口'}
-            onClick={() => setCalibrationMode(enabled => !enabled)}>✎</button>
-          <a className="feedback-link" href={calibrationUrl()} target="_blank" rel="noopener noreferrer">中文校准 ↗</a>
-          <span className="tag">流放之路 3.29：永火之咒</span>
-          <button title="首次使用说明" onClick={() => setShowOnboarding(true)}>
-            ?
-          </button>
-          <button
-            className={updatesSeen < LATEST_UPDATE_DATE ? 'updates-btn unseen' : 'updates-btn'}
-            title="查看站点更新记录"
-            onClick={openUpdates}
-          >
-            更新记录
-          </button>
-          <a
-            className="feedback-link"
-            href={ISSUES_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="在 GitHub 提交问题或建议"
-          >
-            🐛 反馈
-          </a>
-          <button title="浏览全部词缀并停用不需要的效果" onClick={() => setShowMods(true)}>
-            词缀{state.disabledMods.length > 0 ? `（已停用 ${state.disabledMods.length} 项）` : ''}
-          </button>
-          <button
-            className="theme-link"
-            title={lightTheme ? '切换到深色主题' : '切换到浅色主题'}
-            aria-label={lightTheme ? '切换到深色主题' : '切换到浅色主题'}
-            onClick={toggleTheme}
-          >
-            {lightTheme ? '☾' : '☀'}
-          </button>
+          <div className="header-links" role="group" aria-label="站点信息">
+            <button
+              className={updatesSeen < LATEST_UPDATE_DATE ? 'updates-btn unseen' : 'updates-btn'}
+              title="查看站点更新记录"
+              onClick={openUpdates}
+            >
+              更新记录
+            </button>
+            <a
+              className="feedback-link"
+              href={ISSUES_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="在 GitHub 提交问题或建议"
+            >
+              🐛 反馈
+            </a>
+            <button title="首次使用说明" onClick={() => setShowOnboarding(true)}>
+              首次说明
+            </button>
+          </div>
+          <div className="header-tools" role="group" aria-label="工具与显示">
+            <button title="浏览全部词缀并停用不需要的效果" onClick={() => setShowMods(true)}>
+              词缀{state.disabledMods.length > 0 ? `（已停用 ${state.disabledMods.length} 项）` : ''}
+            </button>
+            <a className="feedback-link" href={calibrationUrl()} target="_blank" rel="noopener noreferrer">中文校准 ↗</a>
+            <button className="calibration-mode-toggle" aria-label="单条中文校准模式"
+              aria-pressed={calibrationMode} title={calibrationMode ? '关闭单条校准入口' : '显示单条校准入口'}
+              onClick={() => setCalibrationMode(enabled => !enabled)}>✎</button>
+            <button
+              className="theme-link"
+              title={lightTheme ? '切换到深色主题' : '切换到浅色主题'}
+              aria-label={lightTheme ? '切换到深色主题' : '切换到浅色主题'}
+              onClick={toggleTheme}
+            >
+              {lightTheme ? '☾' : '☀'}
+            </button>
+          </div>
           <div className="planning-transfer">
             <button onClick={share}>{shareMsg || '分享摆盘'}</button>
             <PlanningBackup state={state} onLoadState={setState} />
@@ -859,6 +877,10 @@ export default function App() {
 
         </section>
       </main>
+      <footer className="site-footer">
+        基于 <a href="https://github.com/one-more-map/one-more-map.github.io" target="_blank" rel="noopener noreferrer"
+          title="原版作者：one-more-map · 查看 GitHub 项目">one-more-map 的 Allflame Voyage Solver</a>
+      </footer>
     </div>
     </CalibrationMode.Provider>
   )

@@ -9,4 +9,8 @@
 - [真实库存子集说明](real-layout-review.md)：公开回归样本的来源边界。
 - [素材署名](../../THIRD_PARTY_NOTICES.md)：目前实际使用的图标、来源与作者。
 
-已结束的 HTML 原型、评审导出、重复图标和实施记录保留在[历史快照](https://github.com/ren2019/allflame-voyage/tree/93d197845d5ca0fe27da54191b877e240b60937b/docs/research)，不作为当前页面或运行规则。
+## 部署研究
+
+- [GitHub Pages 部署可行性与费用](github-pages-deployment.md)：仓库部署条件、现有工作流路径、免费范围与官方限制。
+
+已结束的 HTML 原型、评审导出、重复图标和实施记录保留在[历史快照](https://github.com/ren2019/allflame-voyage-cn/tree/93d197845d5ca0fe27da54191b877e240b60937b/docs/research)，不作为当前页面或运行规则。

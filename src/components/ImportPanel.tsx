@@ -221,7 +221,7 @@ export function ImportPanel({ onImport, state, onLoadState }: Props) {
       <p className="muted small">
         问题或建议？{' '}
         <a
-          href="https://github.com/ren2019/allflame-voyage/issues"
+          href="https://github.com/ren2019/allflame-voyage-cn/issues"
           target="_blank"
           rel="noopener noreferrer"
         >

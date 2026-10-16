@@ -19,6 +19,6 @@
 
 ## 历史归档
 
-最初的需求、原型评审、逐轮截图、原始运行日志和个人环境运维记录保存在不可变的[开发历史标签](https://github.com/ren2019/allflame-voyage/tree/archive/development-history-20261016)，对应提交 `93d197845d5ca0fe27da54191b877e240b60937b`。
+最初的需求、原型评审、逐轮截图、原始运行日志和个人环境运维记录保存在不可变的[开发历史标签](https://github.com/ren2019/allflame-voyage-cn/tree/archive/development-history-20261016)，对应提交 `93d197845d5ca0fe27da54191b877e240b60937b`。
 
 其中的测试报告只证明所记录版本和环境下的结果。主分支保留运行与回归需要的样本、合同和来源数据；当前用法以 README 和本导航中的说明为准。归档整理不重写 Git 历史。

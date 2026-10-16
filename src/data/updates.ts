@@ -1,9 +1,8 @@
-// Site updates log: NEW features and REWORKED behaviour only - bug fixes and
-// data corrections stay out. Newest first; the top entry's date drives the
-// 'unseen updates' dot on the header button.
+// Local-edition updates and upstream history are maintained separately.
+// Newest first; the top local entry drives the header's unseen-updates dot.
 
 export interface UpdateEntry {
-  /** ISO date the feature shipped */
+  /** ISO date of the release note; the initial local edition is a consolidated baseline. */
   date: string
   tag: 'new' | 'reworked'
   title: string
@@ -12,6 +11,58 @@ export interface UpdateEntry {
 }
 
 export const UPDATES: UpdateEntry[] = [
+  {
+    date: '2026-10-16',
+    tag: 'new',
+    title: '国服高级复制导入与简体中文界面',
+    detail: '在国服游戏中用 Ctrl+Alt+C 高级复制海图，再粘贴到左侧导入面板。支持国服名称、区域等级、连接形状与词缀解析；教程、策略与操作提示使用简体中文。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'new',
+    title: '九宫格区域目标提示',
+    detail: '摆盘中的每格可显示当前策略下应关注的目标，合并同类提示并支持展开详情。通过摆盘上方的“关闭／高价值／全部”切换显示范围。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'new',
+    title: '十二条边界价值分析',
+    detail: '按当前策略将边界标为“可略”“留意”“优先”。点击“边界分析”查看各边界的权重、判断理由与规则来源，辅助手动选择边界。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'new',
+    title: '独立留图助手与策略预留提示',
+    detail: '无需导入库存，即可在左侧留图助手查看不同策略的留图条件；有专项规则时可复制搜索正则。已导入库存也会显示策略材料的预留状态。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'new',
+    title: '航程历史与同策略比较',
+    detail: '完成航程后，确认存活与消耗并记录本次航程。最近同策略、同计分口径的个人历史可用于比较当前摆盘；样本不足时给出提示。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'new',
+    title: '单条中文校准与记录备份',
+    detail: '顶部“中文校准”可查看词库对照，铅笔按钮可打开页面内的单条校准入口。建议和备注在本地保存、导出，供维护者核对后应用。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'reworked',
+    title: '完整规划备份与明暗主题',
+    detail: '顶部可导出或恢复包含库存、摆盘、边界、策略配置与航程历史的 JSON 备份。支持浅色和深色主题，方便在不同环境下使用。',
+  },
+  {
+    date: '2026-10-16',
+    tag: 'reworked',
+    title: '国服版署名、项目入口与更新记录',
+    detail: '标题与版本右侧的 GitHub 图标链接至国服项目，页脚保留原作者署名与项目链接。更新记录默认展示本版新增与调整，原版功能历史可单独切换查看。',
+  },
+]
+
+/** Original feature history, translated for reference; not local-edition release notes. */
+export const UPSTREAM_UPDATES: UpdateEntry[] = [
   {
     date: '2026-08-20',
     tag: 'new',

@@ -4,7 +4,7 @@
 
 本项目基于 **[one-more-map 的 Allflame Voyage Solver](https://github.com/one-more-map/one-more-map.github.io)** 开发，是独立维护的国服适配 fork。原版的规划板、求解器与策略框架由原作者及贡献者提供；本仓库在此基础上增加简体中文、国服文本解析和下述规划辅助功能。感谢原作者开源。
 
-[原版英文工具](https://one-more-map.github.io/allflame-voyage-solver/) · [使用与部署](docs/README.md) · [反馈问题](https://github.com/ren2019/allflame-voyage/issues) · [参与贡献](CONTRIBUTING.md)
+[原版英文工具](https://one-more-map.github.io/allflame-voyage-solver/) · [使用与部署](docs/README.md) · [反馈问题](https://github.com/ren2019/allflame-voyage-cn/issues) · [参与贡献](CONTRIBUTING.md)
 
 ![真实国服海图：库存、已求解的九宫格布局、区域目标与策略](docs/images/planner-real-layout.png)
 
@@ -31,8 +31,8 @@
 需要 **Node.js 20+** 和 npm。
 
 ```sh
-git clone https://github.com/ren2019/allflame-voyage.git
-cd allflame-voyage
+git clone https://github.com/ren2019/allflame-voyage-cn.git
+cd allflame-voyage-cn
 npm ci
 npm run dev
 ```
@@ -44,6 +44,8 @@ npm run build
 ```
 
 生成目录为 `dist/`，可自行部署到静态服务器。多台电脑经局域网使用时，按 [HTTPS 部署说明](docs/local-deployment.md) 配置证书，让一键复制可用。
+
+GitHub Pages 的目标地址为 `https://ren2019.github.io/allflame-voyage-cn/`。仓库 Settings → Pages 的发布源选择 GitHub Actions 后，现有工作流会将 `dist/` 直接发布到项目站首页；可手动触发，也会在推送 `main` 时运行。启用状态、费用与限制见 [Pages 部署研究](docs/research/github-pages-deployment.md)。
 
 ## 一次航程的用法
 
@@ -68,6 +70,7 @@ npm run build
 
 ## 致谢与许可
 
+- 国服适配与维护：[ren2019/allflame-voyage-cn](https://github.com/ren2019/allflame-voyage-cn)，维护者 **ren2019**；首页标题与版本右侧提供 GitHub 图标链接，原作者署名位于页脚。
 - 原项目：[one-more-map/one-more-map.github.io](https://github.com/one-more-map/one-more-map.github.io)，作者 **one-more-map 及贡献者**。
 - 社区文本与资料：[PoEDB](https://poedb.tw/cn/)。本项目不代表 PoEDB、GGG 或国服运营方。
 - 代码沿用 [MIT License](LICENSE)，保留原项目版权声明。游戏美术与第三方图标另见 [素材署名](THIRD_PARTY_NOTICES.md)，不因随代码分发而改变其原有权利与许可。

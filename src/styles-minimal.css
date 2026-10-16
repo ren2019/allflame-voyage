@@ -59,6 +59,15 @@ body { background: var(--bg); font: 14px/1.6 var(--serif); color: var(--text); }
 a { color: var(--accent); text-decoration-color: currentColor; text-underline-offset: 3px; }
 a:hover { color: var(--accent); }
 h1 { font-size: 25px; font-weight: 650; letter-spacing: 0; text-shadow: none; }
+.site-identity { min-width: 0; }
+.site-title-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
+.site-version-links { display: flex; align-items: center; gap: 8px; }
+.project-github { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 5px; color: var(--muted); text-decoration: none; }
+.project-github:hover { color: var(--text); background: var(--panel2); }
+.site-footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+.site-footer a { color: inherit; }
+.header-main { display: flex; width: 100%; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.header-links, .header-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
 .accent { color: var(--text); }
 header::after { background: var(--border); }
 .header-right { flex-wrap: wrap; }
@@ -193,7 +202,27 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 .planning-backup-status { display: flex; align-items: flex-start; gap: 8px; }
 .planning-backup-status span { flex: 1; }
 .planning-backup-status button { padding: 0 5px; flex-shrink: 0; }
-.header-right { margin-left: auto; }
+.header-right { width: 100%; margin-left: 0; gap: 10px 18px; }
+.header-right .planning-transfer { margin-left: auto; }
+.updates-log { display: flex; flex-direction: column; width: 680px; max-width: 100%; max-height: 84vh; overflow: hidden; }
+.updates-log > .panel-title { flex-shrink: 0; }
+.updates-sources { display: flex; gap: 4px; padding: 4px; background: var(--panel2); border: 1px solid var(--border); border-radius: 7px; flex-shrink: 0; }
+.updates-sources button { flex: 1; border-color: transparent; background: transparent; color: var(--muted); }
+.updates-sources button[aria-pressed='true'] { background: var(--panel); color: var(--text); border-color: var(--border); }
+.updates-intro { margin: 12px 0; color: var(--muted); font-size: 12px; flex-shrink: 0; }
+.updates-list { min-height: 0; overflow-y: auto; padding-right: 6px; }
+.update-row { border-radius: 6px; padding: 12px; }
+.update-head { flex-wrap: wrap; gap: 6px 8px; }
+.update-title { font-weight: 600; letter-spacing: 0; }
+.update-detail { margin-top: 8px; line-height: 1.65; }
+.update-tag { flex-shrink: 0; letter-spacing: 0; }
+.update-tag.tag-new { color: var(--accent); border-color: var(--border-hi); background: var(--panel); }
+.update-tag.tag-reworked { color: var(--muted); border-color: var(--border); background: var(--panel); }
+@media (max-width: 600px) {
+  .header-right .planning-transfer { margin-left: 0; }
+  .updates-log { padding: 14px; }
+  .update-date { width: 100%; }
+}
 
 /* Read-only recommendation context stays beside the strategy it can select. */
 .strategy-recommendations { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px; font-size: 12px; }
