@@ -14,7 +14,7 @@ for (const [index, chart] of expected.entries()) {
   test(`real controls import collected ${chart.shape} and export its literal fields`, async ({ page }) => {
     await page.locator('.import-panel textarea[placeholder]').fill(extra.trim().split(/\n\s*(?=物品类别: 海图)/)[index])
     await page.locator('.import-actions button').first().click()
-    await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 1 张海图')
+    await expect(page.locator('.import-panel .muted.pad')).toHaveText(`已导入 1 张海图：${chart.name}`)
     await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(1)
     const state = await downloadPlanningState(page)
     const { uid: _uid, ...actual } = state.pool[0]
@@ -24,7 +24,7 @@ for (const [index, chart] of expected.entries()) {
 test('real controls import the original and new copies together with Windows line endings', async ({ page }) => {
   await page.locator('.import-panel textarea[placeholder]').fill(`${original}\n${extra}`.replace(/\n/g, '\r\n'))
   await page.locator('.import-actions button').first().click()
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 5 张海图')
+  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已导入 5 张海图：航海 冒险 珊瑚暗礁海图、航海 深入 金沙海床海图 等 5 张')
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(5)
   const state = await downloadPlanningState(page)
   expect(state.pool.map((chart) => chart.shape)).toEqual(['End', 'Straight', 'Corner', 'Junction', 'Crossing'])
