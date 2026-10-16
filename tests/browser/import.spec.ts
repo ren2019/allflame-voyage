@@ -4,6 +4,8 @@ import type { AppState } from '../../src/logic/storage'
 
 const samples = readFileSync(new URL('../../samples/charted.zh-CN.txt', import.meta.url), 'utf8')
 const [first, second] = samples.trim().split(/\n\s*(?=物品类别: 海图)/)
+const extraSamples = readFileSync(new URL('../../samples/charted-extra-shapes.zh-CN.txt', import.meta.url), 'utf8')
+const [third] = extraSamples.trim().split(/\n\s*(?=物品类别: 海图)/)
 const unknown = first.replace(/(\{ 基底属性 \}\n)[^\n]+/, '$1明确未知的测试航行词缀')
 
 async function importCharts(page: Page, text: string) {
@@ -27,9 +29,85 @@ test.beforeEach(async ({ page }) => {
   await page.locator('.onboard-actions button').last().click()
 })
 
+async function pasteCharts(page: Page, text: string) {
+  await page.evaluate((value) => {
+    const clipboardData = new DataTransfer()
+    clipboardData.setData('text/plain', value)
+    document.dispatchEvent(new ClipboardEvent('paste', { clipboardData, bubbles: true }))
+  }, text)
+}
+
+test('consecutive single imports announce the actual chart and rotate success wording across both controls', async ({ page }) => {
+  const status = page.getByRole('status')
+  await pasteCharts(page, first)
+  await expect(status).toHaveText('已导入 1 张海图：航海 冒险 珊瑚暗礁海图')
+  await expect(status).toHaveAttribute('aria-atomic', 'true')
+  await pasteCharts(page, first)
+  await expect(status).toContainText('跳过 1 张已在库存中的海图')
+  await expect(status).not.toContainText('已导入')
+  await importCharts(page, second)
+  await expect(status).toHaveText('已加入库存 1 张海图：航海 深入 金沙海床海图')
+  await pasteCharts(page, third)
+  await expect(status).toHaveText('已收录 1 张海图：远洋 冒险 珊瑚暗礁海图')
+  const state = await exportState(page)
+  expect(state.pool.map(chart => chart.name)).toEqual([
+    '航海 冒险 珊瑚暗礁海图', '航海 深入 金沙海床海图', '远洋 冒险 珊瑚暗礁海图',
+  ])
+})
+
+test('mixed batch feedback names only new charts with a compact summary and accurate counts', async ({ page }) => {
+  await importCharts(page, first)
+  await pasteCharts(page, `${samples}\n${extraSamples}\n${unknown}`)
+  await expect(page.getByRole('status')).toHaveText(
+    '已加入库存 4 张海图：航海 深入 金沙海床海图、远洋 冒险 珊瑚暗礁海图 等 4 张; 跳过 1 张已在库存中的海图（重新导入前可先清空库存）; 拒绝 1 项无法识别',
+  )
+  await expect(page.getByRole('status')).not.toContainText('航海 冒险 珊瑚暗礁海图')
+  expect((await exportState(page)).pool).toHaveLength(5)
+})
+
+test('rejected, empty and border-only results replace chart feedback without advancing success wording', async ({ page }) => {
+  const status = page.getByRole('status')
+  await importCharts(page, first)
+  await importCharts(page, unknown)
+  await expect(status).toHaveText('拒绝 1 项无法识别')
+  await importCharts(page, '不是海图')
+  await expect(status).toHaveText('拒绝 1 项无法识别')
+  await page.locator('.import-panel textarea[placeholder]').fill('')
+  await expect(page.getByRole('button', { name: '解析并加入', exact: true })).toBeDisabled()
+  await pasteCharts(page, '=== VOYAGE BORDER 0 ===\n16% increased Pack Size in adjacent Areas\n=== END VOYAGE BORDER ===')
+  await expect(status).toHaveText('已匹配 1/1 个边界词缀')
+  expect((await exportState(page)).borders[0]).toBe('b-pack-1')
+  await pasteCharts(page, '=== VOYAGE BORDER 0 ===\nnot a border tooltip\n=== END VOYAGE BORDER ===')
+  await expect(status).toHaveText('已匹配 0/1 个边界词缀; 未识别边界悬停文本，已保留原有边界')
+  await pasteCharts(page, second)
+  await expect(status).toHaveText('已加入库存 1 张海图：航海 深入 金沙海床海图')
+  const state = await exportState(page)
+  expect(state.pool).toHaveLength(2)
+  expect(state.borders[0]).toBe('b-pack-1')
+})
+
+for (const theme of ['light', 'dark']) {
+  test(`compact import feedback remains readable at 390px in ${theme} theme`, async ({ page }, testInfo) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    const switcher = page.getByRole('button', { name: `切换到${theme === 'dark' ? '深色' : '浅色'}主题`, exact: true })
+    if (await switcher.count()) await switcher.click()
+    await importCharts(page, first)
+    await importCharts(page, `${samples}\n${extraSamples}\n${unknown}`)
+    const status = page.getByRole('status')
+    await expect(status).toContainText('已加入库存 4 张海图')
+    await status.scrollIntoViewIfNeeded()
+    const box = (await status.boundingBox())!
+    expect(box.x).toBeGreaterThanOrEqual(0)
+    expect(box.x + box.width).toBeLessThanOrEqual(390)
+    expect(box.height).toBeLessThan(200)
+    expect(await status.evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true)
+    await page.locator('.import-panel').screenshot({ path: testInfo.outputPath(`import-feedback-${theme}-390.png`) })
+  })
+}
+
 test('real import controls add both real charts in a Windows batch', async ({ page }) => {
   await importCharts(page, samples.replace(/\n/g, '\r\n'))
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 2 张海图')
+  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已导入 2 张海图：航海 冒险 珊瑚暗礁海图、航海 深入 金沙海床海图')
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(2)
   await expect(page.locator('.chart-grid .sq-lvl')).toHaveText(['83', '83'])
   await expect(page.locator('.chart-grid [title="区域等级 83"]')).toHaveCount(2)
@@ -43,7 +121,7 @@ test('real import controls add both real charts in a Windows batch', async ({ pa
 
 test('real import controls add the samples individually', async ({ page }) => {
   await importCharts(page, first)
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 1 张海图')
+  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已导入 1 张海图：航海 冒险 珊瑚暗礁海图')
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(1)
   await importCharts(page, second)
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(2)
@@ -57,7 +135,7 @@ test('unknown crucial effects are refused with the existing summary only', async
 
 test('a mixed batch keeps its valid chart and reports one rejected item', async ({ page }) => {
   await importCharts(page, `${second}\n\n${unknown}`)
-  await expect(page.locator('.import-panel .muted.pad')).toHaveText('导入 1 张海图; 拒绝 1 项无法识别')
+  await expect(page.locator('.import-panel .muted.pad')).toHaveText('已导入 1 张海图：航海 深入 金沙海床海图; 拒绝 1 项无法识别')
   await expect(page.locator('.chart-grid .chart-sq')).toHaveCount(1)
 })
 
