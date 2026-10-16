@@ -188,3 +188,57 @@ test('核查期间调整评分策略不改变候选，最终历史仍记录完�
   expect(finished.voyageHistory[0].strategyId).toBeNull()
   expect(finished.voyageHistory[0].scoringContext.strategyId).toBeNull()
 })
+
+for (const width of [1280, 390]) {
+  for (const trigger of ['expand', 'rejected', 'unavailable']) {
+    test(`${width}px ${trigger} 全文展开及调整高度后两主题核查操作仍完整可见`, async ({ page }) => {
+      const height = width === 1280 ? 720 : 844
+      await page.setViewportSize({ width, height })
+      await page.addInitScript((missing) => {
+        Object.defineProperty(navigator, 'clipboard', { configurable: true, value: missing ? undefined : {
+          writeText: async () => { throw new Error('Denied') },
+        } })
+      }, trigger === 'unavailable')
+      const panel = await openCheck(page)
+      for (const theme of ['dark', 'light']) {
+        if (theme === 'light') {
+          await panel.getByRole('button', { name: '取消核销', exact: true }).click()
+          await page.locator('.theme-link').click()
+          await page.locator('.finish-voyage').click()
+        }
+        // Settle the start-of-step scroll, then use a legitimate reading position
+        // with the whole current panel visible near the viewport's bottom edge.
+        await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+        await panel.evaluate((element) => window.scrollBy(0, element.getBoundingClientRect().bottom - window.innerHeight + 12))
+        await expect.poll(async () => (await panel.boundingBox())!.y + (await panel.boundingBox())!.height).toBeLessThanOrEqual(height)
+        await panel.getByRole('button', { name: trigger === 'expand' ? '查看定位全文' : '复制定位文本', exact: true }).click()
+        const text = panel.getByRole('textbox', { name: '完整定位文本', exact: true })
+        await expect(text).toBeVisible()
+        if (trigger !== 'expand') await expect(panel.getByRole('status')).toContainText('复制失败')
+        const assertVisible = async () => {
+          for (const control of [panel.locator('.pc-head'), ...await panel.getByRole('button').all()]) {
+            // Measuring before another locator click prevents Playwright's implicit scroll from hiding a regression.
+            await expect.poll(async () => {
+              const bounds = await control.boundingBox()
+              return !!bounds && bounds.x >= 0 && bounds.y >= 0 && bounds.x + bounds.width <= width && bounds.y + bounds.height <= height
+            }).toBe(true)
+          }
+        }
+        await assertVisible()
+        if (trigger === 'expand') {
+          const bounds = (await text.boundingBox())!
+          await page.mouse.move(bounds.x + bounds.width - 3, bounds.y + bounds.height - 3)
+          await page.mouse.down()
+          await page.mouse.move(bounds.x + bounds.width - 3, bounds.y + bounds.height + 100, { steps: 6 })
+          await page.mouse.up()
+          await expect.poll(async () => (await text.boundingBox())!.height).toBeGreaterThan(bounds.height)
+          await assertVisible()
+        }
+        await expect(panel.locator('.pc-head')).toContainText('1/2')
+        expect(await downloadPlanningState(page)).toEqual(automatic)
+        expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width)
+        await page.screenshot({ path: `/tmp/allflame-40-fallback-${width}-${trigger}-${theme}.png` })
+      }
+    })
+  }
+}

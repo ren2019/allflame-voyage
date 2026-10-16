@@ -48,6 +48,11 @@ const PROJECT_URL = 'https://github.com/ren2019/allflame-voyage-cn'
 /** issues live here - linked from the header and the update popup */
 const ISSUES_URL = `${PROJECT_URL}/issues`
 
+/** A pending reconciliation is valid only for the same physical voyage inputs. */
+function sameVoyageInputs(snapshot: AppState, current: AppState): boolean {
+  return snapshot.board === current.board && snapshot.pool === current.pool && snapshot.borders === current.borders
+}
+
 function initialState(): { state: AppState; damagedHistory: boolean } {
   const hash = window.location.hash.replace(/^#/, '')
   if (hash.length > 20) {
@@ -136,7 +141,6 @@ export default function App() {
   // (bottom-left, then right, then up a row): board cells 6,7,8, 3,4,5, 0,1,2
   const [copySeq, setCopySeq] = useState<{ order: number[]; step: number } | null>(null)
   const copyControls = useRef<HTMLDivElement>(null)
-  const preserveControls = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!copySeq) return
     // Wait for the step's content to lay out; measuring actions must not rely on
@@ -148,14 +152,12 @@ export default function App() {
     if (!preserveConfirm) return
     const event = completion.current
     if (!event || event.committed) return
-    if (event.snapshot.board !== state.board || event.snapshot.pool !== state.pool || event.snapshot.borders !== state.borders) {
+    if (!sameVoyageInputs(event.snapshot, state)) {
       completion.current = null
       setPreserveConfirm(null)
       setVoyageMsg('摆盘、边界或库存已更改，已取消核销，请重新开始。')
       return
     }
-    const frame = requestAnimationFrame(() => preserveControls.current?.scrollIntoView({ block: 'nearest' }))
-    return () => cancelAnimationFrame(frame)
   }, [preserveConfirm, state.board, state.pool, state.borders])
   const [lightTheme, setLightTheme] = useState(() => document.documentElement.dataset.theme === 'light')
   useEffect(() => {
@@ -335,7 +337,7 @@ export default function App() {
     if (!event || event.committed) return
     const snapshot = event.snapshot
     const latest = currentState.current
-    if (snapshot.board !== latest.board || snapshot.pool !== latest.pool || snapshot.borders !== latest.borders) return
+    if (!sameVoyageInputs(snapshot, latest)) return
     event.committed = true
     // Capture the final confirmed state before inventory consumption. Updaters
     // stay pure: React StrictMode may replay them.
@@ -343,7 +345,7 @@ export default function App() {
     const onBoard = new Set(snapshot.board.filter(Boolean).map((p) => p!.chartUid))
     const consumed = snapshot.pool.filter((c) => onBoard.has(c.uid) && !keptUids.has(c.uid)).length
     const kept = snapshot.pool.filter((c) => onBoard.has(c.uid) && keptUids.has(c.uid)).length
-    setState((s) => snapshot.board !== s.board || snapshot.pool !== s.pool || snapshot.borders !== s.borders ? s : ({
+    setState((s) => !sameVoyageInputs(snapshot, s) ? s : ({
       ...s,
       pool: s.pool.filter((c) => !onBoard.has(c.uid) || keptUids.has(c.uid))
         .map((c) => keptUids.has(c.uid) ? { ...c, preserved: false } : c),
@@ -412,7 +414,7 @@ export default function App() {
     const event = completion.current
     if (!event || event.id !== id || event.committed || event.step !== index) return
     const latest = currentState.current
-    if (event.snapshot.board !== latest.board || event.snapshot.pool !== latest.pool || event.snapshot.borders !== latest.borders) return
+    if (!sameVoyageInputs(event.snapshot, latest)) return
     event.step++
     const nextKept = survived ? [...kept, candidates[index].chart.uid] : kept
     if (index + 1 >= candidates.length) commitFinish(new Set(nextKept))
@@ -765,7 +767,7 @@ export default function App() {
           )}
 
           {preserveConfirm && (
-            <div ref={preserveControls}>
+            <div>
               <PreserveConfirmation key={`${preserveConfirm.id}:${preserveConfirm.index}`}
                 candidate={preserveConfirm.candidates[preserveConfirm.index]}
                 step={preserveConfirm.index + 1} total={preserveConfirm.candidates.length}

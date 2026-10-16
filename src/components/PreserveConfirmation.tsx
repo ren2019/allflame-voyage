@@ -14,8 +14,22 @@ export function PreserveConfirmation({ candidate: { cell, chart }, step, total, 
   const [status, setStatus] = useState<'idle' | 'pending' | 'success' | 'failure'>('idle')
   const [showText, setShowText] = useState(false)
   const active = useRef(true)
+  const panel = useRef<HTMLElement>(null)
   const fullText = useRef<HTMLTextAreaElement>(null)
   useEffect(() => { active.current = true; return () => { active.current = false } }, [])
+  useEffect(() => {
+    const element = panel.current
+    if (!element) return
+    let frame = 0
+    // Fallback text, copy feedback and user textarea resizing can all change
+    // height without changing the parent's current step.
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => element.scrollIntoView({ block: 'nearest' }))
+    })
+    observer.observe(element)
+    return () => { observer.disconnect(); cancelAnimationFrame(frame) }
+  }, [])
   const text = buildSingleChartSearch(chart)
   const feedback = status === 'pending' ? '正在复制…'
     : status === 'success' ? '已复制定位文本；请在游戏中核对后确认结果。'
@@ -31,7 +45,7 @@ export function PreserveConfirmation({ candidate: { cell, chart }, step, total, 
   }
   const row = ['上', '中', '下'][Math.floor(cell / 3)]
   const col = ['左', '中', '右'][cell % 3]
-  return <section className="preserve-confirm voyage-check" aria-label="航程保留核查">
+  return <section ref={panel} className="preserve-confirm voyage-check" aria-label="航程保留核查">
     <div className="pc-head">确认保留海图 {step}/{total} · {row}{col}格（对应格已高亮）</div>
     <div className="pc-name">{chart.name}</div>
     <div className="pc-sub">区域等级 {chart.level}{chart.shape ? ` · ${chartShapeLabel(chart.shape)}` : ''}
