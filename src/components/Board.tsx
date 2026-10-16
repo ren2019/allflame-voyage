@@ -1,12 +1,11 @@
+import { BorderSelect } from './BorderSelect'
 import { BorderAffinity } from './BorderAffinity'
 import { RegionTargets, RegionTargetDetails } from './RegionTargets'
 import { regionalTargetView, regionTargets, type RegionalCell, type RegionTargetMode } from '../logic/regionTargets'
-import { borderAffinityPriority, evaluateBorderAffinity } from '../logic/borderAffinity'
+import { evaluateBorderAffinity } from '../logic/borderAffinity'
 import type { ScoreOptions } from '../logic/scoring'
-import { CalibrationLink } from './CalibrationLink'
 import { useId, useState, type ReactNode } from 'react'
-import { borderModById, voyageModById } from '../data/mods'
-import { BORDER_CHOICES, localizedBorder, matchesBorderQuery } from '../data/borderLocale'
+import { voyageModById } from '../data/mods'
 import { rotateEdges } from '../logic/connectivity'
 import { buildSingleChartSearch } from '../logic/regex'
 import type { Board, Borders, ChartData, Placement } from '../types'
@@ -38,95 +37,6 @@ interface Props {
   sequenceActive?: boolean
   /** the solve control, rendered front-and-centre above "Copy into game" */
   solveSlot?: ReactNode
-}
-
-function BorderSelect({
-  value,
-  onChange,
-  seg,
-  vertical,
-  affinityWeight,
-}: {
-  value: string | null
-  onChange: (id: string | null) => void
-  seg: number
-  vertical?: boolean
-  affinityWeight: number | null
-}) {
-  const [open, setOpen] = useState(false)
-  const [q, setQ] = useState('')
-  const mod = value ? borderModById.get(value) : null
-  const label = value ? localizedBorder(value) : undefined
-  const priority = borderAffinityPriority(affinityWeight)
-  const filtered = BORDER_CHOICES.filter((m) => matchesBorderQuery(m.id, q))
-  // keep the popover on-screen: right-column segments align right, left-column align left
-  const align = seg >= 3 && seg <= 5 ? 'right' : seg >= 9 ? 'left' : 'center'
-
-  const pick = (id: string | null) => {
-    onChange(id)
-    setOpen(false)
-  }
-
-  return (
-    <span
-      className={`bslot ${mod ? 'filled' : ''} ${vertical ? 'bslot-vertical' : ''}`}
-      data-border-segment={seg}
-      data-affinity-band={priority?.band}
-      aria-label={`边界位置 ${seg + 1}`}
-      title={(label?.text ?? '边界位置：点击搜索') + (priority ? `\n${priority.label}` : '')}
-      onClick={() => {
-        setQ('')
-        setOpen(true)
-      }}
-    >
-      {mod ? (
-        <span className="bslot-label">
-          {label?.short}
-        </span>
-      ) : (
-        <span className="bslot-empty">·</span>
-      )}
-      {value && <CalibrationLink id={value} slot={seg} />}
-      {open && (
-        <>
-          <span
-            className="bpop-backdrop"
-            onClick={(e) => {
-              e.stopPropagation()
-              setOpen(false)
-            }}
-          />
-          <span className={`bpop bpop-${align}`} onClick={(e) => e.stopPropagation()}>
-            <input
-              autoFocus
-              placeholder="搜索边界词缀…"
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Escape') setOpen(false)
-                if (e.key === 'Enter' && filtered.length > 0) pick(filtered[0].id)
-              }}
-            />
-            <span className="bpop-list">
-              <button className="bpop-item muted" onClick={() => pick(null)}>
-                无边界词缀
-              </button>
-              {filtered.map((m) => (
-                <button
-                  key={m.id}
-                  className={`bpop-item ${m.id === value ? 'active' : ''}`}
-                  onClick={() => pick(m.id)}
-                >
-                  <span className="bpop-full">{m.text}</span>
-                </button>
-              ))}
-              {filtered.length === 0 && <span className="bpop-none">无匹配词缀</span>}
-            </span>
-          </span>
-        </>
-      )}
-    </span>
-  )
 }
 
 type EdgeStatus = 'none' | 'connected' | 'open' | 'mismatch'
@@ -423,7 +333,7 @@ export function BoardView(props: Props) {
         <div className="corner" />
       </div>
       <div className="board-hint">
-        角落有两条直接边界，中边一条，中心没有。先点击库存海图再点击格子放置；点击两个已放置格子可交换。
+        先点击库存海图再点击格子放置；点击两个已放置格子可交换。
       </div>
       <div className="legend">
         <span className="legend-item scope-self">■ 本区域</span>

@@ -1,0 +1,53 @@
+/* The chooser is portalled to the viewport, independently of the twelve slots. */
+.bpop.border-chooser {
+  position: fixed; top: auto; margin: 0; transform: none;
+  width: min(520px, calc(100vw - 16px)); max-height: calc(100dvh - 16px);
+  box-sizing: border-box; display: flex; gap: 8px; padding: 10px;
+  background: var(--panel); color: var(--text); border: 1px solid var(--border);
+  font: 12px/1.5 var(--sans, system-ui); border-radius: 6px; overflow: hidden;
+}
+.border-chooser * { box-sizing: border-box; }
+.border-chooser button, .border-chooser input {
+  font: inherit; letter-spacing: 0; color: var(--text); background: var(--panel2);
+  border: 1px solid var(--border); border-radius: 5px; box-shadow: none;
+}
+.border-chooser button { padding: 3px 7px; min-height: 27px; white-space: normal; }
+.border-chooser button:hover { border-color: var(--accent); color: var(--accent); box-shadow: none; }
+.border-chooser button[aria-pressed='true'] { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, var(--panel)); }
+.border-chooser button:focus-visible, .border-chooser input:focus-visible, .bslot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.border-chooser-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.border-chooser-head > span { min-width: 0; overflow-wrap: anywhere; }
+.border-chooser-head strong { font-weight: 500; color: var(--accent); }
+.border-chooser-quick { display: flex; flex-wrap: wrap; gap: 4px; }
+.border-chooser-close { margin-left: auto; }
+.border-chooser-search { display: flex; gap: 6px; }
+.border-chooser-search input { min-width: 0; width: 100%; padding: 4px 7px; background: var(--panel); }
+.border-chooser-search button { flex-shrink: 0; }
+.border-chooser-body { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 10px; min-height: 0; overflow: auto; }
+.border-chooser-body nav { display: flex; flex-direction: column; align-self: start; gap: 3px; border-right: 1px solid var(--border); padding-right: 8px; }
+.border-chooser-body nav button { display: flex; justify-content: space-between; align-items: center; text-align: left; gap: 3px; border-color: transparent; background: transparent; padding: 4px; }
+.border-chooser-body nav small { font-size: 11px; color: var(--muted); }
+.border-chooser-results { min-width: 0; max-height: 290px; overflow: auto; scrollbar-width: thin; }
+.border-chooser-result-count { color: var(--muted); margin-bottom: 4px; }
+.border-family { display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 3px 6px; border-top: 1px solid var(--border); padding: 4px 0; cursor: pointer; }
+.border-family:first-child { border-top: 0; }
+.border-family:hover { background: var(--panel2); }
+.border-chooser .border-family-default { flex: 1 1 100px; padding: 3px 0; border: 0; background: transparent; text-align: left; font-weight: 500; }
+.border-family-tiers { display: flex; flex-wrap: wrap; gap: 4px; }
+.border-chooser .border-tier { text-align: center; }
+.border-currency-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(62px, 1fr)); gap: 5px; }
+.border-chooser .border-currency { display: flex; flex-direction: column; align-items: center; justify-content: start; gap: 3px; min-height: 64px; padding: 5px 2px; text-align: center; }
+.border-currency img { width: 32px; height: 32px; object-fit: contain; }
+.border-currency > span:not(.border-choice-full) { font-size: 11px; line-height: 1.3; overflow-wrap: anywhere; }
+.border-choice-full { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 480px) {
+  .bpop.border-chooser { padding: 8px; }
+  .border-chooser-search input { font-size: 16px; }
+  .border-chooser-body { grid-template-columns: 90px minmax(0, 1fr); gap: 8px; }
+  .border-chooser-body nav { padding-right: 5px; }
+  .border-family { gap: 3px; }
+  .border-currency-grid { grid-template-columns: repeat(auto-fit, minmax(54px, 1fr)); }
+}
+@media (pointer: coarse) {
+  .border-chooser button { min-height: 44px; }
+}
